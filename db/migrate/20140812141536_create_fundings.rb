@@ -1,6 +1,5 @@
 class CreateFundings < ActiveRecord::Migration
   def change
-    drop_table :fundings
     create_table :fundings do |t|
       t.string :investment_type
       t.string :name
