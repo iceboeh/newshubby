@@ -1,0 +1,37 @@
+<%= form_for([@funding.newsroom, @funding]) do |f| %>
+  <% if @funding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@funding.errors.count, "error") %> prohibited this funding from being saved:</h2>
+
+      <ul>
+      <% @funding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :investment_type %><br>
+    <%= f.text_field :investment_type %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :newsroom_id %><br>
+    <%= f.text_field :newsroom_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<%= link_to root_path, class: "navbar-brand" do %>
+				<%= image_tag "newshubby_logotype.svg", id: "navLogo", class: "hidden-xs" %>
+				<%= image_tag "newshubby_logotype_square.svg", id: "navLogoSquare", class: "visible-xs" %>				
+			<% end %>
+		</div>
+		<div class="collapse navbar-collapse">
+			<%= form_tag newsrooms_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+				<div class="input-group" id="navSearch">					
+					<%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", id: "srch-term" %>
+						<div class="input-group-btn">
+							<%= button_tag "Search", :name => nil, class: "btn btn-default", type: "submit" do %><i class="glyphicon glyphicon-search"></i><% end %>
+					<% end %>
+					</div>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+				
+				<% if current_newsroom != nil %>
+				<li><%= link_to pressreleasetype_path do %><small><i class="glyphicon glyphicon-plus"></i></small> New Press Release</li><% end %>
+				<% else %>
+				<li><%= link_to "Sign up", new_newsroom_registration_path %></li>
+				<li><%= link_to "Login", new_newsroom_session_path %></li>
+				<% end %>
+				<li class="dropdown">
+					<ul class="dropdown-menu">
+						<li><a href="#">News Item</a></li>
+						<li><a href="#">Press Release</a></li>
+					</ul>
+				</li>
+				<% if current_newsroom != nil %>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_newsroom.company_name %> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "View Newsroom", current_newsroom %></li>
+						<li class="divider"></li>
+						<li><%= link_to "Edit Newsroom", edit_newsroom_path(current_newsroom) %></li>
+						<li><%= link_to "Account Settings", new_newsroom_password_path %></li>
+						<li class="divider"></li>
+						<li><%= link_to "Log out", destroy_newsroom_session_path, method: :delete %></li>
+					</ul>
+				</li>
+				<% end %>
+			</ul>
+		</div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+

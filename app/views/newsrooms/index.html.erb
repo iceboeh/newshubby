@@ -1,0 +1,112 @@
+<% title "NewsHubby | Reach World Press" %>
+
+<div class="container">
+	<div class="row">
+		<% if current_newsroom == nil %>
+		<div class="col-md-8">
+		<% else %>
+		<div class="col-md-8 col-md-offset-2">
+		<% end %>	
+			<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
+			<h3 class="text-center omnes">The Press Release Platform for Startups</h3>
+			<br>
+			<%= form_tag newsrooms_path, :method => :get do %>
+				<div class="input-group input-group-lg" id="indexSearch">
+					    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", id: "srch-term", autofocus: :true %>
+					<div class="input-group-btn">
+						<%= button_tag "Search", :name => nil, class: "btn btn-default", type: "submit" do %><i class="glyphicon glyphicon-search"></i><% end %>
+				<% end %>
+					</div>
+				</div>
+		</div>
+		<br>
+		<% if current_newsroom == nil %>
+		<div class="col-md-4">
+			<div class="indexLogon">
+				<ul class="nav nav-tabs" role="tablist" id="indexTab">
+					<li class="active omnes"><a href="#signup" role="tab" data-toggle="tab">Sign up</a></li>
+					<li class="omnes"><a href="#login" role="tab" data-toggle="tab">Login</a></li>
+				</ul>
+
+				<div class="tab-content">
+					<div class="tab-pane active" id="signup">
+						<div class="container-fluid">
+							<br>
+								<div class="form-group">
+									
+									<%= form_for(:newsroom, :url => registration_path(:newsroom)) do |f| %>
+									  <%= devise_error_messages! %>
+									
+									<%= f.email_field :email, autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
+								</div>
+								<div class="form-group">
+									<%= f.password_field :password, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Password" %>
+								</div>
+								<div class="form-group">
+									<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Confirm password" %>
+								</div>
+								  <%= f.submit "Sign up", class: "btn btn-primary omnes" %>
+								<% end %>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox"><small>I have read and agree to our <a href="#">terms and conditions</small></a>.
+									</label>
+								</div>
+						</div>
+					</div>
+					<div class="tab-pane" id="login">
+						<div class="container-fluid">
+							<br>
+								<div class="form-group">
+										
+									<%= form_for(:newsroom, :url => session_path(:newsroom)) do |f| %>
+								  <%= f.text_field :email, class: "form-control", id: "LoginEmail", placeholder: "Email" %>
+								</div>
+								<div class="form-group">
+									<%= f.password_field :password, class: "form-control", id: "LoginPassword1", placeholder: "Password" %>
+								</div>
+								<%= f.submit 'Login', class: "btn btn-primary omnes" %><br><br>
+								<div class="checkbox">
+							  <label>
+								<%= f.check_box :remember_me %>
+							  	<small><%= f.label :remember_me %></small><br>
+								</label>
+								</div>
+								<small><%= link_to "Forgot your password?", new_password_path(:newsroom) %></small>
+								<% end %>
+								<br>
+						</div>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<h3 class="indexHeaderLatest omnes text-center">Latest Press Releases</h3>
+	<% @newsrooms.reverse.each do |newsroom| %>
+	<% unless newsroom.subscription.blank? %>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<ul class="media-list">
+						<li class="media">
+								<div class="col-sm-2" id="listCenterBox">
+									<%= image_tag newsroom.logo.url(:medium), class: "media-object listCenterItem" %>
+								</div>
+								<div class="media-body">
+								<span class="pull-right"><strong><small><%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %></small></strong></span><br>
+								<h4 class="media-heading omnes"><%= link_to newsroom.company_name, newsroom %></h4>
+								<%= truncate(newsroom.q_what_you_do, length: 140) %> <%= link_to "Continue reading", newsroom %>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% end %><% end %>
+</div>

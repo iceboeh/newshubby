@@ -1,0 +1,29 @@
+<% title "#{@newsroom.company_name} Funding" %>
+
+<p>
+  <strong>Investment type:</strong>
+  <%= @funding.investment_type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @funding.name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @funding.date %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @funding.amount %>
+</p>
+
+<p>
+  <strong>Newsroom:</strong>
+  <%= @funding.newsroom_id %>
+</p>
+
+<%= link_to 'Edit', edit_newsroom_funding_path(@funding.newsroom, @funding) %> |
+<%= link_to 'Back', newsroom_fundings_path %>

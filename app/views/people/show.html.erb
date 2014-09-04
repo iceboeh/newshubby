@@ -1,0 +1,24 @@
+<% title "#{@newsroom.company_name} People: #{@person.name}" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @person.role %>
+</p>
+
+<p>
+  <strong>Presentation:</strong>
+  <%= @person.presentation %>
+</p>
+
+<p>
+  <strong>Newsroom:</strong>
+  <%= @person.newsroom_id %>
+</p>
+
+<%= link_to 'Edit', edit_newsroom_person_path(@person.newsroom, @person) %> |
+<%= link_to 'Back', newsroom_people_path %>

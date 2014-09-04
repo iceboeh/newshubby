@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  link: MyString
+  company_launches_id: 1
+  caption: MyString
+
+two:
+  link: MyString
+  company_launches_id: 1
+  caption: MyString

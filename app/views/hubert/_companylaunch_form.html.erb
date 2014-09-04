@@ -1,0 +1,16 @@
+<%= nested_form_for @company_launch, url: wizard_path do |f| %>
+  <% if @company_launch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company_launch.errors.count, "error") %> prohibited this showroom from being saved:</h2>
+
+      <ul>
+      <% @company_launch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+	
+<%= yield f %>
+
+<% end %>

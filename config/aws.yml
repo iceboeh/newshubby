@@ -1,0 +1,7 @@
+development:
+  access_key_id: AKIAJI6XZFCCD4ZZNPLA
+  secret_access_key: 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
+
+production:
+  access_key_id: AKIAJI6XZFCCD4ZZNPLA
+  secret_access_key: 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

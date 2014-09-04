@@ -1,0 +1,20 @@
+<% title "#{@newsroom.company_name} Funding" %>
+
+<!-- <ol class="breadcrumb">
+<li><a href="#">Owegoo</a></li>
+<li class="active">Owegoo Newsroom</li>
+</ol> -->
+
+<div class="nrRow nrFunding">
+<div class="container">
+	<div class="row">
+		<h1 class="omnes">Funding</h1>
+		<% @fundings.each do |funding| %>
+		<p><small><%= funding.investment_type %></small></p>
+		<p><strong><%= funding.name %></strong> | <%= funding.date.strftime("%B %Y") %> | $<%= funding.amount %></p><br>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
+</div>

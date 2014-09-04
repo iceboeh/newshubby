@@ -1,0 +1,16 @@
+<%= nested_form_for @newsroom, url: wizard_path do |f| %>
+  <% if @newsroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this showroom from being saved:</h2>
+
+      <ul>
+      <% @newsroom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+	
+<%= yield f %>
+
+<% end %>

@@ -1,0 +1,43 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-3 hidden-xs">
+			<%= image_tag "mr_newshubby3.svg", class: "img-responsive center-block", id: "hubert" %><br>
+		</div>
+		<div class="col-sm-6 text-center">
+			<div class="numerals intNumerals"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
+			<h3 class="omnes">What does your company do?</h3>
+			<br>
+			<%= render :layout => "form" do |f| %>
+			
+			<% if @newsroom.q_what_you_do.blank? %>
+			<%= f.text_area :q_what_you_do, rows: 6, id: "textarea", class: "form-control", onfocus: "this.value = this.value;", max: 300, value: "#{@newsroom.company_name} " %>
+			<% else %>
+			<%= f.text_area :q_what_you_do, rows: 6, id: "textarea", class: "form-control", onfocus: "this.value = this.value;", max: 300 %>
+			<% end %>
+			<br>
+			<div class="row">
+				<div class="col-xs-4">
+					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
+						<span class="glyphicon glyphicon-chevron-left"></span> Previous
+					<% end %>
+				</div>
+				<div class="col-xs-4">
+					<div class="center-block" id="textareaFeedback">
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		</div>
+<br>
+<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 text-center intExample" id="intExample">
+			<p><strong>Example: </strong>NewsHubby helps tech startups automatically create press releases and reaches out to press worldwide.
+			</p>
+		</div>
+	</div> <!-- /.row -->
+</div> <!-- / .container -->

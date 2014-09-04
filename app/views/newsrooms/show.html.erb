@@ -1,0 +1,223 @@
+<% title "Newsroom: #{@newsroom.company_name}" %>
+
+		<!-- <ol class="breadcrumb">
+<li><a href="#">Owegoo</a></li>
+<li class="active">Owegoo Newsroom</li>
+</ol> -->
+<div class="nrRow nrHeader">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6" id="nrCenterBox">
+				<%= image_tag @newsroom.logo.url(:medium), class: "img-responsive nrCenterItem" %>			
+			</div>
+			<div class="col-sm-6">
+				<h3 class="omnes"><%= @newsroom.company_name %></h3>
+				<p>founded in <%= @newsroom.founded.strftime("%B, %Y") %></p>
+				<p><%= link_to @newsroom.website.gsub(/.*www./, '').gsub(/\//, ''), @newsroom.website %></p>
+				<p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
+				<p><span class="nrContactIcons glyphicon glyphicon-envelope"></span> <%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
+				<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> <a href="tel:+4555555555"><%= @newsroom.press_phone %></a></p>
+				<p><span class="nrContactIcons glyphicon glyphicon-map-marker"></span> <%= @newsroom.location %></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="nrRow nrReleases">
+	<div class="container">
+		<h1 class="omnes">Latest Press Releases</h1><br>
+		<% unless @newsroom.subscription.blank? %>
+		<% @company_launches.each do |company_launch| %>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 nrRelease">
+				<%= link_to newsroom_company_launch_path(@newsroom, company_launch) do %>
+				
+					<div class="panel panel-default">
+						<div class="panel-body">
+						<!-- <span class="glyphicon glyphicon-file"></span> -->
+						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
+						<h4 class="omnes"><%= company_launch.newsroom.company_name %> launches <%= company_launch.launch %> </h4>
+					</div></div>
+					<% end %>
+			</div>
+		</div>
+		<% end %>
+		<% else %>
+		<% end %>
+		<%= link_to "See all", newsroom_company_launches_path(@newsroom), class: "btn btn-default omnes round", role: "button" %>
+	</div>
+</div>
+
+<div class="nrRow nrPitch">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2">
+				<p>
+					<%= @newsroom.q_what_you_do %>
+					<%= @newsroom.q_how_you_achieve %>
+					<%= @newsroom.q_clients %>
+					<%= @newsroom.differentiation %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="opacityBkg">
+	<div class="nrRow nrSolution">
+		<div class="container">
+			<div class="row">
+				<h1 class="omnes">Problem Solved</h1>
+				<div class="col-sm-8 col-sm-offset-2">
+				<p><%= @newsroom.problem_solved %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="nrRow nrModel">
+	<div class="container">
+		<div class="row">
+			<h1 class="omnes">Business Model</h1>
+				<div class="col-sm-8 col-sm-offset-2">
+			<p><%= @newsroom.business_model %></p>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="nrRow nrPeople">
+	<div class="container">
+		<div class="row">
+			<h1 class="omnes">People</h1>
+			<% @newsroom.people.each do |person| %>
+			<% if @newsroom.people.count == 1 %>
+			<div class="col-sm-6 col-sm-offset-3">
+			<% else %>
+			<div class="col-sm-6">
+			<% end %>
+				
+				<div class="panel panel-default">
+					<div class="panel-body">
+					<h3><%= person.name %></h3>
+					<p><%= person.role %></p>
+				</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="nrRow nrFunding">
+<div class="container">
+	<div class="row">
+		<h1 class="omnes">Funding</h1>
+		<% @newsroom.fundings.each do |funding| %>
+		<% if funding.name.blank? %>
+		<% end %>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+		<p><small><%= funding.investment_type %></small></p>
+		<p><strong><%= funding.name %></strong> 
+			<% if funding.investment_type == "Bootstrapped" %>
+			<% elsif funding.investment_type == "No funding" %>
+			<% else %>
+			| <%= funding.date.strftime("%B %Y") %> | $<%= funding.amount %>
+		</p>
+		<hr>
+		</div></div>
+		<br>
+		<% end %>
+		<% end %>
+	</div>
+</div>
+</div>
+
+<div class="nrRow nrFiles">
+<div class="container">
+	<div class="row">
+		<h1 class="omnes">Files</h1>
+<% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
+	<% unless company_launch.link1.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="embed-responsive embed-responsive-16by9">
+					<% if company_launch.link1.include? "youtube.com" %>
+					<iframe class="embed-responsive-item" src="<%= company_launch.link1 %>" allowfullscreen></iframe>	
+					<% elsif company_launch.link1.include? "vimeo.com" %>
+					<iframe src="<%= company_launch.link1 %>" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embed-responsive-item"></iframe>
+					<% end %>
+				</div>
+				<div class="caption">
+					<% if company_launch.link1.include?("youtube.com" || "vimeo.com") %>
+					<p><small><%= company_launch.caption_link1 %></small></p>
+					<% elsif %>
+					<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+	
+	<% unless company_launch.link2.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="embed-responsive embed-responsive-16by9">
+					<% if company_launch.link2.include? "youtube.com" %>
+					<iframe class="embed-responsive-item" src="<%= company_launch.link2 %>" allowfullscreen></iframe>	
+					<% elsif company_launch.link2.include? "vimeo.com" %>
+					<iframe src="<%= company_launch.link2 %>" webkitallowfullscreen mozallowfullscreen allowfullscreen class="embed-responsive-item"></iframe>
+					<% end %>
+				</div>
+				<div class="caption">
+					<% if company_launch.link2.include?("youtube.com" || "vimeo.com") %>
+					<p><small><%= company_launch.caption_link2 %></small></p>
+					<% elsif %>
+					<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+	
+		
+		<% unless company_launch.file1.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file1 %></small></p>
+				</div>
+			</div>
+	</div>
+	<% end %>
+	
+		<% unless company_launch.file2.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file2 %></small></p>
+				</div>
+			</div>
+	</div>
+	<% end %>
+	
+		<% unless company_launch.file3.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file3 %></small></p>
+				</div>
+			</div>
+	</div>
+	<% end %>
+	
+<% end %>
+</div>
+</div>
+</div>

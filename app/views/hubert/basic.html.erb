@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 hidden-xs">
+			<%= image_tag "mr_newshubby3.svg", class: "img-responsive center-block", id: "hubert" %><br>
+		</div>
+		<div class="col-sm-6 text-center hubertBasic">
+			<div class="numerals intNumerals"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
+			<h3 class="omnes">Please introduce yourself.</h3>
+			<br>
+			<%= render :layout => "form" do |f| %>
+			
+				<%= f.text_field :company_name, placeholder: "Company name" %> was founded in <%= f.date_select :founded, order: [:month, :year] %> and our main location is in <%= f.text_field  :location, placeholder: "City, Country" %>. You can find us at <%= f.text_field :website, placeholder: "http://www.example.com/", size: 40 %> and follow us at <%= f.text_field :twitter, placeholder: "@twitter" %>. For press inquiries contact us on <%= f.text_field  :press_email, placeholder: "Press contact email address" %>, or via phone <%= f.text_field  :press_phone, placeholder: "+1 (555) 606-0842" %>
+			<br><br>
+			<div class="row">
+				<div class="col-xs-4">
+					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
+						<span class="glyphicon glyphicon-chevron-left"></span> Previous
+					<% end %>
+				</div>
+				<div class="col-xs-4">
+					<div class="center-block" id="textareaFeedback">
+					</div>
+				</div>
+				<div class="col-xs-4">
+					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
+					<% end %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		</div>
+<br>
+<div class="row">
+		<div class="col-sm-6 col-sm-offset-3 text-center intExample" id="intExample">
+		</div>
+	</div> <!-- /.row -->
+</div> <!-- / .container -->

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  investment_type: MyString
+  name: MyString
+  date: 2014-08-12
+  amount: 1
+  newsroom_id: MyString
+
+two:
+  investment_type: MyString
+  name: MyString
+  date: 2014-08-12
+  amount: 1
+  newsroom_id: MyString

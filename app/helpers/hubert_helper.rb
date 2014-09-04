@@ -1,0 +1,2 @@
+module HubertHelper
+end

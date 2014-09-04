@@ -1,0 +1,27 @@
+<% title "#{@newsroom.company_name} People" %>
+
+<div class="nrRow nrPeople">
+	<div class="container">
+		<div class="row">
+			<h1 class="omnes">People</h1>
+			<% @people.each do |person| %>
+			<% if @people.count < 2 %>
+			<div class="col-sm-6 col-sm-offset-3">
+			<% else %>
+			<div class="col-sm-6">
+			<% end %>
+				<div class="panel panel-default">
+					<h3><%= link_to person.name, newsroom_person_path(@newsroom, person) %></h3>
+					<p><%= person.role %></p>
+					<p><%= person.presentation %></p>
+					<!--<span class="glyphicon glyphicon-eye-open"></span>-->
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_launch_id: 1
+  caption: MyString
+
+two:
+  company_launch_id: 1
+  caption: MyString

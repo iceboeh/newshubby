@@ -1,0 +1,25 @@
+<% title "#{@newsroom.company_name} Press Releases" %>
+
+<div class="nrRow nrReleases">
+	<div class="container">
+		<h1 class="omnes">Press Releases</h1><br>
+		<% unless @newsroom.subscription.blank? %>
+		<% @company_launches.reverse.each do |company_launch| %>
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-2 nrRelease">
+				<%= link_to newsroom_company_launch_path(@newsroom, company_launch) do %>
+				
+					<div class="panel panel-default">
+						<!-- <span class="glyphicon glyphicon-file"></span> -->
+						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
+						<h4 class="omnes"><%= company_launch.newsroom.company_name %> launches <%= company_launch.launch %> </h4>
+					</div>
+					<% end %>
+			</div>
+		</div>
+		<% end %><% end %>
+		<%= link_to "See all", newsroom_company_launches_path(@newsroom), class: "btn btn-default omnes round", role: "button" %>
+	</div>
+</div>
+</div>
+</div>

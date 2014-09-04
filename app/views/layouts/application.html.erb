@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) || NewsHubby %></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag params[:controller] %>
+	
+  <!-- 
+	
+	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+	
+	<script type="text/javascript">
+      var PAYMILL_PUBLIC_KEY = '<%= PAYMILL_PUBLIC_KEY %>';
+	</script>
+	-->
+	
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+	<script type="text/javascript" src="//use.typekit.net/lbn2smo.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</head>
+
+<% if @hubert_body == true %>
+<body class="intBody shortPage">
+<% elsif @plans_body == true %>
+<body id="ppBody">
+<% elsif @pr_body == true %>
+<body id="prBody">
+<% elsif @about_body == true %>
+<body id="aboutBody">
+<% elsif @index_body == true %>
+<body id="indexBody">
+<% else %>
+<body>
+<% end %>
+
+<%= render 'layouts/header' unless @disable_header == true %>
+
+<%= yield %>
+
+<%= render 'layouts/footer' %>
+
+
+</body>
+</html>

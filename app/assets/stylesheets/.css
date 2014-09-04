@@ -1,0 +1,150 @@
+html body {
+	font-size: 1.5em;
+	background: url(../media/bkg/grain2.png); }
+
+a {
+	text-decoration: none;
+	color: #333333;
+	font-weight: 500;
+}
+
+a:hover {
+	color: #699bc5; }
+
+h1, h2, h3, h4, h5, h6 {
+	color: #444444;
+	margin-top: 16px; }
+
+.prHeader {
+	background-color: #434343;
+}
+
+.prHeader h3 {
+	color: #fff;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.container {
+	width: 920px;
+	padding: 30px;
+	padding-top: 15px;
+	background-color: rgb(255, 255, 255); }
+
+.companyLogoBox {
+	width: 128px;
+	height: 128px;
+	background-color: #fff;
+	border: 5px solid #fff;
+	border-radius: 3px;
+	float: left;
+	position: relative; }
+
+.companyLogo {
+	max-width: 118px;
+	max-height: 118px;
+	margin-right: 10px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto; }
+
+.companyHeader {
+	float: left;
+	padding-left: 20px; }
+
+.nhLogo {
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 54px; }
+
+.iconMd {
+	width: 25px;
+	height: 25px;
+	font-size: 1.5em;
+	vertical-align: middle; }
+
+.row01 {
+	margin-bottom: 25px; }
+
+.row02 {
+	margin-bottom: 25px; }
+
+.row04 {
+	margin-bottom: 25px; }
+
+.row05 {
+	margin-bottom: 25px; }
+
+.row06 {
+	margin-bottom: 25px; }
+
+.row07 {
+	margin-bottom: 25px; }
+
+.row08 {
+	margin-bottom: 25px; }
+
+.row09 {
+	margin-bottom: 25px; }
+
+.row10 {
+	margin-bottom: 25px; }
+
+.row11 {
+	margin-bottom: 25px; }
+
+.row13 a:hover {
+	text-decoration: none;
+}
+
+.pressMap {
+	/* MAP */
+	height: 300px; }
+
+.noBullets {
+	list-style-type: none; }
+
+.pressReleaseTitle {
+	margin-bottom: 50px; }
+
+.companyName {
+	margin-top: 0; }
+
+ul li {
+	margin-left: -40px; }
+
+ul {
+	color: #777; }
+
+li {
+	margin-bottom: 15px; }
+
+.semibold {
+	font-weight: 400; }
+
+blockquote {
+	border-left: 0px solid #ccc;
+	margin-left: 0;
+	padding: 0.5em 10px;
+	quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+blockquote:before {
+	color: #ccc;
+	content: open-quote;
+	font-size: 6em;
+	line-height: 0.1em;
+	margin-right: 0.25em;
+	vertical-align: -0.4em; }
+
+blockquote p {
+	display: inline; }
+
+blockquote .quote {
+	font-size: 1.5em; }
+
+.nrTwitter {
+	width: 1.2em;
+	height: 1.2em;
+}
