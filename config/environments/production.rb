@@ -100,7 +100,7 @@ Rails.application.configure do
   }
   
   # Amazon Web Services. Bucket for Paperclip Uploads
-=begin  
+begin  
   
   config.paperclip_defaults = {
     :storage => :s3,
@@ -109,6 +109,8 @@ Rails.application.configure do
       :bucket => 'newshubby-paperclip'
     }
   }
-=end
+end
+
+ENV["SECRET_KEY_BASE"] = "65ea0e09a433b953e7efa9ddea013fd4";
   
 end
