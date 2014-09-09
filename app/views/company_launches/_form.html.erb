@@ -11,23 +11,44 @@
     </div>
   <% end %>
 
+<% unless @company_launch.launch.nil? %>
+<% title "#{@company_launch.company_name} launches #{@company_launch.launch.strftime("#B")}" %>
+<% else %>
+<% title "#{@company_launch.company_name} launches" %>
+<% end %>
+
+<% if newsroom_signed_in? && current_newsroom.company_name == @company_launch.newsroom.company_name && @company_launch.exclusive == true %>
+<div class="container text-center">
+	<div class="alert alert-warning">
+	  <strong>Your press release is not yet public. Use this link to share the press release and keep its exclusivity.</strong><br>
+		<%= newsroom_company_launch_url(@company_launch.newsroom, @company_launch) + "/?&hex=#{@company_launch.hex}" %><br><br>
+		<p>
+		<%= f.label :exclusive, "Change Press Release Exclusivity" %><br>
+		Exclusive <%= f.radio_button :exclusive, false, :checked => true %>
+		Public <%= f.radio_button :exclusive, false, :checked => false %>
+		</p>
+	</div></div>
+<% end %>
+
+<%= f.submit "Update Press Release", class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+
+
 <div class="container prContainer">
 	<div class="row prHeader">
 		<header>
 			<div class="col-xs-12">
 				<h3 class="pull-left omnes">Press Release</h3>
 				<h3 class="pull-right omnes"><%= f.date_select :embargo %></h3>
-			</div>
+			</div>  
 		</header>
 	</div> <!-- / .row01 -->
 	<br><br>
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-2">
-			<h3 class="omnes"><%= @company_launch.newsroom.company_name %>
-				
-			<p>founded in <%= @company_launch.newsroom.founded.strftime("%B %Y")  %></p>
+			<h3 class="omnes"><%= @newsroom.company_name %></h3>
+			<p>founded in <% unless @company_launch.newsroom.founded.nil? %><%= @company_launch.newsroom.founded.strftime("%B %Y")  %><% end %></p>
 			<p><%= link_to @company_launch.newsroom.website, @company_launch.newsroom.website %></p>
-			<p><p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %> <%= @company_launch.newsroom.twitter %></p></p>
+			<p><p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %><% unless @newsroom.twitter.nil? %><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %><% end %></p></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-envelope"></span> <%= mail_to @company_launch.newsroom.press_email, @company_launch.newsroom.press_email %></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> <a href="tel:+4555555555"><%= @company_launch.newsroom.press_phone %></a></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-map-marker"></span> <%= @company_launch.newsroom.location %></p>
@@ -44,18 +65,25 @@
 <div class="container prContainer">
 	<div class="row row03">
 		<div class="col-xs-12">
-			<h1 class="text-center pressReleaseTitle omnes"><%= @company_launch.newsroom.company_name %> launches <%= @company_launch.launch.strftime("%B %m") %></h1>
+			<h1 class="text-center pressReleaseTitle omnes">
+				<% if @company_launches.title.nil? %>
+				<%= @newsroom.company_name %> launches <%= f.date_select :launch %>
+				<% else %>
+				<%= f.text_field :title, placeholder: "Title" %>
+				<% end %>
+			</h1>
 		</div>
 	</div> <!-- / .row03 -->
 
 	<div class="row row05">
 		<div class="col-xs-8 col-xs-offset-2">
-			<p><%= @company_launch.newsroom.q_what_you_do %></p>
-			<p><%= @company_launch.newsroom.q_how_you_achieve %></p>
+			<% if @company_launches.title.nil? %>
+			<p><%= f.text_field :q_what_you_do, class: "form-control", placeholder: "What you do" %></p>
+			<p><%= f.text_field :q_how_you_achieve, class: "form-control", placeholder: "How you achieve" %></p>
 
-			<p><i>- <%= f.text_area :quote %></i>, says <%= @company_launch.newsroom.people.first.name %>.</p>
+			<p><i>- <%= f.text_field :quote, class: "form-control", placeholder: "Quote" %></i>, says <%= @company_launch.newsroom.people.first.name %>.</p>
 			
-			<p><%= @company_launch.newsroom.q_clients %> <%= @company_launch.newsroom.differentiation %></p>
+			<p><%= f.text_field :q_clients, class: "form-control", placeholder: "Clients" %> <%= f.text_field :differentiation, class: "form-control", placeholder: "Differentiation" %></p>
 			
 			<p><%= @company_launch.newsroom.company_name %> was founded by 
 				
@@ -64,7 +92,7 @@
 				<%= person.name %>
 				<% end %>
 				<% end %>
-				 in <%= @company_launch.newsroom.founded.strftime("%B, %Y") %> 
+				 in <% unless @company_launch.newsroom.founded.nil? %><%= @company_launch.newsroom.founded.strftime("%B, %Y") %><% end %> 
 				 <% if @company_launch.newsroom.fundings.first.investment_type.blank? %>
 				 <% elsif @company_launch.newsroom.fundings.first.investment_type == "Bootstrapped" %>
 				 and is bootstrapped.
@@ -72,7 +100,9 @@
 				 <% else %>
 				 and is funded by a <%= @company_launch.newsroom.fundings.first.investment_type %>, <%= @company_launch.newsroom.fundings.first.name %>.</p>
 					<% end %>
-
+					<% else %>
+					<%= f.text_area :text, class: "form-control", rows: 14 %>
+					<% end %>
 			<br><hr>
 			<!-- <blockquote>
 <p>
@@ -88,18 +118,18 @@
 	<div class="row row06">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h3>PROBLEM SOLVED</h3>
-			<p><%= @company_launch.newsroom.problem_solved %></p>
+			<p><%= f.text_field :problem_solved, class: "form-control", placeholder: "Problem solved" %></p>
 		</div> 
 	</div> <!-- / .row06 -->
 
 	<div class="row row07">
 		<div class="col-xs-4 col-xs-offset-2">
 			<h3>BUSINESS MODEL</h3>
-			<p><%= @company_launch.newsroom.business_model %></p>
+			<p><%= f.text_field :business_model, class: "form-control", placeholder: "Business model" %></p>
 		</div> 
 		<div class="col-xs-4">
 			<h3>COMPETITIORS</h3>
-			<p><%= @company_launch.newsroom.competitors %></p>
+			<p><%= f.text_field :competitors, class: "form-control", placeholder: "Competitors" %></p>
 		</div>
 	</div> <!-- / .row -->
 
@@ -112,7 +142,7 @@
 				<li>Bootstrapped.</li>
 				<% elsif funding.name.blank? %>
 				<% else %>
-				<li><strong><%= funding.date.strftime("%B %Y") %>: </strong>$<%= funding.amount %><br><%= funding.name %></li>
+				<li><strong><% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %>: </strong>$<%= funding.amount %><br><%= funding.name %></li>
 				<% end %>
 				<% end %>
 			</ul>
@@ -154,7 +184,6 @@
 </footer>
 </div>
 
-  <div class="actions">
-<%= f.submit "Update Press Release", class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
-  </div>
+
+
 <% end %>

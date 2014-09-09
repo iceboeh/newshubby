@@ -2,6 +2,7 @@ class HubertController < ApplicationController
   include Wicked::Wizard
     
   steps :basic, :subscription, :logo, :people, :what, :how, :clients, :business_model, :competitors, :differentiation, :funding, :embargo, :launch, :quote, :problem_solved, :files, :links, :congratulations
+  
 
   def show
     @hubert_body = true
@@ -9,9 +10,12 @@ class HubertController < ApplicationController
     @company_launch = @newsroom.company_launches.last
     
     
+    hex = SecureRandom.urlsafe_base64(6)
     
-    if @newsroom.company_launches.last.nil?
-      @company_launch = @newsroom.company_launches.create(hex: SecureRandom.urlsafe_base64(6))
+    if @newsroom.company_launches.last.nil? do
+      @company_launch = @newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex)
+    end
+    
   end
 
     
@@ -60,6 +64,8 @@ class HubertController < ApplicationController
       end
     
     when :logo
+      
+    @logostep = true
       
     # Subscription check
     if @newsroom.subscription.nil? || @newsroom.subscription.end < Time.now
@@ -180,8 +186,10 @@ class HubertController < ApplicationController
       @step_number = 16
     else 
       @step_number = 5
-    end 
-      
+    end
+    
+    when :congatulations
+  
 end    
 
     render_wizard
@@ -204,11 +212,19 @@ end
     unless @newsroom.fundings.exists?
       @newsroom.fundings.create
     end
-
+    
+    
+    
+    # Skip submit if no logo uploaded    
+    #unless @logostep && params[:logo].present? == false
+          
     @newsroom.update(newsroom_params)
     @company_launch = @newsroom.company_launches.last
     unless @company_launch.launch.nil?
       @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B")}")
+      #end
+    else
+      skip_step
     end
   #  @newsroom.attributes = params[:newsroom]
     render_wizard @newsroom

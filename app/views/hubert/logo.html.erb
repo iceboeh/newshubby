@@ -1,3 +1,6 @@
+<% title "Newshubby | Logo" %>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3 hidden-xs">
@@ -10,6 +13,7 @@
 			<%= render :layout => "form" do |f| %>
 			
 			<%= f.file_field :logo, rows: 3, id: "textarea", onfocus: "this.value = this.value;", max: 200, value: "The company achieves that by " %>
+			
 			<br>
 			<div class="row">
 				<div class="col-xs-4">
@@ -23,6 +27,7 @@
 				</div>
 				<div class="col-xs-4">
 					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
+
 					<% end %>
 					<% end %>
 				</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  get '/about' => 'newsrooms#about'
+
+  get '/about' => 'contacts#about'
   get '/terms_of_service' => 'newsrooms#terms_of_service'
   get '/pressreleasetype' => 'company_launches#type'
   
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :subscriptions
 
   resources :hubert
+  
+  resources :contacts
 
   resources :newsrooms, :path => '/' do
     resources :company_launches, :path => 'pressreleases'

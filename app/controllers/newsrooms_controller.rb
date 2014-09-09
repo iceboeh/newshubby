@@ -7,11 +7,6 @@ class NewsroomsController < ApplicationController
       u.permit(:password, :password_confirmation, :current_password) 
     }
   end
-
-
-  def about
-    @about_body = true
-  end
   
   def terms_of_service
     

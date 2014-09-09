@@ -1,3 +1,6 @@
+<% title "Newshubby | Key People" %>
+
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3 hidden-xs">
@@ -12,6 +15,7 @@
 			
 			<div class="panel panel-default">
 				<div class="panel-body">
+					<%= person.link_to_remove do %><span class="nrContactIcons glyphicon glyphicon-remove"></span><% end %><br><br>
 			<p>
 				<%= person.label :founder %>
 				<%= person.check_box :founder %>
@@ -28,13 +32,11 @@
 				<%= person.text_area :presentation, rows: 3, class: "form-control",  placeholder: "Presentation" %>
 			</p>
 			
-				<%= person.link_to_remove "Remove", class: "btn btn-danger omnes" %><br><br>
-			
 			</div>
 		</div>
 		<% end %>
 		
-			<p><%= f.link_to_add "Add person", :people, class: "btn btn-success omnes", role: "button" %></p>
+			<p><%= f.link_to_add "Add new person", :people, class: "btn btn-success omnes", role: "button" %></p>
 			<br>
 			<br>
 			<div class="row">

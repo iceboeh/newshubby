@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902122337) do
+ActiveRecord::Schema.define(version: 20140909074600) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -55,6 +55,22 @@ ActiveRecord::Schema.define(version: 20140902122337) do
     t.string   "caption_file1"
     t.string   "caption_file2"
     t.string   "caption_file3"
+    t.text     "text"
+    t.string   "q_what_you_do"
+    t.string   "q_how_you_achieve"
+    t.string   "q_clients"
+    t.string   "differentiation"
+    t.string   "problem_solved"
+    t.string   "business_model"
+    t.string   "competitors"
+  end
+
+  create_table "contacts", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "founders", force: true do |t|

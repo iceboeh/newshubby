@@ -1,3 +1,5 @@
+<% title "Newshubby | Interview" %>
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-3 hidden-xs">
@@ -21,7 +23,16 @@
 			</p>
 			
 			<p>
-			<%= funding.number_field :amount, rows: 3, id: "textarea", class: "form-control", placeholder: "Amount" %>
+			
+					<div class="form-group">
+						<div class="input-group">
+						<div class="input-group-addon">
+							$
+						</div>
+					<%= funding.number_field :amount, class: "form-control", placeholder: "Amount"  %>
+				</div>
+			</div>
+
 			</p>
 			
 			<p>

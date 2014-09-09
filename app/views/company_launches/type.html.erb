@@ -5,13 +5,25 @@
 		<h3>Select press release type</h3></div>
 	</div>
 	<br>
+
+<div class="col-sm-3 text-center">
+	<div class="panel">
+		<div class="panel-body">
+			<h4>Manual</h4>
+			<p>Write your press release yourself!</p>
+
+			<%= link_to "Select", new_newsroom_company_launch_path(current_newsroom), class: "btn btn-success omnes center-block" %>
+		</div>
+	</div>
+</div>
+
 <div class="col-sm-3 text-center">
 	<div class="panel">
 		<div class="panel-body">
 			<h4>Company Launch</h4>
 			<p>When your company's just launching, make a big splash!</p>
 
-			<%= link_to "Select", new_newsroom_company_launch_path(current_newsroom), class: "btn btn-success omnes center-block" %>
+			<%= link_to "Select", hubert_index_path, class: "btn btn-success omnes center-block" %>
 		</div>
 	</div>
 </div>

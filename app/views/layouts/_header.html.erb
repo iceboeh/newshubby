@@ -1,3 +1,5 @@
+<% title "NewsHubby | Reach World Press" %>
+
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -25,6 +27,9 @@
 				
 				<% if current_newsroom != nil %>
 				<li><%= link_to pressreleasetype_path do %><small><i class="glyphicon glyphicon-plus"></i></small> New Press Release</li><% end %>
+				<% if current_newsroom.company_launches.last.quote.blank? %>
+				<li><%= link_to hubert_index_path do %>Resume Interview<% end %></li>
+				<% end %>
 				<% else %>
 				<li><%= link_to "Sign up", new_newsroom_registration_path %></li>
 				<li><%= link_to "Login", new_newsroom_session_path %></li>

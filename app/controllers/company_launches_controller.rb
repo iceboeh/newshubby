@@ -24,10 +24,13 @@ class CompanyLaunchesController < ApplicationController
   # GET /company_launches/1
   # GET /company_launches/1.json
   def show
+    
     @no_body = true
     @pr_body = true
+    
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
-
+    @company_launch = current_newsroom.company_launches.friendly.find(params[:id])    
+    
     if @blocked == true
       redirect_to :root
     end
@@ -39,7 +42,12 @@ class CompanyLaunchesController < ApplicationController
   end
   
   # GET /company_launches/new
-  def new    
+  def new
+    
+    @no_body = true
+    @pr_body = true
+       
+     
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
      hex = SecureRandom.urlsafe_base64(6)
     
@@ -49,19 +57,20 @@ class CompanyLaunchesController < ApplicationController
      
      else
      
-    @company_launch = current_newsroom.company_launches.create(company_name: @newsroom.company_name, website: @newsroom.website, press_phone: @newsroom.press_phone, press_email: @newsroom.press_email, founded: @newsroom.founded, hex: hex)
+    @company_launch = current_newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex )
     
     current_newsroom.company_launches.last.links.create
     current_newsroom.company_launches.last.uploads.create
-
-    redirect_to hubert_index_path
     
     end
     
   end
-
+  
   # GET /company_launches/1/edit
   def edit
+
+    
+    @newsroom = current_newsroom
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])    
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Not yours to edit!"
@@ -96,8 +105,6 @@ class CompanyLaunchesController < ApplicationController
     
     respond_to do |format|
       if @company_launch.update(company_launch_params)
-        
-        @newsroom.update(title: "#{@company_launch.newsroom.company.name} launches #{@company_launch.newsroom.launch}")
         format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Company launch was successfully updated.' }
         format.json { render :show, status: :ok, location: @company_launch }
       else
@@ -123,6 +130,8 @@ class CompanyLaunchesController < ApplicationController
     def set_company_launch
       @company_launch = CompanyLaunch.friendly.find(params[:id])
       
+      @no_body = true
+      @pr_body = true
       
       # Block exclusive press releases for everyone but owner and hex
       unless @company_launch.exclusive == false || @company_launch.hex == params[:hex] || @company_launch.exclusive == true && current_newsroom.company_name == @company_launch.newsroom.company_name
@@ -132,6 +141,6 @@ class CompanyLaunchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_launch_params
-      params.require(:company_launch).permit(:title, :newsroom_id, :exclusive, :hex, :quote, :link1, :link2, :file1, :file2, :file3, :embargo, :launch, :caption_file1, :caption_file2, :caption_file3, :caption_link1, :caption_link2, :_destroy, newsroom_attributes: [:company_name, :website, :press_email, :press_phone], link_attributes: [:caption, :link, ])
+      params.require(:company_launch).permit(:title, :newsroom_id, :exclusive, :hex, :quote, :link1, :link2, :file1, :file2, :file3, :embargo, :launch, :caption_file1, :caption_file2, :caption_file3, :caption_link1, :caption_link2, :text, :_destroy, newsroom_attributes: [:company_name, :website, :press_email, :press_phone], link_attributes: [:caption, :link, ])
     end
 end
