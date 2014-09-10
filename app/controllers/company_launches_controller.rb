@@ -9,10 +9,10 @@ class CompanyLaunchesController < ApplicationController
     
     # Show exclusive press releases only to owner
     
-    unless @newsroom.company_name == current_newsroom.company_name
-      @company_launches = @newsroom.company_launches.where(exclusive: false)
+    unless @newsroom == current_newsroom
+      @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
     else
-      @company_launches = @newsroom.company_launches.all
+      @company_launches = @newsroom.company_launches.all.reverse
     end
     
   end
@@ -29,7 +29,7 @@ class CompanyLaunchesController < ApplicationController
     @pr_body = true
     
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
-    @company_launch = current_newsroom.company_launches.friendly.find(params[:id])    
+    @company_launch = @newsroom.company_launches.friendly.find(params[:id])    
     
     if @blocked == true
       redirect_to :root
@@ -38,6 +38,13 @@ class CompanyLaunchesController < ApplicationController
     # Not paid
     # Disable header
     @disable_header == true
+    
+    # Control ownership
+    if @newsroom != current_newsroom
+      @owner = false
+    else
+      @owner = true
+    end
     
   end
   
@@ -68,7 +75,20 @@ class CompanyLaunchesController < ApplicationController
   
   # GET /company_launches/1/edit
   def edit
-
+    
+    @newsroom = @company_launch.newsroom
+    
+    # Control ownership
+    if @newsroom.company_launches.friendly.find(params[:id]) != current_newsroom.company_launches.friendly.find(params[:id])
+      @owner = false
+    else
+      @owner = true
+    end
+    
+    unless @owner
+      flash[:notice] = "Not your press release. Hands off!"
+      redirect_to :root
+    end
     
     @newsroom = current_newsroom
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])    

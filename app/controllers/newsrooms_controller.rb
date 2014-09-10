@@ -38,12 +38,17 @@ class NewsroomsController < ApplicationController
   def show
     
     # Show exclusive press releases only to owner
-    unless current_newsroom.nil?
-      unless @newsroom.company_name == current_newsroom.company_name
-        @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
-      else
-        @company_launches = @newsroom.company_launches.all.reverse
-      end
+    unless @newsroom == current_newsroom
+      @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
+    else
+      @company_launches = @newsroom.company_launches.all.reverse
+    end
+    
+    # Control ownership
+    if @newsroom != current_newsroom
+      @owner = false
+    else
+      @owner = true
     end
     
   end
@@ -55,6 +60,20 @@ class NewsroomsController < ApplicationController
 
   # GET /newsrooms/1/edit
   def edit
+    
+    # Control ownership
+    if @newsroom != current_newsroom
+      @owner = false
+    else
+      @owner = true
+    end
+    
+    # Handle ownership
+    unless @owner
+      flash[:notice] = "Not your newsroom. Hands off!"
+      redirect_to :root
+    end
+    
     @newsroom = current_newsroom
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Not yours to edit!"
