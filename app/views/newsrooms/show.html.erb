@@ -31,6 +31,7 @@
 	<div class="container">
 		<h1 class="omnes">Latest Press Releases</h1><br>
 		<% unless @newsroom.subscription.blank? %>
+		<% unless @company_launches.nil? %>
 		<% @company_launches.each do |company_launch| %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
@@ -47,6 +48,7 @@
 		</div>
 		<% end %>
 		<% else %>
+		<% end %>
 		<% end %>
 		<%= link_to "See all", newsroom_company_launches_path(@newsroom), class: "btn btn-default omnes round", role: "button" %>
 	</div>

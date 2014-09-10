@@ -59,9 +59,8 @@ gem 'capistrano-ext'
 # Sunspot Solr
 gem 'sunspot_rails'
 
-group :development do
-  gem 'sunspot_solr'
-end
+gem 'sunspot_solr'
+
 
 # gem 'bootstrap-sass', '~> 3.2.0'
 # gem 'sass-rails', '>= 3.2'

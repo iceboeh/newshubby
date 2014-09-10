@@ -38,10 +38,12 @@ class NewsroomsController < ApplicationController
   def show
     
     # Show exclusive press releases only to owner
-    unless @newsroom.company_name == current_newsroom.company_name
-      @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
-    else
-      @company_launches = @newsroom.company_launches.all.reverse
+    unless current_newsroom.nil?
+      unless @newsroom.company_name == current_newsroom.company_name
+        @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
+      else
+        @company_launches = @newsroom.company_launches.all.reverse
+      end
     end
     
   end
