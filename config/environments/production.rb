@@ -112,5 +112,10 @@ begin
 end
 
 ENV["SECRET_KEY_BASE"] = "65ea0e09a433b953e7efa9ddea013fd4";
+
+
+# Google Analytics Gem
+GA.tracker = "UA-52876952-1"
+
   
 end

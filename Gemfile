@@ -47,7 +47,7 @@ gem 'possessive'
 
 gem 'aws-sdk'
 
-gem 'mail_form'
+gem 'google-analytics-rails'
 
 # Want to be able to deploy easily to EC2
 # http://www.lauradhamilton.com/how-to-deploy-to-amazon-ec2-with-capistrano

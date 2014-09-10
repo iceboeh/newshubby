@@ -140,7 +140,7 @@ class CompanyLaunchesController < ApplicationController
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])
     @company_launch.destroy
     respond_to do |format|
-      format.html { redirect_to newsroom_company_launch_url, notice: 'Company launch was successfully destroyed.' }
+      format.html { redirect_to newsroom_url, notice: 'Company launch was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

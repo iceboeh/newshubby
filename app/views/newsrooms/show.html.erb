@@ -36,6 +36,8 @@
 		<% @company_launches.each do |company_launch| %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
+				<%= link_to "Delete", [@newsroom, company_launch], method: :delete, data: { confirm: 'Are you sure?' } %>
+				
 				<%= link_to newsroom_company_launch_path(@newsroom, company_launch) do %>
 				
 					<div class="panel panel-default">

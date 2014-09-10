@@ -1,7 +1,7 @@
 <%= link_to "Edit", edit_newsroom_company_launch_path(@newsroom, @company_launch), class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 
 <% unless @company_launch.launch.nil? %>
-<% title "#{@company_launch.company_name} launches #{@company_launch.launch.strftime("#B")}" %>
+<% title "#{@company_launch.company_name} launches #{@company_launch.launch.strftime("%B %m")}" %>
 <% else %>
 <% title "#{@company_launch.company_name} launches" %>
 <% end %>
@@ -12,14 +12,6 @@
 	  <strong>Your press release is not yet public. Use this link to share the press release and keep its exclusivity.</strong><br>
 		<%= newsroom_company_launch_url(@company_launch.newsroom, @company_launch) + "/?&hex=#{@company_launch.hex}" %>
 	</div></div>
-<% end %>
-
-<%= form_for([@company_launch.newsroom, @company_launch]) do |f| %>
-
-<%= hidden_field :exclusive, false %>
-
-<%= f.submit %>
-
 <% end %>
 
 <div class="container prContainer">

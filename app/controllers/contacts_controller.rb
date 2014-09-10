@@ -11,6 +11,9 @@ class ContactsController < ApplicationController
     
     respond_to do |format|
       if @contact.save
+        # Send mail to Newshubby
+        ContactMailer.contact_mail(@contact).deliver
+        
         format.html { redirect_to about_path, notice: 'Your contact request was sent.' }
         format.json { render :show, status: :created, location: @newsroom }
       else

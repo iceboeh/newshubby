@@ -98,7 +98,11 @@
 									<%= image_tag newsroom.logo.url(:medium), class: "media-object listCenterItem" %>
 								</div>
 								<div class="media-body">
-								<span class="pull-right"><strong><small><%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %></small></strong></span><br>
+								<span class="pull-right"><strong><small>
+									<% unless newsroom.company_launches.last.nil? %>
+									<%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %>
+									<% end %>
+								</small></strong></span><br>
 								<h4 class="media-heading omnes"><%= link_to newsroom.company_name, newsroom %></h4>
 								<%= truncate(newsroom.q_what_you_do, length: 140) %> <%= link_to "Continue reading", newsroom %>
 							</div>
