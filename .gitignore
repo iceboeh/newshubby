@@ -20,7 +20,7 @@
 
 # Ignore Amazon stuff
 
-/config/aws.yml
+config/aws.yml
 
 # Ignore OS X stuff
 .DS_Store
