@@ -25,6 +25,8 @@
 # Ignore OS X stuff
 .DS_Store
 
+# Ignore
+/solr/*
 
 *.rbc
 capybara-*.html
