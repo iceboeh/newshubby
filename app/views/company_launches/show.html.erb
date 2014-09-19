@@ -1,5 +1,5 @@
 <% if current_newsroom == @newsroom %>
-<%= link_to "Edit", edit_newsroom_company_launch_path(@newsroom, @company_launch), class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+<%= link_to "Edit Press Release", edit_newsroom_company_launch_path(@newsroom, @company_launch), class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 <% end %>
 
 <% title @company_launch.title %>
@@ -27,7 +27,12 @@
 		<div class="col-xs-4 col-xs-offset-2">
 			<h3 class="omnes"><%= @newsroom.company_name %></h3>
 			<p>founded in <% unless @company_launch.newsroom.founded.nil? %><%= @company_launch.newsroom.founded.strftime("%B %Y")  %><% end %></p>
-			<p><%= link_to @company_launch.newsroom.website, @company_launch.newsroom.website %></p>
+			
+			<% if @company_launch.newsroom.website.start_with?('http://') %>
+			<p><%= link_to @company_launch.newsroom.website.gsub(/.*www./, '').gsub(/\//, ''), @newsroom.website %></p>
+			<% else %>
+			<p><%= link_to @company_launch.newsroom.website.gsub(/.*www./, '').gsub(/\//, ''), "http://#{@newsroom.website}" %></p>
+			<% end %>
 			<p><p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %><% unless @newsroom.twitter.nil? %><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %><% end %></p></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-envelope"></span> <%= mail_to @company_launch.newsroom.press_email, @company_launch.newsroom.press_email %></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> <a href="tel:+4555555555"><%= @company_launch.newsroom.press_phone %></a></p>

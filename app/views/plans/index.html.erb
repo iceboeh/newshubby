@@ -7,7 +7,7 @@
 <% @plans.each do |plan| %>
 		<div class="col-sm-4">
 			<%= link_to new_subscription_path(:plan_id => plan.id) do %>
-				<% unless plan.name == "Interview" %>
+				<% unless plan.name == "B" %>
 				<div class="ppPlan">
 				<% else %>
 				<div class="ppPlan ppHighlight">
@@ -15,13 +15,24 @@
 					<p class="ppCornerBannerText">SAVE $156 / year</p>
 				<% end %>
 					<br>
-					<h3><%= number_to_currency plan.price, unit: "£" %></h3>
+					<h3><%= number_to_currency plan.price, unit: "$" %></h3>
 					<div class="ppBenefits">
-						<p><%= plan.name %></p>
+				<% if plan.name == "A" %>
+						<p>Monthly subscription</p>
+						<p>1 year commitment</p>
 						<p>Pay every month</p>
+				<% elsif plan.name == "B" %>
+						<p>Monthly subscription</p>
+						<p>1 year commitment</p>
+						<p>Pay per year</p>
+				<% elsif plan.name == "C" %>
+						<p>Monthly subscription</p>
+						<p>No commitment</p>
+						<p>Pay every month</p>
+				<% end %>
 					</div>
 					<br><br>
-					<% unless plan.name == "Interview" %>
+					<% unless plan.name == "B" %>
 					<div class="center-block"><p><strong>Buy</strong></p></div>
 					<% else %>
 					<div class="center-block"><p><span><strong>Buy</strong></span></p></div>

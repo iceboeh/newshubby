@@ -20,7 +20,7 @@
 				</div>
 		</div>
 		<br>
-		<% if current_newsroom == nil %>
+		<% if current_newsroom.nil? %>
 		<div class="col-md-4">
 			<div class="indexLogon">
 				<ul class="nav nav-tabs" role="tablist" id="indexTab">
@@ -37,7 +37,7 @@
 									<%= form_for(:newsroom, :url => registration_path(:newsroom)) do |f| %>
 									  <%= devise_error_messages! %>
 									
-									<%= f.email_field :email, autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
+									<%= f.email_field :email, autocomplete: "off", autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
 								</div>
 								<div class="form-group">
 									<%= f.password_field :password, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Password" %>

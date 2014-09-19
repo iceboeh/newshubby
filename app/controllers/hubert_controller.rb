@@ -214,8 +214,9 @@ end
     
     # Skip submit if no logo uploaded    
     #unless @logostep && params[:logo].present? == false
-          
+    
     @newsroom.update(newsroom_params)
+    
     @company_launch = @newsroom.company_launches.last
     unless @company_launch.nil? || @company_launch.launch.nil?
       @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B")}")
