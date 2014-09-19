@@ -23,7 +23,7 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= link_to [@newsroom, @company_launch], class: "btn btn-success pull-right", id: "nextButton" do %>Preview Press Release <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
+					<%= link_to [@newsroom, @newsroom.company_launches.last], class: "btn btn-success pull-right", id: "nextButton" do %>Preview Press Release <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
 					<% end %>
 				</div>
 			</div>
