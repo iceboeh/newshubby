@@ -18,6 +18,10 @@
 # Ignore databse
 /config/database.yml
 
+# Ignore Amazon stuff
+
+/config/aws.yml
+
 # Ignore OS X stuff
 .DS_Store
 

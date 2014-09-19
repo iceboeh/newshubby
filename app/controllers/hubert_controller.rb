@@ -7,16 +7,13 @@ class HubertController < ApplicationController
   def show
     @hubert_body = true
     @newsroom = current_newsroom
-    @company_launch = @newsroom.company_launches.last
     
     
     hex = SecureRandom.urlsafe_base64(6)
     
-    if @newsroom.company_launches.last.nil? do
-      @company_launch = @newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex)
+    if @newsroom.company_launches.last.nil?
+      @newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex)
     end
-    
-  end
 
     
     # Count number of steps

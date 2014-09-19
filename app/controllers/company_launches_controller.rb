@@ -61,7 +61,6 @@ class CompanyLaunchesController < ApplicationController
      # Subscription ended?
      if @newsroom.subscription.end < Time.now
        redirect_to plans_path
-     
      else
      
     @company_launch = current_newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex )

@@ -95,8 +95,8 @@ Rails.application.configure do
   domain: "newshubby.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: "hello@newshubby.com",
-  password: "alroro2014"
+  user_name: Rails.application.secrets.gmail_user_name,
+  password: Rails.application.secrets.gmail_password
   }
   
   # Amazon Web Services. Bucket for Paperclip Uploads
@@ -110,9 +110,6 @@ begin
     }
   }
 end
-
-ENV["SECRET_KEY_BASE"] = "65ea0e09a433b953e7efa9ddea013fd4";
-
 
 # Google Analytics Gem
 GA.tracker = "UA-52876952-1"
