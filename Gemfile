@@ -9,6 +9,8 @@ gem 'rails', '4.1.0'
 # AWS Database of Choice!
 gem 'mysql2'
 
+gem 'nokogiri'
+
 # Use postgres for Heroku
 #gem 'pg'
 
