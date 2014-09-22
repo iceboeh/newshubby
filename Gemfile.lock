@@ -193,6 +193,7 @@ DEPENDENCIES
   jquery-rails
   mysql2
   nested_form
+  nokogiri
   paperclip (~> 4.1)
   paymill
   possessive

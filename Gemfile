@@ -53,6 +53,7 @@ gem 'nested_form'
 gem 'possessive'
 
 gem 'aws-sdk'
+gem 'nokogiri'
 
 gem 'google-analytics-rails'
 
