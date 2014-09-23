@@ -101,7 +101,7 @@ class NewsroomsController < ApplicationController
   def update
     respond_to do |format|
       if @newsroom.update(newsroom_params)
-        format.html { redirect_to @newsroom, notice: 'Newsroom was successfully end.' }
+        format.html { redirect_to @newsroom, notice: 'Newsroom was successfully updated.' }
         format.json { render :show, status: :ok, location: @newsroom }
       else
         format.html { render :edit }

@@ -82,13 +82,18 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
 					<div class="panel">
-						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), method: :delete, data: { confirm: "Are you sure?" } do %>
+						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), title: "Delete" , method: :delete, data: { confirm: "Are you sure?" } do %>
 							<span class="glyphicon glyphicon-remove pull-right">
 						<% end %>
 
-						<%= link_to edit_newsroom_company_launch_path(@newsroom, company_launch) do %>
+						<%= link_to edit_newsroom_company_launch_path(@newsroom, company_launch), title: "Edit"  do %>
 							<span class="glyphicon glyphicon-pencil pull-right">
 						<% end %>
+						
+						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), title: "View" do %>
+							<span class="glyphicon glyphicon-eye-open pull-right">
+						<% end %>
+						
 						<div class="panel-body">
 						<!-- <span class="glyphicon glyphicon-file"></span> -->
 						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
@@ -221,7 +226,7 @@
 		</div>
 	</div>
 </div>
-<%= f.submit class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+<%= f.submit "Save Changes", class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 </div>
 </div>
 
