@@ -17,7 +17,7 @@
 
 # Ignore databse
 /config/database.yml
-/config/databse_vps.yml
+/config/database_vps.yml
 
 # Ignore Amazon stuff
 /config/aws.yml
