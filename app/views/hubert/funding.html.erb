@@ -2,17 +2,17 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3 hidden-xs">
-			<%= image_tag "mr_newshubby3.svg", class: "img-responsive center-block", id: "hubert" %><br>
+		<div class="col-sm-3 hidden-xs text-center">
 		</div>
 		<div class="col-sm-6 text-center">
 			<div class="numerals intNumerals"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
-			<h3 class="omnes">How is <%= @newsroom.company_name %> funded?</h3>
+			<h4>How is <%= @newsroom.company_name %> funded?</h4>
 			<br>
 			<%= render :layout => "form" do |f| %>
 			<%= f.fields_for :fundings do |funding| %>
 			<div class="panel panel-default">
 				<div class="panel-body">
+					<%= funding.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
 			<p>
 			<%= funding.label :investment_type %>&emsp;
 			<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding"], rows: 3, id: "textarea", class: "form-control", onfocus: "this.value = this.value;", max: 200, placeholder: "Name" %>
@@ -39,25 +39,24 @@
 			<%= funding.date_select :date, order: [:month, :year], rows: 3, id: "textarea", class: "form-control" %>
 			</p>
 			
-			<%= funding.link_to_remove "Remove", class: "btn btn-danger omnes" %>
 		</div>
 	</div>
 		<% end %>
 			
-			<p><%= f.link_to_add "Add funding", :fundings, class: "btn btn-success omnes" %></p>
-			
+				<%= f.link_to_add :fundings do %><p><i class="glyphicon glyphicon-plus"></i> Add Funding</p><% end %>
+						
 			<br>
 			<div class="row">
 				<div class="col-xs-4">
 					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
-						<span class="glyphicon glyphicon-chevron-left"></span> Previous
+						<span class="glyphicon glyphicon-arrow-left"></span> 
 					<% end %>
 				</div>
 				<div class="col-xs-4">
 
 				</div>
 				<div class="col-xs-4">
-					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right"></span>
+					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
 					<% end %>
 					<% end %>
 				</div>

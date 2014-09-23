@@ -1,14 +1,23 @@
 <% title "NewsHubby | Reach World Press" %>
 
 <div class="container">
+	<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
+	
+<% if flash[:notice] %>
+<div class="container text-center" id="notice">
+	<div class="alert alert-success">
+		<%= flash[:notice] %>
+	</div>
+</div>
+<% end %>
+	
 	<div class="row">
 		<% if current_newsroom == nil %>
 		<div class="col-md-8">
 		<% else %>
 		<div class="col-md-8 col-md-offset-2">
 		<% end %>	
-			<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
-			<h3 class="text-center omnes">The Press Release Platform for Startups</h3>
+			<h1 class="indexHeader text-center omnes">DIY Press Releases</h1>
 			<br>
 			<%= form_tag newsrooms_path, :method => :get do %>
 				<div class="input-group input-group-lg" id="indexSearch">
@@ -88,28 +97,25 @@
 	<h3 class="indexHeaderLatest omnes text-center">Latest Press Releases</h3>
 	<% @newsrooms.reverse.each do |newsroom| %>
 	<% unless newsroom.subscription.blank? %>
-	<div class="row">
+	<div class="row">		
 		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<ul class="media-list">
-						<li class="media">
-								<div class="col-sm-2" id="listCenterBox">
-									<%= image_tag newsroom.logo.url(:medium), class: "media-object listCenterItem" %>
-								</div>
-								<div class="media-body">
-								<span class="pull-right"><strong><small>
-									<% unless newsroom.company_launches.last.nil? %>
-									<%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %>
-									<% end %>
-								</small></strong></span><br>
-								<h4 class="media-heading omnes"><%= link_to newsroom.company_name, newsroom %></h4>
-								<%= truncate(newsroom.q_what_you_do, length: 140) %> <%= link_to "Continue reading", newsroom %>
-							</div>
-						</li>
-					</ul>
+			<%= link_to newsroom, class: "listLink" do %>
+			<div class="panel panel-default listContainer">
+				<div class="listImg">
+					<%= image_tag newsroom.logo.url(:medium), class: "img-responsive center-block" %>
+				</div>
+				<div class="listContent">
+					<span class="pull-right text-muted"><small>
+						<% unless newsroom.company_launches.last.nil? %>
+						<%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %>
+						<% end %>
+					</small></span><br>
+					<h4 class="omnes"><%= newsroom.company_name %></h4>
+					<%= truncate(newsroom.q_what_you_do, length: 140) %>
+					<br><br>
 				</div>
 			</div>
+			<% end %>
 		</div>
 	</div>
 	<% end %><% end %>

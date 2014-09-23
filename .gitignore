@@ -27,6 +27,9 @@
 # Ignore Solr
 /solr/*
 
+# Ignore pkg
+/pkg/*
+
 *.rbc
 capybara-*.html
 .rspec

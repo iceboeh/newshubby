@@ -2,24 +2,28 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3 hidden-xs">
-			<%= image_tag "mr_newshubby3.svg", class: "img-responsive center-block", id: "hubert" %><br>
+		<div class="col-sm-3 hidden-xs text-center">
+			<div class="intHelp" id="hubert"><h1 class="omnes">?</h1></div>
 		</div>
-		<div class="col-sm-6 text-center">
-			<div class="numerals intNumerals"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
-			<h3 class="omnes">Links</h3>
+		<div class="col-sm-6">
+			<div class="numerals intNumerals center-block"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
+			<h4 class="text-center">Links</h4>
 			<br>
 			<%= render :layout => "form" do |f| %>
 			<%= f.fields_for :company_launches, @newsroom.company_launches.last do |company_launch| %>
 			
 			<p>
-			<%= company_launch.text_field :link1, rows: 3, class: "form-control", placeholder: "Paste/enter URL" %><br>
-			<%= company_launch.text_field :caption_link1, rows: 3, class: "form-control", max: 200, placeholder: "Description for first link" %>
+			<%= company_launch.label :link1, "Link", class: "text-left" %>
+			<%= company_launch.text_field :link1, rows: 3, class: "form-control", placeholder: "https://vimeo.com/106181453" %><br>
+			<%= company_launch.label :caption_link1, "Description", class: "text-left" %>
+			<%= company_launch.text_field :caption_link1, rows: 3, class: "form-control", max: 200, placeholder: "Amazing Product Video" %>
 			</p>
-			<br>
+			<br><br>
 			<p>
-			<%= company_launch.text_field :link2, rows: 3, class: "form-control", placeholder: "Paste/enter URL" %><br>
-			<%= company_launch.text_field :caption_link2, rows: 3, class: "form-control", max: 200, placeholder: "Description for second link" %>
+			<%= company_launch.label :link2, "Link", class: "text-left" %>
+			<%= company_launch.text_field :link2, rows: 3, class: "form-control", placeholder: "http://signup.example.com/" %><br>
+			<%= company_launch.label :caption_link2, "Description", class: "text-left" %>
+			<%= company_launch.text_field :caption_link2, rows: 3, class: "form-control", max: 200, placeholder: "" %>
 			</p>
 			
 			<% end %>
@@ -27,7 +31,7 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
-						<span class="glyphicon glyphicon-chevron-left"></span> Previous
+						<span class="glyphicon glyphicon-arrow-left"></span> 
 					<% end %>
 				</div>
 				<div class="col-xs-4">
@@ -35,7 +39,7 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right", disabled: "false"></span>
+					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
 					<% end %>
 					<% end %>
 				</div>
@@ -45,9 +49,10 @@
 <br>
 <div class="row">
 		<div class="col-sm-6 col-sm-offset-3 text-center intExample" id="intExample">
-			<p><strong>Example: </strong><p>Links to related websites, video clips, etc.</p><p>Make sure your videos are embeddable.</p>
+			<p class="text-muted"><span class="intPink omnes">Tip: </span>Paste links to related websites, video clips, etc. Make sure your videos are embeddable.
 			</p>
 		</div>
-	</div> <!-- /.row -->
+</div> <!-- /.row -->
+
 </div> <!-- / .container -->
 

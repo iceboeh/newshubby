@@ -1,9 +1,16 @@
 <% if current_newsroom == @newsroom %>
-<%= link_to "Edit Press Release", edit_newsroom_company_launch_path(@newsroom, @company_launch), class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+<%= link_to "Edit Press Release", edit_newsroom_company_launch_path(@newsroom, @company_launch), class: "btn btn-primary omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 <% end %>
 
 <% title @company_launch.title %>
 
+<% if flash[:notice] %>
+<div class="container text-center">
+	<div class="alert alert-success">
+		<%= flash[:notice] %>
+	</div>
+</div>
+<% end %>
 
 <% if newsroom_signed_in? && current_newsroom.company_name == @company_launch.newsroom.company_name && @company_launch.exclusive == true %>
 <div class="container text-center">

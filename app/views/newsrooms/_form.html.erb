@@ -77,19 +77,24 @@
 
 <div class="nrRow nrReleases">
 	<div class="container">
-		<h1 class="omnes">Edit Press Releases</h1><br>
+		<h1 class="omnes">Latest Press Releases</h1><br>
 		<% @newsroom.company_launches.each do |company_launch| %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
-				<%= link_to edit_newsroom_company_launch_path(@newsroom, company_launch) do %>
-				
-					<div class="panel panel-default">
+					<div class="panel">
+						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), method: :delete, data: { confirm: "Are you sure?" } do %>
+							<span class="glyphicon glyphicon-remove pull-right">
+						<% end %>
+
+						<%= link_to edit_newsroom_company_launch_path(@newsroom, company_launch) do %>
+							<span class="glyphicon glyphicon-pencil pull-right">
+						<% end %>
 						<div class="panel-body">
 						<!-- <span class="glyphicon glyphicon-file"></span> -->
 						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
 						<h4 class="omnes"><%= company_launch.newsroom.company_name %> launches <%= company_launch.launch %> </h4>
 					</div></div>
-					<% end %>
+					
 			</div>
 		</div>
 		<% end %>
@@ -102,9 +107,13 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
 				<p>
+					<h6>What does <%= @newsroom.company_name %> do?</h6>
 					<%= f.text_area :q_what_you_do, maxlength: 250, class: "form-control", id: "exampleInputEmail1", placeholder: "Problem solved"  %>
+					<h6>How exactly do <%= @newsroom.company_name %> achieve that?</h6>
 					<%= f.text_area :q_how_you_achieve, maxlength: 250, class: "form-control", id: "exampleInputEmail1", placeholder: "Problem solved"  %>
+					<h6>How would you describe <%= @newsroom.company_name.possessive %> typical clients?</h6>
 					<%= f.text_area :q_clients, maxlength: 250, class: "form-control", id: "exampleInputEmail1", placeholder: "Problem solved"  %>
+					<h6>How does <%= @newsroom.company_name %> differ from its competitors?</h6>
 					<%= f.text_area :differentiation, maxlength: 250, class: "form-control", id: "exampleInputEmail1", placeholder: "Problem solved"  %>
 				</p>
 			</div>
@@ -148,12 +157,13 @@
 				
 				<div class="panel panel-default">
 					<div class="panel-body">
+						<%= person.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
 						<div class="form-group">
 					
 					<%= person.text_field :name, class: "form-control", placeholder: "Name"  %><br>
+					<%= @newsroom.company_name %> founder <%= person.radio_button :founder, false, :checked => true %>
+					<%= person.radio_button :founder, false, :checked => false %> Not founder 
 					<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
-
-					<%= person.link_to_remove "Remove person", class: "btn btn-danger omnes", role: "button"  %><br>
 				
 							</div>
 						
@@ -162,8 +172,7 @@
 				</div>
 				<% end %>
 			</div>
-<%= f.link_to_add "Add a person", :people, class: "btn btn-default round omnes", role: "button" %>
-			
+<%= f.link_to_add :people do %><i class="glyphicon glyphicon-plus"></i> Add New Person<% end %>			
 	</div>
 </div>
 
@@ -174,6 +183,7 @@
 		<h1 class="omnes">Funding</h1>
 		<%= f.fields_for :fundings do |funding| %>
 		<hr>
+		<%= funding.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
 		<p><%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding"], class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></p>
 		<p><strong><%= funding.text_field :name, class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></strong> <%= funding.date_select :date, class: "form-control"  %>
 			<div class="form-group">
@@ -184,10 +194,9 @@
 			<%= funding.number_field :amount, class: "form-control", placeholder: "Amount"  %>
 		</div>
 	</div>
-	<%= funding.link_to_remove "Remove funding", class: "btn btn-danger omnes", role: "button"  %>
 </p>
 	<% end %>
-	<%= f.link_to_add "Add funding", :fundings, class: "btn btn-default round omnes", role: "button" %>
+	<%= f.link_to_add :fundings do %><i class="glyphicon glyphicon-plus"></i> Add funding<% end %>
 	
 	</div>
 	

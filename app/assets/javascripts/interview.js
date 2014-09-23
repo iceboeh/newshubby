@@ -7,19 +7,19 @@ $(document).ready(function(){
 		} else {
 			$('#intExample').hide();	
 
-			// Visa text vid mouseover av bilden
+			// Fadea in text vid mouseover av bilden
 			$('#hubert').mouseover(function() {
-				$('#intExample').show();
+				$('#intExample').fadeIn(100);
 			});
 			
-			/* 
 			
-			//Dölj text vid mouseout av bilden
-			$('#hubert').mouseout(function() {
-				$('#intExample').hide();
+			//Fadea ut text vid mouseout av bilden med fördröjning
+			$('#hubert').mouseleave(function() {
+				// setTimeout(function() {
+					$('#intExample').fadeOut(100);
+				//}, 1000); // 1000ms = 1s delay
 			});
-
-			*/
+			
 		}
 		
 	};
@@ -52,7 +52,7 @@ $(document).ready(function(){
 		
 		/* Next-knapp på/av */
 		
-		if (textRemaining >= 0 && textRemaining < textLimit - elemLen) {
+		if (textRemaining >= 0 /*&& textRemaining < textLimit - elemLen*/) {
 			$('#nextButton').attr("disabled", false);
 		} else {
 			$('#nextButton').attr("disabled", true);

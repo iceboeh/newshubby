@@ -16,8 +16,10 @@
 //= require turbolinks
 //= require_tree .
 //= require jquery_nested_form
-
+		
 $('#indexTab a').click(function (e) {
 	e.preventDefault()
 	$(this).tab('show')
 })
+
+

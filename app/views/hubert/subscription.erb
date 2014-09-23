@@ -1,10 +1,11 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3 hidden-xs">
-			<%= image_tag "mr_newshubby3.svg", class: "img-responsive center-block", id: "hubert" %><br>
+		<div class="col-sm-3 hidden-xs text-center">
+								<div class="intHelp" id="hubert"><h1 class="omnes">?</h1></div>
+
 		</div>
 		<div class="col-sm-6 text-center">
-			<h3 class="omnes">Enter signup code</h3>
+			<h4>Enter signup code</h4>
 			<br>
 			<%= render :layout => "form" do |f| %>
 			
@@ -13,7 +14,7 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
-						<span class="glyphicon glyphicon-chevron-left"></span> Previous
+						<span class="glyphicon glyphicon-arrow-left"></span> 
 					<% end %>
 				</div>
 				<div class="col-xs-4">
@@ -21,7 +22,7 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %>Next <span class="glyphicon glyphicon-chevron-right", disabled: "disabled"></span>
+					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
 					<% end %>
 					<% end %>
 					</div>
@@ -31,7 +32,7 @@
 <br>
 <div class="row">
 		<div class="col-sm-6 col-sm-offset-3 text-center intExample" id="intExample">
-			<p><strong>Example: </strong>Many startups don't have the time, effort and knowledge about how to create a good press release. We want to help them with that and minimize the distance between the startups and the press.
+			<p class="text-muted"><span class="intPink omnes">Example: </span>Many startups don't have the time, effort and knowledge about how to create a good press release. We want to help them with that and minimize the distance between the startups and the press.
 			</p>
 		</div>
 	</div> <!-- /.row -->
