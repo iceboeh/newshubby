@@ -3,14 +3,6 @@
 <div class="container">
 	<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
 	
-<% if flash[:notice] %>
-<div class="container text-center" id="notice">
-	<div class="alert alert-success">
-		<%= flash[:notice] %>
-	</div>
-</div>
-<% end %>
-	
 	<div class="row">
 		<% if current_newsroom == nil %>
 		<div class="col-md-8">

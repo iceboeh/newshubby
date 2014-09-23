@@ -4,14 +4,6 @@
 
 <% title @company_launch.title %>
 
-<% if flash[:notice] %>
-<div class="container text-center">
-	<div class="alert alert-success">
-		<%= flash[:notice] %>
-	</div>
-</div>
-<% end %>
-
 <% if newsroom_signed_in? && current_newsroom.company_name == @company_launch.newsroom.company_name && @company_launch.exclusive == true %>
 <div class="container text-center">
 	<div class="alert alert-warning">

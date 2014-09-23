@@ -24,6 +24,18 @@
 
 </head>
 
+<% if flash[:error] %>
+	<div class="alert alert-danger noticeFade">
+		<%= flash[:error] %>
+	</div>
+<% end %>
+
+<% if flash[:notice] %>
+	<div class="alert alert-success noticeFade">
+		<%= flash[:notice] %>
+	</div>
+<% end %>
+
 <% if @hubert_body == true %>
 <body class="intBody shortPage">
 <% elsif @plans_body == true %>
