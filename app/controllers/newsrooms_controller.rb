@@ -37,6 +37,8 @@ class NewsroomsController < ApplicationController
   # GET /newsrooms/1.json
   def show
     
+    @reg_body = true
+    
     # Show exclusive press releases only to owner
     unless @newsroom == current_newsroom
       @company_launches = @newsroom.company_launches.where(exclusive: false).reverse

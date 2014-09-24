@@ -36,8 +36,8 @@
 	</div>
 <% end %>
 
-<% if @hubert_body == true %>
-<body class="intBody shortPage">
+<% if @reg_body == true %>
+<body>
 <% elsif @plans_body == true %>
 <body id="ppBody">
 <% elsif @pr_body == true %>
@@ -47,7 +47,7 @@
 <% elsif @index_body == true %>
 <body id="indexBody">
 <% else %>
-<body>
+<body class="intBody shortPage">
 <% end %>
 
 <%= render 'layouts/header' unless @disable_header == true %>
