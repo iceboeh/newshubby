@@ -41,7 +41,7 @@ class NewsroomsController < ApplicationController
     unless @newsroom == current_newsroom
       @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
     else
-      @company_launches = @newsroom.company_launches.all.reverse
+      @newsrooms = @newsroom.company_launches.all.reverse
     end
     
     # Control ownership

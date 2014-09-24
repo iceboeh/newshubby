@@ -79,17 +79,17 @@
 		<div class="col-xs-8 col-xs-offset-2">
 			<% if @company_launches.text.nil? %>
 			<p>What does <%= @newsroom.company_name %> do?<br>
-				<%= f.text_area :q_what_you_do, rows: 4, class: "form-control", placeholder: "What you do" %></p>
+				<%= f.text_area :q_what_you_do, rows: 4, class: "form-control" %></p>
 			<p>How exactly does <%= @newsroom.company_name %> achieve that?<br>
-				<%= f.text_area :q_how_you_achieve, rows: 4, class: "form-control", placeholder: "How you achieve" %></p>
+				<%= f.text_area :q_how_you_achieve, rows: 4, class: "form-control" %></p>
 
 			<p>Quote by the Founder - Tell me how you came up with idea behind <%= @newsroom.company_name %><br>
 				<i><%= f.text_area :quote, rows: 4, class: "form-control", placeholder: "Quote" %></i> says <%= @company_launch.newsroom.people.first.name %>.</p>
 			
 			<p>How would you describe <%= @newsroom.company_name.possessive %> typical clients?<br>
-				<%= f.text_area :q_clients, rows: 4, class: "form-control", placeholder: "Clients" %></p>
+				<%= f.text_area :q_clients, rows: 4, class: "form-control" %></p>
 				<p>How does <%= @newsroom.company_name %> differ from its competitors?<br>
-					<%= f.text_area :differentiation, rows: 4, class: "form-control", placeholder: "Differentiation" %></p>
+					<%= f.text_area :differentiation, rows: 4, class: "form-control" %></p>
 			
 			<p><%= @company_launch.newsroom.company_name %> was founded by 
 				

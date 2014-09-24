@@ -166,18 +166,15 @@
 						<div class="form-group">
 					
 					<%= person.text_field :name, class: "form-control", placeholder: "Name"  %><br>
-					<%= @newsroom.company_name %> founder <%= person.radio_button :founder, false, :checked => true %>
-					<%= person.radio_button :founder, false, :checked => false %> Not founder 
+					Founder <%= person.check_box :founder %>
 					<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
-				
 							</div>
-						
 						</div>
 					</div>	
 				</div>
 				<% end %>
+				<%= f.link_to_add :people do %><i class="glyphicon glyphicon-plus"></i> Add New Person<% end %>			
 			</div>
-<%= f.link_to_add :people do %><i class="glyphicon glyphicon-plus"></i> Add New Person<% end %>			
 	</div>
 </div>
 
@@ -209,26 +206,95 @@
 </div>
 </div>
 
-<div class="nrRow nrFiles"> 
+<div class="nrRow nrFiles">
 <div class="container">
 	<div class="row">
 		<h1 class="omnes">Files</h1>
-		
+<% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
+	<% unless company_launch.link1.blank? %>
 		<div class="col-sm-4">
 			<div class="thumbnail">
 				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/MSH9yB9y4ZA" allowfullscreen></iframe>
+					<% if company_launch.link1.include? "youtube.com" %>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+					<% elsif company_launch.link1.include? "vimeo.com" %>
+					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<% end %>
 				</div>
 				<div class="caption">
-					<p><small>Caption goes here</small></p>
+					<% if company_launch.link1.include?("youtube.com" || "vimeo.com") %>
+					<p><small><%= company_launch.caption_link1 %></small></p>
+					<% elsif %>
+					<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
+					<% end %>
+
 				</div>
 			</div>
 		</div>
+	<% end %>	
+	
+	<% unless company_launch.link2.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<div class="embed-responsive embed-responsive-16by9">
+					<% if company_launch.link2.include? "youtube.com" %>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+					<% elsif company_launch.link2.include? "vimeo.com" %>
+					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					<% end %>
+				</div>
+				<div class="caption">
+					<% if company_launch.link2.include?("youtube.com" || "vimeo.com") %>
+					<p><small><%= company_launch.caption_link2 %></small></p>
+					<% elsif %>
+					<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	<% end %>
+	
+		
+		<% unless company_launch.file1.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file1 %></small></p>
+				</div>
+			</div>
 	</div>
+	<% end %>
+	
+		<% unless company_launch.file2.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file2 %></small></p>
+				</div>
+			</div>
+	</div>
+	<% end %>
+	
+		<% unless company_launch.file3.blank? %>
+		<div class="col-sm-4">
+			<div class="thumbnail">
+				<%= image_tag company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<div class="caption">
+					<p><small><%= company_launch.caption_file3 %></small></p>
+				</div>
+			</div>
+	</div>
+	<% end %>
+	
+<% end %>
 </div>
+</div>
+</div>
+
 <%= f.submit "Save Changes", class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
-</div>
-</div>
 
 
 <% end %>

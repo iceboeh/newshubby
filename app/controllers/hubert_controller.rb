@@ -35,18 +35,11 @@ class HubertController < ApplicationController
     
       @step_number = step
     end    
-
-    # Redirect to interview specific question if more than one press release 
-    if 1 > 2
-      if @newsroom.company_launches.count > 1 && step != :embargo && step != :launch && step != :quote && step != :files  && step != :links
-        jump_to(:embargo)
-      end
-    end
                   
     case step
     
     when :basic
-    if @newsroom.company_launches.count < 2
+    if @newsroom.company_name.nil?
       @step_number = 1
     else 
       skip_step
@@ -81,63 +74,63 @@ class HubertController < ApplicationController
     
     end
       
-    if @newsroom.company_launches.count < 2
+    if @newsroom.logo.url.nil?
       @step_number = 2
     else 
       skip_step
     end
       
     when :people
-    if @newsroom.company_launches.count < 2
+    if @newsroom.people.count < 2
       @step_number = 3
     else 
       skip_step
     end
 
     when :what
-    if @newsroom.company_launches.count < 2
+    if @newsroom.q_what_you_do.nil?
       @step_number = 4
     else 
       skip_step
     end
   
     when :how
-    if @newsroom.company_launches.count < 2
+    if @newsroom.q_how_you_achieve.nil?
       @step_number = 5
     else 
       skip_step
     end    
 
     when :clients
-    if @newsroom.company_launches.count < 2
+    if @newsroom.q_clients.nil?
       @step_number = 6
     else 
       skip_step
     end    
 
     when :business_model
-    if @newsroom.company_launches.count < 2
+    if @newsroom.business_model.nil?
       @step_number = 7
     else
       skip_step
     end
     
     when :competitors
-    if @newsroom.company_launches.count < 2
+    if @newsroom.competitors.nil?
       @step_number = 8
     else
       skip_step
     end
     
     when :differentiation
-    if @newsroom.company_launches.count < 2
+    if @newsroom.differentiation.nil?
       @step_number = 9
     else 
       skip_step
     end
       
     when :funding
-    if @newsroom.company_launches.count < 2
+    if @newsroom.fundings.count < 2
       @step_number = 10
     else 
       skip_step
@@ -165,7 +158,7 @@ class HubertController < ApplicationController
     end      
 
     when :problem_solved
-    if @newsroom.company_launches.count < 2
+    if @newsroom.problem_solved.nil?
       @step_number = 14
     else 
       skip_step
@@ -219,7 +212,7 @@ end
     
     @company_launch = @newsroom.company_launches.last
     unless @company_launch.nil? || @company_launch.launch.nil?
-      @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B")}")
+      @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B")}", text: "")
       #end
     else
       skip_step

@@ -15,7 +15,7 @@
 			<br><br>
 			<div class="row">
 				<div class="col-xs-4">
-					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
+					<%= link_to previous_wizard_path, title: "Previous step", class: "btn btn-default pull-left" do %>
 						<span class="glyphicon glyphicon-arrow-left"></span> 
 					<% end %>
 				</div>
@@ -24,7 +24,7 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
+					<%= button_tag type: "f.submit", title: "Save & Continue", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
 					<% end %>
 					<% end %>
 				</div>

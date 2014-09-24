@@ -18,8 +18,7 @@
 
 			<p>
 				<%= person.text_field :name, rows: 3, class: "form-control", placeholder: "Name" %>
-				<%= @newsroom.company_name %> founder <%= person.radio_button :founder, false, :checked => true %>
-				<%= person.radio_button :founder, false, :checked => false %> Not founder 
+				Founder <%= person.check_box :founder %>
 			</p>
 			
 			<p>
@@ -34,7 +33,7 @@
 			<br>
 			<div class="row">
 				<div class="col-xs-4">
-					<%= link_to previous_wizard_path, class: "btn btn-default pull-left" do %>
+					<%= link_to previous_wizard_path, title: "Previous step", class: "btn btn-default pull-left" do %>
 						<span class="glyphicon glyphicon-arrow-left"></span> 
 					<% end %>
 				</div>
@@ -43,7 +42,7 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= button_tag type: "f.submit", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
+					<%= button_tag type: "f.submit", title: "Save & Continue", class: "btn btn-success pull-right", id: "nextButton" do %><span class="glyphicon glyphicon-arrow-right"></span>
 					<% end %>
 					<% end %>
 				</div>
