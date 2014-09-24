@@ -27,11 +27,6 @@
 				
 				<% if current_newsroom != nil %>
 				<li><%= link_to pressreleasetype_path do %><small><i class="glyphicon glyphicon-plus"></i></small> New Press Release</li><% end %>
-				<% unless current_newsroom.company_launches.last.nil? || current_newsroom.company_launches.last.text != nil %>
-				<% if current_newsroom.company_launches.last.quote.blank? %>
-				<% end %>
-				<li><%= link_to hubert_index_path do %><small><i class="glyphicon glyphicon-repeat"></i></small> Resume Interview<% end %></li>
-				<% end %>
 				<% else %>
 				<li><%= link_to "Sign up", new_newsroom_registration_path %></li>
 				<li><%= link_to "Login", new_newsroom_session_path %></li>
@@ -47,6 +42,10 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_newsroom.company_name %> <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><%= link_to "View Newsroom", current_newsroom %></li>
+						<% unless current_newsroom.company_launches.last.nil? || current_newsroom.company_launches.last.text != nil %>
+						<% if current_newsroom.company_launches.last.quote.blank? %>
+						<% end %>
+						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li><% end %>
 						<li class="divider"></li>
 						<li><%= link_to "Edit Newsroom", edit_newsroom_path(current_newsroom) %></li>
 						<li><%= link_to "Account Settings", new_newsroom_password_path %></li>
