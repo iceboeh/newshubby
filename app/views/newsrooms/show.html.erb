@@ -199,7 +199,7 @@
 		<% unless company_launch.file1.blank? %>
 		<div class="col-sm-4">
 			<div class="thumbnail">
-				<%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<%= link_to company_launch.file1.url, target: "_blank" do %><%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
 				<div class="caption">
 					<p><small><%= company_launch.caption_file1 %></small></p>
 				</div>
@@ -210,7 +210,7 @@
 		<% unless company_launch.file2.blank? %>
 		<div class="col-sm-4">
 			<div class="thumbnail">
-				<%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+				<%= link_to company_launch.file2.url, target: "_blank" do %><%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
 				<div class="caption">
 					<p><small><%= company_launch.caption_file2 %></small></p>
 				</div>

@@ -24,7 +24,7 @@ $(document).ready(function(){
 		
 	};
 
-	
+
 	
 	// Hämta och räkna de förifyllda tecknen i textarea
 	
@@ -72,6 +72,5 @@ $(document).ready(function(){
 	showExample();
 	
 	// handleChange();
-	
-	
+
 });

@@ -1,5 +1,8 @@
 <% title "NewsHubby | Reach World Press" %>
 
+<div id="indexBkg">
+
+
 <div class="container">
 	<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
 	
@@ -47,10 +50,11 @@
 									<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Confirm password" %>
 								</div>
 								  <%= f.submit "Sign up", class: "btn btn-primary omnes" %>
-								<% end %>
+								
 								<div class="checkbox">
 									<label>
-										<input type="checkbox"><small>I have read and agree to our <a href="#">terms and conditions</small></a>.
+										<%= f.check_box :term_agreement %><small>I have read and agree to our <%= link_to "terms and conditions", terms_of_service_path, target: "_blank" %></small>.
+										<% end %>
 									</label>
 								</div>
 						</div>
@@ -67,12 +71,6 @@
 									<%= f.password_field :password, class: "form-control", id: "LoginPassword1", placeholder: "Password" %>
 								</div>
 								<%= f.submit 'Login', class: "btn btn-primary omnes" %><br><br>
-								<div class="checkbox">
-							  <label>
-								<%= f.check_box :remember_me %>
-							  	<small><%= f.label :remember_me %></small><br>
-								</label>
-								</div>
 								<small><%= link_to "Forgot your password?", new_password_path(:newsroom) %></small>
 								<% end %>
 								<br><br>
@@ -84,8 +82,11 @@
 		</div>
 	</div>
 </div>
+</div>
+</div>
 
 <div class="container">
+	<div class="indexChevronDown center-block hidden-xs"><p class="text-center"><span class="glyphicon glyphicon-chevron-down"></span></p></div>
 	<h3 class="indexHeaderLatest omnes text-center">Latest Press Releases</h3>
 	<% @newsrooms.reverse.each do |newsroom| %>
 	<% unless newsroom.subscription.blank? %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909074600) do
+ActiveRecord::Schema.define(version: 20140925084315) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20140909074600) do
     t.string   "twitter"
     t.integer  "subscription_id"
     t.string   "code"
+    t.boolean  "term_agreement"
   end
 
   add_index "newsrooms", ["email"], name: "index_newsrooms_on_email", unique: true

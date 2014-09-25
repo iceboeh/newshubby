@@ -87,40 +87,35 @@
 					<% else %>
 					<%= @company_launch.text %>
 					<% end %>
-
-			<br><hr>
-			<!-- <blockquote>
-<p>
-<i class="quote">Coming together is a beginning; keeping together is progress; working together is success.” </i><br>
-<br>
-<span class="text-right">- Firstname Lastname (Title)</span>
-</p>
-</blockquote> -->
 		</div>
 		
 	</div> <!-- / .row05 -->
-	
-	<div class="row row06">
+
+	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<h3>PROBLEM SOLVED</h3>
+			<h3>Problem Solved</h3>
 			<p><%= @company_launch.problem_solved %></p>
 		</div> 
-	</div> <!-- / .row06 -->
+   </div> <!-- / .row -->
+	
+ 	<div class="row">
+ 		<div class="col-xs-8 col-xs-offset-2">
+ 			<h3>Business Model</h3>
+ 			<p><%= @company_launch.business_model %></p>
+ 		</div> 
+    </div> <!-- / .row -->
 
-	<div class="row row07">
-		<div class="col-xs-4 col-xs-offset-2">
-			<h3>BUSINESS MODEL</h3>
-			<p><%= @company_launch.business_model %></p>
-		</div> 
-		<div class="col-xs-4">
-			<h3>COMPETITIORS</h3>
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>Competitors</h3>
 			<p><%= @company_launch.competitors %></p>
-		</div>
-	</div> <!-- / .row -->
-
-	<div class="row row08">
-		<div class="col-xs-4 col-xs-offset-2">
-			<h3>FUNDING</h3>
+		</div> 
+   </div> <!-- / .row -->
+	 
+	 
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>Funding</h3>
 			<ul class="noBullets">
 				<% @company_launch.newsroom.fundings.each do |funding| %>
 				<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %>
@@ -131,40 +126,119 @@
 				<% end %>
 				<% end %>
 			</ul>
-			
 		</div> 
-		<div class="col-xs-4">
-			<h3><%= "FOUNDER".pluralize.upcase %></h3>
+  </div> <!-- / .row -->
+
+
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>The Team</h3>
 			<ul class="noBullets">
 				<% @company_launch.newsroom.people.each do |person| %>
-				<% if person.founder? %>
 				<li><strong><%= person.name %></strong> (<%= person.role %>)<br><%= person.presentation %></li>
-				<% end %>
 				<% end %>
 			</ul>
 		</div>
-	</div>
-<!-- / .row -->
-	<!-- <div class="row row10">
-<div class="col-xs-6">
-<h3>TEAM</h3>
-<ul class="noBullets">
-<li><span class="semibold">Roland Johansson</span><br>Front-end Web Developer</li>
-<li><span class="semibold">Robert Knutsson</span><br>Back-end Web Developer</li>
-</ul>
-</div> 
-<div class="col-xs-6">
-<img src="media/images/placeholders/placeholder_team.jpg" class="img-responsive" alt="Photo of the team">
+	</div> <!-- / .row -->
+	
+	<div class="nrRow nrFiles">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<div class="row">
+	<% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
+		<% unless company_launch.link1.blank? %>
+			<div class="col-xs-6">
+				<div class="thumbnail">
+					<div class="embed-responsive embed-responsive-16by9">
+						<% if company_launch.link1.include? "youtube.com" %>
+						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+						<% elsif company_launch.link1.include? "vimeo.com" %>
+						<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<% end %>
+					</div>
+					<div class="caption">
+						<% if company_launch.link1.include?("youtube.com" || "vimeo.com") %>
+						<p><small><%= company_launch.caption_link1 %></small></p>
+						<% elsif %>
+						<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
+						<% end %>
+
+					</div>
+				</div>
+			</div>
+		<% end %>	
+	
+		<% unless company_launch.link2.blank? %>
+			<div class="col-xs-6">
+				<div class="thumbnail">
+					<div class="embed-responsive embed-responsive-16by9">
+						<% if company_launch.link2.include? "youtube.com" %>
+						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+						<% elsif company_launch.link2.include? "vimeo.com" %>
+						<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<% end %>
+					</div>
+					<div class="caption">
+						<% if company_launch.link2.include?("youtube.com" || "vimeo.com") %>
+						<p><small><%= company_launch.caption_link2 %></small></p>
+						<% elsif %>
+						<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
+						<% end %>
+
+					</div>
+				</div>
+			</div>
+		<% end %>
+	
+		
+			<% unless company_launch.file1.blank? %>
+			<div class="col-xs-6">
+				<div class="thumbnail">
+					<%= link_to company_launch.file1.url, target: "_blank" do %><%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<div class="caption">
+						<p><small><%= company_launch.caption_file1 %></small></p>
+					</div>
+				</div>
+		</div>
+		<% end %>
+	
+			<% unless company_launch.file2.blank? %>
+			<div class="col-xs-6">
+				<div class="thumbnail">
+					<%= link_to company_launch.file2.url, target: "_blank" do %><%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<div class="caption">
+						<p><small><%= company_launch.caption_file2 %></small></p>
+					</div>
+				</div>
+		</div>
+		<% end %>
+	
+			<% unless company_launch.file3.blank? %>
+			<div class="col-xs-6">
+				<div class="thumbnail">
+					<%= image_tag company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+					<div class="caption">
+						<p><small><%= company_launch.caption_file3 %></small></p>
+					</div>
+				</div>
+		</div>
+		<% end %>
+	
+	<% end %>
+</div></div>
 </div>
-</div> <!-- / .row -->
+</div>
+	
+	<br><hr>		
 		
 <footer>
 	<div class="row row13">
 		<div class="col-xs-12">
-			<%= link_to "http://www.newshubby.com/", target: "_blank" do %><h6 class="text-center">PRESS RELEASE GENERATED WITH</h6>
+			<%= link_to "http://www.newshubby.com/", target: "_blank", class: "prGenerated" do %><p class="text-center">PRESS RELEASE GENERATED WITH</p>
 			<%= image_tag "newshubby_logotype.svg", class: "nhLogo", alt: "Link to www.newshubby.com" %>
 			<% end %>
 		</div> 
-	</div> <!-- / .row13 -->
+	</div>
 </footer>
 </div>
+<br><br><br>

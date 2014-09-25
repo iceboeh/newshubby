@@ -4,7 +4,7 @@ class NewsroomsController < ApplicationController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:newsroom_update) { |u| 
-      u.permit(:password, :password_confirmation, :current_password) 
+      u.permit(:password, :password_confirmation, :current_password, :term_agreement) 
     }
   end
   
@@ -131,7 +131,7 @@ class NewsroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsroom_params
-      params.require(:newsroom).permit(:company_name, :website, :press_phone, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
+      params.require(:newsroom).permit(:company_name, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
   end
 
 end
