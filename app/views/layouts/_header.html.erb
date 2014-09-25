@@ -48,7 +48,7 @@
 						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li><% end %>
 						<li class="divider"></li>
 						<li><%= link_to "Edit Newsroom", edit_newsroom_path(current_newsroom) %></li>
-						<li><%= link_to "Account Settings", new_newsroom_password_path %></li>
+						<li><%= link_to "Edit Press Releases", newsroom_company_launches_path(current_newsroom) %></li>
 						<li class="divider"></li>
 						<li><%= link_to "Log out", destroy_newsroom_session_path, method: :delete %></li>
 					</ul>

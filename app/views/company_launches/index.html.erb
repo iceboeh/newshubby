@@ -6,24 +6,37 @@
 
 <div class="nrRow nrReleases">
 	<div class="container">
-		<h1 class="omnes">Press Releases</h1><br>
-		<% unless @newsroom.subscription.blank? %>
-		<% @company_launches.reverse.each do |company_launch| %>
+		<h1 class="omnes">Latest Press Releases</h1><br>
+		<% @newsroom.company_launches.each do |company_launch| %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
-				<%= link_to newsroom_company_launch_path(@newsroom, company_launch) do %>
-				
-					<div class="panel panel-default">
+					<div class="panel">
+						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), title: "Delete" , method: :delete, data: { confirm: "Are you sure?" } do %>
+							<span class="glyphicon glyphicon-remove pull-right">
+						<% end %>
+
+						<%= link_to edit_newsroom_company_launch_path(@newsroom, company_launch), title: "Edit"  do %>
+							<span class="glyphicon glyphicon-pencil pull-right">
+						<% end %>
+						
+						<%= link_to newsroom_company_launch_path(@newsroom, company_launch), title: "View" do %>
+							<span class="glyphicon glyphicon-eye-open pull-right">
+						<% end %>
+						
+						<div class="panel-body">
 						<!-- <span class="glyphicon glyphicon-file"></span> -->
 						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
-						<h4 class="omnes"><%= company_launch.title %></h4>
-					</div>
-					<% end %>
+						<h4 class="omnes"><%= company_launch.newsroom.company_name %> launches <%= company_launch.launch %> </h4>
+					</div></div>
+					
 			</div>
 		</div>
-		<% end %><% end %>
-		<%= link_to "See all", newsroom_company_launches_path(@newsroom), class: "btn btn-default omnes round", role: "button" %>
+		<% end %>
 	</div>
 </div>
+
+
+
+
 </div>
 </div>
