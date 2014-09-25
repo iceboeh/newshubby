@@ -41,13 +41,13 @@ class NewsroomsController < ApplicationController
     
     # Control ownership
     if @newsroom == current_newsroom
-      owner = true
+      @owner = true
     else
-      owner = false
+      @owner = false
     end
     
     # Show exclusive press releases only to owner
-    if owner == true
+    if @owner == true
       @company_launches = @newsroom.company_launches.all.reverse
     else
       @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
