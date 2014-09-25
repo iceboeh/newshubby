@@ -7,8 +7,10 @@
 		<div class="col-sm-6 text-center hubertBasic">
 			<h4>Congratulations!</h4>
 			<br>
-			
-				<p></p>
+			<%= render :layout => "form" do |f| %>
+			<%= f.fields_for :company_launches, @newsroom.company_launches.last do |company_launch| %>
+
+				<p><%= company_launch.hidden_field :interview_done, value: true %></p>
 				
 			<br><br>
 			<div class="row">
@@ -22,7 +24,8 @@
 					</div>
 				</div>
 				<div class="col-xs-4">
-					<%= link_to [@newsroom, @newsroom.company_launches.last], class: "btn btn-success pull-right", id: "nextButton" do %>Preview Press Release <span class="glyphicon glyphicon-arrow-right", disabled: "disabled"></span>
+					<%= button_tag type: "f.submit", title: "Save & Continue", class: "btn btn-success pull-right", id: "nextButton" do %>Preview Press Release <span class="glyphicon glyphicon-arrow-right"></span><% end %>
+					<% end %>
 					<% end %>
 				</div>
 			</div>

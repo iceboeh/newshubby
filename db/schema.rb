@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925084315) do
+ActiveRecord::Schema.define(version: 20140925124038) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140925084315) do
     t.string   "problem_solved"
     t.string   "business_model"
     t.string   "competitors"
+    t.boolean  "interview_done"
   end
 
   create_table "contacts", force: true do |t|

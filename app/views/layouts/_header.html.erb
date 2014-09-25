@@ -45,7 +45,10 @@
 						<% unless current_newsroom.company_launches.last.nil? || current_newsroom.company_launches.last.text != nil %>
 						<% if current_newsroom.company_launches.last.quote.blank? %>
 						<% end %>
-						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li><% end %>
+						<% if current_newsroom.company_launches.last.interview_done == false %>
+						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li>
+						<% else %>
+						<% end %><% end %>
 						<li class="divider"></li>
 						<li><%= link_to "Edit Newsroom", edit_newsroom_path(current_newsroom) %></li>
 						<li><%= link_to "Edit Press Releases", newsroom_company_launches_path(current_newsroom) %></li>
