@@ -62,12 +62,12 @@
 	<div class="row row05">
 		<div class="col-xs-8 col-xs-offset-2">
 			<% if @company_launch.text.nil? %>
-			<p><%= @company_launch.q_what_you_do %></p>
-			<p><%= @company_launch.q_how_you_achieve %></p>
+			<p><%= simple_format(@company_launch.q_what_you_do) %></p>
+			<p><%= simple_format(@company_launch.q_how_you_achieve) %></p>
 
 			<p><i>- <% unless @company_launch.quote.nil? %><%= @company_launch.quote.gsub(/\.\z/, '') %><% end %></i>, says <%= @company_launch.newsroom.people.first.name %>.</p>
 			
-			<p><%= @company_launch.q_clients %> <%= @company_launch.differentiation %></p>
+			<p><%= simple_format(@company_launch.q_clients) %> <%= simple_format(@company_launch.differentiation) %></p>
 			
 			<p><%= @company_launch.newsroom.company_name %> was founded by 
 				
@@ -85,7 +85,7 @@
 				 and is funded by a <%= @company_launch.newsroom.fundings.first.investment_type %>, <%= @company_launch.newsroom.fundings.first.name %>.</p>
 					<% end %>
 					<% else %>
-					<%= @company_launch.text %>
+					<%= simple_format(@company_launch.text) %>
 					<% end %>
 		</div>
 		
@@ -94,21 +94,21 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h3>Problem Solved</h3>
-			<p><%= @company_launch.problem_solved %></p>
+			<p><%= simple_format(@company_launch.problem_solved) %></p>
 		</div> 
    </div> <!-- / .row -->
 	
  	<div class="row">
  		<div class="col-xs-8 col-xs-offset-2">
  			<h3>Business Model</h3>
- 			<p><%= @company_launch.business_model %></p>
+ 			<p><%= simple_format(@company_launch.business_model) %></p>
  		</div> 
     </div> <!-- / .row -->
 
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h3>Competitors</h3>
-			<p><%= @company_launch.competitors %></p>
+			<p><%= simple_format(@company_launch.competitors) %></p>
 		</div> 
    </div> <!-- / .row -->
 	 
@@ -135,7 +135,7 @@
 			<h3>The Team</h3>
 			<ul class="noBullets">
 				<% @company_launch.newsroom.people.each do |person| %>
-				<li><strong><%= person.name %></strong> (<%= person.role %>)<br><%= person.presentation %></li>
+				<li><strong><%= person.name %></strong> (<%= person.role %>)<br><%= simple_format(person.presentation) %></li>
 				<% end %>
 			</ul>
 		</div>
@@ -145,22 +145,21 @@
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
 				<div class="row">
-	<% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
-		<% unless company_launch.link1.blank? %>
+		<% unless @company_launch.link1.blank? %>
 			<div class="col-xs-6">
 				<div class="thumbnail">
 					<div class="embed-responsive embed-responsive-16by9">
-						<% if company_launch.link1.include? "youtube.com" %>
+						<% if @company_launch.link1.include? "youtube.com" %>
 						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
-						<% elsif company_launch.link1.include? "vimeo.com" %>
-						<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<% elsif @company_launch.link1.include? "vimeo.com" %>
+						<iframe src="//player.vimeo.com/video/<%= @company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						<% end %>
 					</div>
 					<div class="caption">
-						<% if company_launch.link1.include?("youtube.com" || "vimeo.com") %>
-						<p><small><%= company_launch.caption_link1 %></small></p>
+						<% if @company_launch.link1.include?("youtube.com" || "vimeo.com") %>
+						<p><small><%= @company_launch.caption_link1 %></small></p>
 						<% elsif %>
-						<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
+						<p><small><%= link_to @company_launch.caption_link1, @company_launch.link1 %></small></p>
 						<% end %>
 
 					</div>
@@ -168,21 +167,21 @@
 			</div>
 		<% end %>	
 	
-		<% unless company_launch.link2.blank? %>
+		<% unless @company_launch.link2.blank? %>
 			<div class="col-xs-6">
 				<div class="thumbnail">
 					<div class="embed-responsive embed-responsive-16by9">
-						<% if company_launch.link2.include? "youtube.com" %>
+						<% if @company_launch.link2.include? "youtube.com" %>
 						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
-						<% elsif company_launch.link2.include? "vimeo.com" %>
-						<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+						<% elsif @company_launch.link2.include? "vimeo.com" %>
+						<iframe src="//player.vimeo.com/video/<%= @company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						<% end %>
 					</div>
 					<div class="caption">
-						<% if company_launch.link2.include?("youtube.com" || "vimeo.com") %>
-						<p><small><%= company_launch.caption_link2 %></small></p>
+						<% if @company_launch.link2.include?("youtube.com" || "vimeo.com") %>
+						<p><small><%= @company_launch.caption_link2 %></small></p>
 						<% elsif %>
-						<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
+						<p><small><%= link_to @company_launch.caption_link2, @company_launch.link2 %></small></p>
 						<% end %>
 
 					</div>
@@ -191,40 +190,39 @@
 		<% end %>
 	
 		
-			<% unless company_launch.file1.blank? %>
+			<% unless @company_launch.file1.blank? %>
 			<div class="col-xs-6">
 				<div class="thumbnail">
-					<%= link_to company_launch.file1.url, target: "_blank" do %><%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<%= link_to @company_launch.file1.url, target: "_blank" do %><%= image_tag @company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
 					<div class="caption">
-						<p><small><%= company_launch.caption_file1 %></small></p>
+						<p><small><%= @company_launch.caption_file1 %></small></p>
 					</div>
 				</div>
 		</div>
 		<% end %>
 	
-			<% unless company_launch.file2.blank? %>
+			<% unless @company_launch.file2.blank? %>
 			<div class="col-xs-6">
 				<div class="thumbnail">
-					<%= link_to company_launch.file2.url, target: "_blank" do %><%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<%= link_to @company_launch.file2.url, target: "_blank" do %><%= image_tag @company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
 					<div class="caption">
-						<p><small><%= company_launch.caption_file2 %></small></p>
+						<p><small><%= @company_launch.caption_file2 %></small></p>
 					</div>
 				</div>
 		</div>
 		<% end %>
 	
-			<% unless company_launch.file3.blank? %>
+			<% unless @company_launch.file3.blank? %>
 			<div class="col-xs-6">
 				<div class="thumbnail">
-					<%= image_tag company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+					<%= image_tag @company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
 					<div class="caption">
-						<p><small><%= company_launch.caption_file3 %></small></p>
+						<p><small><%= @company_launch.caption_file3 %></small></p>
 					</div>
 				</div>
 		</div>
 		<% end %>
 	
-	<% end %>
 </div></div>
 </div>
 </div>

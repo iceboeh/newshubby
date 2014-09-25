@@ -45,7 +45,7 @@
 						<% unless current_newsroom.company_launches.last.nil? || current_newsroom.company_launches.last.text != nil %>
 						<% if current_newsroom.company_launches.last.quote.blank? %>
 						<% end %>
-						<% if current_newsroom.company_launches.last.interview_done == false %>
+						<% if current_newsroom.company_launches.last.interview_done.nil? %>
 						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li>
 						<% else %>
 						<% end %><% end %>

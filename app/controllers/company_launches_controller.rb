@@ -109,7 +109,7 @@ class CompanyLaunchesController < ApplicationController
     
     respond_to do |format|
       if @company_launch.save
-        format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Company launch was successfully created.' }
+        format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Press release was successfully created.' }
         format.json { render :show, status: :created, location: @company_launch }
       else
         format.html { render :new }
@@ -124,7 +124,7 @@ class CompanyLaunchesController < ApplicationController
     
     respond_to do |format|
       if @company_launch.update(company_launch_params)
-        format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Company launch was successfully updated.' }
+        format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Press release was successfully updated.' }
         format.json { render :show, status: :ok, location: @company_launch }
       else
         format.html { render :edit }
@@ -139,7 +139,7 @@ class CompanyLaunchesController < ApplicationController
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])
     @company_launch.destroy
     respond_to do |format|
-      format.html { redirect_to @company_launch.newsroom, notice: 'Company launch was successfully destroyed.' }
+      format.html { redirect_to @company_launch.newsroom, notice: 'Press release was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
