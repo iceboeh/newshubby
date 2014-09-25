@@ -11,12 +11,12 @@ class CompanyLaunch < ActiveRecord::Base
   friendly_id :title, use: :slugged
   
   has_attached_file :file1, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :file1, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :file1, :content_type => [/\Aimage\/.*\Z/, "application/pdf"]
   
   has_attached_file :file2, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :file2, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :file2, :content_type => [/\Aimage\/.*\Z/, "application/pdf"]
   
   has_attached_file :file3, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
-  validates_attachment_content_type :file3, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :file3, :content_type => [/\Aimage\/.*\Z/, "application/pdf"]
   
 end
