@@ -10,7 +10,7 @@
 				</ul>
 
 				<div class="tab-content">
-					<div class="tab-pane" id="signup">
+					<div class="tab-pane active" id="signup">
 						<div class="container-fluid">
 							<br>
 							<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>				
@@ -33,7 +33,7 @@
 							<% end %>
 						</div>
 					</div>
-					<div class="tab-pane active" id="login">
+					<div class="tab-pane" id="login">
 						<div class="container-fluid">
 							<br>						
 							<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>						
