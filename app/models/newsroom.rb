@@ -1,4 +1,6 @@
 class Newsroom < ActiveRecord::Base
+  validates :term_agreement, presence: true
+  
   extend FriendlyId
   friendly_id :company_name, use: :slugged
     
