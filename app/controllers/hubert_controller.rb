@@ -212,7 +212,7 @@ end
     
     @company_launch = @newsroom.company_launches.last
     unless @company_launch.nil? || @company_launch.launch.nil?
-      @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B %e")}")
+      @company_launch.update(title: "#{@newsroom.company_name} launches #{@company_launch.launch.strftime("%B %e")}", q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors)
       #end
     else
       skip_step
