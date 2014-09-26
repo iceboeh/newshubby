@@ -39,6 +39,7 @@
 		<% unless @newsroom.subscription.blank? %>
 		<% unless @company_launches.nil? %>
 		<% @company_launches.each do |company_launch| %>
+		<% if company_launch.interview_done? %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
 				
@@ -53,6 +54,7 @@
 					<% end %>
 			</div>
 		</div>
+		<% end %>
 		<% end %>
 		<% else %>
 		<% end %>

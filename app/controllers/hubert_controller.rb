@@ -8,13 +8,14 @@ class HubertController < ApplicationController
     @hubert_body = true
     @newsroom = current_newsroom
     
-    
     hex = SecureRandom.urlsafe_base64(6)
     
-    if @newsroom.company_launches.last.nil?
+    
+    # Create new press release if (1) there are no press releases (2) the last press release is finished 
+    
+    if @newsroom.company_launches.count == 0 || @newsroom.company_launches.last.interview_done?
       @newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex)
     end
-
     
     # Count number of steps
     
@@ -179,13 +180,14 @@ class HubertController < ApplicationController
     end
     
     when :congatulations
+      
   
 end    
 
     render_wizard
 
   def finish_wizard_path
-    newsroom_company_launch_path(@newsroom, @newsroom.company_launches.last)
+    newsroom_company_launch_path(@newsroom, @newsroom.company_launches[-2])
   end
 
   end

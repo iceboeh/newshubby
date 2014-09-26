@@ -17,13 +17,6 @@
 <% title "#{@company_launch.company_name} launches" %>
 <% end %>
 
-<% if newsroom_signed_in? && current_newsroom.company_name == @company_launch.newsroom.company_name && @company_launch.exclusive == true %>
-<div class="container text-center">
-	<div class="alert alert-warning">
-	  <strong>Your press release is not yet public. Use this link to share the press release and keep its exclusivity.</strong><br>
-		<%= newsroom_company_launch_url(@company_launch.newsroom, @company_launch) + "/?&hex=#{@company_launch.hex}" %>
-	</div></div>
-<% end %>
 
 <%= f.submit "Save Press Release", class: "btn btn-success omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 
@@ -79,27 +72,31 @@
 		
 	</div> <!-- / .row05 -->
 	
-	<div class="row row06">
+	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<h3>PROBLEM SOLVED</h3>
-			<p><%= @company_launch.newsroom.problem_solved %></p>
+			<h3>Problem Solved</h3>
+			<p><%= f.text_area :problem_solved, class: "form-control", rows: 4 %></p>
 		</div> 
-	</div> <!-- / .row06 -->
+   </div> <!-- / .row -->
+	
+ 	<div class="row">
+ 		<div class="col-xs-8 col-xs-offset-2">
+ 			<h3>Business Model</h3>
+ 			<p><%= f.text_area :business_model, class: "form-control", rows: 4 %></p>
+ 		</div> 
+    </div> <!-- / .row -->
 
-	<div class="row row07">
-		<div class="col-xs-4 col-xs-offset-2">
-			<h3>BUSINESS MODEL</h3>
-			<p><%= @company_launch.newsroom.business_model %></p>
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>Competitors</h3>
+			<p><%= f.text_area :competitors, class: "form-control", rows: 4 %></p>
 		</div> 
-		<div class="col-xs-4">
-			<h3>COMPETITIORS</h3>
-			<p><%= @company_launch.newsroom.competitors %></p>
-		</div>
-	</div> <!-- / .row -->
-
-	<div class="row row08">
-		<div class="col-xs-4 col-xs-offset-2">
-			<h3>FUNDING</h3>
+   </div> <!-- / .row -->
+	 
+	 
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>Funding</h3>
 			<ul class="noBullets">
 				<% @company_launch.newsroom.fundings.each do |funding| %>
 				<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %>
@@ -110,45 +107,74 @@
 				<% end %>
 				<% end %>
 			</ul>
-			
 		</div> 
-		<div class="col-xs-4">
-			<h3><%= "FOUNDER".pluralize.upcase %></h3>
+  </div> <!-- / .row -->
+
+
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h3>The Team</h3>
 			<ul class="noBullets">
 				<% @company_launch.newsroom.people.each do |person| %>
-				<% if person.founder? %>
 				<li><strong><%= person.name %></strong> (<%= person.role %>)<br><%= person.presentation %></li>
-				<% end %>
 				<% end %>
 			</ul>
 		</div>
-	</div>
-<!-- / .row -->
-	<!-- <div class="row row10">
-<div class="col-xs-6">
-<h3>TEAM</h3>
-<ul class="noBullets">
-<li><span class="semibold">Roland Johansson</span><br>Front-end Web Developer</li>
-<li><span class="semibold">Robert Knutsson</span><br>Back-end Web Developer</li>
-</ul>
-</div> 
-<div class="col-xs-6">
-<img src="media/images/placeholders/placeholder_team.jpg" class="img-responsive" alt="Photo of the team">
-</div>
-</div> <!-- / .row -->
+	</div> <!-- / .row -->
+	
+	<div class="nrRow nrFiles">
+		<div class="row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<div class="row">
+			<div class="col-xs-6">
+				<div class="thumbnail">
+						<%= f.text_field :link1, class: "form-control", placeholder: "First link" %><br>
+						<%= f.text_field :caption_link1, class: "form-control", placeholder: "Link description" %>
+				</div>
+			</div>
+	
+		<div class="col-xs-6">
+			<div class="thumbnail">
+					<%= f.text_field :link2, class: "form-control", placeholder: "Second link" %><br>
+					<%= f.text_field :caption_link2, class: "form-control", placeholder: "Link description" %>
+			</div>
+		</div>
+	
 		
+		<div class="col-xs-6">
+			<div class="thumbnail">
+				<%= f.file_field :file1, class: "form-control" %><br>
+				<%= f.text_field :caption_file1, class: "form-control", placeholder: "First file" %>
+			</div>
+		</div>
+	
+		<div class="col-xs-6">
+			<div class="thumbnail">
+				<%= f.file_field :file2, class: "form-control" %><br>
+				<%= f.text_field :caption_file2, class: "form-control", placeholder: "Second file" %>
+			</div>
+		</div>
+	
+		<div class="col-xs-6">
+			<div class="thumbnail">
+				<%= f.file_field :file3, class: "form-control" %><br>
+				<%= f.text_field :caption_file3, class: "form-control", placeholder: "Third file" %>
+			</div>
+		</div>
+	
+	<% end %>
+</div></div></div>
+</div>
+	
+	<br><hr>		
 <footer>
 	<div class="row row13">
 		<div class="col-xs-12">
-			<%= link_to "http://www.newshubby.com/", target: "_blank" do %><h6 class="text-center">PRESS RELEASE GENERATED WITH</h6>
+			<%= link_to "http://www.newshubby.com/", target: "_blank", class: "prGenerated" do %><p class="text-center">PRESS RELEASE GENERATED WITH</p>
 			<%= image_tag "newshubby_logotype.svg", class: "nhLogo", alt: "Link to www.newshubby.com" %>
 			<% end %>
 		</div> 
-	</div> <!-- / .row13 -->
+	</div>
 </footer>
 </div>
-
-
-
-
-<% end %>
+<br><br><br>

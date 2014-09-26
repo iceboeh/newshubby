@@ -4,6 +4,7 @@
 	<div class="container">
 		<h1 class="omnes">Latest Press Releases</h1><br>
 		<% @newsroom.company_launches.each do |company_launch| %>
+		<% if company_launch.interview_done? %>
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 nrRelease">
 					<div class="panel">
@@ -27,6 +28,7 @@
 					
 			</div>
 		</div>
+		<% end %>
 		<% end %>
 	</div>
 </div>

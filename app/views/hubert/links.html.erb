@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-sm-6">
 			<div class="numerals intNumerals center-block"><h4><%= @step_number %>/<%= @steps_max %></h4></div>
-			<h4 class="text-center">Links</h4>
+			<h4 class="text-center">Videos & Links</h4>
 			<br>
 			<%= render :layout => "form" do |f| %>
 			<%= f.fields_for :company_launches, @newsroom.company_launches.last do |company_launch| %>

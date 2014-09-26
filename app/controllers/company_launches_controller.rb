@@ -63,11 +63,7 @@ class CompanyLaunchesController < ApplicationController
        redirect_to plans_path
      else
      
-    @company_launch = current_newsroom.company_launches.create(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex )
-    
-    current_newsroom.company_launches.last.links.create
-    current_newsroom.company_launches.last.uploads.create
-    
+    @company_launch = current_newsroom.company_launches.new(q_what_you_do: @newsroom.q_what_you_do, q_how_you_achieve: @newsroom.q_how_you_achieve, q_clients: @newsroom.q_clients, differentiation: @newsroom.differentiation, problem_solved: @newsroom.problem_solved, business_model: @newsroom.business_model, competitors: @newsroom.competitors, hex: hex, interview_done: true, company_name: @newsroom.company_name, website: @newsroom.website, press_phone: @newsroom.press_phone, press_email: @newsroom.press_email, founded: @newsroom.founded)
     end
     
   end
@@ -102,11 +98,6 @@ class CompanyLaunchesController < ApplicationController
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
     @company_launch = @newsroom.company_launches.create(company_launch_params)
     
-    # Set attributes for company_launch if Newsroom already filled out
-    # Remember to write if clause
-    
-    @company_launch.assign_attributes(company_name: @newsroom.company_name, website: @newsroom.website, press_phone: @newsroom.press_phone, press_email: @newsroom.press_email, founded: @newsroom.founded)
-    
     respond_to do |format|
       if @company_launch.save
         format.html { redirect_to [@company_launch.newsroom, @company_launch], notice: 'Press release was successfully created.' }
@@ -139,7 +130,7 @@ class CompanyLaunchesController < ApplicationController
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])
     @company_launch.destroy
     respond_to do |format|
-      format.html { redirect_to @company_launch.newsroom, notice: 'Press release was successfully destroyed.' }
+      format.html { redirect_to edit_newsroom_path(current_newsroom), notice: 'Press release was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
