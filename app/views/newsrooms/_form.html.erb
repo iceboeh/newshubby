@@ -154,12 +154,7 @@
 		<div class="row">
 			<h1 class="omnes">People</h1>
 			<%= f.fields_for :people, role: "form" do |person| %>
-			<% if @newsroom.people.count == 1 %>
-			<div class="col-sm-6 col-sm-offset-3">
-			<% else %>
 			<div class="col-sm-6">
-			<% end %>
-				
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<%= person.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
@@ -168,12 +163,12 @@
 					<%= person.text_field :name, class: "form-control", placeholder: "Name"  %><br>
 					Founder <%= person.check_box :founder %>
 					<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
+					<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation"  %><br>
 							</div>
 						</div>
 					</div>	
-				</div>
-				<% end %>
-				<%= f.link_to_add :people do %><i class="glyphicon glyphicon-plus"></i> Add New Person<% end %>			
+					<% end %>
+				<%= f.link_to_add :people do %><i class="glyphicon glyphicon-plus"></i> Add New Person<% end %>
 			</div>
 	</div>
 </div>
@@ -209,7 +204,7 @@
 <div class="nrRow nrFiles">
 <div class="container">
 	<div class="row">
-		<h1 class="omnes">Files</h1>
+		<h1 class="omnes">Files & Links</h1>
 <% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
 	<% unless company_launch.link1.blank? %>
 		<div class="col-sm-4">
