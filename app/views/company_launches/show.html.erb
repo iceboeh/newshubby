@@ -51,7 +51,7 @@
 		<div class="col-xs-12">
 			<h1 class="text-center pressReleaseTitle omnes">
 				<% if @company_launch.title.nil? %>
-				<%= @newsroom.company_name %> launches <% unless @company_launch.launch.nil? %><%= @company_launch.launch.strftime("%B %m") %><% end %>
+				<%= @newsroom.company_name %> launches <% unless @company_launch.launch.nil? %><%= @company_launch.launch.strftime("%B, #{company_launch.launch.day.ordinalize}") %><% end %>
 				<% else %>
 				<%= @company_launch.title %>
 				<% end %>
