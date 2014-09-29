@@ -65,7 +65,7 @@
 			<p><%= simple_format(@company_launch.q_what_you_do) %></p>
 			<p><%= simple_format(@company_launch.q_how_you_achieve) %></p>
 
-			<p><i>- <% unless @company_launch.quote.nil? %><%= @company_launch.quote.gsub(/\.\z/, '').chomp(". ").chomp(".") %><% end %></i><% unless @company_launch.newsroom.people.first.nil? %>, says <%= @company_launch.newsroom.people.first.name %>.</p><% end %>
+			<p>— <% unless @company_launch.quote.nil? %><%= @company_launch.quote.gsub(/\.\z/, '').chomp(". ").chomp(".") %><% end %><% unless @company_launch.newsroom.people.first.nil? %>, says <%= @company_launch.newsroom.people.first.name %>.</p><% end %>
 			
 			<p><%= simple_format(@company_launch.q_clients) %> <%= simple_format(@company_launch.differentiation) %></p>
 			
