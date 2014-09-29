@@ -181,7 +181,7 @@
 		<%= f.fields_for :fundings do |funding| %>
 		<hr>
 		<%= funding.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
-		<p><%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding"], class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></p>
+		<p><%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></p>
 		<p><strong><%= funding.text_field :name, class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></strong> <%= funding.date_select :date, class: "form-control"  %>
 			<div class="form-group">
 				<div class="input-group">
@@ -217,12 +217,7 @@
 					<% end %>
 				</div>
 				<div class="caption">
-					<% if company_launch.link1.include?("youtube.com" || "vimeo.com") %>
-					<p><small><%= company_launch.caption_link1 %></small></p>
-					<% elsif %>
 					<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
-					<% end %>
-
 				</div>
 			</div>
 		</div>
@@ -233,18 +228,13 @@
 			<div class="thumbnail">
 				<div class="embed-responsive embed-responsive-16by9">
 					<% if company_launch.link2.include? "youtube.com" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link2.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
 					<% elsif company_launch.link2.include? "vimeo.com" %>
 					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 					<% end %>
 				</div>
 				<div class="caption">
-					<% if company_launch.link2.include?("youtube.com" || "vimeo.com") %>
-					<p><small><%= company_launch.caption_link2 %></small></p>
-					<% elsif %>
 					<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
-					<% end %>
-
 				</div>
 			</div>
 		</div>

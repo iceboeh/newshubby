@@ -15,7 +15,7 @@
 					<%= funding.link_to_remove do %><span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><% end %><br>
 			<p>
 			<%= funding.label :investment_type %>&emsp;
-			<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding"], rows: 3, id: "textarea", class: "form-control", onfocus: "this.value = this.value;", max: 200, placeholder: "Name" %>
+			<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], rows: 3, id: "textarea", class: "form-control", onfocus: "this.value = this.value;", max: 200, placeholder: "Name" %>
 			</p>
 			
 			<p>
