@@ -156,12 +156,7 @@
 						<% end %>
 					</div>
 					<div class="caption">
-						<% if @company_launch.link1.include?("youtube.com" || "vimeo.com") %>
-						<p><small><%= @company_launch.caption_link1 %></small></p>
-						<% elsif %>
 						<p><small><%= link_to @company_launch.caption_link1, @company_launch.link1 %></small></p>
-						<% end %>
-
 					</div>
 				</div>
 			</div>
@@ -178,12 +173,7 @@
 						<% end %>
 					</div>
 					<div class="caption">
-						<% if @company_launch.link2.include?("youtube.com" || "vimeo.com") %>
-						<p><small><%= @company_launch.caption_link2 %></small></p>
-						<% elsif %>
 						<p><small><%= link_to @company_launch.caption_link2, @company_launch.link2 %></small></p>
-						<% end %>
-
 					</div>
 				</div>
 			</div>
