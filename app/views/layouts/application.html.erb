@@ -23,6 +23,13 @@
 
 </head>
 
+
+<% if flash[:alert] %>
+	<div class="alert alert-danger noticeFade">
+		<%= flash[:alert] %>
+	</div>
+<% end %>
+
 <% if flash[:error] %>
 	<div class="alert alert-danger noticeFade">
 		<%= flash[:error] %>

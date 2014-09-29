@@ -70,12 +70,13 @@ class HubertController < ApplicationController
         @newsroom.create_subscription(plan_id: 1, email: @newsroom.email, end: Time.now + eval(duration) )     # create subscription with end time X months after signup
         @code_match.destroy      # retire code
       else
+        flash[:error] = "Invalid signup code. Try again."
         jump_to(:subscription)
       end
     
     end
       
-    if @newsroom.logo.url.nil?
+    if @newsroom.logo_file_name.nil?
       @step_number = 2
     else 
       skip_step

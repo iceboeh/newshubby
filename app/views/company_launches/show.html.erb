@@ -65,7 +65,7 @@
 			<p><%= simple_format(@company_launch.q_what_you_do) %></p>
 			<p><%= simple_format(@company_launch.q_how_you_achieve) %></p>
 
-			<p><i>- <% unless @company_launch.quote.nil? %><%= @company_launch.quote.gsub(/\.\z/, '') %><% end %></i><% unless @company_launch.newsroom.people.first.nil? %>, says <%= @company_launch.newsroom.people.first.name %>.</p><% end %>
+			<p><i>- <% unless @company_launch.quote.nil? %><%= @company_launch.quote.gsub(/\.\z/, '').chomp(". ").chomp(".") %><% end %></i><% unless @company_launch.newsroom.people.first.nil? %>, says <%= @company_launch.newsroom.people.first.name %>.</p><% end %>
 			
 			<p><%= simple_format(@company_launch.q_clients) %> <%= simple_format(@company_launch.differentiation) %></p>
 			
@@ -172,7 +172,7 @@
 				<div class="thumbnail">
 					<div class="embed-responsive embed-responsive-16by9">
 						<% if @company_launch.link2.include? "youtube.com" %>
-						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= @company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+						<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= @company_launch.link2.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
 						<% elsif @company_launch.link2.include? "vimeo.com" %>
 						<iframe src="//player.vimeo.com/video/<%= @company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 						<% end %>
