@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   window.setTimeout("fadeMyDiv();", 3000); //call fade in 3 seconds
+   window.setTimeout("fadeMyDiv();", 5000); //call fade in 3 seconds
  }
 )
 
