@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
   root "newsrooms#index"
 
-  devise_for :newsrooms, :controllers => { :registrations => "registrations" }
-
+  devise_for :newsrooms
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

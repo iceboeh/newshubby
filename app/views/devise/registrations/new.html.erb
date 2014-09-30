@@ -29,7 +29,7 @@
 								<%= f.submit "Get started", class: "btn btn-primary omnes" %>
 								<div class="checkbox">
 									<label>
-										<input type="checkbox"><small>I have read and agree to our <a href="#">terms and conditions</small></a>.
+										<%= f.check_box :term_agreement %><small>I have read and agree to our <%= link_to "terms and conditions", terms_of_service_path, target: "_blank" %></small>.
 									</label>
 								</div>
 							<% end %>
