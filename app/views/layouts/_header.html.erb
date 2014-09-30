@@ -45,8 +45,9 @@
 						<% unless current_newsroom.company_launches.last.nil? || current_newsroom.company_launches.last.text != nil %>
 						<% if current_newsroom.company_launches.last.quote.blank? %>
 						<% end %>
-						<% unless current_newsroom.company_launches[-2].nil? %>
-						<% unless current_newsroom.company_launches[-2].interview_done? || current_newsroom.company_launches.last.text? %>
+						<% unless current_newsroom.company_launches.last.nil? %>
+						<% unless current_newsroom.company_launches.last.text? || current_newsroom.company_launches.last.interview_done? && current_newsroom.company_launches[-2].interview_done? %>
+						 
 						<li><%= link_to hubert_index_path do %>Resume Interview <small><i class="glyphicon glyphicon-repeat"></i></small><% end %></li>
 						<% else %>
 						<% end %><% end %><% end %>

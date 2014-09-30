@@ -37,7 +37,7 @@ class NewsroomsController < ApplicationController
   # GET /newsrooms/1.json
   def show
     
-    @reg_body = true
+    @nrBody = true
     
     # Control ownership
     if @newsroom == current_newsroom
@@ -62,6 +62,8 @@ class NewsroomsController < ApplicationController
 
   # GET /newsrooms/1/edit
   def edit
+    
+    @nrBody = true
     
     # Control ownership
     if @newsroom != current_newsroom
