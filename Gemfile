@@ -65,6 +65,8 @@ gem 'capistrano-ext'
 
 # Sunspot Solr
 gem 'sunspot_rails'
+gem 'capistrano-bundler'
+gem 'capistrano-rails'
 
 gem 'sunspot_solr'
 
