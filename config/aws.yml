@@ -1,0 +1,7 @@
+development:
+  access_key_id: AKIAIGQ6JPMY7A7SIM5A
+  secret_access_key: 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
+
+production:
+  access_key_id: ENV['S3_ACCESS_KEY']
+  secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
