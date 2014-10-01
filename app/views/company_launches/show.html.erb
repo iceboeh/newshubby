@@ -82,7 +82,7 @@
 				 and is bootstrapped.
 				 <% elsif @company_launch.newsroom.fundings.first.investment_type == "No funding" %>
 				 <% else %>
-				 and is funded by a <%= @company_launch.newsroom.fundings.first.investment_type %>, <%= @company_launch.newsroom.fundings.first.name %>.</p>
+				 and is funded by a <% unless @company_launch.newsroom.fundings.first.investment_type == "Other" %><%= @company_launch.newsroom.fundings.first.investment_type %>,<% end %> <%= @company_launch.newsroom.fundings.first.name %>.</p>
 					<% end %>
 					<% else %>
 					<%= simple_format(@company_launch.text) %>
