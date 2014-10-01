@@ -162,6 +162,8 @@
 				<div class="embed-responsive embed-responsive-16by9">
 					<% if company_launch.link1.include? "youtube.com" %>
 					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+					<% elsif @company_launch.link1.include? "youtu.be" %>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>	
 					<% elsif company_launch.link1.include? "vimeo.com" %>
 					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 					<% end %>
@@ -178,7 +180,9 @@
 			<div class="thumbnail">
 				<div class="embed-responsive embed-responsive-16by9">
 					<% if company_launch.link2.include? "youtube.com" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link2.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link2.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
+					<% elsif company_launch.link2.include? "youtu.be" %>
+					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>	
 					<% elsif company_launch.link2.include? "vimeo.com" %>
 					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 					<% end %>
