@@ -95,8 +95,10 @@ Rails.application.configure do
   domain: "newshubby.com",
   authentication: "plain",
   enable_starttls_auto: true,
-  user_name: Rails.application.secrets.gmail_user_name,
-  password: Rails.application.secrets.gmail_password
+  #user_name: Rails.application.secrets.gmail_user_name,
+  #password: Rails.application.secrets.gmail_password
+  user_name: ENV['EMAIL_USER_NAME'],
+  password: ENV['EMAIL_PASSWORD']
   }
   
   # Amazon Web Services. Bucket for Paperclip Uploads
