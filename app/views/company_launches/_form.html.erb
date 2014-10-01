@@ -217,41 +217,43 @@
 		<% end %>
 	
 		
-			<% unless @company_launch.file1.blank? %>
 			<div class="col-xs-6">
-				<div class="thumbnail">
+				<div class="thumbnail">	
+					<% unless @company_launch.file1.blank? %>
 					<%= link_to @company_launch.file1.url, target: "_blank" do %><%= image_tag @company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<% end %>
 					<%= f.file_field :file1, class: "form-control" %>
 					<div class="caption">
 						<p><small><%= f.text_field :caption_file1, class: "form-control" %></small></p>
 					</div>
 				</div>
 		</div>
-		<% end %>
 	
-			<% unless @company_launch.file2.blank? %>
+			
 			<div class="col-xs-6">
 				<div class="thumbnail">
-					<%= link_to @company_launch.file2.url, target: "_blank" do %><%= image_tag @company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<% unless @company_launch.file2.blank? %>
+					<%= link_to @company_launch.file2.url, target: "_blank" do %><%= image_tag @company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %><% end %>
 					<%= f.file_field :file2, class: "form-control" %>
 					<div class="caption">
 						<p><small><%= f.text_field :caption_file2, class: "form-control" %></small></p>
 					</div>
 				</div>
 		</div>
-		<% end %>
 	
-			<% unless @company_launch.file3.blank? %>
+			
 			<div class="col-xs-6">
 				<div class="thumbnail">
-					<%= image_tag @company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
+					<% unless @company_launch.file3.blank? %>
+					<%= link_to @company_launch.file3.url, target: "_blank" do %><%= image_tag @company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
+					<% end %>
 					<%= f.file_field :file3, class: "form-control" %>
 					<div class="caption">
 						<p><small><%= f.text_field :caption_file3, class: "form-control" %></small></p>
 					</div>
 				</div>
 		</div>
-		<% end %>
+		
 	
 	<% end %>
 </div></div></div>
