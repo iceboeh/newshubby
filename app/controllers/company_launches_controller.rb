@@ -151,6 +151,6 @@ class CompanyLaunchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_launch_params
-      params.require(:company_launch).permit(:title, :newsroom_id, :exclusive, :hex, :quote, :link1, :link2, :file1, :file2, :file3, :embargo, :launch, :caption_file1, :caption_file2, :caption_file3, :caption_link1, :caption_link2, :text, :interview_done, :_destroy, :business_model, :problem_solved, :competitors, newsroom_attributes: [:company_name, :website, :press_email, :press_phone], link_attributes: [:caption, :link, ])
+      params.require(:company_launch).permit(:title, :newsroom_id, :exclusive, :hex, :quote, :link1, :link2, :file1, :file2, :file3, :embargo, :quote, :q_what_you_do, :q_how_you_achieve, :q_clients, :differentiation, :launch, :caption_file1, :caption_file2, :caption_file3, :caption_link1, :caption_link2, :text, :interview_done, :_destroy, :business_model, :problem_solved, :competitors, newsroom_attributes: [:company_name, :website, :press_email, :press_phone], link_attributes: [:caption, :link])
     end
 end
