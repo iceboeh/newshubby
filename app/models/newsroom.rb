@@ -7,21 +7,22 @@ class Newsroom < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
 
-  searchable do
-    text :company_name, :website, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :location
-    
-    text :company_launches do
-      company_launches.map(&:title)
-    end
-    
-    text :people do
-      people.map(&:name)
-    end
-    
-    text :fundings do
-      fundings.map(&:name)
-    end
-  end
+
+#  searchable do
+#    text :company_name, :website, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :location
+#   
+#    text :company_launches do
+#      company_launches.map(&:title)
+#    end
+#    
+#    text :people do
+#      people.map(&:name)
+#    end
+#    
+#    text :fundings do
+#      fundings.map(&:name)
+#    end
+#  end
 
   # Press release versions
   has_many :company_launches
