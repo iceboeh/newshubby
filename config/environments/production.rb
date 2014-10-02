@@ -108,7 +108,7 @@ begin
     :storage => :s3,
 #    :s3_host_name => 'REMOVE_THIS_LINE_IF_UNNECESSARY',
     :s3_credentials => {
-      :bucket => 'newshubby-paperclip'
+      :bucket => 'newshubby-heroku'
     }
   }
 end
