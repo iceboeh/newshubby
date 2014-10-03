@@ -156,7 +156,7 @@
 	<div class="row">
 		<h1 class="omnes">Files & Links</h1>
 <% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
-	<% unless company_launch.link1.nil? %>
+	<% unless company_launch.link1.blank? %>
 		<div class="col-sm-4">
 			<div class="thumbnail">
 				<div class="embed-responsive embed-responsive-16by9">
@@ -175,7 +175,7 @@
 		</div>
 	<% end %>	
 	
-	<% unless company_launch.link2.nil? %>
+	<% unless company_launch.link2.blank? %>
 		<div class="col-sm-4">
 			<div class="thumbnail">
 				<div class="embed-responsive embed-responsive-16by9">
