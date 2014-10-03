@@ -64,11 +64,11 @@ gem 'capistrano'
 gem 'capistrano-ext'
 
 # Sunspot Solr
-gem 'sunspot_rails'
+#gem 'sunspot_rails'
 gem 'capistrano-bundler'
 gem 'capistrano-rails'
 
-gem 'sunspot_solr'
+#gem 'sunspot_solr'
 
 # gem 'bootstrap-sass', '~> 3.2.0'
 # gem 'sass-rails', '>= 3.2'
