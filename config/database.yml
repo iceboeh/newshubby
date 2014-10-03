@@ -21,7 +21,7 @@ test:
   database: db/test.sqlite3
 
 #	Heroku
-#production:
-#  adapter: postgresql
-#  encoding: unicode
-#  database: newshubby
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: newshubby
