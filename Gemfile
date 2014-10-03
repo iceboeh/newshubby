@@ -10,7 +10,7 @@ gem 'rails'
 gem 'mysql2'
 
 # Use postgres for Heroku
-gem 'pg'
+#gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
