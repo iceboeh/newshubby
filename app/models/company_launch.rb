@@ -6,7 +6,6 @@ class CompanyLaunch < ActiveRecord::Base
   accepts_nested_attributes_for :links, allow_destroy: true
   accepts_nested_attributes_for :uploads, allow_destroy: true
   
-  
   extend FriendlyId
   friendly_id :title, use: :slugged
   

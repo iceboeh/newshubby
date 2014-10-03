@@ -22,11 +22,11 @@ class NewsroomsController < ApplicationController
       @disable_header = true
     end
     
-    unless params[:search].nil? || params[:search].strip.empty?
-      @search = Sunspot.search Newsroom do
-        fulltext params[:search]
-      end
-      @newsrooms = @search.results
+    if params[:search]
+     # @search = Sunspot.search Newsroom do
+      #  fulltext params[:search]
+      #end
+      @newsrooms = Newsroom.search(params[:search])
     else 
       @newsrooms = Newsroom.all
     end

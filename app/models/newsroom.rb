@@ -8,6 +8,10 @@ class Newsroom < ActiveRecord::Base
   after_validation :geocode, :if => :location_changed?
 
 
+  def self.search(query)
+    where("company_name LIKE ?", "%#{query}%") 
+  end
+
 #  searchable do
 #    text :company_name, :website, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :location
 #   
