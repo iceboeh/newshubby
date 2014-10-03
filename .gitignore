@@ -16,7 +16,7 @@
 /tmp
 
 # Ignore databse
-/config/database.yml
+#/config/database.yml
 /config/database_vps.yml
 
 # Ignore Amazon stuff
