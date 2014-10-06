@@ -16,10 +16,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-<!-- 
 	<script type="text/javascript" src="//use.typekit.net/lbn2smo.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
--->
+
 	<%= analytics_init if Rails.env.production? %>
 
 </head>
