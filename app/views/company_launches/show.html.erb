@@ -34,7 +34,11 @@
 			<% end %>
 			<p><p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %><% unless @newsroom.twitter.nil? %><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %><% end %></p></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-envelope"></span> <%= mail_to @company_launch.newsroom.press_email, @company_launch.newsroom.press_email %></p>
-			<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> <a href="tel:+4555555555"><%= @company_launch.newsroom.press_phone %></a></p>
+				<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> 
+					<% if @company_launch.newsroom.press_phone.start_with?('+') %><%= link_to @company_launch.newsroom.press_phone, "tel:#{@company_launch.newsroom.press_phone}" %>
+					<% else %>
+					<%= @company_launch.newsroom.press_phone %>
+					<% end %></p>
 			<p><span class="nrContactIcons glyphicon glyphicon-map-marker"></span> <%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
 		</div>
 		<div class="col-xs-4">
