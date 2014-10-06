@@ -74,15 +74,6 @@ ActiveRecord::Schema.define(version: 20140925124038) do
     t.datetime "updated_at"
   end
 
-  create_table "founders", force: true do |t|
-    t.string   "name"
-    t.string   "role"
-    t.string   "presentation"
-    t.string   "newsroom_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
     t.integer  "sluggable_id",              null: false
