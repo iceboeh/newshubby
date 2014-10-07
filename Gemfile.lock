@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/jetthoughts/yaml_db.git
-  revision: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
-  ref: fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba
-  specs:
-    yaml_db (0.2.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -97,6 +90,7 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.2)
     multi_json (1.10.1)
+    mysql2 (0.3.16)
     nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -152,7 +146,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    sqlite3 (1.3.9)
     sshkit (1.5.1)
       colorize
       net-scp (>= 1.1.2)
@@ -171,6 +164,7 @@ GEM
       rack (>= 1.0)
     wicked (1.1.0)
       rails (>= 3.0.7)
+    yaml_db (0.2.3)
 
 PLATFORMS
   ruby
@@ -190,6 +184,7 @@ DEPENDENCIES
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
+  mysql2
   nested_form
   paperclip (~> 4.1)
   paymill
@@ -198,8 +193,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
-  sqlite3
   turbolinks
   uglifier (>= 1.3.0)
   wicked
-  yaml_db!
+  yaml_db
