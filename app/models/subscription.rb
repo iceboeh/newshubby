@@ -17,7 +17,7 @@ class Subscription < ActiveRecord::Base
     end
   rescue Paymill::PaymillError => e
     logger.error "Paymill error while creating customer: #{e.message}"
-    errors.add :base, "There was a problem with your credit card. Please try again."
+    errors.add :base, "There was a problem with your credit card. Please try again. #{e.message}"
     false
   end
 end

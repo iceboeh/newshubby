@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<%= favicon_link_tag 'images/favicon.ico' %>
+	
   <title><%= yield(:title) || NewsHubby %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	
-  <!-- 
 	
 	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
 	
-	<script type="text/javascript">
-      var PAYMILL_PUBLIC_KEY = '<%= PAYMILL_PUBLIC_KEY %>';
-	</script>
-	-->
+  <script type="text/javascript">
+      var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
+  </script>
+
 	
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>

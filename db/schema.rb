@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925124038) do
+ActiveRecord::Schema.define(version: 20141007081128) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20140925124038) do
     t.string   "caption_file2"
     t.string   "caption_file3"
     t.text     "text"
-    t.string   "q_what_you_do"
+    t.text     "q_what_you_do"
     t.string   "q_how_you_achieve"
     t.string   "q_clients"
     t.string   "differentiation"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20140925124038) do
     t.string   "name"
     t.string   "email"
     t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "founders", force: true do |t|
+    t.string   "name"
+    t.string   "role"
+    t.string   "presentation"
+    t.string   "newsroom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,7 +122,7 @@ ActiveRecord::Schema.define(version: 20140925124038) do
     t.string   "press_email"
     t.date     "founded"
     t.string   "q_who_are_you"
-    t.string   "q_what_you_do"
+    t.text     "q_what_you_do"
     t.string   "q_how_you_achieve"
     t.string   "q_clients"
     t.datetime "created_at"
