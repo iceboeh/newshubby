@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007081128) do
+ActiveRecord::Schema.define(version: 20141007083423) do
 
   create_table "codes", force: true do |t|
     t.string   "code"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141007081128) do
     t.string   "press_phone"
     t.string   "press_email"
     t.date     "founded"
-    t.string   "quote"
+    t.text     "quote"
     t.string   "link1"
     t.string   "link2"
     t.boolean  "exclusive",          default: true
@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 20141007081128) do
     t.string   "caption_file3"
     t.text     "text"
     t.text     "q_what_you_do"
-    t.string   "q_how_you_achieve"
-    t.string   "q_clients"
-    t.string   "differentiation"
-    t.string   "problem_solved"
-    t.string   "business_model"
-    t.string   "competitors"
+    t.text     "q_how_you_achieve"
+    t.text     "q_clients"
+    t.text     "differentiation"
+    t.text     "problem_solved"
+    t.text     "business_model"
+    t.text     "competitors"
     t.boolean  "interview_done"
   end
 
@@ -123,8 +123,8 @@ ActiveRecord::Schema.define(version: 20141007081128) do
     t.date     "founded"
     t.string   "q_who_are_you"
     t.text     "q_what_you_do"
-    t.string   "q_how_you_achieve"
-    t.string   "q_clients"
+    t.text     "q_how_you_achieve"
+    t.text     "q_clients"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
@@ -143,10 +143,10 @@ ActiveRecord::Schema.define(version: 20141007081128) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "location"
-    t.string   "business_model"
-    t.string   "competitors"
-    t.string   "differentiation"
-    t.string   "problem_solved"
+    t.text     "business_model"
+    t.text     "competitors"
+    t.text     "differentiation"
+    t.text     "problem_solved"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "twitter"
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 20141007081128) do
   create_table "people", force: true do |t|
     t.string   "name"
     t.string   "role"
-    t.string   "presentation"
+    t.text     "presentation"
     t.string   "newsroom_id"
     t.datetime "created_at"
     t.datetime "updated_at"
