@@ -90,6 +90,7 @@
               <p><%= f.text_area :business_model, placeholder: "Business model" %></p>
               <h4>Funding</h4>
 							<%= f.fields_for :fundings do |funding| %>
+							<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
 	              <p><%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control" %>: <%= funding.text_field :name %><br>
 								<%= funding.date_select :date, order:  [:day, :month, :year]  %> | $<%= funding.number_field :amount, placeholder: 1000 %></p>
 							<% end %>
@@ -98,83 +99,15 @@
               <h4>Team</h4>
               <div class="row">
 								<%= f.fields_for :people do |person| %>
-                  <div class="col-xs-6">
+									<div class="col-xs-6">
+										<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
                       <p><%= person.text_field :name, placeholder: "Name" %>&nbsp;<%= person.text_field :role, placeholder: "Role at #{@newsroom.company_name}" %><br><%= person.text_field :presentation, placeholder: "Presentation" %></p>
                   </div>
 								<% end %>
-								<%= f.link_to_add :people, class: "" do %> + Add funding<% end %>
+								<%= f.link_to_add :people, class: "" do %> + Add team member<% end %>
               </div> <!-- / .row -->
           </div> <!-- / .col-md-8 -->
       </div> <!-- /.row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
-
-
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.links.each do |link| %>
-							<% unless link.link.nil? %>
-              
-							<% if link.link.include? "youtube.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-              <% if link.link.include? "youtu.be" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-              <% if link.link.include? "vimeo.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-							<% end %><% end %><% end %>
-							
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.uploads.each do |upload| %>
-							<% unless upload.file.blank? %>
-              <div class="col-sm-4">
-                  <div class="thumbnail">
-											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
-                      <div class="caption">
-                          <p><small><%= upload.caption %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							<% end %><% end %>
-          </div> <!-- / .row -->
-      </div> <!-- / .col-md-8 -->
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 

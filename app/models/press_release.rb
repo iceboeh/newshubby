@@ -17,17 +17,17 @@ class PressRelease < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   
-  validate :validate_specifics
+  #validate :validate_specifics
   
   def self.search(query)
     where("title LIKE ?", "%#{query}%") 
   end
   
-  def validate_specifics
-    pressrelease_type.fields.each do |field|
-      if field.required? && specifics[field.name].blank?
-        errors.add field.name, "cannot be blank"
-      end
-    end
-  end
+  #def validate_specifics
+  #  pressrelease_type.fields.each do |field|
+  #    if field.required? && specifics[field.name].blank?
+  #      errors.add field.name, "cannot be blank"
+  #    end
+  #  end
+  #end
 end
