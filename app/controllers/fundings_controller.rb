@@ -16,7 +16,7 @@ class FundingsController < ApplicationController
   # GET /fundings/new
   def new
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
-    @funding = current_newsroom.fundings.new    
+    @funding = current_newsroom.fundings.new
   end
 
   # GET /fundings/1/edit

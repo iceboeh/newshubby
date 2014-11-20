@@ -1,59 +1,69 @@
-
-<div class="container">
-
-<%= debug @subscription %>
-
-<h1>Signing up for <%= @subscription.plan.name.capitalize %></h1>
-<p><%= number_to_currency @subscription.plan.price, unit: "SEK" %></p>
-
-<%= form_for [@subscription] do |f| %>
-  <% if @subscription.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
-      <ul>
-      <% @subscription.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.hidden_field :newsroom_id, :value => current_newsroom.id %>
-
-  <%= f.hidden_field :plan_id %>
-
-  <%= f.hidden_field :paymill_card_token %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
-  <% if @subscription.paymill_card_token.present? %>
-    Credit card has been provided.
-  <% else %>
-    <div class="field">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_code, "Security Code on Card (CVC)" %>
-      <%= text_field_tag :card_code, nil, name: nil %>
-    </div>
-    <div class="field">
-      <%= label_tag :card_month, "Card Expiration" %>
-      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
-    </div>
-  <% end %>
-  <div id="paymill_error">
-    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
-  </div>
-  <div class="actions">
-    <%= f.submit "Confirm Subscription", class: "btn btn-success" %>
-  </div>
-<% end %>
+<div class="shortPage">
+	<div class="container">
+		<div class="col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Your Subcription Choice</div>
+				<div class="panel-body">
+					<h3><%= number_to_currency @subscription.plan.price, unit: "€" %> a month</h3>
+					<ul>
+						<li>1 year Commitment</li>
+						<li>Pay once now</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">Credit Card Information</div>
+				<div class="panel-body">
+					<div class="col-sm-12">
+						<%= form_for @subscription do |f| %>
+						  <% if @subscription.errors.any? %>
+						    <div class="error_messages">
+						      <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+						      <ul>
+						      <% @subscription.errors.full_messages.each do |msg| %>
+						        <li><%= msg %></li>
+						      <% end %>
+						      </ul>
+						    </div>
+						  <% end %>
+						
+						  <%= f.hidden_field :plan_id %>
+							<%= f.hidden_field :email, value: current_newsroom.email %>
+						  <%= f.hidden_field :paymill_card_token %>
+						
+							<div class="form-group">
+								<%= label_tag :card_number, "Credit Card Number" %><br>
+								<%= text_field_tag :card_number, nil, name: nil %>
+							</div>
+							<div class="form-group">
+								<%= f.label :name, "Cardholder name" %><br>
+								<%= f.text_field :name %>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<%= label_tag :card_month, "Card Expiration" %><br>
+						      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+						      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<%= label_tag :card_code, "Security Code on Card (CVV)" %>
+									<%= text_field_tag :card_code, nil, name: nil %>
+								</div>
+							</div>
+							<div class="form-group">
+								<%= f.submit "Confirm Subscription", class: "btn btn-success center-block" %>
+							</div>
+							<div id="paymill_error">
+						    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
+						  </div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

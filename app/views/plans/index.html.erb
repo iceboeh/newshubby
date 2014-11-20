@@ -1,6 +1,6 @@
 <% title "NewsHubby | Pricing" %>
 
-
+<div class="shortPage">
 <div class="container">
 	<div class="row text-center">
 
@@ -69,7 +69,25 @@
 <% end %>
 
 <% end %>
-	
-
 	</div>
+</div>
+
+<%= nested_form_for @newsroom do |f| %>
+  <% if @newsroom.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this showroom from being saved:</h2>
+
+      <ul>
+      <% @newsroom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+	<% end %>
+		
+			<%= f.text_field :code, rows: 6, id: "textarea", max: "20" do %> <% end %>
+			<%= f.submit "Code", class: "btn btn-success" %>
+			
+<% end%>
+<div class="push"></div>
 </div>

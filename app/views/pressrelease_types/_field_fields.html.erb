@@ -1,0 +1,10 @@
+<fieldset>
+	<%= f.select :field_type, %w[text_field check_box date_select] %>
+	<%= f.text_field :name, placeholder: "field_name" %>
+	<%= f.text_field :question, placeholder: "Question" %>
+	<%= f.text_field :example, placeholder: "Example" %>
+	<%= f.text_field :prefill, placeholder: "Prefill text" %>
+	<%= f.check_box :required %><%= f.label :required %>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "[remove]", "#", class: "remove_fields" %>
+</fieldset>

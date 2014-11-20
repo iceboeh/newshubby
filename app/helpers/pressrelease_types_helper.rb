@@ -1,0 +1,2 @@
+module PressreleaseTypesHelper
+end

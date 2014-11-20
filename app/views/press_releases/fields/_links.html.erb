@@ -1,0 +1,44 @@
+<div class="question" id="q0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <p class="panel-title text-left">Link</p>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body">
+							        <%= f.text_field :link, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "Link" %><br>
+											<%= f.text_field :caption, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "Caption" %>
+										</div> <!-- / .panel-body -->
+                    <div class="panel-footer clearfix">
+                        <div class="pull-left" id="textareaFeedback"></div>
+                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                    </div><!--/ .panel-footer -->
+                </div> <!-- / .panel -->
+            </div> <!-- / .col-xs-12 -->
+        </div> <!-- / .row -->
+    </div> <!-- / .container-fluid -->
+</div> <!-- / .question -->
+
+<div class="overlay-message hidden">
+		<div class="panel panel-default hidden" id="a">
+        <div class="panel-body">
+            <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              Relevant links
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Remember this and that
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->

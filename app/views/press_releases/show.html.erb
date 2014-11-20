@@ -1,0 +1,12 @@
+<% if @owner %>
+<% if @press_release.exclusive? %>
+	<div class="alert alert-danger noticeFade">
+		<strong>Your press release is not yet public.<br>
+			Use this link to share the press release and keep its exclusivity.</strong><br>
+	<%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %>
+	</div>
+<% end %>
+	<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+<% end %>
+
+<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize.underscore}" %>

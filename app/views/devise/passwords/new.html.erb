@@ -1,15 +1,21 @@
-<div class="container">
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4 whiteBox">
-			<form role="form">
-				<div class="form-group">
-					<h3 class="omnes text-center">Reset password</h3>
-					<%= f.email_field :email, autofocus: true, class: "form-control", id: "passRecoveryEmail", placeholder: "Email" %>
+<%= @nhBkg = true %>
+
+<div class="shortPage">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<div class="panel panel-body">
+					<h4 class="text-center">Forgot Password?</h4>
+					<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+					  <%= devise_error_messages! %>
+						<div class="form-group">
+							<%= f.email_field :email, autofocus: true, class: "form-control", id: "passRecoveryEmail", placeholder: "Enter your email address" %>
+						</div>
+						<%= f.submit "Send me recovery instructions", class: "btn btn-primary omnes btn-block" %>
+					</div>
+					<% end %>
 				</div>
-				<%= f.submit "Send me recovery instructions", class: "btn btn-primary omnes btn-block" %>
+			</div>
 		</div>
+		<div class="push"></div>
 	</div>
-</div>
-<% end %>

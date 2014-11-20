@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  resources :pressrelease_types
+
   get '/about' => 'contacts#about'
   get '/terms_of_service' => 'newsrooms#terms_of_service'
   get '/pressreleasetype' => 'company_launches#type'
+  get '/select' => 'press_releases#select'
+  get '/pressreleases' => 'newsrooms#allpressreleases'
+  get '/introduction' => 'newsrooms#introduction'
+  
   
   resources :plans
 
@@ -13,7 +21,9 @@ Rails.application.routes.draw do
   resources :contacts
 
   resources :newsrooms, :path => '/' do
-    resources :company_launches, :path => 'pressreleases'
+    get :autocomplete_press_release_title, :on => :collection
+    resources :press_releases, path: 'pressreleases'
+    #resources :company_launches, :path => 'pressreleases'
     resources :people
     resources :fundings, :path => 'funding'
   end

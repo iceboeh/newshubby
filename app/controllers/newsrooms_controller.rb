@@ -1,6 +1,8 @@
 class NewsroomsController < ApplicationController
   before_action :set_newsroom, only: [:show, :edit, :update, :destroy]
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  
+  autocomplete :press_release, :title
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:newsroom_update) { |u| 
@@ -11,24 +13,28 @@ class NewsroomsController < ApplicationController
   def terms_of_service
     
   end
+  
+  def introduction
+    @newsroom = current_newsroom
+  end
+  
+  def allpressreleases
+    @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+  end
 
   # GET /newsrooms
   # GET /newsrooms.json
   def index
-    
+    @transparentnavbar = true
     @index_body = true
-    
-    if current_newsroom.nil?
-      @disable_header = true
-    end
     
     if params[:search]
      # @search = Sunspot.search Newsroom do
       #  fulltext params[:search]
       #end
-      @newsrooms = Newsroom.search(params[:search])
+      @press_releases = PressRelease.where(exclusive: false).search(params[:search])
     else 
-      @newsrooms = Newsroom.all
+      @press_releases = PressRelease.all.where(exclusive: false).order("created_at DESC")
     end
     
   end
@@ -36,23 +42,23 @@ class NewsroomsController < ApplicationController
   # GET /newsrooms/1
   # GET /newsrooms/1.json
   def show
-    
+    @newsroom = Newsroom.friendly.find(params[:id])
+
     @nrBody = true
-    
+
     # Control ownership
     if @newsroom == current_newsroom
       @owner = true
     else
       @owner = false
     end
-    
+
     # Show exclusive press releases only to owner
     if @owner == true
-      @company_launches = @newsroom.company_launches.all.reverse
+      @press_releases = @newsroom.press_releases.order("created_at DESC").paginate(:page => params[:page], :per_page => 4)
     else
-      @company_launches = @newsroom.company_launches.where(exclusive: false).reverse
+      @press_releases = @newsroom.press_releases.where(exclusive: false).order("created_at DESC")
     end
-    
   end
 
   # GET /newsrooms/new
@@ -62,6 +68,7 @@ class NewsroomsController < ApplicationController
 
   # GET /newsrooms/1/edit
   def edit
+    @newsroom = Newsroom.friendly.find(params[:id])
     
     @nrBody = true
     
@@ -103,14 +110,27 @@ class NewsroomsController < ApplicationController
   # PATCH/PUT /newsrooms/1
   # PATCH/PUT /newsrooms/1.json
   def update
+    @newsroom = current_newsroom
+    
     respond_to do |format|
+     # unless @newsroom.code.blank? && @newsroom.update(newsroom_params)
+      #  format.html { redirect_to plans_path, notice: 'Beta Code Accepted' }
+       # format.json { render :update }
+        #format.js { render "press_releases/update", notice: "Saved!" }
+    #  else
+     #   format.html { render :edit }
+      #  format.json { render json: @newsroom.errors, status: :unprocessable_entity }
+      #end
+      
       if @newsroom.update(newsroom_params)
         format.html { redirect_to @newsroom, notice: 'Newsroom was successfully updated.' }
-        format.json { render :show, status: :ok, location: @newsroom }
+        format.json { render :update }
+        format.js { render "press_releases/update", notice: "Saved!" }
       else
         format.html { render :edit }
         format.json { render json: @newsroom.errors, status: :unprocessable_entity }
       end
+      
     end
   end
 
@@ -128,12 +148,15 @@ class NewsroomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_newsroom
-      @newsroom = Newsroom.friendly.find(params[:id])
+      
+      @newsrooms = Newsroom.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsroom_params
-      params.require(:newsroom).permit(:company_name, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
+      params.require(:newsroom).permit!
+    
+      #(:company_name, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
   end
 
 end

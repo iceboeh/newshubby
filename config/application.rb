@@ -8,6 +8,10 @@ Bundler.require(*Rails.groups)
 
 module N2
   class Application < Rails::Application
+    
+    # Deflater for speed!
+    config.middleware.use Rack::Deflater
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

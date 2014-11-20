@@ -1,59 +1,35 @@
-<% @hubert_body == true %>
-	
-<%= devise_error_messages! %> 
+<%= @nhBkg = true %>
 
-<div class="container">
+<div class="shortPage">
+<div class="container navMargin">
 	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4">
-			<div class="logon">
-				<ul class="nav nav-tabs" role="tablist" id="logonTab">
-					<li class="active omnes"><a href="#signup" role="tab" data-toggle="tab">Sign up</a></li>
-					<li class="omnes"><a href="#login" role="tab" data-toggle="tab">Login</a></li>
-				</ul>
-
-				<div class="tab-content">
-					<div class="tab-pane active" id="signup">
-						<div class="container-fluid">
-							<br>
-							<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>				
-								<div>
-								<div class="form-group">
-									<%= f.email_field :email, autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
-								</div>
-								<div class="form-group">
-							    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Password" %></div>									
-								</div>
-								<div class="form-group">
-									<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Confirm password" %>
-								</div>
-								<%= f.submit "Get started", class: "btn btn-primary omnes" %>
-								<div class="checkbox">
-									<label>
-										<%= f.check_box :term_agreement %><small>I have read and agree to our <%= link_to "terms and conditions", terms_of_service_path, target: "_blank" %></small>.
-									</label>
-								</div>
-							<% end %>
-						</div>
+		<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			<small><span class="pull-right">Already a member? <%= link_to "Log in here", new_newsroom_session_path %></small><br>
+			<div class="panel panel-body">
+				<h4>Sign up</h4>
+				<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+					<div class="form-group">
+						<label for="inputEmail1">Email address</label>
+						<%= f.email_field :email, autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
 					</div>
-					<div class="tab-pane" id="login">
-						<div class="container-fluid">
-							<br>						
-							<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>						
-								<div class="form-group">
-									<%= f.email_field :email, autofocus: true, class: "form-control", id: "LoginEmail", placeholder: "Email" %>
-								</div>
-								<div class="form-group">
-							    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "LoginPassword1", placeholder: "Password" %></div>									
-
-								<%= f.submit "Login", class: "btn btn-primary omnes" %>
-								<br><br>
-								<small><%= render "devise/shared/links" %></small>
-								<br><br>
-							<% end %>
-						</div>
+					<div class="form-group">
+						<label for="inputPassword1">Password</label>
+						<%= f.password_field :password, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Password" %>
 					</div>
-				</div>
+					<div class="form-group">
+						<label for="inputPassword2">Confirm Password</label>
+						<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Confirm password" %>
+					</div>
+					<div class="checkbox">
+						<label>
+							<%= f.check_box :term_agreement %><small>I have read and agree to our <%= link_to "terms and conditions", terms_of_service_path, target: "_blank" %></small>.
+						</label>
+					</div>
+					<%= f.submit "Sign up", class: "btn btn-primary center-block" %>
+				<% end %>
 			</div>
-		</div>
-	</div>
-</div>
+		</div> <!-- / .col -->
+	</div> <!-- /.row -->
+</div> <!-- / .container -->
+<div class="push"></div>
+</div> <!-- / .shortPage -->

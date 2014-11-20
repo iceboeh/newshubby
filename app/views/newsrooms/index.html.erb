@@ -1,115 +1,84 @@
-<% title "NewsHubby | Reach World Press" %>
+<%= devise_error_messages! %>
 
 <div id="indexBkg">
+    <!-- <div class="alert alert-danger noticeFade" role="alert">Wrong email or password.</div> -->
+    <%= image_tag "icons/diy-pr.png", alt: "Do-it-yourself Press Releases", class: "hidden-xs", id: "diyLogo" %>
+    <div id="indexText" class="text-center">
+        <h1 class="text-center">Press Releases have never been this easy</h1>
+        <br>
+        <a href="#video"><button class="btn btn-default btn-lg">Learn more</button></a>&nbsp;
+				<%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+    </div>
+    <div class="scrollDown"><a href="#video"><i class="fa fa-chevron-down fa-2x"></i></a></div>
+</div> <!-- / #indexBkg -->
 
+<a id="video"></a>
 
-<div class="container">
-	<%= image_tag "newshubby_logotype.svg", class: "img-responsive center-block", id: "indexLogo", alt: "Responsive image" %>
-	
-	<div class="row">
-		<% if current_newsroom == nil %>
-		<div class="col-md-8">
-		<% else %>
-		<div class="col-md-8 col-md-offset-2">
-		<% end %>	
-			<h1 class="indexHeader text-center omnes">DIY Press Releases</h1>
-			<br>
-			<%= form_tag newsrooms_path, :method => :get do %>
-				<div class="input-group input-group-lg" id="indexSearch">
-					    <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search", id: "srch-term", autofocus: :true %>
-					<div class="input-group-btn">
-						<%= button_tag "Search", :name => nil, class: "btn btn-default", type: "submit" do %><i class="glyphicon glyphicon-search"></i><% end %>
-				<% end %>
-					</div>
-				</div>
-		</div>
-		<br>
-		<% if current_newsroom.nil? %>
-		<div class="col-md-4">
-			<div class="indexLogon">
-				<ul class="nav nav-tabs" role="tablist" id="indexTab">
-					<li class="active omnes"><a href="#signup" role="tab" data-toggle="tab">Sign up</a></li>
-					<li class="omnes"><a href="#login" role="tab" data-toggle="tab">Login</a></li>
-				</ul>
-
-				<div class="tab-content">
-					<div class="tab-pane active" id="signup">
-						<div class="container-fluid">
-							<br>
-								<div class="form-group">
-									
-									<%= form_for(:newsroom, :url => registration_path(:newsroom)) do |f| %>
-									  <%= devise_error_messages! %>
-									
-									<%= f.email_field :email, autocomplete: "off", autofocus: true, class: "form-control", id: "signUpEmail", placeholder: "Email" %>
-								</div>
-								<div class="form-group">
-									<%= f.password_field :password, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Password" %>
-								</div>
-								<div class="form-group">
-									<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", id: "signUpPassword1", placeholder: "Confirm password" %>
-								</div>
-								  <%= f.submit "Sign up", class: "btn btn-primary omnes" %>
-								
-								<div class="checkbox">
-									<label>
-										<%= f.check_box :term_agreement %><small>I have read and agree to our <%= link_to "terms and conditions", terms_of_service_path, target: "_blank" %></small>.
-										<% end %>
-									</label>
-								</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="login">
-						<div class="container-fluid">
-							<br>
-								<div class="form-group">
-										
-									<%= form_for(:newsroom, :url => session_path(:newsroom)) do |f| %>
-								  <%= f.text_field :email, class: "form-control", id: "LoginEmail", type: "email", placeholder: "Email" %>
-								</div>
-								<div class="form-group">
-									<%= f.password_field :password, class: "form-control", id: "LoginPassword1", placeholder: "Password" %>
-								</div>
-								<%= f.submit 'Login', class: "btn btn-primary omnes" %><br><br>
-								<small><%= link_to "Forgot your password?", new_password_path(:newsroom) %></small>
-								<% end %>
-								<br><br>
-						</div>
-					</div>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-</div>
+<div class="container-fluid indexSplash">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="text-center">Press Releases simplified</h2>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+													<%= image_tag "icons/creation.svg", alt: "creation" %>
+                            <div class="caption">
+                                <h3 class="text-center">Creation</h3>
+                                <p class="text-center">Create your press release <em>within 20 minutes</em>! Our user friendly templates walk you through the process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                            <%= image_tag "icons/hosting.svg", alt: "hosting" %>
+                            <div class="caption">
+                                <h3 class="text-center">Hosting</h3>
+                                <p class="text-center">NewsHubby automatically collects all of your press material into your own <em>public newsroom.</em></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+													<%= image_tag "icons/distribution.svg", alt: "distribution" %>
+                            <div class="caption">
+                                <h3 class="text-center">Distribution</h3>
+                                <p class="text-center">Choose the option of releasing your press release via NewsHubby's <em>global distribution network</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- -->
+            </div> <!-- / .col-lg-7 -->
+        </div> <!-- .row -->
+    </div> <!-- /.container -->
+</div> <!-- /.indexSplash -->
 
 <div class="container">
-	<div class="indexChevronDown center-block hidden-xs"><p class="text-center"><span class="glyphicon glyphicon-chevron-down"></span></p></div>
-	<h3 class="indexHeaderLatest omnes text-center">Latest Press Releases</h3>
-	<% @newsrooms.reverse.each do |newsroom| %>
-	<% unless newsroom.subscription.blank? %>
-	<div class="row">		
-		<div class="col-md-8 col-md-offset-2">
-			<%= link_to newsroom, class: "listLink" do %>
-			<div class="panel panel-default listContainer">
-				<div class="listImg">
-					<%= image_tag newsroom.logo.url(:medium), class: "img-responsive center-block" %>
-				</div>
-				<div class="listContent">
-					<span class="pull-right text-muted"><small>
-						<% unless newsroom.company_launches.last.nil? %>
-						<%= time_ago_in_words(newsroom.company_launches.last.updated_at).capitalize %>
-						<% end %>
-					</small></span><br>
-					<h4 class="omnes"><%= newsroom.company_name %></h4>
-					<%= truncate(newsroom.q_what_you_do, length: 140) %>
-					<br><br>
-				</div>
-			</div>
-			<% end %>
-		</div>
-	</div>
-	<% end %><% end %>
-</div>
+    <h2 class="text-center">Latest Press Releases</h2>
+		
+		<% @press_releases[0..3].each do |press_release| %>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+                <div class="thumbLogoBkg">
+                    <span class="helper"></span><%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbLogo", alt: "" %>
+                </div>
+								<% if press_release.uploads.first.file.blank? %>
+								<!-- FIXA BROKEN LINK-BILD! -->
+									<%= image_tag "#", class: "thumbImg", alt: "" %>
+								<% else %>
+                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
+            <% end %><% end %>
+            <div class="caption">
+                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
+                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
+                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
+            </div> <!-- / .caption -->
+            
+            <div class="clearfix"></div>
+        </div> <!-- / .thumbnail -->
+    </div> <!-- / .col-sm-6 -->
+		<% end %>
+		<%= link_to "All Press Releases", pressreleases_path, class: "btn btn-default pull-right", role: "button" %>
+</div> <!-- / .container -->

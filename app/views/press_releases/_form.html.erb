@@ -1,0 +1,255 @@
+<script type="text/javascript">
+/*$(".navbar").click(function() {
+	if (".overlay" != "hidden") {
+		$(".overlay-message, .overlay").toggleClass("hidden");
+	}
+});*/
+
+function toggle_tip(div_id)
+{
+	
+	if ($(".overlay-message").hasClass("hidden")) {
+	console.log("check hidden")
+	$(".overlay").addClass('hidden');
+	console.log("hide .overlay")
+	$(".overlay-message").addClass('hidden');
+	console.log("hide .overlay-message")
+	};
+	
+  $(".overlay").toggleClass('hidden'); // dim
+	console.log("toggle overlay")
+	$("#a"+div_id).toggleClass('hidden'); // message (overlay-message)
+	console.log("toggle #a+div_id")
+	
+	//gör: toggla bort gammal div_id + se till att dimmad.
+		
+	// när click: sätt alla overlay-message -> hidden
+	// + sätt overlay -> hidden	 (addclass hidden)
+	
+	// plocka fram overlay
+	// toggla fram rätt overlay-message
+	
+	$(".close").click(function() {
+			$(".overlay-message, .overlay").addClass("hidden");
+	});
+		
+};
+</script>
+
+<div class="flexBox">
+    <div id="presto-content">
+        <div id="sidebar-area">
+            <a href="#" class="previous">
+                <div class="text-center" id="prev-container">
+                    <br>
+                    <h4>Previous</h4>
+                </div> <!-- / #prev-container -->
+            </a>
+						<div id="q-container">
+														
+							<p>
+								Make sure this makes a new "distribution" relation and posts a mail
+							<%= nested_form_for([@newsroom, @press_release]) do |f| %>
+								<%= f.hidden_field :hex, value: "Woop" %>
+								<%= f.submit "Buy distribution: $700", class: "btn btn-success", data: {confirm: "$700 will be withdrawn from the credit card you signed up with"} %>
+							<% end %>
+							</p>
+							
+								<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
+							  <% if @press_release.errors.any? %>
+							    <div id="error_explanation">
+							      <h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this press_release from being saved:</h2>
+
+							      <ul>
+							      <% @press_release.errors.full_messages.each do |message| %>
+							        <li><%= message %></li>
+							      <% end %>
+							      </ul>
+							    </div>
+							  <% end %>
+								
+								<% if @newsroom.business_model.blank? %>
+									<%= render 'press_releases/fields/newsroom', f: f %>												
+								<% end %>								
+								
+								<% unless @press_release.hex.nil? %>
+								<div class="question">
+								    <div class="container-fluid">
+								        <div class="row">
+								            <div class="col-xs-12">
+															<div class="panel panel-default">
+															    <div class="panel-heading">
+															        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+															        <p class="panel-title text-left">Exclusivity</p>
+															    </div> <!-- / .panel-heading -->
+															    <div class="panel-body">
+							        
+																		  <strong>Your press release is not yet public. Use this link to share the press release and keep its exclusivity.</strong><br>
+																			<%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %><br><br>
+																			<p>
+																			<%= f.label :exclusive, "Change Press Release Exclusivity" %><br>
+																			Exclusive <%= f.radio_button :exclusive, false, :checked => true %>
+																			Public <%= f.radio_button :exclusive, false, :checked => false %>
+																			</p>
+															    </div><!--/ .panel-footer -->
+															</div> <!-- / .panel -->
+																	
+								            </div> <!-- / .col-xs-12 -->
+								        </div> <!-- / .row -->
+								    </div> <!-- / .container-fluid -->
+								</div> <!-- / .question -->
+								<% end %>
+
+								<%= f.hidden_field :pressrelease_type_id %>
+								
+                <div class="question" id="q0">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="question-title">
+																	<% if @newsroom.business_model.blank? %>
+																	Question 10
+																	<% else %>
+																	Question 1
+																	<% end %>
+																</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-close pull-right"></i>
+                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                                        <p class="panel-title text-left">Title</p>
+                                    </div> <!-- / .panel-heading -->
+                                    <div class="panel-body">
+                                      <%= f.text_field :title, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+                                    </div> <!-- / .panel-body -->
+                                    <div class="panel-footer clearfix">
+                                        <div class="pull-left" id="textareaFeedback"></div>
+                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                                    </div><!--/ .panel-footer -->
+                                </div> <!-- / .panel -->
+                                <p class="text-center"><a href="#" class="add-new"> + Add new whatever</a></p>
+                            </div> <!-- / .col-xs-12 -->
+                        </div> <!-- / .row -->
+                    </div> <!-- / .container-fluid -->
+                </div> <!-- / .question -->
+								
+								
+										<%= f.fields_for :specifics, OpenStruct.new(@press_release.specifics) do |builder| %>
+											<% @press_release.pressrelease_type.fields.each_with_index do |field, index| %>
+											<%= render "press_releases/fields/#{field.field_type}", field: field, index: index, press_release: builder %>
+											<% end %>
+
+										<% end %>
+
+										<br><br>
+
+										<div>
+										<%= f.fields_for :links do |link| %>
+										<%= render 'press_releases/fields/links', f: link %>
+										<% end %>
+		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
+										
+									</div>
+
+										<div>
+										Uploads
+										<%= f.fields_for :uploads do |upload| %>
+										<%= render 'press_releases/fields/uploads', f: upload %>	
+										<% end %>
+										
+										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
+								</div>
+								
+								<%= f.submit "Update" %>
+										<% end %>
+								
+								
+								
+            </div> <!-- / #q-container -->
+            <a href="#" id="next">
+                <div class="text-center" id="next-container"><br>
+                    <h4>Next</h4>
+                </div> <!-- / #next-container -->
+            </a>
+        </div> <!-- / #sidebar-area -->
+        <div id="preview-area">
+            <div class="prestoNav">
+                <ul>
+                    <li><a href="#q0">&nbsp;&nbsp;1&nbsp;&nbsp;</a></li>
+                    <li><a href="#q1">&nbsp;&nbsp;2&nbsp;&nbsp;</a></li>
+                    <li><a href="#q2">&nbsp;&nbsp;3&nbsp;&nbsp;</a></li>
+                    <li><a href="#q3">&nbsp;&nbsp;4&nbsp;&nbsp;</a></li>
+                    <li><a href="#q4">&nbsp;&nbsp;5&nbsp;&nbsp;</a></li>
+                </ul>
+            </div>
+           	<div class="overlay hidden"></div>
+            <div class="overlay-message hidden">
+							
+								<div class="panel panel-default hidden" id="a1">
+                    <div class="panel-body">
+                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5>
+                            <span class="text-primary"><strong>A1: </strong></span>
+                        </h5>
+                        <p>
+                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
+                        </p>
+                        <br>
+                        <h5>
+                            <span class="text-primary"><strong>Remember: </strong></span>
+                        </h5>
+                        <p>
+                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
+                        </p>
+                    </div> <!-- / .panel-body -->
+                </div> <!-- / .panel -->
+								
+								<div class="panel panel-default hidden" id="a2">
+                    <div class="panel-body">
+                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5>
+                            <span class="text-primary"><strong>A2: </strong></span>
+                        </h5>
+                        <p>
+                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
+                        </p>
+                        <br>
+                        <h5>
+                            <span class="text-primary"><strong>Remember: </strong></span>
+                        </h5>
+                        <p>
+                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
+                        </p>
+                    </div> <!-- / .panel-body -->
+                </div> <!-- / .panel -->
+								
+								<div class="panel panel-default hidden" id="a3">
+                    <div class="panel-body">
+                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h5>
+                            <span class="text-primary"><strong>A3: </strong></span>
+                        </h5>
+                        <p>
+                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
+                        </p>
+                        <br>
+                        <h5>
+                            <span class="text-primary"><strong>Remember: </strong></span>
+                        </h5>
+                        <p>
+                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
+                        </p>
+                    </div> <!-- / .panel-body -->
+                </div> <!-- / .panel -->
+
+            </div> <!-- / .overlay-message -->
+            <div class="container-fluid pr-container">
+							<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
+						</div> <!-- / .prContainer -->
+        </div> <!-- / #preview-area -->
+        <!-- <div class="preview-bar">
+<p>Preview Area</p>
+<button class="btn btn-success pull-right">Save as draft</button>
+</div> -->
+    </div> <!-- / #presto-content -->
+</div> <!-- / .flexBox -->

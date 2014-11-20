@@ -4,238 +4,209 @@
 <%= link_to "Edit Newsroom", edit_newsroom_path(@newsroom), class: "btn pinkBtn omnes round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 <% end %>
 
-		<!-- <ol class="breadcrumb">
-<li><a href="#">Owegoo</a></li>
-<li class="active">Owegoo Newsroom</li>
-</ol> -->
-			
-<div class="nrRow nrHeader">
+<div class="nrHeader">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4 col-md-offset-2">
+              <h3><%= @newsroom.company_name %></h3>
+              <p>founded in <%= @newsroom.founded.strftime("%B, %Y") %></p>
+              <div>
+									<% unless @newsroom.twitter.blank? %>
+                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<a href="twitter.com/twitterAccount"><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></a></p>
+									<% end %>
+									<% unless @newsroom.press_email.blank? %>
+                  <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
+									<% end %>
+									<% unless @newsroom.press_phone.blank? %>
+                  <p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
+									<% end %>
+                  <% unless @newsroom.location.blank? %>
+									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
+									<% end %>
+              </div>
+          </div> <!-- / .col-md-4 -->
+          <div class="col-md-4">
+              <div class="centerContainer">
+                  <div class="centerContent">
+                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %>
+                  </div>
+              </div>
+          </div> <!-- / .col-md-4 -->
+      </div> <!-- / .row -->
+  </div> <!-- / .container -->
+</div> <!-- / .nrHeader -->
 
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6" id="nrCenterBox">
-				<%= image_tag @newsroom.logo.url(:medium), class: "img-responsive nrCenterItem" %>			
-			</div>
-			<div class="col-sm-6">
-				<h3 class="omnes"><%= @newsroom.company_name %></h3>
-				<p>founded in <%= @newsroom.founded.strftime("%B, %Y") %></p>
-				<% if @newsroom.website.start_with?('http://') %>
-				<p><%= link_to @newsroom.website.gsub(/.*www./, '').gsub(/\//, ''), @newsroom.website %></p>
-				<% else %>
-				<p><%= link_to @newsroom.website.gsub(/.*www./, '').gsub(/\//, ''), "http://#{@newsroom.website}" %></p>
-				<% end %>
-				<p><%= image_tag "icons/twitter.svg", class: "nrTwitter" %><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
-				<p><span class="nrContactIcons glyphicon glyphicon-envelope"></span> <%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
-				<% unless @newsroom.press_phone.nil? %>
-				<p><span class="nrContactIcons glyphicon glyphicon-earphone"></span> 
-					<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %>
-					<% else %>
-					<%= @newsroom.press_phone %>
-					<% end %></p>
-					<% end %>
-				<p><span class="nrContactIcons glyphicon glyphicon-map-marker"></span> <%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
-			</div>
-		</div>
-	</div>
-</div>
+<div class="nrRow">
+  <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+              <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
+							<% unless @newsroom.subscription.blank? %>
+							<% unless @press_releases.nil? %>
+							<% @press_releases[0..2].each do |press_release| %>
+              <div class="col-sm-4">
+                  <div class="thumbnail">
+                      <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
+												<% unless press_release.uploads.first.file.blank? %>
+												<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
+											<% end %>
+                      <% end %>
+                      <div class="caption">
+                          <h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
+                          <time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.updated_at) %> ago</small></time>
+                      </div> <!-- / .caption -->
 
-<div class="nrRow nrReleases">
-	<div class="container">
-		<h1 class="omnes">Latest Press Releases</h1><br>
-		<% unless @newsroom.subscription.blank? %>
-		<% unless @company_launches.nil? %>
-		<% @company_launches.each do |company_launch| %>
-		<% if company_launch.interview_done? %>
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2 nrRelease">
-				
-				<%= link_to newsroom_company_launch_path(@newsroom, company_launch) do %>
-				
-					<div class="panel panel-default">
-						<div class="panel-body">
-						<!-- <span class="glyphicon glyphicon-file"></span> -->
-						<h6><%= company_launch.updated_at.strftime("%B %d %Y") %></h6>
-						<h4 class="omnes"><%= company_launch.title %></h4>
-					</div></div>
-					<% end %>
-			</div>
-		</div>
-		<% end %>
-		<% end %>
-		<% else %>
-		<% end %>
-		<% end %>
-		<%= link_to "See all", newsroom_company_launches_path(@newsroom), class: "btn btn-default omnes round", role: "button" %>
-	</div>
-</div>
+                      <div class="clearfix"></div>
+                  </div> <!-- / .thumbnail -->
+              </div> <!-- / .col-sm-6 -->
+							<% end %><% end %><% end %>
+              
+          </div> <!-- / .row -->
+					<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
+      </div> <!-- / .col-md-8 -->
+  </div> <!-- / .container -->
+</div> <!-- / .nrRow -->
 
-<div class="nrRow nrPitch">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
-				<p>
-					<%= @newsroom.q_what_you_do %>
-					<%= @newsroom.q_how_you_achieve %>
-					<%= @newsroom.q_clients %>
-					<%= @newsroom.differentiation %>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="opacityBkg">
-	<div class="nrRow nrSolution">
-		<div class="container">
-			<div class="row">
-				<h1 class="omnes">Problem Solved</h1>
-				<div class="col-sm-8 col-sm-offset-2">
-				<p><%= @newsroom.problem_solved %></p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="nrRow nrModel">
-	<div class="container">
-		<div class="row">
-			<h1 class="omnes">Business Model</h1>
-				<div class="col-sm-8 col-sm-offset-2">
-			<p><%= @newsroom.business_model %></p>
-		</div>
-		</div>
-	</div>
-</div>
-
-<div class="nrRow nrPeople">
-	<div class="container">
-		<div class="row">
-			<h1 class="omnes">People</h1>
-			<% @newsroom.people.each do |person| %>
-			<% if @newsroom.people.count == 1 %>
-			<div class="col-sm-6 col-sm-offset-3">
-			<% else %>
-			<div class="col-sm-6">
-			<% end %>
-				
-				<div class="panel panel-default">
-					<div class="panel-body">
-					<h3><%= person.name %></h3>
-					<p><%= person.role %></p>
-					<p><%= person.presentation %></p>
-				</div>
-				</div>
-			</div>
-			<% end %>
-		</div>
-	</div>
-</div>
-
-<div class="nrRow nrFunding">
-<div class="container">
-	<div class="row">
-		<h1 class="omnes">Funding</h1>
-		<% @newsroom.fundings.each do |funding| %>
-		<% if funding.name.blank? %>
-		<% end %>
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-		<p><small><%= funding.investment_type %></small></p>
-		<p><strong><%= funding.name %></strong> 
-			<% if funding.investment_type == "Bootstrapped" %>
-			<% elsif funding.investment_type == "No funding" %>
-			<% else %>
-			| <% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %> | $<%= funding.amount %>
-		</p>
-		<hr>
-		</div></div>
-		<br>
-		<% end %>
-		<% end %>
-	</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="nrRow nrFiles">
-<div class="container">
-	<div class="row">
-		<h1 class="omnes">Files & Links</h1>
-<% @newsroom.company_launches(4).reverse.each do |company_launch| %>		
-	<% unless company_launch.link1.blank? %>
-		<div class="col-sm-4">
-			<div class="thumbnail">
-				<div class="embed-responsive embed-responsive-16by9">
-					<% if company_launch.link1.include? "youtube.com" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*v=/, '') %>" allowfullscreen></iframe>	
-					<% elsif company_launch.link1.include? "youtu.be" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link1.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>	
-					<% elsif company_launch.link1.include? "vimeo.com" %>
-					<iframe src="//player.vimeo.com/video/<%= company_launch.link1.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<% end %>
-				</div>
-				<div class="caption">
-					<p><small><%= link_to company_launch.caption_link1, company_launch.link1 %></small></p>
-				</div>
-			</div>
-		</div>
-	<% end %>	
-	
-	<% unless company_launch.link2.blank? %>
-		<div class="col-sm-4">
-			<div class="thumbnail">
-				<div class="embed-responsive embed-responsive-16by9">
-					<% if company_launch.link2.include? "youtube.com" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link2.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
-					<% elsif company_launch.link2.include? "youtu.be" %>
-					<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= company_launch.link2.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>	
-					<% elsif company_launch.link2.include? "vimeo.com" %>
-					<iframe src="//player.vimeo.com/video/<%= company_launch.link2.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-					<% end %>
-				</div>
-				<div class="caption">
-					<p><small><%= link_to company_launch.caption_link2, company_launch.link2 %></small></p>
-				</div>
-			</div>
-		</div>
-	<% end %>
-	
-		
-		<% unless company_launch.file1.blank? %>
-		<div class="col-sm-4">
-			<div class="thumbnail">
-				<%= link_to company_launch.file1.url, target: "_blank" do %><%= image_tag company_launch.file1.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
-				<div class="caption">
-					<p><small><%= company_launch.caption_file1 %></small></p>
-				</div>
-			</div>
-	</div>
-	<% end %>
-	
-		<% unless company_launch.file2.blank? %>
-		<div class="col-sm-4">
-			<div class="thumbnail">
-				<%= link_to company_launch.file2.url, target: "_blank" do %><%= image_tag company_launch.file2.url(:medium), class: "img-responsive", alt:"Responsive image" %><% end %>
-				<div class="caption">
-					<p><small><%= company_launch.caption_file2 %></small></p>
-				</div>
-			</div>
-	</div>
-	<% end %>
-	
-		<% unless company_launch.file3.blank? %>
-		<div class="col-sm-4">
-			<div class="thumbnail">
-				<%= image_tag company_launch.file3.url(:medium), class: "img-responsive", alt:"Responsive image" %>
-				<div class="caption">
-					<p><small><%= company_launch.caption_file3 %></small></p>
-				</div>
-			</div>
-	</div>
-	<% end %>
-	
+<% unless @newsroom.q_what_you_do.nil? %>
+<div class="nrRow nrWhiteBkg">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+              <p><strong><span class="dropcap"><%= @newsroom.q_what_you_do[0] %></span><%= simple_format(@newsroom.q_what_you_do[1..-1]) %></strong>
+								
+									<%= @newsroom.q_how_you_achieve %>
+								
+									<%= @newsroom.q_clients %>
+								
+									<%= @newsroom.differentiation %>
+							</p>
+              <h4>Problem Solved</h4>
+              <p><%= simple_format(@newsroom.problem_solved) %></p>
+              <h4>Business Model</h4>
+              <p><%= simple_format(@newsroom.business_model) %></p>
+              <h4>Funding</h4>
+							<% @newsroom.fundings.each do |funding| %>
+              <p><%= funding.investment_type %>: <%= funding.name %><br>
+							<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><% else %>
+							<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %> | $<%= funding.amount %><% end %></p>
+							<% end %>
+              <h4>Team</h4>
+              <div class="row">
+								<% @newsroom.people.each do |person| %>
+                  <div class="col-xs-6">
+                      <p><strong><%= person.name %></strong>&nbsp;(<%= person.role %>)<br><small><%= person.presentation %></small></p>
+                  </div>
+								<% end %>
+              </div> <!-- / .row -->
+          </div> <!-- / .col-md-8 -->
+      </div> <!-- /.row -->
+  </div> <!-- / .container -->
+</div> <!-- / .nrRow -->
 <% end %>
+<!-- <div class="opacityBkg">
+<div class="nrRow nrSolution">
+<div class="container">
+<div class="row">
+<h3 class="text-center">Team</h3>
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-body">
+<span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><br>
+<textarea class="form-control" rows="1" id="textarea" placeholder="Firstname Familyname" onfocus="this.value = this.value;" max="250"></textarea><form class="text-left">
+<input type="checkbox" name="founder" value="founder"> Founder<br><br>
+</form>
+<textarea class="form-control" rows="1" id="textarea" placeholder="Role" onfocus="this.value = this.value;" max="250"></textarea><br>
+<textarea class="form-control" rows="2" id="textarea" placeholder="Presentation" onfocus="this.value = this.value;" max="250"></textarea>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="panel panel-default">
+<div class="panel-body">
+<span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><br>
+<textarea class="form-control" rows="1" id="textarea" placeholder="Firstname Familyname" onfocus="this.value = this.value;" max="250"></textarea><form class="text-left">
+<input type="checkbox" name="founder" value="founder"> Founder<br><br>
+</form>
+<textarea class="form-control" rows="1" id="textarea" placeholder="Role" onfocus="this.value = this.value;" max="250"></textarea><br>
+<textarea class="form-control" rows="2" id="textarea" placeholder="Presentation" onfocus="this.value = this.value;" max="250"></textarea>
 </div>
 </div>
 </div>
 </div>
+<div class="row">
+<div class="col-sm-6 col-sm-offset-3">
+<form role="form">
+<button type="submit" class="btn btn-success">Add person</button><br>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div> opacityBkg -->
+<div class="nrRow">
+  <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+              <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
+							<% @newsroom.press_releases.each do |press_release| %>
+							<% press_release.links.each do |link| %>
+							<% unless link.link.nil? %>
+              
+							<% if link.link.include? "youtube.com" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+              <% if link.link.include? "youtu.be" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+              <% if link.link.include? "vimeo.com" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+							<% end %><% end %><% end %>
+							
+							<% @newsroom.press_releases.each do |press_release| %>
+							<% press_release.uploads.each do |upload| %>
+							<% unless upload.file.blank? %>
+              <div class="col-sm-4">
+                  <div class="thumbnail">
+											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
+                      <div class="caption">
+                          <p><small><%= upload.caption %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							<% end %><% end %>
+          </div> <!-- / .row -->
+      </div> <!-- / .col-md-8 -->
+  </div> <!-- / .container -->
+</div> <!-- / .nrRow -->

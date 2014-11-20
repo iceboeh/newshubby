@@ -5,7 +5,8 @@
 	
   <title><%= yield(:title) || NewsHubby %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	
+
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	
 	<script type="text/javascript" src="https://bridge.paymill.com/"></script>
 	
@@ -13,12 +14,7 @@
       var PAYMILL_PUBLIC_KEY = '<%=PAYMILL_PUBLIC_KEY%>';
   </script>
 
-	
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-	<script type="text/javascript" src="//use.typekit.net/lbn2smo.js"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 	<%= analytics_init if Rails.env.production? %>
 
@@ -42,8 +38,8 @@
 	</div>
 <% end %>
 
-<% if @reg_body == true %>
-<body>
+<% if @nhBkg == true %>
+<body class="nhBkg">
 <% elsif @nrBody == true %>
 <body class="nrBody">
 <% elsif @plans_body == true %>
@@ -55,7 +51,7 @@
 <% elsif @index_body == true %>
 <body id="indexBody">
 <% else %>
-<body class="intBody shortPage">
+<body>
 <% end %>
 
 <%= render 'layouts/header' unless @disable_header == true %>
@@ -63,7 +59,6 @@
 <%= yield %>
 
 <%= render 'layouts/footer' %>
-
 
 </body>
 </html>

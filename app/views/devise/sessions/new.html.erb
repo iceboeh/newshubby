@@ -1,54 +1,27 @@
-<div class="container">
-	<div class="row">
-		<div class="col-sm-4 col-sm-offset-4">
-			<div class="logon">
-				<ul class="nav nav-tabs" role="tablist" id="logonTab">
-					<li class="omnes"><a href="#signup" role="tab" data-toggle="tab">Sign up</a></li>
-					<li class="active omnes"><a href="#login" role="tab" data-toggle="tab">Login</a></li>
-				</ul>
+<%= @nhBkg = true %>
 
-				<div class="tab-content">
-					<div class="tab-pane" id="signup">
-						<div class="container-fluid">
-							<br>
-							<form role="form">
-								<div class="form-group">
-									<input type="email" class="form-control" id="signUpEmail" placeholder="Email">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" id="signUpPassword1" placeholder="Password">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" id="signUpPassword1" placeholder="Confirm password">
-								</div>
-								<button type="submit" class="btn btn-primary omnes">Get started</button>
-								<div class="checkbox">
-									<label>
-										<input type="checkbox"><small>I have read and agree to our <a href="#">terms and conditions</small></a>.
-									</label>
-								</div>
-							</form>
+<div class="shortPage">
+	<div class="container navMargin">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				<small><span class="pull-right">Not a member? <%= link_to "Sign up here", new_newsroom_registration_path %></span></small><br>
+				<div class="panel panel-body">
+					<h4>Login</h4>
+					<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+						<div class="form-group">
+							<%= f.label :email %>
+							<%= f.email_field :email, autofocus: true, class: "form-control", id: "LoginEmail", placeholder: "Email" %>
 						</div>
-					</div>
-					<div class="tab-pane active" id="login">
-						<div class="container-fluid">
-							<br>						
-							<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>						
-								<div class="form-group">
-									<%= f.email_field :email, autofocus: true, class: "form-control", id: "LoginEmail", placeholder: "Email" %>
-								</div>
-								<div class="form-group">
-							    <%= f.password_field :password, autocomplete: "off", class: "form-control", id: "LoginPassword1", placeholder: "Password" %></div>									
-
-								<%= f.submit "Login", class: "btn btn-primary omnes" %>
-								<br><br>
-								<small><%= render "devise/shared/links" %></small>
-								<br><br>
-							<% end %>
+						<div class="form-group">
+							<%= f.label :password %>
+							<%= f.password_field :password, autocomplete: "off", class: "form-control", id: "LoginPassword1", placeholder: "Password" %>
+							<small><%= link_to "Forgot password?", new_newsroom_password_path(@newsroom) %></small>
 						</div>
-					</div>
+						<%= f.submit "Login", class: "btn btn-primary center-block" %>
+					<% end %>
 				</div>
-			</div>
-		</div>
-	</div>
-</div>
+			</div> <!-- / .col -->
+		</div> <!-- /.row -->
+	</div> <!-- / .container -->
+	<div class="push"></div>
+</div> <!-- / .shortPage -->

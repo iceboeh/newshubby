@@ -1,22 +1,26 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 
-# AWS Database of Choice!
-gem 'mysql2'
+group :development do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+  
+  # yaml_db locally
+  #gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
+  
+  #gem 'better_errors'
+end
 
-# Use postgres for Heroku
-#gem 'pg'
+group :production do
+  # AWS Database of Choice!
+  gem 'mysql2'
+  
+  # yaml_db amazon
+  # gem 'yaml_db'
+end
 
-# yaml_db amazon
-gem 'yaml_db'
-
-# yaml_db locally
-#gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -47,16 +51,31 @@ gem 'devise'
 
 gem "paperclip", "~> 4.1"
 
+gem 'rails4-autocomplete'
+
+gem 'jquery-ui-rails'
+
 gem 'bootstrap-sass', '~> 3.2.0'
+
 gem 'autoprefixer-rails'
+
+gem 'jquery-turbolinks'
 
 gem 'geocoder'
 
 gem 'paymill'
 
+gem 'font-awesome-sass'
+
 gem 'nested_form'
 
+gem 'rails_autolink'
+
+gem 'activeadmin', github: 'activeadmin'
+
 gem 'possessive'
+
+gem 'will_paginate'
 
 gem 'aws-sdk'
 # gem 'elastic-beanstalk'

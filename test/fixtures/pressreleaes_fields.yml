@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  field_type: MyString
+  required: false
+  question: MyText
+  example: MyText
+  prefill: MyText
+
+two:
+  name: MyString
+  field_type: MyString
+  required: false
+  question: MyText
+  example: MyText
+  prefill: MyText
