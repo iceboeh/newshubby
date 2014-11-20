@@ -15,7 +15,9 @@ end
 
 group :production do
   # AWS Database of Choice!
-  gem 'mysql2'
+  #gem 'mysql2'
+  
+  gem "sqlite3"
   
   # yaml_db amazon
   # gem 'yaml_db'
