@@ -18,7 +18,7 @@
 			<h4><%= pressrelease_type.name %></h4>
 			<p>Write your press release yourself!</p>
 
-			<%= link_to pressrelease_type.name, "http://localhost:3000/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success omnes center-block" %>
+			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success omnes center-block" %>
 		</div>
 	</div>
 </div>
