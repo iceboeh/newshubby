@@ -47,17 +47,16 @@ class PressReleasesController < ApplicationController
     if @newsroom.subscription.nil?
       flash[:notice] = "You can't create a press release without a subscription!"
       redirect_to plans_path
+    else
+      unless @newsroom.company_name.blank?
+        @press_release.links.build
+        @press_release.uploads.build
+        @press_release.newsroom.people.build
+        @press_release.hex = SecureRandom.urlsafe_base64(6)
+        @press_release.save
+        redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release)
+      end
     end
-    
-    unless @newsroom.company_name.blank?
-      @press_release.links.build
-      @press_release.uploads.build
-      @press_release.newsroom.people.build
-      @press_release.hex = SecureRandom.urlsafe_base64(6)
-      @press_release.save
-      redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release)
-    end
-    
   end
 
   # GET /press_releases/1/edit
