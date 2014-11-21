@@ -1,2 +1,1 @@
-$("#hej").html("<%= escape_javascript render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>");
-
+$(".pr-container").html("<%= escape_javascript render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>");
