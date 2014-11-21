@@ -4,14 +4,4 @@
                             <span id="pr-answer-04"><%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %></span>
                         </p>
 
-                        <p>
-													<%= @newsroom.company_name %> is founded by
-													<% people = @newsroom.people.where(founder: true) %>
-									 
-													<%= people.collect { |p| p.name }.to_sentence %>
-													on <%= @newsroom.founded.strftime("%B, %Y") %> and is funded by
-									
-													<%= @newsroom.fundings.collect { |fund| [fund.name, fund.investment_type] }.to_sentence %>
-												</p> 
-
 <%= render 'press_releases/layouts/static_bottom' %>

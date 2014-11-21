@@ -37,7 +37,7 @@ class PressReleasesController < ApplicationController
     @newsroom = current_newsroom
     @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     @press_release = @newsroom.press_releases.last
-    end
+  end
 
   # GET /press_releases/new
   def new    
@@ -51,8 +51,13 @@ class PressReleasesController < ApplicationController
       unless @newsroom.company_name.blank?
         @press_release.links.build
         @press_release.uploads.build
-        @press_release.newsroom.people.build
         @press_release.hex = SecureRandom.urlsafe_base64(6)
+        if @press_release.newsroom.people.last.nil?
+          @press_release.newsroom.people.build
+        end
+        if @press_release.newsroom.fundings.last.nil?
+          @press_release.newsroom.fundings.build
+        end
         @press_release.save
         redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release)
       end
@@ -61,14 +66,14 @@ class PressReleasesController < ApplicationController
 
   # GET /press_releases/1/edit
   def edit
+    @reg_body = true
+    @newsroom = @press_release.newsroom
+    @press_release = @newsroom.press_releases.friendly.find(params[:id])
+    
     if @newsroom.subscription.nil?
       flash[:notice] = "You can't create a press release without a subscription!"
       redirect_to plans_path
     end
-    
-    @reg_body = true
-    @newsroom = @press_release.newsroom
-    @press_release = @newsroom.press_releases.friendly.find(params[:id])
     
     # Control ownership
     if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])

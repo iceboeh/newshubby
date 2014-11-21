@@ -39,22 +39,7 @@ function toggle_tip(div_id)
 <div class="flexBox">
     <div id="presto-content">
         <div id="sidebar-area">
-            <a href="#" class="previous">
-                <div class="text-center" id="prev-container">
-                    <br>
-                    <h4>Previous</h4>
-                </div> <!-- / #prev-container -->
-            </a>
 						<div id="q-container">
-														
-							<p>
-								Make sure this makes a new "distribution" relation and posts a mail
-							<%= nested_form_for([@newsroom, @press_release]) do |f| %>
-								<%= f.hidden_field :hex, value: "Woop" %>
-								<%= f.submit "Buy distribution: $700", class: "btn btn-success", data: {confirm: "$700 will be withdrawn from the credit card you signed up with"} %>
-							<% end %>
-							</p>
-							
 								<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
 							  <% if @press_release.errors.any? %>
 							    <div id="error_explanation">
@@ -160,28 +145,15 @@ function toggle_tip(div_id)
 										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
 								</div>
 								
-								<%= f.submit "Update" %>
+<%= f.submit "Save", class: "btn btn-primary btn-success", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 										<% end %>
 								
 								
 								
             </div> <!-- / #q-container -->
-            <a href="#" id="next">
-                <div class="text-center" id="next-container"><br>
-                    <h4>Next</h4>
-                </div> <!-- / #next-container -->
-            </a>
         </div> <!-- / #sidebar-area -->
         <div id="preview-area">
-            <div class="prestoNav">
-                <ul>
-                    <li><a href="#q0">&nbsp;&nbsp;1&nbsp;&nbsp;</a></li>
-                    <li><a href="#q1">&nbsp;&nbsp;2&nbsp;&nbsp;</a></li>
-                    <li><a href="#q2">&nbsp;&nbsp;3&nbsp;&nbsp;</a></li>
-                    <li><a href="#q3">&nbsp;&nbsp;4&nbsp;&nbsp;</a></li>
-                    <li><a href="#q4">&nbsp;&nbsp;5&nbsp;&nbsp;</a></li>
-                </ul>
-            </div>
+            
            	<div class="overlay hidden"></div>
             <div class="overlay-message hidden">
 							
