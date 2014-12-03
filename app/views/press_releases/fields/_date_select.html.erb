@@ -1,4 +1,8 @@
-<div class="question" id="<%= field.name %>">
+<% if @newsroom.business_model.blank? %>
+<div class="question" id="q<%= index+10 %>">
+<% else %>
+<div class="question" id="q<%= index+1 %>">
+<% end %>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -6,7 +10,7 @@
 									<% if @newsroom.business_model.blank? %>
 										Question <%= index+10 %>
 									<% else %>
-										Question <%= index+2 %>
+										Question <%= index+1 %>
 									<% end %>
 								</h4>
                 <div class="panel panel-default">

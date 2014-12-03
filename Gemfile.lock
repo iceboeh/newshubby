@@ -146,6 +146,7 @@ GEM
       mime-types
     paymill (0.4.0)
       json
+    pg (0.17.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     possessive (1.0.1)
@@ -247,6 +248,7 @@ DEPENDENCIES
   nested_form
   paperclip (~> 4.1)
   paymill
+  pg
   possessive
   rails
   rails4-autocomplete

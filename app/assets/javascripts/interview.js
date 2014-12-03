@@ -1,51 +1,93 @@
 /*jslint browser: true*/
 /*global $, jQuery, alert*/
 
-
-
 $(document).ready(function() {
     
-    var $root = $('#q-container');
-    $('a').click(function() {
-        $root.animate({
-            scrollTop: $( $.attr(this, 'href') ).offset().top
-        }, 500);
-        return false;
-    });
+    var i = 1; // en ränkare som står på 1
     
-    
+    var skipQuestions = function() {
+        var qCount = $('.question').length; //räkna antalet .question på sidan
+        console.log('There are ' + qCount + ' question divs present'); // skriv ut antalet .question i console
 
-    
-    var textareaContent = $("#textarea").get();
-        
-    /* $('#save').click(function() {
-         
-            $('#span01').text($(this).val());
+        $('#q' + i).show(); //visa den fråga räknaren (i) står på (fråga 1)
+
+        $('#next').click(function(){ // NEXT-button
+            if ( i < qCount ){ // om i är mindre än antalet .questions gör...
+                i ++; // addera med 1 på räknaren
+                console.log(i); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
+                console.log('hiding');
+                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
+                console.log('showing');
+                $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
+                $('[id^=modal]').hide(); // dölj eventuell hint som syns
+                // var inputCharLen = $('#input' + i).val().length();
+                
+                //$('#input' + i).length();
+                $('#input' + i).focus(); // ställ markören i textarea
+                
+            }
         });
-    }); */
-    
-    // Visa intervju-exempel
-    /* var showExample = function() {
 
-        // Dölj exemplet från börja om viewporten är större än 768px bred
-		if (window.matchMedia('(max-width: 768px)').matches) {
-			$('#intExample').show();
-		} else {
-			$('#intExample').hide();	
+        $('#prev').click(function(){ // PREV-button
+            if (i > 1) { // om i är större än antalet .questions gör...
+                i --; // subtrahera med 1 på räknaren
+                console.log(i); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
+                console.log('hiding');
+                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
+                console.log('showing');
+                $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
+                $('[id^=modal]').hide(); // dölj eventuell hint som syns
+                
+                $('#input' + i).focus(); // ställ markören i textarea
+            }
+        });
+        
+        $('textarea').keydown(function(e) {
+            if (e.keyCode == 13){
+                e.preventDefault();
+                $("#next").click();
+            } //enter
+        });
+    };
 
-			// Toggla text vid click av bilden
-			$('#hubert').click(function() {
-				$('#intExample').fadeToggle(100);
-			});
+    var handleHints = function() {
 
-            $('#closeIntExample').click(function() {
-                $('#intExample').fadeOut(100);
-            });
-		}
-	};
+        $(document).keyup(function(e) {
+            if (e.keyCode == 27) {
+                $('.overlay').hide();
+                $('#modal' + i).hide();
+            }   // esc
+        });
 
-    showExample(); */
+        /* $(document).on('click', function(e) {
+            if !(e.target.id == '.overlay-message' || e.target.id == '.hints') {
+                $('.overlay').hide();
+                $('#modal' + i).hide();
+        }); */
 
+        $('.hints').click(function(){
+            /* if ($('.overlay').is(':visible') || $('.#modal' + [0-9]).is(':visible')) {
+                console.log( 'overlay or modal is visible');
+                $('.overlay').hide();
+                $('#modal' + [0-9]).hide();
+            } */
+            $('.overlay').toggle();
+            $('#modal' + i).toggle();
+        });
+
+        $('.closeModal').click(function(){
+            $('.overlay').hide();
+            $('#modal' + i).hide();
+        });
+
+    };
+
+    skipQuestions();
+    handleHints();
+    /* 
+    var textareaContent = $("#textarea").get();
     // Hämta de förifyllda tecknen i #textarea
     var el = $("#textarea").get(0);
 
@@ -74,9 +116,9 @@ $(document).ready(function() {
 
             $('#textareaFeedback').html(textRemaining);
 
-            /* Next-knapp på/av */
+            Next-knapp på/av
 
-            if (textRemaining >= 0 /*&& textRemaining < textLimit - elemLen*/) {
+            if (textRemaining >= 0 && textRemaining < textLimit - elemLen) {
                 $('#save').attr("disabled", false);
             } else {
                 $('#save').attr("disabled", true);
@@ -92,10 +134,8 @@ $(document).ready(function() {
         };
 
         $('#textarea').bind('input propertychange', handleChange);
-
-
-
-        handleChange();
     }
+    
+    //handleChange(); */
 
 });

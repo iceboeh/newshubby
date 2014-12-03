@@ -133,6 +133,11 @@ class PressReleasesController < ApplicationController
     
     respond_to do |format|
       if @press_release.update(press_release_params)
+        
+        if params["launch_date"]
+          params["launch_date"].map{|k,v| v}.join("-").to_date
+        end
+        
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }
         format.json { render :update }
         format.js { render "press_releases/update", notice: "Saved!" }
@@ -154,7 +159,7 @@ class PressReleasesController < ApplicationController
   end
   
   def distribution
-    @press_release.update()
+    @press_release.update(:business_model => "DISTRIBUTION KÖPT!!!!!")
   end
 
   private

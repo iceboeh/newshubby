@@ -1,4 +1,8 @@
-<div class="question" id="<%= field.name %>">
+<% if @newsroom.business_model.blank? %>
+<div class="question" id="q<%= index+10 %>">
+<% else %>
+<div class="question" id="q<%= index+1 %>">
+<% end %>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -6,13 +10,13 @@
 									<% if @newsroom.business_model.blank? %>
 										Question <%= index+10 %>
 									<% else %>
-										Question <%= index+2 %>
+										Question <%= index+1 %>
 									<% end %>
 								</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-close pull-right"></i>
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="<%= index+10 %>" onClick="toggle_tip(this.id)" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="<%= index+10 %>" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
@@ -32,10 +36,14 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message hidden" id="a<%= index+10 %>">
+<% if @newsroom.business_model.blank? %>
+<div class="overlay-message" id="modal<%= index+10 %>">
+<% else %>
+<div class="overlay-message" id="modal<%= index+2 %>">
+<% end %>
 		<div class="panel panel-default">
         <div class="panel-body">
-            <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
             <h5>
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>

@@ -1,6 +1,6 @@
 <%= f.fields_for :newsroom, @newsroom do |newsroom| %>
 
-<div class="question" id="q0">
+<div class="question" id="q1">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -24,7 +24,28 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="team_members">
+<div class="overlay-message" id="modal1">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q2">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -56,7 +77,28 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="q_what">
+<div class="overlay-message" id="modal2">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q3">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -80,35 +122,32 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="q_what">
+<div class="overlay-message" id="modal3">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q4">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="question-title">Question 4</h4>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <i class="fa fa-close pull-right"></i>
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">Business Model</p>
-                    </div> <!-- / .panel-heading -->
-                    <div class="panel-body">
-                        <%= newsroom.text_field :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-                    </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
-                </div> <!-- / .panel -->
-            </div> <!-- / .col-xs-12 -->
-        </div> <!-- / .row -->
-    </div> <!-- / .container-fluid -->
-</div> <!-- / .question -->
-
-<div class="question" id="q_how">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <h4 class="question-title">Question 5</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-close pull-right"></i>
@@ -128,7 +167,73 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="q_clients">
+<div class="overlay-message" id="modal4">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h4 class="question-title">Question 5</h4>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-close pull-right"></i>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <p class="panel-title text-left">Business Model</p>
+                    </div> <!-- / .panel-heading -->
+                    <div class="panel-body">
+                        <%= newsroom.text_field :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+                    </div> <!-- / .panel-body -->
+                    <div class="panel-footer clearfix">
+                        <div class="pull-left" id="textareaFeedback"></div>
+                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                    </div><!--/ .panel-footer -->
+                </div> <!-- / .panel -->
+            </div> <!-- / .col-xs-12 -->
+        </div> <!-- / .row -->
+    </div> <!-- / .container-fluid -->
+</div> <!-- / .question -->
+
+<div class="overlay-message" id="modal5">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q6">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -152,7 +257,28 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="competitors">
+<div class="overlay-message" id="modal6">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q7">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -176,7 +302,28 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="q_problem_solved">
+<div class="overlay-message" id="modal7">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q8">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -200,7 +347,28 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="question" id="funding">
+<div class="overlay-message" id="modal8">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->
+
+<div class="question" id="q9">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -225,10 +393,31 @@
                         <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
                     </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
-								<p class="text-center"><%= newsroom.link_to_add :fundings, class: "add-new" do %> + Add funding<% end %></p>
 								<% end  %>
+								<p class="text-center"><%= newsroom.link_to_add :fundings, class: "add-new" do %> + Add funding<% end %></p>
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 <% end %>
+
+<div class="overlay-message" id="modal9">
+		<div class="panel panel-default">
+        <div class="panel-body">
+            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h5>
+                <span class="text-primary"><strong>Example: </strong></span>
+            </h5>
+            <p>
+              here goes the example
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Remember: </strong></span>
+            </h5>
+            <p>
+             	Here goes the tip
+            </p>
+        </div> <!-- / .panel-body -->
+    </div> <!-- / .panel -->
+</div> <!-- / .overlay-message -->

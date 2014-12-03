@@ -1,41 +1,3 @@
-<script type="text/javascript">
-/*$(".navbar").click(function() {
-	if (".overlay" != "hidden") {
-		$(".overlay-message, .overlay").toggleClass("hidden");
-	}
-});*/
-
-function toggle_tip(div_id)
-{
-	
-	if ($(".overlay-message").hasClass("hidden")) {
-	console.log("check hidden")
-	$(".overlay").addClass('hidden');
-	console.log("hide .overlay")
-	$(".overlay-message").addClass('hidden');
-	console.log("hide .overlay-message")
-	};
-	
-  $(".overlay").toggleClass('hidden'); // dim
-	console.log("toggle overlay")
-	$("#a"+div_id).toggleClass('hidden'); // message (overlay-message)
-	console.log("toggle #a+div_id")
-	
-	//gör: toggla bort gammal div_id + se till att dimmad.
-		
-	// när click: sätt alla overlay-message -> hidden
-	// + sätt overlay -> hidden	 (addclass hidden)
-	
-	// plocka fram overlay
-	// toggla fram rätt overlay-message
-	
-	$(".close").click(function() {
-			$(".overlay-message, .overlay").addClass("hidden");
-	});
-		
-};
-</script>
-
 <div class="flexBox">
     <div id="presto-content">
         <div id="sidebar-area">
@@ -55,11 +17,11 @@ function toggle_tip(div_id)
 								
 								<% if @newsroom.business_model.blank? %>
 									<%= render 'press_releases/fields/newsroom', f: f %>												
-								<% end %>								
+								<% end %>						
+										
 								
 								<% unless @press_release.hex.nil? %>
-								<div class="question">
-								    <div class="container-fluid">
+								    <div class="container-fluid hidden">
 								        <div class="row">
 								            <div class="col-xs-12">
 															<div class="panel panel-default">
@@ -82,20 +44,24 @@ function toggle_tip(div_id)
 								            </div> <!-- / .col-xs-12 -->
 								        </div> <!-- / .row -->
 								    </div> <!-- / .container-fluid -->
-								</div> <!-- / .question -->
 								<% end %>
 
 								<%= f.hidden_field :pressrelease_type_id %>
 								
-                <div class="question" id="q0">
+								
+								<% if @newsroom.business_model.blank? %>
+								<div class="question" id="q<%= 10 + @press_release.pressrelease_type.fields.count %>">
+								<% else %>
+								<div class="question" id="q<%= 1 + @press_release.pressrelease_type.fields.count %>">
+								<% end %>	
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12">
                                 <h4 class="question-title">
 																	<% if @newsroom.business_model.blank? %>
-																	Question 10
+																	Question <%= 10 + @press_release.pressrelease_type.fields.count %>
 																	<% else %>
-																	Question 1
+																	Question <%= 1 + @press_release.pressrelease_type.fields.count %>
 																	<% end %>
 																</h4>
                                 <div class="panel panel-default">
@@ -112,11 +78,64 @@ function toggle_tip(div_id)
                                         <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
                                     </div><!--/ .panel-footer -->
                                 </div> <!-- / .panel -->
-                                <p class="text-center"><a href="#" class="add-new"> + Add new whatever</a></p>
                             </div> <!-- / .col-xs-12 -->
                         </div> <!-- / .row -->
                     </div> <!-- / .container-fluid -->
                 </div> <!-- / .question -->
+								
+								<% if @newsroom.business_model.blank? %>
+								<div class="question" id="q<%= 13 + @press_release.pressrelease_type.fields.count %>">
+								<% else %>
+								<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count %>">
+								<% end %>	
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="question-title">
+																</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-close pull-right"></i>
+                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                                        <p class="panel-title text-left">Embargo date</p>
+                                    </div> <!-- / .panel-heading -->
+                                    <div class="panel-body">
+                                      <%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+                                    </div> <!-- / .panel-body -->
+                                    <div class="panel-footer clearfix">
+                                        <div class="pull-left" id="textareaFeedback"></div>
+                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                                    </div><!--/ .panel-footer -->
+                                </div> <!-- / .panel -->
+                            </div> <!-- / .col-xs-12 -->
+                        </div> <!-- / .row -->
+                    </div> <!-- / .container-fluid -->
+                </div> <!-- / .question -->
+								
+								<% if @newsroom.business_model.blank? %>
+								<div class="overlay-message" id="modal<%= 11 + @press_release.pressrelease_type.fields.count %>">
+								<% else %>
+								<div class="overlay-message" id="modal<%= 2 + @press_release.pressrelease_type.fields.count %>">
+								<% end %>
+										<div class="panel panel-default">
+								        <div class="panel-body">
+								            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								            <h5>
+								                <span class="text-primary"><strong>Example: </strong></span>
+								            </h5>
+								            <p>
+								              here goes the example
+								            </p>
+								            <br>
+								            <h5>
+								                <span class="text-primary"><strong>Remember: </strong></span>
+								            </h5>
+								            <p>
+								             	Here goes the tip
+								            </p>
+								        </div> <!-- / .panel-body -->
+								    </div> <!-- / .panel -->
+								</div> <!-- / .overlay-message -->
 								
 								
 										<%= f.fields_for :specifics, OpenStruct.new(@press_release.specifics) do |builder| %>
@@ -128,93 +147,94 @@ function toggle_tip(div_id)
 
 										<br><br>
 
-										<div>
+										<% if @newsroom.business_model.blank? %>
+										<div class="question" id="q<%= 11 + @press_release.pressrelease_type.fields.count %>">
+										<% else %>
+										<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count %>">
+										<% end %>
+										
 										<%= f.fields_for :links do |link| %>
 										<%= render 'press_releases/fields/links', f: link %>
 										<% end %>
-		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
 										
-									</div>
 
-										<div>
-										Uploads
+		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
+										</div> <!-- / .question -->
+										
+										<% if @newsroom.business_model.blank? %>
+										<div class="overlay-message" id="modal<%= 11 + @press_release.pressrelease_type.fields.count %>">
+										<% else %>
+										<div class="overlay-message" id="modal<%= @press_release.pressrelease_type.fields.count %>">
+										<% end %>
+												<div class="panel panel-default">
+										        <div class="panel-body">
+										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+										            <h5>
+										                <span class="text-primary"><strong>Example: </strong></span>
+										            </h5>
+										            <p>
+										              here goes the example
+										            </p>
+										            <br>
+										            <h5>
+										                <span class="text-primary"><strong>Remember: </strong></span>
+										            </h5>
+										            <p>
+										             	Here goes the tip
+										            </p>
+										        </div> <!-- / .panel-body -->
+										    </div> <!-- / .panel -->
+										</div> <!-- / .overlay-message -->
+										
+										<% if @newsroom.business_model.blank? %>
+										<div class="question" id="q<%= 12 + @press_release.pressrelease_type.fields.count %>">
+										<% else %>
+										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count %>">
+										<% end %>
+										
 										<%= f.fields_for :uploads do |upload| %>
 										<%= render 'press_releases/fields/uploads', f: upload %>	
 										<% end %>
 										
 										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
-								</div>
-								
-<%= f.submit "Save", class: "btn btn-primary btn-success", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+										</div> <!-- / .question -->
+										
+										<% if @newsroom.business_model.blank? %>
+										<div class="overlay-message" id="modal<%= 12 + @press_release.pressrelease_type.fields.count %>">
+										<% else %>
+										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
-								
-								
-								
+												<div class="panel panel-default">
+										        <div class="panel-body">
+										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+										            <h5>
+										                <span class="text-primary"><strong>Example: </strong></span>
+										            </h5>
+										            <p>
+										              here goes the example
+										            </p>
+										            <br>
+										            <h5>
+										                <span class="text-primary"><strong>Remember: </strong></span>
+										            </h5>
+										            <p>
+										             	Here goes the tip
+										            </p>
+										        </div> <!-- / .panel-body -->
+										    </div> <!-- / .panel -->
+										</div> <!-- / .overlay-message -->
+										
             </div> <!-- / #q-container -->
+            <div class="text-center" id="next-container">
+								<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
+								<%= f.submit "Next", class: "btn btn-success", id: "next", name: "Next" %>
+            </div> <!-- / #next-container -->
+						<% end %>
         </div> <!-- / #sidebar-area -->
         <div id="preview-area">
             
-           	<div class="overlay hidden"></div>
-            <div class="overlay-message hidden">
-							
-								<div class="panel panel-default hidden" id="a1">
-                    <div class="panel-body">
-                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h5>
-                            <span class="text-primary"><strong>A1: </strong></span>
-                        </h5>
-                        <p>
-                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
-                        </p>
-                        <br>
-                        <h5>
-                            <span class="text-primary"><strong>Remember: </strong></span>
-                        </h5>
-                        <p>
-                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
-                        </p>
-                    </div> <!-- / .panel-body -->
-                </div> <!-- / .panel -->
-								
-								<div class="panel panel-default hidden" id="a2">
-                    <div class="panel-body">
-                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h5>
-                            <span class="text-primary"><strong>A2: </strong></span>
-                        </h5>
-                        <p>
-                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
-                        </p>
-                        <br>
-                        <h5>
-                            <span class="text-primary"><strong>Remember: </strong></span>
-                        </h5>
-                        <p>
-                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
-                        </p>
-                    </div> <!-- / .panel-body -->
-                </div> <!-- / .panel -->
-								
-								<div class="panel panel-default hidden" id="a3">
-                    <div class="panel-body">
-                        <button type="button" class="close" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h5>
-                            <span class="text-primary"><strong>A3: </strong></span>
-                        </h5>
-                        <p>
-                            NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
-                        </p>
-                        <br>
-                        <h5>
-                            <span class="text-primary"><strong>Remember: </strong></span>
-                        </h5>
-                        <p>
-                            Always write in third person. E.g. use “[Company name]” instead of “we” or “I”.
-                        </p>
-                    </div> <!-- / .panel-body -->
-                </div> <!-- / .panel -->
-
-            </div> <!-- / .overlay-message -->
+           	<div class="overlay"></div>
+            
             <div class="container-fluid pr-container">
 							<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
 						</div> <!-- / .prContainer -->

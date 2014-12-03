@@ -9,4 +9,6 @@
 	<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 <% end %>
 
+<div class="container-fluid pr-container">
 <%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize.underscore}" %>
+</div>

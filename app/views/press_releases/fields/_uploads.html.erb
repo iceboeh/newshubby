@@ -1,23 +1,21 @@
-<div class="question" id="q0">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">File</p>
-                    </div> <!-- / .panel-heading -->
-                    <div class="panel-body">
-							        <%= f.file_field :file, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %><br>
-											<%= f.text_field :caption, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "File Description" %>
-										</div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
-                </div> <!-- / .panel -->
-            </div> <!-- / .col-xs-12 -->
-        </div> <!-- / .row -->
-    </div> <!-- / .container-fluid -->
-</div> <!-- / .question -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
+                    <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                    <p class="panel-title text-left">File</p>
+                </div> <!-- / .panel-heading -->
+                <div class="panel-body">
+					        <%= f.file_field :file, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %><br>
+									<%= f.text_field :caption, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "File Description" %>
+								</div> <!-- / .panel-body -->
+                <div class="panel-footer clearfix">
+                    <div class="pull-left" id="textareaFeedback"></div>
+                    <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                </div><!--/ .panel-footer -->
+            </div> <!-- / .panel -->
+        </div> <!-- / .col-xs-12 -->
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->

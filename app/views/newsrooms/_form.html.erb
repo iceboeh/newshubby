@@ -70,7 +70,9 @@
 								<% end %>
                   <div class="thumbnail">
                       <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
-												<% unless press_release.uploads.first.file.blank? %>
+												<% unless press_release.uploads.first.nil? %>
+												<% unless press_release.uploads.first.file.nil? %>
+												<% end %>
 												<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
 											<% end %>
                       <% end %>
