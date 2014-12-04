@@ -1,8 +1,17 @@
 <div class="flexBox">
     <div id="presto-content">
         <div id="sidebar-area">
+          <div class="text-center" id="nav-container">
+						<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
+							<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
+							<%= f.submit "Next", class: "btn btn-success", id: "next", name: "Next" %>
+          </div> <!-- / #next-container -->
 						<div id="q-container">
-								<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
+              <div class="prestoNav">
+                  <ul id="prestoNavUL">
+                      
+                  </ul>
+              </div>
 							  <% if @press_release.errors.any? %>
 							    <div id="error_explanation">
 							      <h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this press_release from being saved:</h2>
@@ -17,8 +26,7 @@
 								
 								<% if @newsroom.business_model.blank? %>
 									<%= render 'press_releases/fields/newsroom', f: f %>												
-								<% end %>						
-										
+								<% end %>									
 								
 								<% unless @press_release.hex.nil? %>
 								    <div class="container-fluid hidden">
@@ -225,10 +233,6 @@
 										</div> <!-- / .overlay-message -->
 										
             </div> <!-- / #q-container -->
-            <div class="text-center" id="next-container">
-								<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
-								<%= f.submit "Next", class: "btn btn-success", id: "next", name: "Next" %>
-            </div> <!-- / #next-container -->
 						<% end %>
         </div> <!-- / #sidebar-area -->
         <div id="preview-area">

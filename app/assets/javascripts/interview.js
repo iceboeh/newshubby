@@ -1,15 +1,18 @@
-/*jslint browser: true*/
-/*global $, jQuery, alert*/
-
 $(document).ready(function() {
-    
+
     var i = 1; // en ränkare som står på 1
+    var qCount = $('.question').length; //räkna antalet .question på sidan
+    console.log('There are ' + qCount + ' question divs present'); // skriv ut antalet .question i console
+    
+    var hideModal = function(){
+        $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
+        $('[id^=modal]').hide(); // dölj eventuell hint som syns
+    };
     
     var skipQuestions = function() {
-        var qCount = $('.question').length; //räkna antalet .question på sidan
-        console.log('There are ' + qCount + ' question divs present'); // skriv ut antalet .question i console
 
         $('#q' + i).show(); //visa den fråga räknaren (i) står på (fråga 1)
+        activeBtn();
 
         $('#next').click(function(){ // NEXT-button
             if ( i < qCount ){ // om i är mindre än antalet .questions gör...
@@ -19,13 +22,11 @@ $(document).ready(function() {
                 console.log('hiding');
                 $('#q' + i).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
-                $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
-                $('[id^=modal]').hide(); // dölj eventuell hint som syns
+                hideModal();
                 // var inputCharLen = $('#input' + i).val().length();
-                
+                activeBtn();
                 //$('#input' + i).length();
                 $('#input' + i).focus(); // ställ markören i textarea
-                
             }
         });
 
@@ -37,13 +38,12 @@ $(document).ready(function() {
                 console.log('hiding');
                 $('#q' + i).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
-                $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
-                $('[id^=modal]').hide(); // dölj eventuell hint som syns
-                
+                hideModal();
+                activeBtn();
                 $('#input' + i).focus(); // ställ markören i textarea
             }
         });
-        
+
         $('textarea').keydown(function(e) {
             if (e.keyCode == 13){
                 e.preventDefault();
@@ -81,11 +81,38 @@ $(document).ready(function() {
             $('.overlay').hide();
             $('#modal' + i).hide();
         });
-
     };
-
+    
+    var prestoNav = function() {
+        var i2 = 1;
+        while (i2 <= qCount) {
+            if (i2 < qCount) {
+                $('#prestoNavUL').append("<li><div class='prestoNavBtn' id='" + i2 + "' data-id='" + i2 + "'>" + i2 + "</div></li><li><div class='space'></div></li>");
+            } else {
+                $('#prestoNavUL').append("<li><div class='prestoNavBtn' id='" + i2 + "' data-id='" + i2 + "'>" + i2 + "</div></li>");
+            }
+            i2++;
+        }
+        
+        $('.prestoNavBtn').click(function(){
+            $('[id^=q].question').not('#q' + $(this).data('id')).hide(); // dölj alla tidigare #q
+            hideModal();
+            $('#q'+$(this).data('id')).show();
+            i = $(this).data('id');
+            activeBtn();
+        });
+    };
+    
+    var activeBtn = function() {
+        $('.prestoNavBtn').not('#' + i).removeClass('active');
+        $('#' + i).addClass('active');
+    };
+    
     skipQuestions();
     handleHints();
+    prestoNav();
+    activeBtn();
+    
     /* 
     var textareaContent = $("#textarea").get();
     // Hämta de förifyllda tecknen i #textarea
@@ -135,7 +162,7 @@ $(document).ready(function() {
 
         $('#textarea').bind('input propertychange', handleChange);
     }
-    
+
     //handleChange(); */
 
 });

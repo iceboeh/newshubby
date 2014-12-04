@@ -1,77 +1,39 @@
 <% title "NewsHubby | Pricing" %>
 
 <div class="shortPage">
-<div class="container">
-	<div class="row text-center">
+            <div class="container">
+                <div class="ppContainer">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th id="freemium">Free</th>
+                            <th id="premium">Premium</th>
+                        </tr>
+                        <tr>
+                            <td>Cools stuff</td>
+                            <td></td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
+                            <td>More cool stuff</td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Even more cool stuff</td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button class="btn btn-success">Choose</button></td>
+                            <td><button class="btn btn-success">Choose</button></td>
+                        </tr>
+                    </table>
+                </div>
+<br><br>
 
-<% @plans.each do |plan| %>
-
-<% if plan.name == "A" %>
-
-<div class="col-sm-4">
-	<%= link_to new_subscription_path(:plan_id => plan.id) do %>
-		<div class="ppPlan">
-			<br>
-			<h3>$60/month</h3>
-			<div class="ppBenefits">
-				<p>Monthly subscription</p>
-				<p>1 year Commitment</p>
-				<p>Pay every month</p>
-			</div>
-			<br><br>
-			<div class="center-block"><p><strong>Buy</strong></p></div>
-			<div class="clearfix"><br></div>
-		</div>
-		<div class="clearfix"><br></div>
-	<% end %>
-</div>
-
-<% elsif plan.name == "B" %>
-
-<div class="col-sm-4">
-	<%= link_to new_subscription_path(:plan_id => plan.id) do %>
-		<div class="ppPlan ppHighlight">
-			<%= image_tag "corner_banner2.svg", class: "ppCornerBanner" %>
-			<p class="ppCornerBannerText">SAVE $156 / year</p>
-			<br>
-			<h3>$47/month</h3>
-			<br>
-			<div class="ppBenefits">
-				<p>Monthly subcription</p>
-				<p>1 year Commitment</p>
-				<p>Pay per year</p>
-			</div>
-			<br><br>
-			<div class="center-block"><p><span><strong>Buy</strong></span></p></div>
-			<div class="clearfix"><br></div>
-		</div>
-	<% end %>
-</div>
-
-<% elsif plan.name == "C" %>
-
-<div class="col-sm-4">
-	<%= link_to new_subscription_path(:plan_id => plan.id) do %>
-		<div class="ppPlan">
-			<br>
-			<h3>$140/month</h3>
-			<div class="ppBenefits">
-				<p>Zero Commitment</p>
-				<p>Cancel when you want</p>
-				<p>Pay every month</p>
-			</div>
-			<br>
-			<div class="center-block"><p><strong>Buy</strong></p></div>
-			<div class="clearfix"><br></div>
-		</div>
-	<% end %>
-</div>
-<% end %>
-
-<% end %>
-	</div>
-</div>
-
+<div class="pull-right">
 <%= nested_form_for @newsroom do |f| %>
   <% if @newsroom.errors.any? %>
     <div id="error_explanation">
@@ -85,9 +47,12 @@
     </div>
 	<% end %>
 		
-			<%= f.text_field :code, rows: 6, id: "textarea", max: "20" do %> <% end %>
-			<%= f.submit "Code", class: "btn btn-success" %>
+			<%= f.text_field :code, rows: 6, id: "textarea", max: "20", placeholder: "Insert Beta Code" do %> <% end %>
+			<%= f.submit "Submit", class: "btn btn-success" %>
 			
 <% end%>
+</div>
+
+</div>
 <div class="push"></div>
 </div>
