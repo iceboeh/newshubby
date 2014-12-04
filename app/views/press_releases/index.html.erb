@@ -1,37 +1,40 @@
-<div class="container">
-    <h2 class="text-center">Latest Press Releases</h2>  
-		<div class="col-sm-6 col-md-3 hidden">
-        <div class="thumbnail">
-            <div class="thumbLogoBkg">
-                <span class="helper"></span><img src="media/img/ze_logo.png" alt="" class="thumbLogo">
-            </div>
-            <img src="media/img/ceo.jpg" alt="">
-            <time class="pull-right" datetime="2014-10-28 20:00"><small>2 hours ago</small></time>
-            <div class="caption">
-                <h4>Glass är gott</h4>
-                <p><a href="#" class="btn btn-primary" role="button"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;View</a> <a href="#" class="btn btn-default pull-right" role="button"><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</a></p>
-            </div> <!-- / .caption -->
-        </div> <!-- / .thumbnail -->
-    </div> <!-- / .col-sm-6 -->
+<div class="shortPage">
+	<div class="container">
+	    <h2 class="text-center">Latest Press Releases</h2>  
+			<div class="col-sm-6 col-md-3 hidden">
+	        <div class="thumbnail">
+	            <div class="thumbLogoBkg">
+	                <span class="helper"></span><img src="media/img/ze_logo.png" alt="" class="thumbLogo">
+	            </div>
+	            <img src="media/img/ceo.jpg" alt="">
+	            <time class="pull-right" datetime="2014-10-28 20:00"><small>2 hours ago</small></time>
+	            <div class="caption">
+	                <h4>Glass är gott</h4>
+	                <p><a href="#" class="btn btn-primary" role="button"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;View</a> <a href="#" class="btn btn-default pull-right" role="button"><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</a></p>
+	            </div> <!-- / .caption -->
+	        </div> <!-- / .thumbnail -->
+	    </div> <!-- / .col-sm-6 -->
 		
-		<% @press_releases.each do |press_release| %>
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
-								<% if press_release.uploads.first.file.blank? %>
-								<!-- FIXA BROKEN LINK-BILD! -->
-									<%= image_tag "#", class: "thumbImg", alt: "" %>
-								<% else %>
-                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-            <% end %><% end %>
-            <div class="caption">
-                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
-                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
-                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
-            </div> <!-- / .caption -->
+			<% @press_releases.each do |press_release| %>
+	    <div class="col-sm-6 col-md-3">
+	        <div class="thumbnail">
+	            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+									<% if press_release.uploads.first.file.blank? %>
+									<!-- FIXA BROKEN LINK-BILD! -->
+										<%= image_tag "#", class: "thumbImg", alt: "" %>
+									<% else %>
+	                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
+	            <% end %><% end %>
+	            <div class="caption">
+	                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
+	                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
+	                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
+	            </div> <!-- / .caption -->
             
-            <div class="clearfix"></div>
-        </div> <!-- / .thumbnail -->
-    </div> <!-- / .col-sm-6 -->
-		<% end %>
-</div> <!-- / .container -->
+	            <div class="clearfix"></div>
+	        </div> <!-- / .thumbnail -->
+	    </div> <!-- / .col-sm-6 -->
+			<% end %>
+	</div> <!-- / .container -->
+	<div class"push"></div>
+</div>

@@ -1,12 +1,13 @@
 <div class="flexBox">
     <div id="presto-content">
         <div id="sidebar-area">
-          <div class="text-center" id="nav-container">
-						<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
-							<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
-							<%= f.submit "Next", class: "btn btn-success", id: "next", name: "Next" %>
-          </div> <!-- / #next-container -->
 						<div id="q-container">
+							<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
+							
+		          <div class="text-center" id="nav-container">
+								<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
+								<%= f.submit "Next", class: "btn btn-success", id: "next", name: "Next" %>
+		          </div> <!-- / #next-container -->
               <div class="prestoNav">
                   <ul id="prestoNavUL">
                       
@@ -26,7 +27,7 @@
 								
 								<% if @newsroom.business_model.blank? %>
 									<%= render 'press_releases/fields/newsroom', f: f %>												
-								<% end %>									
+								<% end %>
 								
 								<% unless @press_release.hex.nil? %>
 								    <div class="container-fluid hidden">
@@ -74,7 +75,6 @@
 																</h4>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <i class="fa fa-close pull-right"></i>
                                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                                         <p class="panel-title text-left">Title</p>
                                     </div> <!-- / .panel-heading -->
@@ -103,7 +103,6 @@
 																</h4>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <i class="fa fa-close pull-right"></i>
                                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                                         <p class="panel-title text-left">Embargo date</p>
                                     </div> <!-- / .panel-heading -->

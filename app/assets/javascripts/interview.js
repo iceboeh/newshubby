@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var i = 1; // en ränkare som står på 1
+    var counter = 1; // en ränkare som står på 1
     var qCount = $('.question').length; //räkna antalet .question på sidan
     console.log('There are ' + qCount + ' question divs present'); // skriv ut antalet .question i console
     
@@ -11,36 +11,36 @@ $(document).ready(function() {
     
     var skipQuestions = function() {
 
-        $('#q' + i).show(); //visa den fråga räknaren (i) står på (fråga 1)
+        $('#q' + counter).show(); //visa den fråga räknaren (i) står på (fråga 1)
         activeBtn();
 
         $('#next').click(function(){ // NEXT-button
-            if ( i < qCount ){ // om i är mindre än antalet .questions gör...
-                i ++; // addera med 1 på räknaren
-                console.log(i); // skriv ut vad räknaren nu står på
-                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
+            if ( counter < qCount ){ // om i är mindre än antalet .questions gör...
+                counter ++; // addera med 1 på räknaren
+                console.log(counter); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + counter).hide(); // dölj alla tidigare #q
                 console.log('hiding');
-                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
+                $('#q' + counter).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
                 hideModal();
                 // var inputCharLen = $('#input' + i).val().length();
                 activeBtn();
                 //$('#input' + i).length();
-                $('#input' + i).focus(); // ställ markören i textarea
+                $('#input' + counter).focus(); // ställ markören i textarea
             }
         });
 
         $('#prev').click(function(){ // PREV-button
-            if (i > 1) { // om i är större än antalet .questions gör...
-                i --; // subtrahera med 1 på räknaren
-                console.log(i); // skriv ut vad räknaren nu står på
-                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
+            if (counter > 1) { // om i är större än antalet .questions gör...
+                counter --; // subtrahera med 1 på räknaren
+                console.log(counter); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + counter).hide(); // dölj alla tidigare #q
                 console.log('hiding');
-                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
+                $('#q' + counter).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
                 hideModal();
                 activeBtn();
-                $('#input' + i).focus(); // ställ markören i textarea
+                $('#input' + counter).focus(); // ställ markören i textarea
             }
         });
 
@@ -57,7 +57,7 @@ $(document).ready(function() {
         $(document).keyup(function(e) {
             if (e.keyCode == 27) {
                 $('.overlay').hide();
-                $('#modal' + i).hide();
+                $('#modal' + counter).hide();
             }   // esc
         });
 
@@ -74,12 +74,12 @@ $(document).ready(function() {
                 $('#modal' + [0-9]).hide();
             } */
             $('.overlay').toggle();
-            $('#modal' + i).toggle();
+            $('#modal' + counter).toggle();
         });
 
         $('.closeModal').click(function(){
             $('.overlay').hide();
-            $('#modal' + i).hide();
+            $('#modal' + counter).hide();
         });
     };
     
@@ -98,14 +98,14 @@ $(document).ready(function() {
             $('[id^=q].question').not('#q' + $(this).data('id')).hide(); // dölj alla tidigare #q
             hideModal();
             $('#q'+$(this).data('id')).show();
-            i = $(this).data('id');
+            counter = $(this).data('id');
             activeBtn();
         });
     };
     
     var activeBtn = function() {
-        $('.prestoNavBtn').not('#' + i).removeClass('active');
-        $('#' + i).addClass('active');
+        $('.prestoNavBtn').not('#' + counter).removeClass('active');
+        $('#' + counter).addClass('active');
     };
     
     skipQuestions();
