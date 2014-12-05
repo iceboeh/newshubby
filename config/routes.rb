@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+ # ActiveAdmin::Devise.config
+  #ActiveAdmin.routes(self)
   resources :pressrelease_types
 
   get '/about' => 'contacts#about'
@@ -10,7 +9,6 @@ Rails.application.routes.draw do
   get '/select' => 'press_releases#select'
   get '/pressreleases' => 'newsrooms#allpressreleases'
   get '/introduction' => 'newsrooms#introduction'
-  
   
   resources :plans
 
