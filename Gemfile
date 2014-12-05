@@ -84,8 +84,6 @@ gem 'will_paginate'
 
 gem 'aws-sdk'
 
-# gem 'elastic-beanstalk'
-
 gem 'google-analytics-rails'
 
 # Want to be able to deploy easily to EC2
