@@ -76,7 +76,7 @@ gem 'nested_form'
 
 gem 'rails_autolink'
 
-#gem 'activeadmin'
+gem 'activeadmin', github: 'activeadmin'
 
 gem 'possessive'
 
