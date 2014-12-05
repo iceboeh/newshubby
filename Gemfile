@@ -83,6 +83,7 @@ gem 'possessive'
 gem 'will_paginate'
 
 gem 'aws-sdk'
+
 # gem 'elastic-beanstalk'
 
 gem 'google-analytics-rails'
