@@ -9,6 +9,9 @@ Bundler.require(*Rails.groups)
 module N2
   class Application < Rails::Application
     
+    #ActiveAdmin fix
+    config.override_gem_home = false
+    
     # Deflater for speed!
     config.middleware.use Rack::Deflater
     
