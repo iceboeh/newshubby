@@ -1,7 +1,9 @@
 <%= render 'press_releases/layouts/static_top' %>
 
                         <p>
-                            <span id="pr-answer-04"><%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %></span>
+                            <span id="pr-answer-04">
+															<%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %>
+														</span>
                         </p>
 
 <%= render 'press_releases/layouts/static_bottom' %>

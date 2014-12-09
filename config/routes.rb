@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   
   resources :plans do
     get :free, on: :collection
+    get :premium, on: :collection
   end
 
   resources :subscriptions
