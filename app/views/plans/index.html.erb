@@ -33,26 +33,6 @@
                 </div>
 <br><br>
 
-<div class="pull-right">
-<%= nested_form_for @newsroom do |f| %>
-  <% if @newsroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this showroom from being saved:</h2>
-
-      <ul>
-      <% @newsroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-	<% end %>
-		
-			<%= f.text_field :code, rows: 6, id: "textarea", max: "20", placeholder: "Insert Beta Code" do %> <% end %>
-			<%= f.submit "Submit", class: "btn btn-success" %>
-			
-<% end%>
-</div>
-
 </div>
 <div class="push"></div>
 </div>
