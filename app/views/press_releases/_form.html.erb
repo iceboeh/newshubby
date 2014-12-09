@@ -25,7 +25,7 @@
 							    </div>
 							  <% end %>
 								
-								<% if @newsroom.business_model.blank? %>
+								<% if @nr_questions %>
 									<%= render 'press_releases/fields/newsroom', f: f %>												
 								<% end %>
 								
@@ -57,20 +57,67 @@
 
 								<%= f.hidden_field :pressrelease_type_id %>
 								
-								
-								<% if @newsroom.business_model.blank? %>
-								<div class="question" id="q<%= 10 + @press_release.pressrelease_type.fields.count %>">
+								<% if @nr_questions %>
+								<div class="question" id="q10">
 								<% else %>
-								<div class="question" id="q<%= 1 + @press_release.pressrelease_type.fields.count %>">
+								<div class="question" id="q1">
 								<% end %>	
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12">
                                 <h4 class="question-title">
-																	<% if @newsroom.business_model.blank? %>
-																	Question <%= 10 + @press_release.pressrelease_type.fields.count %>
+																	Question 10
+																</h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                                        <p class="panel-title text-left">Embargo date</p>
+                                    </div> <!-- / .panel-heading -->
+                                    <div class="panel-body">
+                                      <%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+                                    </div> <!-- / .panel-body -->
+                                    <div class="panel-footer clearfix">
+                                        <div class="pull-left" id="textareaFeedback"></div>
+                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+                                    </div><!--/ .panel-footer -->
+                                </div> <!-- / .panel -->
+                            </div> <!-- / .col-xs-12 -->
+                        </div> <!-- / .row -->
+                    </div> <!-- / .container-fluid -->
+                </div> <!-- / .question -->
+								
+								<% if @nr_questions %>
+								<div class="overlay-message" id="modal10 %>">
+								<% else %>
+								<div class="overlay-message" id="modal1">
+								<% end %>
+										<div class="panel panel-default">
+								        <div class="panel-body">
+								            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+								            <h5>
+								                <span class="text-primary"><strong>Remember: </strong></span>
+								            </h5>
+								            <p>
+								             	Set a date for when its okay for journalists to spread the information from this press release.
+								            </p>
+								        </div> <!-- / .panel-body -->
+								    </div> <!-- / .panel -->
+								</div> <!-- / .overlay-message -->
+								
+								
+								<% if @nr_questions %>
+								<div class="question" id="q<%= 11 + @press_release.pressrelease_type.fields.count %>">
+								<% else %>
+								<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count %>">
+								<% end %>	
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4 class="question-title">
+																	<% if @nr_questions %>
+																	Question <%= 11 + @press_release.pressrelease_type.fields.count %>
 																	<% else %>
-																	Question <%= 1 + @press_release.pressrelease_type.fields.count %>
+																	Question <%= 2 + @press_release.pressrelease_type.fields.count %>
 																	<% end %>
 																</h4>
                                 <div class="panel panel-default">
@@ -91,58 +138,7 @@
                     </div> <!-- / .container-fluid -->
                 </div> <!-- / .question -->
 								
-								<% if @newsroom.business_model.blank? %>
-								<div class="question" id="q<%= 13 + @press_release.pressrelease_type.fields.count %>">
-								<% else %>
-								<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count %>">
-								<% end %>	
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h4 class="question-title">
-																</h4>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                                        <p class="panel-title text-left">Embargo date</p>
-                                    </div> <!-- / .panel-heading -->
-                                    <div class="panel-body">
-                                      <%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-                                    </div> <!-- / .panel-body -->
-                                    <div class="panel-footer clearfix">
-                                        <div class="pull-left" id="textareaFeedback"></div>
-                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                                    </div><!--/ .panel-footer -->
-                                </div> <!-- / .panel -->
-                            </div> <!-- / .col-xs-12 -->
-                        </div> <!-- / .row -->
-                    </div> <!-- / .container-fluid -->
-                </div> <!-- / .question -->
 								
-								<% if @newsroom.business_model.blank? %>
-								<div class="overlay-message" id="modal<%= 11 + @press_release.pressrelease_type.fields.count %>">
-								<% else %>
-								<div class="overlay-message" id="modal<%= 2 + @press_release.pressrelease_type.fields.count %>">
-								<% end %>
-										<div class="panel panel-default">
-								        <div class="panel-body">
-								            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-								            <h5>
-								                <span class="text-primary"><strong>Example: </strong></span>
-								            </h5>
-								            <p>
-								              here goes the example
-								            </p>
-								            <br>
-								            <h5>
-								                <span class="text-primary"><strong>Remember: </strong></span>
-								            </h5>
-								            <p>
-								             	Here goes the tip
-								            </p>
-								        </div> <!-- / .panel-body -->
-								    </div> <!-- / .panel -->
-								</div> <!-- / .overlay-message -->
 								
 								
 										<%= f.fields_for :specifics, OpenStruct.new(@press_release.specifics) do |builder| %>
@@ -154,10 +150,10 @@
 
 										<br><br>
 
-										<% if @newsroom.business_model.blank? %>
-										<div class="question" id="q<%= 11 + @press_release.pressrelease_type.fields.count %>">
+										<% if @nr_questions %>
+										<div class="question" id="q<%= 12 + @press_release.pressrelease_type.fields.count %>">
 										<% else %>
-										<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count %>">
+										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 										
 										<%= f.fields_for :links do |link| %>
@@ -168,10 +164,10 @@
 		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
 										</div> <!-- / .question -->
 										
-										<% if @newsroom.business_model.blank? %>
-										<div class="overlay-message" id="modal<%= 11 + @press_release.pressrelease_type.fields.count %>">
+										<% if @nr_questions %>
+										<div class="overlay-message" id="modal<%= 12 + @press_release.pressrelease_type.fields.count %>">
 										<% else %>
-										<div class="overlay-message" id="modal<%= @press_release.pressrelease_type.fields.count %>">
+										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 												<div class="panel panel-default">
 										        <div class="panel-body">
@@ -193,10 +189,10 @@
 										    </div> <!-- / .panel -->
 										</div> <!-- / .overlay-message -->
 										
-										<% if @newsroom.business_model.blank? %>
-										<div class="question" id="q<%= 12 + @press_release.pressrelease_type.fields.count %>">
+										<% if @nr_questions %>
+										<div class="question" id="q<%= 13 + @press_release.pressrelease_type.fields.count %>">
 										<% else %>
-										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count %>">
+										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 										
 										<%= f.fields_for :uploads do |upload| %>
@@ -206,10 +202,10 @@
 										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
 										</div> <!-- / .question -->
 										
-										<% if @newsroom.business_model.blank? %>
-										<div class="overlay-message" id="modal<%= 12 + @press_release.pressrelease_type.fields.count %>">
+										<% if @nr_questions %>
+										<div class="overlay-message" id="modal<%= 13 + @press_release.pressrelease_type.fields.count %>">
 										<% else %>
-										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count %>">
+										<div class="overlay-message" id="modal<%= 4 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 												<div class="panel panel-default">
 										        <div class="panel-body">

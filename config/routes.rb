@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get '/pressreleases' => 'newsrooms#allpressreleases'
   get '/introduction' => 'newsrooms#introduction'
   
-  resources :plans
+  resources :plans do
+    get :free, on: :collection
+  end
 
   resources :subscriptions
 

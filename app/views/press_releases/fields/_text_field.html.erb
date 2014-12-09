@@ -1,16 +1,16 @@
-<% if @newsroom.business_model.blank? %>
-<div class="question" id="q<%= index+10 %>">
+<% if @nr_questions %>
+<div class="question" id="q<%= index+11 %>">
 <% else %>
-<div class="question" id="q<%= index+1 %>">
+<div class="question" id="q<%= index+2 %>">
 <% end %>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="question-title">
-									<% if @newsroom.business_model.blank? %>
-										Question <%= index+10 %>
+									<% if @nr_questions %>
+										Question <%= index+11 %>
 									<% else %>
-										Question <%= index+1 %>
+										Question <%= index+2 %>
 									<% end %>
 								</h4>
                 <div class="panel panel-default">
@@ -19,7 +19,7 @@
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-											<% if field.name.empty? %>
+											<% if field.name.blank? %>
 								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill} " %>
 											<% else %>
 								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;"%>
@@ -35,8 +35,8 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<% if @newsroom.business_model.blank? %>
-<div class="overlay-message" id="modal<%= index+10 %>">
+<% if @nr_questions %>
+<div class="overlay-message" id="modal<%= index+11 %>">
 <% else %>
 <div class="overlay-message" id="modal<%= index+2 %>">
 <% end %>

@@ -70,6 +70,10 @@ class PressReleasesController < ApplicationController
     @newsroom = @press_release.newsroom
     @press_release = @newsroom.press_releases.friendly.find(params[:id])
     
+    if @newsroom.press_releases.count < 2 || @newsroom.business_model.blank?
+      @nr_questions = true
+    end
+    
     if @newsroom.subscription.nil?
       flash[:notice] = "You can't create a press release without a subscription!"
       redirect_to plans_path

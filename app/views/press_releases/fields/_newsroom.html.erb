@@ -5,19 +5,28 @@
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="question-title">Question 1</h4>
+								<%= newsroom.fields_for :people do |person| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="1" onClick="reply_click(this.id)" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">Company Name</p>
+                        <%= person.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="2" onClick="reply_click(this.id)"  data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <p class="panel-title text-left"><%= @newsroom.company_name.possessive %> key people</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                        <%= newsroom.text_field :company_name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+                        
+												<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
+												Founder <%= person.check_box :founder %>
+												<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
+												<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation" %><br>
+												
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
                         <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
                     </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
+								<% end  %>
+								<p class="text-center"><%= newsroom.link_to_add :people, class: "add-new" do %> + Add person<% end %></p>
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
@@ -49,28 +58,23 @@
         <div class="row">
             <div class="col-xs-12">
                 <h4 class="question-title">Question 2</h4>
-								<%= newsroom.fields_for :people do |person| %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <%= person.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="2" onClick="reply_click(this.id)"  data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">Team Members</p>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="3" onClick="reply_click(this.id)" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <p class="panel-title text-left">What does <%= @newsroom.company_name %> do?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                        
-												<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
-												Founder <%= person.check_box :founder %>
-												<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
-												<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation" %><br>
-												
+											<% if @newsroom.q_what_you_do.blank? %>
+												<%= newsroom.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} " %>
+											<% else %>
+												<%= newsroom.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
                         <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
                     </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
-								<% end  %>
-								<p class="text-center"><%= newsroom.link_to_add :people, class: "add-new" do %> + Add person<% end %></p>
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
@@ -84,14 +88,14 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
+							NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
             </p>
             <br>
             <h5>
                 <span class="text-primary"><strong>Remember: </strong></span>
             </h5>
             <p>
-             	Here goes the tip
+             	What does <%= @newsroom.company_name %> do? Always write in third person, please :) For example, use "<%= @newsroom.company_name %>" instead of “we” or “I”.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -104,11 +108,15 @@
                 <h4 class="question-title">Question 3</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="3" onClick="reply_click(this.id)" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">What does your company do?</p>
+                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+                        <p class="panel-title text-left">How exactly does <%= @newsroom.company_name %> achieve that?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                        <%= newsroom.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% if @newsroom.q_how_you_achieve.blank? %>
+                      	<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} achieves this " %>
+											<% else %>
+												<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
@@ -128,14 +136,7 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
+              The company achieves this through automatic online interviews. Once a client has answered a few questions, a press release is generated and is ready to be electronically sent to media outlets worldwide.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -149,10 +150,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">How exactly do you achieve that?</p>
+                        <p class="panel-title text-left">How will you describe <%= @newsroom.company_name.possessive %> clients?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                      <%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% if @newsroom.q_clients.blank? %>
+                      	<%= newsroom.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "Typically, #{@newsroom.company_name.possessive} clients are " %>
+											<% else %>
+												<%= newsroom.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
@@ -172,15 +177,9 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
+              Typically, NewsHubby's clients are tech startups and other, bigger tech companies.
             </p>
             <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
-            </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
@@ -193,10 +192,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">Business Model</p>
+                        <p class="panel-title text-left">Describe <%= @newsroom.company_name.possessive %> business model, preferably with prices included</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                        <%= newsroom.text_area :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<%= newsroom.text_area :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
@@ -216,14 +215,7 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
+              The business model is a yearly or monthly subscription model, from $47 per month.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -237,10 +229,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                        <p class="panel-title text-left">How will you describe <%= @newsroom.company_name.possessive %> clients?</p>
+                        <p class="panel-title text-left">How does <%= @newsroom.company_name %> differ from its competitors?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-                      <%= newsroom.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% if @newsroom.q_clients.blank? %>
+                     		<%= newsroom.text_area :differentiation, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "The difference between #{@newsroom.company_name} and its competitors is " %>
+											<% else %>
+												<%= newsroom.text_area :differentiation, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>
@@ -260,14 +256,7 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
+							The difference between NewsHubby and its competitors is that competitors primarily focus on distribution or manually writing press releases. NewsHubby has created a tool that actually helps the client to automatically generate a customized press release – a DIY tool for press releases.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -304,14 +293,7 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
+							Pr.co, Pressfriendly
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -324,7 +306,6 @@
                 <h4 class="question-title">Question 8</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-close pull-right"></i>
                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                         <p class="panel-title text-left">What problem does <%= @newsroom.company_name %> solve?</p>
                     </div> <!-- / .panel-heading -->
@@ -349,14 +330,7 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
+              Many companies don't have the time, effort and knowledge about how to create a good press release. NewsHubby wants to help them with that and minimize the distance between the startups and the press.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
@@ -372,7 +346,7 @@
                     <div class="panel-heading">
                         <%= funding.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
                         <%= link_to "#" do %><i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i><% end %>
-                        <p class="panel-title text-left">Funding</p>
+                        <p class="panel-title text-left">How is <%= @newsroom.company_name %> funded?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
                         
@@ -394,24 +368,3 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 <% end %>
-
-<div class="overlay-message" id="modal9">
-		<div class="panel panel-default">
-        <div class="panel-body">
-            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <h5>
-                <span class="text-primary"><strong>Example: </strong></span>
-            </h5>
-            <p>
-              here goes the example
-            </p>
-            <br>
-            <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
-            </h5>
-            <p>
-             	Here goes the tip
-            </p>
-        </div> <!-- / .panel-body -->
-    </div> <!-- / .panel -->
-</div> <!-- / .overlay-message -->
