@@ -6,6 +6,13 @@
 
 <div class="nrHeader">
   <div class="container">
+	    <% if @newsroom.press_releases.blank? %>
+			<div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+	            <div class="alert alert-info text-center" role="alert"><strong>This is your newsroom!</strong> All your press material will be collected on this page. Right now it's pretty much empty, so <a href="#">click here to create your first press release</a>. Your newsroom will at the same time be populated with your company pitch and more.</div>
+	        </div>
+	    </div>
+			<% end %>
       <div class="row">
           <div class="col-md-4 col-md-offset-2">
               <h3><%= @newsroom.company_name %></h3>

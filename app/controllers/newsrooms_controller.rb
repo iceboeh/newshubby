@@ -54,19 +54,19 @@ class NewsroomsController < ApplicationController
     end
     
     # Payment code check
-    @code = @newsroom.code
-    @code_match = Code.find_by_code(@code)
+    #@code = @newsroom.code
+    #@code_match = Code.find_by_code(@code)
     
-    if @newsroom.subscription.nil?
-      unless @code_match.nil?
-        duration = "#{@code_match.duration}.months"
-        @newsroom.create_subscription(plan_id: 1, email: @newsroom.email, end: Time.now + eval(duration))     # create subscription with end time X months after signup
-        @code_match.destroy      # retire code
-      else
-        flash[:error] = "Invalid signup code. Try again."
-        redirect_to plans_path
-      end
-    end
+    #if @newsroom.subscription.nil?
+    #  unless @code_match.nil?
+    #    duration = "#{@code_match.duration}.months"
+    #    @newsroom.create_subscription(plan_id: 1, email: @newsroom.email, end: Time.now + eval(duration))     # create subscription with end time X months after signup
+    #    @code_match.destroy      # retire code
+    #  else
+    #    flash[:error] = "Invalid signup code. Try again."
+    #    redirect_to plans_path
+    #  end
+    #end
 
     # Show exclusive press releases only to owner
     if @owner == true

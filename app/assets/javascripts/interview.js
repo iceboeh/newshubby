@@ -1,46 +1,89 @@
+/*jslint browser: true*/
+/*global $, jQuery, alert*/
+
 $(document).ready(function() {
 
-    var counter = 1; // en ränkare som står på 1
+    var i = 1; // en ränkare som står på 1
     var qCount = $('.question').length; //räkna antalet .question på sidan
     console.log('There are ' + qCount + ' question divs present'); // skriv ut antalet .question i console
-    
+
     var hideModal = function(){
         $('.overlay').hide(); // dölj eventuell dim-bakgrund som syns
         $('[id^=modal]').hide(); // dölj eventuell hint som syns
     };
     
+    jQuery.fn.putCursorAtEnd = function() {
+
+        return this.each(function() {
+
+            $(this).focus()
+
+            // If this function exists...
+            if (this.setSelectionRange) {
+                // ... then use it (Doesn't work in IE)
+
+                // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
+                var len = $(this).val().length * 2;
+
+                this.setSelectionRange(len, len);
+
+            } else {
+                // ... otherwise replace the contents with itself
+                // (Doesn't work in Google Chrome)
+
+                $(this).val($(this).val());
+
+            }
+
+            // Scroll to the bottom, in case we're in a tall textarea
+            // (Necessary for Firefox and Google Chrome)
+            this.scrollTop = 999999;
+
+        });
+
+    };
+    
+    var focusPls = function(){
+        $('#q' + i + ' textarea').focus(); // ställ markören i textarea
+        $('#q' + i + ' input:first').focus(); // ställ markören i textarea
+        $('#q' + i + ' textarea').putCursorAtEnd();
+        $('#q' + i + ' input:first').putCursorAtEnd();
+    };
+
     var skipQuestions = function() {
 
-        $('#q' + counter).show(); //visa den fråga räknaren (i) står på (fråga 1)
+        $('#q' + i).show(); //visa den fråga räknaren (i) står på (fråga 1)
         activeBtn();
 
         $('#next').click(function(){ // NEXT-button
-            if ( counter < qCount ){ // om i är mindre än antalet .questions gör...
-                counter ++; // addera med 1 på räknaren
-                console.log(counter); // skriv ut vad räknaren nu står på
-                $('[id^=q].question').not('#q' + counter).hide(); // dölj alla tidigare #q
+            if ( i < qCount ){ // om i är mindre än antalet .questions gör...
+                i ++; // addera med 1 på räknaren
+                console.log(i); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
                 console.log('hiding');
-                $('#q' + counter).show(); // visa den fråga som räknaren (i) står på
+                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
                 hideModal();
                 // var inputCharLen = $('#input' + i).val().length();
                 activeBtn();
                 //$('#input' + i).length();
-                $('#input' + counter).focus(); // ställ markören i textarea
+                focusPls();
+                $('#q' + i + ' textarea').putCursorAtEnd();
             }
         });
 
         $('#prev').click(function(){ // PREV-button
-            if (counter > 1) { // om i är större än antalet .questions gör...
-                counter --; // subtrahera med 1 på räknaren
-                console.log(counter); // skriv ut vad räknaren nu står på
-                $('[id^=q].question').not('#q' + counter).hide(); // dölj alla tidigare #q
+            if (i > 1) { // om i är större än antalet .questions gör...
+                i --; // subtrahera med 1 på räknaren
+                console.log(i); // skriv ut vad räknaren nu står på
+                $('[id^=q].question').not('#q' + i).hide(); // dölj alla tidigare #q
                 console.log('hiding');
-                $('#q' + counter).show(); // visa den fråga som räknaren (i) står på
+                $('#q' + i).show(); // visa den fråga som räknaren (i) står på
                 console.log('showing');
                 hideModal();
                 activeBtn();
-                $('#input' + counter).focus(); // ställ markören i textarea
+                focusPls();
+                
             }
         });
 
@@ -57,7 +100,7 @@ $(document).ready(function() {
         $(document).keyup(function(e) {
             if (e.keyCode == 27) {
                 $('.overlay').hide();
-                $('#modal' + counter).hide();
+                $('#modal' + i).hide();
             }   // esc
         });
 
@@ -74,15 +117,15 @@ $(document).ready(function() {
                 $('#modal' + [0-9]).hide();
             } */
             $('.overlay').toggle();
-            $('#modal' + counter).toggle();
+            $('#modal' + i).toggle();
         });
 
         $('.closeModal').click(function(){
             $('.overlay').hide();
-            $('#modal' + counter).hide();
+            $('#modal' + i).hide();
         });
     };
-    
+
     var prestoNav = function() {
         var i2 = 1;
         while (i2 <= qCount) {
@@ -93,26 +136,27 @@ $(document).ready(function() {
             }
             i2++;
         }
-        
+
         $('.prestoNavBtn').click(function(){
             $('[id^=q].question').not('#q' + $(this).data('id')).hide(); // dölj alla tidigare #q
             hideModal();
             $('#q'+$(this).data('id')).show();
-            counter = $(this).data('id');
+            i = $(this).data('id');
             activeBtn();
+            focusPls();
         });
     };
-    
+
     var activeBtn = function() {
-        $('.prestoNavBtn').not('#' + counter).removeClass('active');
-        $('#' + counter).addClass('active');
+        $('.prestoNavBtn').not('#' + i).removeClass('active');
+        $('#' + i).addClass('active');
     };
-    
+
     skipQuestions();
     handleHints();
     prestoNav();
     activeBtn();
-    
+
     /* 
     var textareaContent = $("#textarea").get();
     // Hämta de förifyllda tecknen i #textarea

@@ -9,7 +9,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <%= person.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" id="2" onClick="reply_click(this.id)"  data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                         <p class="panel-title text-left"><%= @newsroom.company_name.possessive %> key people</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
@@ -345,7 +344,6 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <%= funding.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                        <%= link_to "#" do %><i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i><% end %>
                         <p class="panel-title text-left">How is <%= @newsroom.company_name %> funded?</p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">

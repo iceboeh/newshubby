@@ -86,6 +86,7 @@
                     </div> <!-- / .container-fluid -->
                 </div> <!-- / .question -->
 								
+								
 								<% if @nr_questions %>
 								<div class="overlay-message" id="modal10 %>">
 								<% else %>
@@ -98,7 +99,7 @@
 								                <span class="text-primary"><strong>Remember: </strong></span>
 								            </h5>
 								            <p>
-								             	Set a date for when its okay for journalists to spread the information from this press release.
+								             	Set a date for when it's okay for journalists to spread the information from this press release.
 								            </p>
 								        </div> <!-- / .panel-body -->
 								    </div> <!-- / .panel -->
@@ -176,14 +177,14 @@
 										                <span class="text-primary"><strong>Example: </strong></span>
 										            </h5>
 										            <p>
-										              here goes the example
+										              Paste your link in the link field and write a succinct description in the caption field.
 										            </p>
 										            <br>
 										            <h5>
 										                <span class="text-primary"><strong>Remember: </strong></span>
 										            </h5>
 										            <p>
-										             	Here goes the tip
+										             	Double check that your links are correct and working. Video links from Youtube and Vimeo will be displayed as embedded videos in your press release.
 										            </p>
 										        </div> <!-- / .panel-body -->
 										    </div> <!-- / .panel -->
@@ -210,29 +211,27 @@
 												<div class="panel panel-default">
 										        <div class="panel-body">
 										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-										            <h5>
-										                <span class="text-primary"><strong>Example: </strong></span>
-										            </h5>
-										            <p>
-										              here goes the example
-										            </p>
-										            <br>
+										            
 										            <h5>
 										                <span class="text-primary"><strong>Remember: </strong></span>
 										            </h5>
 										            <p>
-										             	Here goes the tip
+										             	For now, only upload image files.
 										            </p>
 										        </div> <!-- / .panel-body -->
 										    </div> <!-- / .panel -->
 										</div> <!-- / .overlay-message -->
 										
             </div> <!-- / #q-container -->
+            <div class="text-center" id="bottom-container">
+                <%= f.submit "Finish", class: "btn btn-success btn-lg", id:"distribute", name: "distribute" %>
+            </div> <!-- / #bottom-container -->
 						<% end %>
         </div> <!-- / #sidebar-area -->
         <div id="preview-area">
             
            	<div class="overlay"></div>
+            <div id="preview"><p>Preview</p></div>
             
             <div class="container-fluid pr-container">
 							<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>

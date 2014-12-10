@@ -1,4 +1,8 @@
                       <p>
+												<%= @newsroom.q_clients %>
+											</p>
+											
+											<p>
 												<%= @newsroom.company_name %> is founded by
 												<% people = @newsroom.people.where(founder: true) %>
 								 
@@ -61,7 +65,7 @@
 											<% end %>
                     </ul><br>
                     <div class="row">
-											<% @press_release.uploads.each do |upload| %>
+											<% @press_release.uploads.all[1..-1].each do |upload| %>
 											<% unless upload.file.blank? %>
                         <div class="col-xs-4">
 													<%= link_to upload.file.url, class: "thumbnail" do %>

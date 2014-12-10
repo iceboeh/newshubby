@@ -31,15 +31,23 @@
 <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
                     <h1><%= @press_release.title %></h1><br>
-                    <% unless @press_release.uploads.first.file.blank? %>
 										<div class="feature-img-area">
+	                    <% if @press_release.uploads.first.file.blank? %>
+											<%= image_tag "images/feature_img.png", class: "center-block feature-img", alt: "" %>
+											<% else %>
                         <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), "#" %>
+											<% end %>
                         <div class="feature-img-caption">
-                            <p><small><%= @press_release.uploads.first.caption %></small></p>
+                            <p><small>
+															<% if @press_release.uploads.first.file.blank? %>
+															This text will be replaced by your image caption
+															<% else %>
+															<%= @press_release.uploads.first.caption %>
+															<% end %>
+														</small></p>
                         </div> <!-- /.feature-img-caption -->
                     </div> <!-- / .feature-img-area -->
-										<% end %>
                     <p>
-                        <span id="pr-answer-01"><%= simple_format(@newsroom.q_what_you_do) %></span>
-                        <span id="pr-answer-02"><%= simple_format(@newsroom.q_how_you_achieve) %></span>
+                        <span id="pr-answer-01"><%= @newsroom.q_what_you_do %></span>
+                        <span id="pr-answer-02"><%= @newsroom.q_how_you_achieve %></span>
 										</p>
