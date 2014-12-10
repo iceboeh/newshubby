@@ -15,10 +15,11 @@
 													and is bootstrapped.
 													<% else %>
 													 and is funded by <%= @newsroom.fundings.first.name %> (<%= @newsroom.fundings.first.investment_type %>)
+													<% end %>
 												<% else %>
 													<% @newsroom.fundings[0..-2].each do |funding|  %>
 														<%= funding.name %> (<%= funding.investment_type %> ),
-													<% end %><% end %>
+													<% end %>
 													and <%= @newsroom.fundings.last.name %> (<%= @newsroom.fundings.last.investment_type %>)
 												<% end %>
 											</p> 
