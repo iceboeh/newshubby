@@ -7,14 +7,18 @@
 												<% people = @newsroom.people.where(founder: true) %>
 								 
 												<%= people.collect { |p| p.name }.to_sentence %>
-												on <%= @newsroom.founded.strftime("%B, %Y") %> and is funded by
-								
+												on <%= @newsroom.founded.strftime("%B, %Y") %>
+												
+												
 												<% if @newsroom.fundings.count == 1 %>
-													<%= @newsroom.fundings.first.name %> (<%= @newsroom.fundings.first.investment_type %>)
+													<% if @newsroom.fundings.first.investment_type == "Bootstrapped" %>
+													and is bootstrapped.
+													<% else %>
+													 and is funded by <%= @newsroom.fundings.first.name %> (<%= @newsroom.fundings.first.investment_type %>)
 												<% else %>
 													<% @newsroom.fundings[0..-2].each do |funding|  %>
 														<%= funding.name %> (<%= funding.investment_type %> ),
-													<% end %>
+													<% end %><% end %>
 													and <%= @newsroom.fundings.last.name %> (<%= @newsroom.fundings.last.investment_type %>)
 												<% end %>
 											</p> 
