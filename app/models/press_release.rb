@@ -8,7 +8,7 @@ class PressRelease < ActiveRecord::Base
   serialize :specifics, Hash
   
   accepts_nested_attributes_for :newsroom, allow_destroy: true
-  accepts_nested_attributes_for :links, allow_destroy: true
+  accepts_nested_attributes_for :links, allow_destroy: true, 
   accepts_nested_attributes_for :uploads, allow_destroy: true
   accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :fundings, allow_destroy: true
@@ -17,7 +17,7 @@ class PressRelease < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
   
-  validate :validate_specifics
+  validate :validate_specifics  
   
   def self.search(query)
     where("title LIKE ?", "%#{query}%") 
@@ -30,4 +30,5 @@ class PressRelease < ActiveRecord::Base
       end
     end
   end
+    
 end

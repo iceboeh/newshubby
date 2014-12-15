@@ -112,7 +112,7 @@
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
 											<% if @newsroom.q_how_you_achieve.blank? %>
-                      	<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} achieves this " %>
+                      	<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "The company achieves this " %>
 											<% else %>
 												<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>

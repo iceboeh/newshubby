@@ -134,13 +134,17 @@ class PressReleasesController < ApplicationController
       flash[:notice] = "Not your press release. Hands off!"
       redirect_to :root
     end
-    
+
     respond_to do |format|
       if @press_release.update(press_release_params)
         
-        if params["launch_date"]
-          params["launch_date"].map{|k,v| v}.join("-").to_date
+        if params['link'] == @press_release.links.all[-1].caption
+          @press_release.links.all[-2].destroy
         end
+        
+        #if params["launch_date"]
+        #  params["launch_date"].map{|k,v| v}.join("-").to_date
+        #end
         
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }
         format.json { render :update }

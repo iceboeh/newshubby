@@ -15,12 +15,12 @@ end
 
 group :production do
   # AWS Database of Choice!
-  gem 'mysql2'
+  #gem 'mysql2'
   
   #gem "sqlite3"
   
   # Heroku
-  #gem 'pg'
+  gem 'pg'
   
   # yaml_db amazon
   # gem 'yaml_db'

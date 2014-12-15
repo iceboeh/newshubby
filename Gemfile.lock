@@ -100,7 +100,6 @@ GEM
     mini_portile (0.6.1)
     minitest (5.4.3)
     multi_json (1.10.1)
-    mysql2 (0.3.17)
     nested_form (0.3.2)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
@@ -115,6 +114,7 @@ GEM
       mime-types
     paymill (0.5.0)
       json
+    pg (0.17.1)
     possessive (1.0.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -204,10 +204,10 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-  mysql2
   nested_form
   paperclip (~> 4.1)
   paymill
+  pg
   possessive
   rails
   rails4-autocomplete
