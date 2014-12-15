@@ -8,7 +8,7 @@ class PressRelease < ActiveRecord::Base
   serialize :specifics, Hash
   
   accepts_nested_attributes_for :newsroom, allow_destroy: true
-  accepts_nested_attributes_for :links, allow_destroy: true, 
+  accepts_nested_attributes_for :links, allow_destroy: true
   accepts_nested_attributes_for :uploads, allow_destroy: true
   accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :fundings, allow_destroy: true
