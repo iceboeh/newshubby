@@ -28,6 +28,7 @@
 								<% if @nr_questions %>
 									<%= render 'press_releases/fields/newsroom', f: f %>												
 								<% end %>
+									
 								
 								<% unless @press_release.hex.nil? %>
 								    <div class="container-fluid hidden">
@@ -65,13 +66,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12">
-                                <h4 class="question-title">
-																	Question 10
-																</h4>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                                        <p class="panel-title text-left">Embargo date</p>
+                                        <p class="panel-title text-left">From what date do you allow journalists to publish information from this press release?</p>
                                     </div> <!-- / .panel-heading -->
                                     <div class="panel-body">
                                       <%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
@@ -114,17 +112,10 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-xs-12">
-                                <h4 class="question-title">
-																	<% if @nr_questions %>
-																	Question <%= 11 + @press_release.pressrelease_type.fields.count %>
-																	<% else %>
-																	Question <%= 2 + @press_release.pressrelease_type.fields.count %>
-																	<% end %>
-																</h4>
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                                        <p class="panel-title text-left">Title</p>
+                                        <p class="panel-title text-left">Press Release Title</p>
                                     </div> <!-- / .panel-heading -->
                                     <div class="panel-body">
                                       <%= f.text_field :title, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
@@ -156,7 +147,7 @@
 										<% else %>
 										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
-										
+										<h4 class="question-title">External Links & Videos</h4>
 										<%= f.fields_for :links do |link| %>
 										<%= render 'press_releases/fields/links', f: link %>
 										<% end %>
@@ -196,6 +187,7 @@
 										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 										
+										<h4 class="question-title">Images</h4>
 										<%= f.fields_for :uploads do |upload| %>
 										<%= render 'press_releases/fields/uploads', f: upload %>	
 										<% end %>

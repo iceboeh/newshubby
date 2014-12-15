@@ -13,10 +13,9 @@ class PressRelease < ActiveRecord::Base
   accepts_nested_attributes_for :people, allow_destroy: true
   accepts_nested_attributes_for :fundings, allow_destroy: true
   
-  
   extend FriendlyId
   friendly_id :title, use: :slugged
-  
+    
   validate :validate_specifics  
   
   def self.search(query)

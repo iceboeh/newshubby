@@ -137,7 +137,6 @@ class PressReleasesController < ApplicationController
 
     respond_to do |format|
       if @press_release.update(press_release_params)
-        
         if params['link'] == @press_release.links.all[-1].caption
           @press_release.links.all[-2].destroy
         end

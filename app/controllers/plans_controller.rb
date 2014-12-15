@@ -27,7 +27,7 @@ class PlansController < ApplicationController
     @newsroom = current_newsroom
     
     Subscription.create(plan_id: 1, newsroom_id: @newsroom.id, email: @newsroom.email, end: Time.now+2.years)
-    redirect_to @newsroom, notice: 'Thanks for chosing our free account'
+    redirect_to select_path, notice: 'Thanks for chosing our free account'
   end
   
   def premium

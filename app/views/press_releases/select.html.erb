@@ -17,6 +17,20 @@
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
 			<p>Write your press release yourself!</p>
+			<!--
+			Company launch: <p>For when you are launching a company</p>
+			Feature launch: <p>For when your company is launching a new feature</p>
+			Product launch: <p>For when your company is launching a new product</p>
+			Team change: <p>For when your team is increasing</p>
+			Manual: <p>For when you already have your own content</p>
+			Metrics Users: For when you have successful user metrics
+			Metrics Financial: For when you have successful financial metrics
+			New market: For when your company is entering new markets
+			New location: For when opening up your business in a new location
+			Pivot: For when doing a pivot that changes your roadmap
+			Funding: For when your company gets funded
+			Parternerships: For when your company is partnering up with others
+			-->
 
 			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success omnes center-block" %>
 		</div>
@@ -30,7 +44,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>Product Launch</h4>
-			<p>Interdum et malesuada fames ac ante ipsum primis in.</p>
+			<p>For when your company is launching a new product.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						

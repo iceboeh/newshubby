@@ -6,13 +6,6 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
-                <h4 class="question-title">
-									<% if @nr_questions %>
-										Question <%= index+11 %>
-									<% else %>
-										Question <%= index+2 %>
-									<% end %>
-								</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>

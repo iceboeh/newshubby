@@ -6,28 +6,28 @@
                     <table>
                         <tr>
                             <th></th>
-                            <th id="freemium">Free</th>
-                            <th id="premium">Premium</th>
+                            <th id="freemium">Basic</th>
+                            <th id="premium">Premium<br><small>1 Year Subscription</small></th>
                         </tr>
                         <tr>
-                            <td>Cools stuff</td>
+                            <td>Press Release Creation Tool</td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Hosting</td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Distribution</td>
+                            <td>$70 / press release</td>
+                            <td><i class="fa fa-check fa-lg"></i></td>
+                        </tr>
+                        <tr>
                             <td></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-                        <tr>
-                            <td>More cool stuff</td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Even more cool stuff</td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><%= link_to "Choose", class: "btn btn-success", controller: :plans, action: :free %></td>
-                            <td><button class="btn btn-success">Choose</button></td>
+                            <td><%= link_to "Free", { controller: :plans, action: :free }, { class: "btn btn-default", id: "freeBtn" } %></td>
+                            <td><%= link_to "$70 / month", { controller: :plans, action: :free }, { class: "btn btn-success", disabled: "disabled" } %></td>
                         </tr>
                     </table>
                 </div>
