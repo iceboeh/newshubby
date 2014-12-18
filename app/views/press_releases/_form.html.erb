@@ -140,13 +140,16 @@
 
 										<% end %>
 
-										<br><br>
+										
 
 										<% if @nr_questions %>
 										<div class="question" id="q<%= 12 + @press_release.pressrelease_type.fields.count %>">
 										<% else %>
 										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
+										<div class="container-fluid">
+										    <div class="row">
+										        <div class="col-xs-12">
 										<h4 class="question-title">External Links & Videos</h4>
 										<%= f.fields_for :links do |link| %>
 										<%= render 'press_releases/fields/links', f: link %>
@@ -154,6 +157,9 @@
 										
 
 		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
+										        </div> <!-- / .col-xs-12 -->
+										    </div> <!-- / .row -->
+										</div> <!-- / .container-fluid -->
 										</div> <!-- / .question -->
 										
 										<% if @nr_questions %>
@@ -187,12 +193,19 @@
 										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count %>">
 										<% end %>
 										
+										<div class="container-fluid">
+										    <div class="row">
+										        <div class="col-xs-12">
 										<h4 class="question-title">Images</h4>
 										<%= f.fields_for :uploads do |upload| %>
 										<%= render 'press_releases/fields/uploads', f: upload %>	
 										<% end %>
 										
 										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
+										
+										        </div> <!-- / .col-xs-12 -->
+										    </div> <!-- / .row -->
+										</div> <!-- / .container-fluid -->
 										</div> <!-- / .question -->
 										
 										<% if @nr_questions %>
@@ -216,7 +229,7 @@
 										
             </div> <!-- / #q-container -->
             <div class="text-center" id="bottom-container">
-                <%= f.submit "Finish", class: "btn btn-success btn-lg", id:"distribute", name: "distribute" %>
+                <%= link_to "View Finished Press Release", [@newsroom, @press_release], class: "btn btn-success btn-lg", id:"distribute", name: "distribute" %>
             </div> <!-- / #bottom-container -->
 						<% end %>
         </div> <!-- / #sidebar-area -->

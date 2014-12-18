@@ -129,6 +129,17 @@ class NewsroomsController < ApplicationController
     @newsroom = current_newsroom
     
     respond_to do |format|
+      
+      # Remove duplicate people
+      @newsroom.people.select(:name,:role).group(:name,:role).having("count(*) > 1").each do |x|
+        @newsroom.people.where(name: x.name, role: x.role).destroy_all
+      end
+      
+      # Remove duplicate funding
+      @newsroom.fundings.select(:name,:amount).group(:name,:amount).having("count(*) > 1").each do |x|
+        @newsroom.fundings.where(name: x.name, amount: x.amount).destroy_all
+      end
+      
      # unless @newsroom.code.blank? && @newsroom.update(newsroom_params)
       #  format.html { redirect_to plans_path, notice: 'Beta Code Accepted' }
        # format.json { render :update }
@@ -141,7 +152,7 @@ class NewsroomsController < ApplicationController
       if @newsroom.update(newsroom_params)
         format.html { redirect_to @newsroom, notice: 'Newsroom was successfully updated.' }
         format.json { render :update }
-        format.js { render "press_releases/update", notice: "Saved!" }
+        #format.js { render "newsrooms/update", notice: "Saved!" }
       else
         format.html { render :edit }
         format.json { render json: @newsroom.errors, status: :unprocessable_entity }

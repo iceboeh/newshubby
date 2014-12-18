@@ -1,35 +1,24 @@
-<% @nhBkg = true %>
 <div class="shortPage">
-	<div class="container navMargin">
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3 hubertBasic text-center">
-				<div class="panel panel-body">
-					<h4>Welcome! Please introduce your company</h4>
-							<%= form_for(@newsroom) do |f| %>
-						  <% if @newsroom.errors.any? %>
-						    <div id="error_explanation">
-						      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this press_release from being saved:</h2>
+	
+<%= nested_form_for(@newsroom, remote: true ) do |f| %>
 
-						      <ul>
-						      <% @newsroom.errors.full_messages.each do |message| %>
-						        <li><%= message %></li>
-						      <% end %>
-						      </ul>
-						    </div>
-						  <% end %>
-														
-						<%= f.text_field :company_name, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "Company Name" %> was founded in <%= f.date_select :founded, order: [:month, :year] %> and our main locations is in <%= f.text_field :location, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "City, Country" %>. You can find us at <%= f.text_field :website, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "http://www.example.com/" %> and you can reach us at <%= f.text_field :press_email, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "example@examepl.com" %>, on Twitter <%= f.text_field :twitter, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "@CompanyName" %> or via phone <%= f.text_field :press_phone, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "+1 555 312 110 021" %>
-						<h4>Upload your company logotype:</h4>
-						<%= f.file_field :logo %>
-				</div>
-				
-				
-					<%= f.submit "Done!", class: "btn btn-primary " %>
-				<% end %>
-			</div>
+<% if @newsroom.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this press_release from being saved:</h2>
 
-		</div>
-		<br>
-	</div> <!-- / .container -->
-	<div class="push"></div>
+    <ul>
+    <% @newsroom.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<div class="container navMargin">
+	<%= render 'newsrooms/questions', f: f %>
 </div> <!-- / .shortPage -->
+
+<% end %>
+
+</div>

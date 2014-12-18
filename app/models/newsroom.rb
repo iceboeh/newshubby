@@ -31,7 +31,7 @@ class Newsroom < ActiveRecord::Base
   # Press release versions
   has_many :company_launches
   
-  has_many :press_releases
+  has_many :press_releases, dependent: :destroy
   
   # Static Newsroom stuff
   has_many :fundings, dependent: :destroy
@@ -50,6 +50,8 @@ class Newsroom < ActiveRecord::Base
   
   accepts_nested_attributes_for :links, allow_destroy: true
   accepts_nested_attributes_for :uploads, allow_destroy: true
+  
+  validates :term_agreement, acceptance: { accept: true}
   
   has_attached_file :logo, :styles => { :large => "800x800>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/,

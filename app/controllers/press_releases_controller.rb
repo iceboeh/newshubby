@@ -70,7 +70,7 @@ class PressReleasesController < ApplicationController
     @newsroom = @press_release.newsroom
     @press_release = @newsroom.press_releases.friendly.find(params[:id])
     
-    if @newsroom.press_releases.count < 2 || @newsroom.business_model.blank?
+    if @newsroom.business_model.blank?
       @nr_questions = true
     end
     
@@ -137,13 +137,11 @@ class PressReleasesController < ApplicationController
 
     respond_to do |format|
       if @press_release.update(press_release_params)
-        if params['link'] == @press_release.links.all[-1].caption
-          @press_release.links.all[-2].destroy
-        end
         
-        #if params["launch_date"]
-        #  params["launch_date"].map{|k,v| v}.join("-").to_date
-        #end
+        # Remove duplicates
+        @press_release.links.select(:caption,:link).group(:caption,:link).having("count(*) > 1").each do |x|
+          @press_release.links.where(caption: x.caption, link: x.link).destroy_all
+        end
         
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }
         format.json { render :update }

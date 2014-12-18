@@ -23,19 +23,19 @@
 </head>
 
 <% if flash[:alert] %>
-	<div class="alert alert-danger noticeFade">
+	<div class="alert alert-danger noticeFade" hidden="hidden">
 		<%= flash[:alert] %>
 	</div>
 <% end %>
 
 <% if flash[:error] %>
-	<div class="alert alert-danger noticeFade">
+	<div class="alert alert-danger noticeFade" hidden="hidden">
 		<%= flash[:error] %>
 	</div>
 <% end %>
 
 <% if flash[:notice] %>
-	<div class="alert alert-success noticeFade">
+	<div class="alert alert-success noticeFade" hidden="hidden">
 		<%= flash[:notice] %>
 	</div>
 <% end %>

@@ -2,7 +2,9 @@
 
                         <p>
                             <span id="pr-answer-04">
+															<% unless @press_release.specifics[:quote].blank? %>
 															- <%= (auto_link(@press_release.specifics[:quote]+",", :target => '_blank')) %>
+															<% end %>
 															<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %><% end %>
 														</span>
                         </p>

@@ -16,15 +16,11 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
-			<p>Write your press release yourself!</p>
+			<p><%= pressrelease_type.description %></p>
 			<!--
 			Company launch: <p>For when you are launching a company</p>
 			Feature launch: <p>For when your company is launching a new feature</p>
-			Product launch: <p>For when your company is launching a new product</p>
-			Team change: <p>For when your team is increasing</p>
 			Manual: <p>For when you already have your own content</p>
-			Metrics Users: For when you have successful user metrics
-			Metrics Financial: For when you have successful financial metrics
 			New market: For when your company is entering new markets
 			New location: For when opening up your business in a new location
 			Pivot: For when doing a pivot that changes your roadmap
@@ -37,8 +33,8 @@
 	</div>
 </div>
 <% end %>
-
 <% end %>
+
 
 <div class="col-sm-3 text-center text-muted">
 	<div class="panel">
@@ -56,7 +52,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>Team change</h4>
-			<p>Nunc eu volutpat nisi. Donec pretium, dui vel imperdiet.</p>
+			<p>For when your team is increasing.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -67,8 +63,20 @@
 <div class="col-sm-3 text-center text-muted">
 	<div class="panel">
 		<div class="panel-body">
-			<h4>Metrics</h4>
-			<p>Nulla facilisi. Nullam sollicitudin ipsum mi, at rhoncus sem.</p>
+			<h4>User Metrics</h4>
+			<p>For when you have successful user metrics.</p>
+				
+			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
+						
+		</div>
+	</div>
+</div>
+
+<div class="col-sm-3 text-center text-muted">
+	<div class="panel">
+		<div class="panel-body">
+			<h4>Financial Metrics</h4>
+			<p>For when you have successful financial metrics.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -80,7 +88,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>New market</h4>
-			<p>Integer congue nisl eget sem tempus pulvinar. Class aptent.</p>
+			<p>For when your company is entering new markets.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -93,7 +101,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>New location</h4>
-			<p>Ut vel nibh at sem vehicula tincidunt. Sed placerat.</p>
+			<p>For when opening up your business in a new location.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -105,7 +113,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>Pivot</h4>
-			<p>Nullam facilisis, ante a varius interdum, nisi orci eleifend.</p>
+			<p>For when doing a pivot that changes your roadmap.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -117,7 +125,7 @@
 	<div class="panel">
 		<div class="panel-body">
 			<h4>Funding</h4>
-			<p>Sed malesuada lorem eget elit semper tincidunt. Donec non.</p>
+			<p>For when your company gets funded.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						
@@ -128,8 +136,8 @@
 <div class="col-sm-3 text-center text-muted">
 	<div class="panel">
 		<div class="panel-body">
-			<h4>Contracts</h4>
-			<p>In convallis, elit eu aliquam vulputate, lacus nunc dapibus.</p>
+			<h4>Partnerships</h4>
+			<p>For when your company is partnering up with others.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 						

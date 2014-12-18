@@ -16,10 +16,11 @@ class PressRelease < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
     
-  validate :validate_specifics  
+  validate :validate_specifics
   
+      
   def self.search(query)
-    where("title LIKE ?", "%#{query}%") 
+    where("title LIKE ?", "%#{query}%")
   end
   
   def validate_specifics
