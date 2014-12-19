@@ -137,7 +137,6 @@ class PressReleasesController < ApplicationController
 
     respond_to do |format|
       if @press_release.update(press_release_params)
-        
         # Remove duplicates
         @press_release.links.select(:caption,:link).group(:caption,:link).having("count(*) > 1").each do |x|
           @press_release.links.where(caption: x.caption, link: x.link).destroy_all

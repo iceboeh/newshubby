@@ -1,1 +1,1 @@
-$(".navMargin").html("<%= escape_javascript render "newsrooms/questions", f: f %>");
+$(".navMargin").html("<%= raw escape_javascript render "newsrooms/questions", locals: {newsroom: @newsroom, f: f} %>");

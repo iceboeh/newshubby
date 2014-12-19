@@ -150,9 +150,10 @@ class NewsroomsController < ApplicationController
       #end
       
       if @newsroom.update(newsroom_params)
+        
         format.html { redirect_to @newsroom, notice: 'Newsroom was successfully updated.' }
         format.json { render :update }
-        #format.js { render "newsrooms/update", notice: "Saved!" }
+        format.js { render "newsrooms/update", notice: "Saved!", newsroom: @newsroom }
       else
         format.html { render :edit }
         format.json { render json: @newsroom.errors, status: :unprocessable_entity }
