@@ -8,8 +8,8 @@
   <div class="container">
 			<div class="row">
 	        <div class="col-md-8 col-md-offset-2">
-						<% if @newsroom.press_releases.blank? %>
-	            <div class="alert alert-info text-center" role="alert"><strong>This is your newsroom!</strong> All your press material will be collected on this page. Right now it's pretty much empty, so <a href="#">click here to create your first press release</a>. Your newsroom will at the same time be populated with your company pitch and more.</div>
+						<% if @owner && @newsroom.press_releases.blank? %>
+	            <div class="alert alert-info text-center" role="alert"><strong>This is your newsroom!</strong> All your press material will be collected on this page. Right now it's pretty much empty, so <%= link_to "click here", select_path %> to create your first press release</a>. Your newsroom will at the same time be populated with your company pitch and more.</div>
 						<% end %>
 							<h4>Newsroom</h4>
 	        </div>
