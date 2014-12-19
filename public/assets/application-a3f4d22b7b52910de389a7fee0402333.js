@@ -30866,9 +30866,9 @@ Copyright (c) 2012-2013 Sasha Koss & Rico Sta. Cruz
       this.elementSelector = elementSelector;
       this._trickle = __bind(this._trickle, this);
       this.value = 0;
-      this.opacity = 1;
       this.content = '';
       this.speed = 300;
+      this.opacity = 0.99;
       this.install();
     }
 
@@ -30910,6 +30910,8 @@ Copyright (c) 2012-2013 Sasha Koss & Rico Sta. Cruz
     };
 
     ProgressBar.prototype._reset = function() {
+      var originalOpacity;
+      originalOpacity = this.opacity;
       setTimeout((function(_this) {
         return function() {
           _this.opacity = 0;
@@ -30919,7 +30921,7 @@ Copyright (c) 2012-2013 Sasha Koss & Rico Sta. Cruz
       return setTimeout((function(_this) {
         return function() {
           _this.value = 0;
-          _this.opacity = 1;
+          _this.opacity = originalOpacity;
           return _this._withSpeed(0, function() {
             return _this._updateStyle(true);
           });

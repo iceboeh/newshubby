@@ -12492,7 +12492,7 @@ ul {
   display: inline-block;
   min-height: 300px;
   vertical-align: middle;
-  margin-right: -0.3em
+  margin-right: -0.3em;
   /* Adjusts for spacing */
 }
 
@@ -12502,7 +12502,7 @@ ul {
   display: inline-block;
   min-height: 150px;
   vertical-align: middle;
-  margin-right: -0.3em
+  margin-right: -0.3em;
   /* Adjusts for spacing */
 }
 
@@ -12765,7 +12765,7 @@ textarea {
 
 /* line 363, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer a {
-  color: #797979
+  color: #797979;
   /* text-shadow: 1px 1px 3px rgba(0,0,0,0.9); */
 }
 
