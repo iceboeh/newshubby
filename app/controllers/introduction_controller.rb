@@ -42,7 +42,7 @@ class IntroductionController < ApplicationController
     
     @newsroom.update(newsroom_params)
 
-    render_wizard current_newsroom
+    render_wizard @newsroom
   end
   
   private
