@@ -37,6 +37,12 @@ class PressReleasesController < ApplicationController
     @newsroom = current_newsroom
     @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     @press_release = @newsroom.press_releases.last
+    
+    if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+      flash[:notice] = "Finish the introductory questions first, please!"
+      redirect_to introduction_index_path
+    end
+    
   end
 
   # GET /press_releases/new
@@ -77,6 +83,10 @@ class PressReleasesController < ApplicationController
     if @newsroom.subscription.nil?
       flash[:notice] = "You can't create a press release without a subscription!"
       redirect_to plans_path
+    end
+    
+    if @newsroom.press_releases.count < 2
+      flash[:notice] = "Your press release is almost finished. Answer the questions to the right and you'll be done in no time!"
     end
     
     # Control ownership
@@ -134,7 +144,7 @@ class PressReleasesController < ApplicationController
       flash[:notice] = "Not your press release. Hands off!"
       redirect_to :root
     end
-
+    
     respond_to do |format|
       if @press_release.update(press_release_params)
         # Remove duplicates

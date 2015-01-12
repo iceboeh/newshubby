@@ -1,0 +1,34 @@
+<div class="shortPage">
+	
+<%= render :layout => "form" do |f| %>
+
+<div class="container navMargin">
+
+   <div>
+       <div class="row">
+           <div class="col-sm-6 col-sm-offset-3 hubertBasic">
+               <div class="panel panel-body">
+								 <h6 class="text-muted">Step 6 of 11</h6>
+	                        <h4>Describe <% unless @newsroom.company_name.blank? %><%= @newsroom.company_name.possessive %><% end %> business model, preferably with prices included</h4>
+												<%= f.text_area :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+								<h5>
+                     <span class="text-primary"><strong>Example: </strong></span>
+                 </h5>
+                 <p>
+                     The business model is a yearly or monthly subscription model, from $47 per month.
+                 </p>
+	            </div> <!-- / .col-xs-12 -->
+	        </div> <!-- / .row -->
+	    </div> <!-- / .container-fluid -->
+	</div> <!-- / .question -->
+		
+		<%= render "submit", f: f %>
+
+</div> <!-- / .shortPage -->
+
+
+
+<% end %>
+
+</div>
+

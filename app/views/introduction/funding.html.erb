@@ -1,0 +1,40 @@
+<div class="shortPage">
+	
+<%= render :layout => "form" do |f| %>
+
+    <div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+							<h4>How is <%= @newsroom.company_name %> funded?</h4>
+                <%= f.fields_for :fundings do |funding| %>
+								<div class="panel panel-body">
+		              <div class="form-group">
+														<%= funding.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
+									</div>
+                        		<div class="form-group">
+														<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control", placeholder: "Name"  %>
+													</div>
+													<div class="form-group">
+														<%= funding.text_field :name, class: "form-control", placeholder: "Name"  %></strong> <%= funding.date_select :date, class: "form-control"  %>
+													</div>
+													
+													<div class="form-group">
+														<%= funding.number_field :amount, class: "form-control", placeholder: "Amount"  %>
+													</div>
+						            </div> <!-- / .col-xs-12 -->
+								<% end %>
+								<p class="text-center"><%= f.link_to_add :fundings do %> + Add funding<% end %></p>
+		        </div> <!-- / .row -->
+		    </div> <!-- / .container-fluid -->
+		</div> <!-- / .question -->
+		
+		<%= render "submit", f: f %>
+
+</div> <!-- / .shortPage -->
+
+
+
+<% end %>
+
+</div>
+

@@ -19,8 +19,15 @@
               <h3><%= @newsroom.company_name %></h3>
               <p>founded in <% unless @newsroom.founded.blank? %><%= @newsroom.founded.strftime("%B, %Y") %><% end %></p>
               <div>
+									<% unless @newsroom.website.blank? %>
+									<% if @newsroom.website.start_with?("http://") %>
+                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), @newsroom.website %></p>
+									<% else %>
+									<p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), "http://"+@newsroom.website %></p>
+									<% end %>
+									<% end %>
 									<% unless @newsroom.twitter.blank? %>
-                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<a href="twitter.com/twitterAccount"><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></a></p>
+                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
 									<% end %>
 									<% unless @newsroom.press_email.blank? %>
                   <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
@@ -49,6 +56,10 @@
       <div class="col-md-8 col-md-offset-2">
           <div class="row">
               <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
+							<% if @press_releases.blank? %>
+								<h4 class="text-muted"><%= @newsroom.company_name %> has no press releases yet.</h4>
+							<% end %>
+							
 							<% unless @newsroom.subscription.blank? %>
 							<% unless @press_releases.nil? %>
 							<% @press_releases[0..2].each do |press_release| %>

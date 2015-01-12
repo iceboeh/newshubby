@@ -44,11 +44,15 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: "newshubby.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    #domain: "newshubby.com",
+    authentication: "login",
+    enable_starttls_auto: true,
+    #user_name: Rails.application.secrets.gmail_user_name,
+    #password: Rails.application.secrets.gmail_password
+    user_name: "hello@newshubby.com",
+    password: "yJAnSjDOJBG4YSub9LUhDQ"
   }
   
   

@@ -1,4 +1,4 @@
-<%= nested_form_for(@newsroom) do |f| %>
+<%= nested_form_for @newsroom, url: wizard_path do |f| %>
 
 <% if @newsroom.errors.any? %>
   <div id="error_explanation">
@@ -10,4 +10,8 @@
     <% end %>
     </ul>
   </div>
+<% end %>
+
+<%= yield f %>
+
 <% end %>

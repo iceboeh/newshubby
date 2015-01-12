@@ -22,7 +22,8 @@
               <h3><%= f.text_field :company_name %></h3>
               <p>founded in <%= f.date_select :founded, order: [:month, :year] %></p>
               <div>
-                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= f.text_field :twitter %></p>
+                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= f.text_field :website %></p>
+									<p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= f.text_field :twitter %></p>
                   <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= f.text_field :press_email %></p>
                   <p><i class="fa fa-phone fa-fw"></i>&nbsp;<%= f.text_field :press_phone %></p>
 									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= f.text_field :location %></p>

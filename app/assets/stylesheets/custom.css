@@ -20,7 +20,6 @@ body {
 .shortPage {
   min-height: 100%;
   height: auto !important;
-  /*height: 100%;*/
   margin: 0 auto -4em;
   padding-top: 70px; }
 
@@ -221,6 +220,15 @@ ul {
   outline: 0px !important;
   -webkit-appearance: none !important; }
 
+.panel-heading {
+  background-color: #fd4f57 !important;
+  color: white !important; }
+  .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6 {
+    margin: 0; }
+
+.well {
+  background-color: #fff !important; }
+
 input {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
@@ -303,10 +311,17 @@ textarea {
 #freeBtn:focus {
   background-color: #bab7b7 !important; }
 
+.fa-spin {
+  -webkit-animation: fa-spin .61804697157s infinite linear !important;
+  animation: fa-spin .61804697157s infinite linear !important; }
+
+.saveStatus {
+  color: #666; }
+
 @media (min-width: 768px) {
   .shortPage {
     padding-top: 95px;
-		padding-bottom: 95px; } }
+    padding-bottom: 95px; } }
 /* Navigation */
 .navbar {
   border: 0; }
@@ -344,9 +359,22 @@ textarea {
 #searchBtn:hover {
   border: 1px solid #e6e6e6 !important; }
 
+/* .navLogo {
+    min-height: 30px !important;
+    max-height: 30px !important;
+    min-width: 30px !important;
+    max-width: 30px !important;
+    display: inline-block;
+    vertical-align: middle;
+} */
 @media (min-width: 768px) {
   .transparentNavbar {
-    background-color: rgba(248, 248, 248, 0); } }
+    background-color: rgba(248, 248, 248, 0); }
+
+    /* OM navLogo .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+} */ }
 .footer {
   /*position:absolute;
   bottom: 0; */
@@ -579,8 +607,8 @@ indexSplash .thumbnail .caption h3 {
   padding: 0; }
 
 .prestoNavBtn {
-  background-color: #537b9c;
-  color: #537b9c;
+  background-color: #334b60;
+  color: #334b60;
   width: 20px;
   height: 20px;
   border-radius: 1em;
@@ -591,8 +619,8 @@ indexSplash .thumbnail .caption h3 {
   font-size: .9em; }
 
 .prestoNavBtn:hover {
-  border: 1px solid #537b9c;
-  color: #699bc5;
+  border: 1px solid #334b60;
+  color: #334b60;
   background-color: #fff; }
 
 .prestoNav .space {
@@ -601,12 +629,18 @@ indexSplash .thumbnail .caption h3 {
   padding: 0;
   height: 10px;
   width: 4px;
-  background-color: #537b9c; }
+  background-color: #334b60; }
 
 .prestoNav li .active {
-  border: 1px solid #537b9c;
-  color: #699bc5;
+  border: 1px solid #334b60;
+  color: #334b60;
   background-color: #fff; }
+
+.prestoSkipBtn {
+  background-color: transparent; }
+
+.prestoSkipBtn:hover {
+  color: #699bc5; }
 
 #q-container {
   overflow-x: hidden;
@@ -614,7 +648,7 @@ indexSplash .thumbnail .caption h3 {
   width: 420px;
   left: 30px;
   top: 50px;
-  bottom: 60px; }
+  bottom: 0; }
 
 #nav-container {
   position: fixed;
@@ -623,7 +657,7 @@ indexSplash .thumbnail .caption h3 {
   top: 50px;
   left: 0;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 1001;
   padding: 10px;
   vertical-align: middle; }
@@ -635,7 +669,6 @@ indexSplash .thumbnail .caption h3 {
   bottom: 50px;
   left: 0;
   color: #fff;
-  background-color: #fff;
   z-index: 1001;
   padding: 10px;
   vertical-align: middle; }
@@ -648,7 +681,10 @@ indexSplash .thumbnail .caption h3 {
 background-color: rgba(255,255,255,.2);
 } */
 .question .panel, .question .panel-heading, .question .panel-footer {
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8 !important; }
+
+.question .panel-heading {
+  color: #333 !important; }
 
 .question {
   padding-top: 16px; }
@@ -664,7 +700,7 @@ background-color: rgba(255,255,255,.2);
 
 #sidebar-area {
   width: 100%;
-  background-color: #699bc5; }
+  background-color: #44647f; }
 
 #sidebar-area p a:focus {
   color: #fff; }
@@ -743,6 +779,17 @@ background-color: rgba(255,255,255,.2);
   z-index: 1002;
   display: none; }
 
+#distribute {
+  display: none; }
+
+.saveStatus {
+  text-align: center;
+  color: #fff;
+  width: 200px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); }
+  .saveStatus .panel {
+    background-color: rgba(0, 0, 0, 0.3); }
+
 #prestoFinish {
   margin-right: .5em; }
 
@@ -776,9 +823,7 @@ background-color: rgba(255,255,255,.2);
     position: absolute;
     top: 50px;
     bottom: 50px;
-    width: 450px;
-    background-color: #699bc5;
-    box-shadow: 0 0 2px black; }
+    width: 450px; }
 
   #preview {
     display: block;

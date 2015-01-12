@@ -1,5 +1,8 @@
 <% title "NewsHubby | Reach World Press" %>
 
+<% unless current_newsroom.nil? %>
+	<% @pr_button_diabled = true if current_newsroom.company_name.blank? || current_newsroom.website.blank? || current_newsroom.press_phone.blank? || current_newsroom.founded.blank? || current_newsroom.q_what_you_do.blank? || current_newsroom.q_how_you_achieve.blank? || current_newsroom.q_clients.blank? || current_newsroom.business_model.blank? || current_newsroom.competitors.blank? || current_newsroom.differentiation.blank? || current_newsroom.problem_solved.blank? %>
+<% end %>
 
 <div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -58,7 +61,7 @@
     </div> <!-- / .modal-dialog -->
 </div> <!-- / .modal -->
 
-<% if @transparentnavbar == true%>
+<% if @transparentnavbar == true %>
 <nav class="navbar navbar-default navbar-fixed-top transparentNavbar" role="navigation">
 <% else %>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -86,26 +89,31 @@
                 </div>
             <% end %>
 						
-						
             <ul class="nav navbar-nav navbar-right hidden-xs">
 							<% if current_newsroom.nil? %>
 							<li><%= link_to "Sign up", "#", data: { toggle: "modal", target: "#signUp" } %></li>
 							<li><%= link_to "Login", "#", data: { toggle: "modal", target: "#login" } %></li>
 							<% else %>
-                <li>
+                <% if @pr_button_diabled %>
+								<li>
+                    <%= link_to select_path, class: "navbar-btn" do %><%= button_tag class: "btn btn-primary", disabled: "disabled" do %><i class="fa fa-plus"></i> New Press Release
+											<% end %><% end %>
+                </li>
+								<% else %>
+								<li>
                     <%= link_to select_path, class: "navbar-btn" do %><%= button_tag class: "btn btn-primary" do %><i class="fa fa-plus"></i> New Press Release
 											<% end %><% end %>
                 </li>
+								<% end %>
+								
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_newsroom.company_name %>&nbsp;<span class="caret text-muted"></span></a>
                     <ul class="dropdown-menu">
                         <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
                         <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
-												<!-- 
 												<li class="divider"></li>
-												<li><%= link_to edit_newsroom_registration_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings<% end %></li>
+												<li><%= link_to newsroom_path(current_newsroom), method: :delete, data: { confirm: "Are you sure that you want to permanently delete your NewsHubby account? This action cannot be reverted." } do %><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Delete Account<% end %></li>
                         <li class="divider"></li>
-													-->
                         <li><%= link_to destroy_newsroom_session_path, method: :delete do %><span class="text-primary"><i class="fa fa-sign-out fa-fw"></i></span>&nbsp;Log out<% end %></li>
                     </ul>
                 </li>

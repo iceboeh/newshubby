@@ -1,0 +1,38 @@
+<div class="shortPage">
+	
+<%= render :layout => "form" do |f| %>
+
+<div class="container navMargin">
+
+    <div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+							<h4><% unless @newsroom.company_name.blank? %><%= @newsroom.company_name.possessive %><% end %> key people</h4>
+                <%= f.fields_for :people do |person| %>
+								<div class="panel panel-body">
+		                        <%= person.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
+                        
+														<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
+														Founder <%= person.check_box :founder, class: "text-left" %>
+														<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
+														<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation" %><br>
+												
+										
+		            </div> <!-- / .col-xs-12 -->
+								<% end %>
+								<p class="text-center"><%= f.link_to_add :people do %> + Add person<% end %></p>
+		        </div> <!-- / .row -->
+		    </div> <!-- / .container-fluid -->
+		</div> <!-- / .question -->
+    
+		
+		<%= render "submit", f: f %>
+
+</div> <!-- / .shortPage -->
+
+
+
+<% end %>
+
+</div>
+

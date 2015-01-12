@@ -66,7 +66,13 @@
 											<% elsif link.link.include? "youtu.be" %>
 											<% elsif link.link.include? "vimeo.com"%>
 											<% else %>
+												
+												<% if link.link.start_with?("http://") %>
                         <li><%= link_to link.caption, link.link %></li>
+												<% else %>
+												<li><%= link_to link.caption, "http://"+link.link %></li>
+												<% end %>
+												
 											<% end %>
 											<% end %>
 											<% end %>

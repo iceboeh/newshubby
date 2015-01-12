@@ -1,12 +1,39 @@
 <div class="flexBox">
     <div id="presto-content">
         <div id="sidebar-area">
+          
+					<div class="overlay-message saveStatus saving">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                        <i class="fa fa-refresh fa-spin"></i>&nbsp;Saving...
+                      </div> <!-- / .panel-body -->
+                  </div> <!-- / .panel -->
+              </div> <!-- / .overlay-message -->
+							
+					<div class="overlay-message saveStatus saved">
+                  <div class="panel panel-default">
+                      <div class="panel-body">
+                        <i class="fa fa-check text-success"></i>&nbsp;Saved
+                      </div> <!-- / .panel-body -->
+                  </div> <!-- / .panel -->
+              </div> <!-- / .overlay-message -->
+					
 						<div id="q-container">
 							<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
 							
 		          <div class="text-center" id="nav-container">
-								<%= f.submit "Previous", class: "btn btn-default", id: "prev", name: "Previous" %>
-								<%= f.submit "Next", class: "btn btn-info", id: "next", name: "Next" %>
+								
+								<%= button_tag class: "btn prestoSkipBtn pull-left", id: "prev" do %>
+									<i class="fa fa-arrow-left"></i>&nbsp;Previous
+								<% end %>
+								
+								<%= link_to [@newsroom, @press_release], class: "pull-right btn btn-info", id: "distribute" do %>
+									Finish
+								<% end %>
+								
+								<%= button_tag class: "btn prestoSkipBtn pull-right", id: "next" do %>
+									Next&nbsp;<i class="fa fa-arrow-right"></i>
+								<% end %>
 		          </div> <!-- / #next-container -->
               <div class="prestoNav">
                   <ul id="prestoNavUL">
@@ -227,11 +254,39 @@
 										    </div> <!-- / .panel -->
 										</div> <!-- / .overlay-message -->
 										
+
+										<% if @nr_questions %>
+										<div class="question" id="q<%= 14 + @press_release.pressrelease_type.fields.count %>">
+										<% else %>
+										<div class="question" id="q<%= 5 + @press_release.pressrelease_type.fields.count %>">
+										<% end %>	
+				                <div class="container-fluid">
+				                    <div class="row">
+				                        <div class="col-xs-12">
+				                            <div class="panel panel-default">
+				                                <div class="panel-heading">
+				                                    <p class="panel-title text-left">Finished!</p>
+				                                </div> <!-- / .panel-heading -->
+				                                <div class="panel-body">
+				                                  Your press release is now finished. Click "Finish" if you're satisfied, else go back and polish your answers.
+				                                </div> <!-- / .panel-body -->
+				                                <div class="panel-footer clearfix">
+				                                    <div class="pull-left" id="textareaFeedback"></div>
+				                                    <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+				                                </div><!--/ .panel-footer -->
+				                            </div> <!-- / .panel -->
+				                        </div> <!-- / .col-xs-12 -->
+				                    </div> <!-- / .row -->
+				                </div> <!-- / .container-fluid -->
+				            </div> <!-- / .question -->
             </div> <!-- / #q-container -->
-            <div class="text-center" id="bottom-container">
-                <%= link_to "View Finished Press Release", [@newsroom, @press_release], class: "btn btn-success btn-lg", id:"distribute", name: "distribute" %>
-            </div> <!-- / #bottom-container -->
 						<% end %>
+						
+						
+						
+						
+						
+						
         </div> <!-- / #sidebar-area -->
         <div id="preview-area">
             

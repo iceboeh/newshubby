@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get '/pressreleasetype' => 'company_launches#type'
   get '/select' => 'press_releases#select'
   get '/pressreleases' => 'newsrooms#allpressreleases'
-  get '/introduction' => 'newsrooms#introduction'
   
   resources :plans do
     get :free, on: :collection
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions
 
-  resources :hubert
+  resources :introduction
   
   resources :contacts
 

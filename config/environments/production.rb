@@ -90,17 +90,18 @@ Rails.application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-  address: "smtp.gmail.com",
-  port: 587,
-  domain: "newshubby.com",
-  authentication: "plain",
-  enable_starttls_auto: true,
-  #user_name: Rails.application.secrets.gmail_user_name,
-  #password: Rails.application.secrets.gmail_password
-  user_name: ENV['EMAIL_USER_NAME'],
-  password: ENV['EMAIL_PASSWORD']
+    address: "smtp.mandrillapp.com",
+    port: 587,
+    #domain: "newshubby.com",
+    authentication: "login",
+    enable_starttls_auto: true,
+    #user_name: Rails.application.secrets.gmail_user_name,
+    #password: Rails.application.secrets.gmail_password
+    user_name: ENV['EMAIL_USER_NAME'],
+    password: ENV['EMAIL_PASSWORD']
   }
-  
+
+
   # Amazon Web Services. Bucket for Paperclip Uploads
 begin  
   
