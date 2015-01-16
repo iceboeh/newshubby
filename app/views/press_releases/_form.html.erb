@@ -225,7 +225,7 @@
 										        <div class="col-xs-12">
 										<h4 class="question-title">Images</h4>
 										<%= f.fields_for :uploads do |upload| %>
-										<%= render 'press_releases/fields/uploads', f: upload %>	
+											<%= render 'press_releases/fields/uploads', f: upload %>	
 										<% end %>
 										
 										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
@@ -268,7 +268,10 @@
 				                                    <p class="panel-title text-left">Finished!</p>
 				                                </div> <!-- / .panel-heading -->
 				                                <div class="panel-body">
-				                                  Your press release is now finished. Click "Finish" if you're satisfied, else go back and polish your answers.
+				                                  <p>
+																					Your press release is now finished. Click "Finish" if you're satisfied, else go back and polish your answers.
+																					<i class="fa fa-arrow-right"></i>
+																					</p>
 				                                </div> <!-- / .panel-body -->
 				                                <div class="panel-footer clearfix">
 				                                    <div class="pull-left" id="textareaFeedback"></div>

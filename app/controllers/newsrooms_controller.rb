@@ -140,6 +140,14 @@ class NewsroomsController < ApplicationController
         @newsroom.fundings.where(name: x.name, amount: x.amount).destroy_all
       end
       
+      # Correct website URL
+      
+      unless params[:newsroom][:website].start_with?("http://")
+        params[:newsroom][:website] = "http://"+params[:newsroom][:website]
+      end
+      
+
+      
      # unless @newsroom.code.blank? && @newsroom.update(newsroom_params)
       #  format.html { redirect_to plans_path, notice: 'Beta Code Accepted' }
        # format.json { render :update }

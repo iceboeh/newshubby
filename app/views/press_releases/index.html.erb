@@ -23,12 +23,13 @@
 	    <div class="col-sm-6 col-md-3">
 	        <div class="thumbnail">
 	            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+									<% unless press_release.uploads.first.nil? %>
 									<% if press_release.uploads.first.file.blank? %>
 									<!-- FIXA BROKEN LINK-BILD! -->
 										<%= image_tag "#", class: "thumbImg", alt: "" %>
 									<% else %>
 	                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-	            <% end %><% end %>
+	            <% end %><% end %><% end %>
 	            <div class="caption">
 	                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
 	                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>

@@ -85,10 +85,6 @@ class PressReleasesController < ApplicationController
       redirect_to plans_path
     end
     
-    if @newsroom.press_releases.count < 2
-      flash[:notice] = "Your press release is almost finished. Answer the questions to the right and you'll be done in no time!"
-    end
-    
     # Control ownership
     if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
       @owner = false

@@ -1,0 +1,42 @@
+<%= render 'press_releases/layouts/static_top' %>
+
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @newsroom.company_name %> wins <%= @press_release.specifics[:award_name] %>
+														</span>
+                        </p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															On <%= @press_release.specifics[:award_date] %> <%= @newsroom.company_name %> won the category <%= @press_release.specifics[:award_category] %> in <%= @press_release.specifics[:award_name] %>. <%= @press_release.specifics[:about_award] %>. <%= @press_release.specifics[:ceremony_location] %>
+														</span>
+                        </p>
+												
+												<p>
+													<% unless @press_release.specifics[:quote].blank? %>
+													- <%= (auto_link(@press_release.specifics[:quote].chomp(".")+",", :target => '_blank')) %>
+													<% end %>
+													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %><% end %>
+												</p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:award_motivation] %>
+														</span>
+                        </p>
+												
+												<p>
+													<% unless @press_release.specifics[:about_award].blank? %>
+													- <%= (auto_link(@press_release.specifics[:about_award].chomp(".")+",", :target => '_blank')) %>
+													<% end %>
+													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %><% end %>
+												</p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:prize_money] %>
+														</span>
+                        </p>
+												
+
+<%= render 'press_releases/layouts/static_bottom' %>

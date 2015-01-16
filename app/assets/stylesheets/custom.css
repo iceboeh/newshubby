@@ -282,11 +282,14 @@ textarea {
   text-align: center;
   position: fixed;
   left: 50%;
-  top: 110px;
+  top: 50%;
   transform: translate(-50%, -50%);
   /* Yep! */
   width: 48%;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+  border: none; }
 
 .alert a {
   color: inherit; }
@@ -563,6 +566,9 @@ indexSplash .thumbnail .caption h3 {
   background-color: white;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1); }
 
+.nrHeading {
+  margin: 0; }
+
 .nrTextWrapper {
   margin: 0 auto;
   max-width: 600px; }
@@ -623,6 +629,9 @@ indexSplash .thumbnail .caption h3 {
   color: #334b60;
   background-color: #fff; }
 
+.prestoNav > div:last-child {
+  background-color: red; }
+
 .prestoNav .space {
   border-radius: 0;
   margin-left: .52em;
@@ -641,6 +650,9 @@ indexSplash .thumbnail .caption h3 {
 
 .prestoSkipBtn:hover {
   color: #699bc5; }
+
+.prestoSkipBtn:focus {
+  color: #fff; }
 
 #q-container {
   overflow-x: hidden;

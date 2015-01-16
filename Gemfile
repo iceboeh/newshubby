@@ -48,17 +48,23 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Prettier URLs
 gem 'friendly_id', '~> 5.0.0'
 
+# Step by step introduction
 gem 'wicked'
 
+# Login & Signup
 gem 'devise'
 
 gem "paperclip", "~> 4.1"
 
+# Autocomplete search
 gem 'rails4-autocomplete'
 
 gem 'jquery-ui-rails'
+
+gem 'font-awesome-sass'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
@@ -66,27 +72,36 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-turbolinks'
 
+# Geocoding
 gem 'geocoder'
 
+# Payment
 gem 'paymill'
 
-gem 'font-awesome-sass'
-
+# Forms that "add many"
 gem 'nested_form'
 
 gem 'rails_autolink'
 
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 
+# Possessive pronoun to words "NewsHubby's"
 gem 'possessive'
 
+# Pagination
 gem 'will_paginate'
 
+# Amazon Web Services
 gem 'aws-sdk'
 
+# Google Analytics
 gem 'google-analytics-rails'
 
+# Remote form, file upload
 gem 'remotipart', '~> 1.2'
+
+# In-place editing
+gem 'best_in_place', '~> 3.0.1'
 
 # Want to be able to deploy easily to EC2
 # http://www.lauradhamilton.com/how-to-deploy-to-amazon-ec2-with-capistrano
@@ -116,4 +131,3 @@ gem 'capistrano-rails'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

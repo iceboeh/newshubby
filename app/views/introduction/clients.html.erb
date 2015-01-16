@@ -11,7 +11,7 @@
 								 <h6 class="text-muted">Step 5 of 11</h6>
 	                        <h4>How would you describe <%= @newsroom.company_name %> clients?</h4>
 												<% if @newsroom.q_clients.blank? %>
-	                      	<%= f.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "Typically, #{@newsroom.company_name} clients are " %>
+	                      	<%= f.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "Typically, #{@newsroom.company_name.possessive} clients are " %>
 												<% else %>
 													<%= f.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 												<% end %>

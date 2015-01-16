@@ -39,14 +39,14 @@
                     <ul>
 											<% @newsroom.fundings.each do |funding| %>
 											<% unless funding.name.blank? %>
-                        <li><strong><%= funding.date %>: </strong>$<%= funding.amount %><br><%= funding.name %></li>
+                        <li><strong><%= funding.date %>: </strong><%= number_to_currency(funding.amount, precision: 0, locale: :en) %><br><%= funding.name %></li>
 											<% end %>
 											<% end %>
                     </ul>	
 										<% end %>	
 										<hr>
 										<% if @newsroom.people.count > 0 %>
-                    <h4>The Team</h4>
+                    <h4>Key People</h4>
                     <div class="row">
 											<% @newsroom.people.each do |person| %>
                         <% unless person.name.blank? %>
@@ -85,7 +85,6 @@
                                 <%= image_tag upload.file.url(:medium), alt: "" %>
                                 <p><small><%= upload.caption %></small></p>
                            <% end %>
-													 <hr>
                         </div>
 											<% end %>
 											<% end %>

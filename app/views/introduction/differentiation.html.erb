@@ -10,11 +10,12 @@
                <div class="panel panel-body">
 								 <h6 class="text-muted">Step 7 of 11</h6>
 	                        <h4>How does <%= @newsroom.company_name %> differ from its competitors?</h4>
-												<% if @newsroom.q_clients.blank? %>
+												<% if @newsroom.differentiation.blank? %>
 	                     		<%= f.text_area :differentiation, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "The difference between #{@newsroom.company_name} and its competitors is " %>
 												<% else %>
 													<%= f.text_area :differentiation, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 												<% end %>
+												
 									<h5>
                        <span class="text-primary"><strong>Example: </strong></span>
                    </h5>

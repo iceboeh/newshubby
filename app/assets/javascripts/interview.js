@@ -61,6 +61,7 @@ $(document).ready(function() {
          }
         
         if (i == qCount) {
+					console.log(i)
             $('#next').hide();
             $('#distribute').show();
 						$('.edit_press_release').removeAttr('data-remote');

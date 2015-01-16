@@ -9,9 +9,9 @@
 			<div class="row">
 	        <div class="col-md-8 col-md-offset-2">
 						<% if @owner && @newsroom.press_releases.blank? %>
-	            <div class="alert alert-info text-center" role="alert"><strong>This is your newsroom!</strong> All your press material will be collected on this page. Right now it's pretty much empty, so <%= link_to "click here", select_path %> to create your first press release</a>. Your newsroom will at the same time be populated with your company pitch and more.</div>
+	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
 						<% end %>
-							<h4>Newsroom</h4>
+							<h3 class="text-muted nrHeading"><i class="fa fa-home"></i>&nbsp;Newsroom</h3><hr>
 	        </div>
 	    </div>
       <div class="row">
@@ -109,7 +109,7 @@
 							<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><% else %>
 							<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %> | $<%= funding.amount %><% end %></p>
 							<% end %>
-              <h4>Team</h4>
+              <h4>Key People</h4>
               <div class="row">
 								<% @newsroom.people.each do |person| %>
                   <div class="col-xs-6">
@@ -122,46 +122,7 @@
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 <% end %>
-<!-- <div class="opacityBkg">
-<div class="nrRow nrSolution">
-<div class="container">
-<div class="row">
-<h3 class="text-center">Team</h3>
-<div class="col-md-4">
-<div class="panel panel-default">
-<div class="panel-body">
-<span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><br>
-<textarea class="form-control" rows="1" id="textarea" placeholder="Firstname Familyname" onfocus="this.value = this.value;" max="250"></textarea><form class="text-left">
-<input type="checkbox" name="founder" value="founder"> Founder<br><br>
-</form>
-<textarea class="form-control" rows="1" id="textarea" placeholder="Role" onfocus="this.value = this.value;" max="250"></textarea><br>
-<textarea class="form-control" rows="2" id="textarea" placeholder="Presentation" onfocus="this.value = this.value;" max="250"></textarea>
-</div>
-</div>
-</div>
-<div class="col-md-4">
-<div class="panel panel-default">
-<div class="panel-body">
-<span class="glyphicon glyphicon-remove pull-right" title="Remove"></span><br>
-<textarea class="form-control" rows="1" id="textarea" placeholder="Firstname Familyname" onfocus="this.value = this.value;" max="250"></textarea><form class="text-left">
-<input type="checkbox" name="founder" value="founder"> Founder<br><br>
-</form>
-<textarea class="form-control" rows="1" id="textarea" placeholder="Role" onfocus="this.value = this.value;" max="250"></textarea><br>
-<textarea class="form-control" rows="2" id="textarea" placeholder="Presentation" onfocus="this.value = this.value;" max="250"></textarea>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-6 col-sm-offset-3">
-<form role="form">
-<button type="submit" class="btn btn-success">Add person</button><br>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div> opacityBkg -->
+
 <div class="nrRow">
   <div class="container">
       <div class="col-md-8 col-md-offset-2">

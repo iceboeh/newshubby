@@ -17,6 +17,14 @@
 
 <div class="nrHeader">
   <div class="container">
+			<div class="row">
+	        <div class="col-md-8 col-md-offset-2">
+						<% if @owner && @newsroom.press_releases.blank? %>
+	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
+						<% end %>
+							<h3 class="text-muted nrHeading"><i class="fa fa-home"></i>&nbsp;Newsroom</h3><hr>
+	        </div>
+	    </div>
       <div class="row">
           <div class="col-md-4 col-md-offset-2">
               <h3><%= f.text_field :company_name %></h3>
@@ -32,7 +40,8 @@
           <div class="col-md-4">
               <div class="centerContainer">
                   <div class="centerContent">
-                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %><br>
+                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %>
+											<br>
 											<%= f.label :logo, "Upload new logo" %><br>
 											<%= f.file_field :logo %>
                   </div>
@@ -41,7 +50,6 @@
       </div> <!-- / .row -->
   </div> <!-- / .container -->
 </div> <!-- / .nrHeader -->
-
 
 <div class="nrRow">
   <div class="container">
@@ -59,11 +67,7 @@
 								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit"  do %>
 									<span class="glyphicon glyphicon-pencil pull-right">
 								<% end %>
-						
-								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "View" do %>
-									<span class="glyphicon glyphicon-eye-open pull-right">
-								<% end %>
-						
+												
 								<% if press_release.exclusive? %>
 								<%= link_to "#", title: "Exclusive: Yes" do %>
 									<span class="glyphicon glyphicon-lock pull-right">
@@ -93,42 +97,129 @@
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 
+<% unless @newsroom.q_what_you_do.nil? %>
 <div class="nrRow nrWhiteBkg">
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
-              <p><%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?" %>
+              <p>
+								<strong>
+									<%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?", class: "form-control" %>
+								</strong><br>
 								
-									<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?" %>
+									<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?", class: "form-control" %><br>
 								
-									<%= f.text_area :q_clients, rows: 3, placeholder: "Describe your typical clients" %>
+									<%= f.text_area :q_clients, placeholder: "Describe your typical clients", class: "form-control" %><br>
 								
-									<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?" %>
+									<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?", class: "form-control" %><br>
 							</p>
               <h4>Problem Solved</h4>
-              <p><%= f.text_area :problem_solved, placeholder: "Problem solved" %></p>
+              <p>
+								<%= f.text_area :problem_solved, rows: 3, placeholder: "Problem Solved", class: "form-control" %>
+							</p>
               <h4>Business Model</h4>
-              <p><%= f.text_area :business_model, placeholder: "Business model" %></p>
+              <p>
+								<%= f.text_area :business_model, rows: 3, placeholder: "Business Model", class: "form-control" %>
+							</p>
               <h4>Funding</h4>
 							<%= f.fields_for :fundings do |funding| %>
 							<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-	              <p><%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control" %>: <%= funding.text_field :name %><br>
-								<%= funding.date_select :date, order:  [:day, :month, :year]  %> | $<%= funding.number_field :amount, placeholder: 1000 %></p>
+	              <p>
+									<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control" %>
+								</p>
+								<p>
+									<%= funding.text_field :name, placeholder: "Name" %>
+								</p>
+								<p>
+									<%= funding.date_select :date, order:  [:day, :month, :year]  %>
+								</p>
+								<p>
+									$<%= funding.number_field :amount, placeholder: 1000 %>
+								</p>
 							<% end %>
 							<%= f.link_to_add :fundings, class: "" do %> + Add funding<% end %>
-							
-              <h4>Team</h4>
+              <h4>Key People</h4>
               <div class="row">
 								<%= f.fields_for :people do |person| %>
-									<div class="col-xs-6">
+									<div class="col-xs-12">
 										<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                      <p><%= person.text_field :name, placeholder: "Name" %>&nbsp;<%= person.text_field :role, placeholder: "Role at #{@newsroom.company_name}" %><br><%= person.text_field :presentation, placeholder: "Presentation" %></p>
-                  </div>
+                      <p><%= person.label :name %> <%= person.text_field :name, placeholder: "Name" %> &nbsp;<%= person.label :role %> <%= person.text_field :role, placeholder: "Role at #{@newsroom.company_name}" %></p>
+											<p><%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %></p>
+                  <hr></div>
 								<% end %>
 								<%= f.link_to_add :people, class: "" do %> + Add team member<% end %>
               </div> <!-- / .row -->
           </div> <!-- / .col-md-8 -->
       </div> <!-- /.row -->
+  </div> <!-- / .container -->
+</div> <!-- / .nrRow -->
+<% end %>
+
+<div class="nrRow">
+  <div class="container">
+      <div class="col-md-8 col-md-offset-2">
+          <div class="row">
+              <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
+							<% @newsroom.press_releases.each do |press_release| %>
+							<% press_release.links.each do |link| %>
+							<% unless link.link.nil? %>
+              
+							<% if link.link.include? "youtube.com" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+              <% if link.link.include? "youtu.be" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+              <% if link.link.include? "vimeo.com" %>
+							<div class="col-sm-4">
+                  <div class="thumbnail">
+                      <div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                      </div>
+                      <div class="caption">
+                          <p><small><%= link_to link.caption, link.link %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							
+							<% end %><% end %><% end %>
+							
+							<% @newsroom.press_releases.each do |press_release| %>
+							<% press_release.uploads.each do |upload| %>
+							<% unless upload.file.blank? %>
+              <div class="col-sm-4">
+                  <div class="thumbnail">
+											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
+                      <div class="caption">
+                          <p><small><%= upload.caption %></small></p>
+                      </div>
+                  </div>
+              </div> <!-- / .col-sm-4 -->
+							<% end %>
+							<% end %><% end %>
+          </div> <!-- / .row -->
+      </div> <!-- / .col-md-8 -->
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 
