@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.remotipart
 //= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require jquery-ui
