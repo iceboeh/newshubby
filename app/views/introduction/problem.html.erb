@@ -1,4 +1,5 @@
 <div class="shortPage">
+	<div class="floatingBkg" id="penAndPaper"></div>
 	
 <%= render :layout => "form" do |f| %>
 
@@ -11,11 +12,9 @@
 								 <h6 class="text-muted">Step 9 of 11</h6>
 	                        <h4>What problem does <strong><%= @newsroom.company_name %></strong> solve?</h4>
 	                      <%= f.text_area :problem_solved, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-								<h5>
-                     <span class="text-primary"><strong>Example: </strong></span>
-                 </h5>
-                 <p>
-                     Many companies don't have the time, effort and knowledge about how to create a good press release. NewsHubby wants to help them with that and minimize the distance between the startups and the press.
+								<br>
+                <p>
+                    <span class="text-primary"><strong>Example: </strong></span>Many companies don't have the time, effort and knowledge about how to create a good press release. NewsHubby wants to help them with that and minimize the distance between the startups and the press.
                  </p>
 	            </div> <!-- / .col-xs-12 -->
 	        </div> <!-- / .row -->

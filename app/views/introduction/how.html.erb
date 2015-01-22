@@ -1,4 +1,5 @@
 <div class="shortPage">
+	<div class="floatingBkg" id="penAndPaper"></div>
 	
 <%= render :layout => "form" do |f| %>
 
@@ -15,11 +16,9 @@
 												<% else %>
 													<%= f.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 												<% end %>
-								<h5>
-                     <span class="text-primary"><strong>Example: </strong></span>
-                 </h5>
-                 <p>
-                     The company achieves this through automatic online interviews. Once a client has answered a few questions, a press release is generated and is ready to be electronically sent to media outlets worldwide.
+								<br>
+                <p>
+                    <span class="text-primary"><strong>Example: </strong></span>The company achieves this through automatic online interviews. Once a client has answered a few questions, a press release is generated and is ready to be electronically sent to media outlets worldwide.
                  </p>
 	            </div> <!-- / .col-xs-12 -->
 	        </div> <!-- / .row -->

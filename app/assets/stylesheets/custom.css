@@ -8,6 +8,7 @@ html, body {
   font-weight: 300; }
 
 body {
+  background: url(../media/bkg/grain2.png);
   background-color: #e3e3e3; }
 
 .nhBkg {
@@ -319,6 +320,18 @@ textarea {
 
 .saveStatus {
   color: #666; }
+
+.floatingBkg {
+  background: url(../media/bkg/penandpaper.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  top: 100px;
+  right: 20px; }
 
 @media (min-width: 768px) {
   .shortPage {

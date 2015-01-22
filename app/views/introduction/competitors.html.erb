@@ -1,4 +1,5 @@
 <div class="shortPage">
+	<div class="floatingBkg" id="penAndPaper"></div>
 	
 <%= render :layout => "form" do |f| %>
 
@@ -11,11 +12,9 @@
 								 <h6 class="text-muted">Step 8 of 11</h6>
 	                        <h4>Who are <% unless @newsroom.company_name.blank? %><strong><%= @newsroom.company_name.possessive %></strong><% end %> competitors?</h4>
 	                      <%= f.text_area :competitors, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-								<h5>
-                     <span class="text-primary"><strong>Example: </strong></span>
-                 </h5>
-                 <p>
-                    Pr.co, Pressfriendly
+								<br>
+                <p>
+                    <span class="text-primary"><strong>Example: </strong></span>Pr.co, Pressfriendly
                  </p>
 	            </div> <!-- / .col-xs-12 -->
 	        </div> <!-- / .row -->

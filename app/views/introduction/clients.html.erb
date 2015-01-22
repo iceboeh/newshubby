@@ -1,4 +1,5 @@
 <div class="shortPage">
+	<div class="floatingBkg" id="penAndPaper"></div>
 	
 <%= render :layout => "form" do |f| %>
 
@@ -15,11 +16,9 @@
 												<% else %>
 													<%= f.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 												<% end %>
-												<h5>
-                            <span class="text-primary"><strong>Example: </strong></span>
-                        </h5>
-                        <p>
-                          Typically, NewsHubby's clients are tech startups and other, bigger tech companies.
+												<br>
+				                <p>
+				                    <span class="text-primary"><strong>Example: </strong></span>Typically, NewsHubby's clients are tech startups and other, bigger tech companies.
                         </p>
 	            </div> <!-- / .col-xs-12 -->
 	        </div> <!-- / .row -->
