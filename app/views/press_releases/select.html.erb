@@ -17,6 +17,7 @@
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
 			<p><%= pressrelease_type.description %></p>
+			<%= image_tag "press_release_types/#{pressrelease_type.name.parameterize("_")}.png", class: "img-responsive" %>
 			<!--
 			Company launch: <p>For when you are launching a company</p>
 			Feature launch: <p>For when your company is launching a new feature</p>
