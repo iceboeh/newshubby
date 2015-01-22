@@ -7,20 +7,32 @@
     <div>
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
-							<h4><% unless @newsroom.company_name.blank? %><%= @newsroom.company_name.possessive %><% end %> key people</h4>
+							<h4><% unless @newsroom.company_name.blank? %>Add <strong><%= @newsroom.company_name.possessive %></strong><% end %> key people</h4>
                 <%= f.fields_for :people do |person| %>
 								<div class="panel panel-body">
-		                        <%= person.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                        
-														<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
-														Founder <%= person.check_box :founder, class: "text-left" %>
-														<%= person.text_field :role, class: "form-control", placeholder: "Role"  %><br>
-														<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation" %><br>
+		                        <%= person.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
+														<br><br>
+                        		<div class="form-group">
+															<%= person.label :name, "First & last name" %>
+															<%= person.text_field :name, class: "form-control", placeholder: "Jane Doe" %>
+														</div>
+														<div class="form-group">
+															<%= person.label :founder, "Is this person a founder?" %><br>
+															<label class="radio-inline"><%= person.radio_button :founder, checked: true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, checked: false %> No</label>
+														</div>
+														<div class="form-group">
+															<%= person.label :role, "Position at #{@newsroom.company_name}" %>
+															<%= person.text_field :role, class: "form-control", placeholder: "Production Manager"  %>
+														</div>
+														<div class="form-group">
+															<%= person.label :presentation, "Briefly introduce the person's skills and personality" %>
+															<%= person.text_area :presentation, class: "form-control", placeholder: "Quick to acknowledge change within the demand chain" %>
+														</div>
 												
 										
 		            </div> <!-- / .col-xs-12 -->
 								<% end %>
-								<p class="text-center"><%= f.link_to_add :people do %> + Add person<% end %></p>
+								<%= f.link_to_add :people do %><p class="text-center"> + Add person</p><% end %>
 		        </div> <!-- / .row -->
 		    </div> <!-- / .container-fluid -->
 		</div> <!-- / .question -->

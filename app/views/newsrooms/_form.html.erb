@@ -11,10 +11,6 @@
       <% end %>
   <% end %>
 
-<% if @owner %>
-<%= f.submit "Save Changes", class: "btn pinkBtn", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
-<% end %>
-
 <div class="nrHeader">
   <div class="container">
 			<div class="row">
@@ -123,32 +119,51 @@
 							</p>
               <h4>Funding</h4>
 							<%= f.fields_for :fundings do |funding| %>
-							<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-	              <p>
+							<div class="row">
+								<div class="col-xs-12 col-sm-6">
+							<%= f.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
+							
+								<div class="form-group">
+									<%= funding.label :investment_type %><br>
 									<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control" %>
-								</p>
-								<p>
-									<%= funding.text_field :name, placeholder: "Name" %>
-								</p>
-								<p>
+								</div>
+								<div class="form-group">
+									<%= funding.label :name, "Investor name" %><br>
+									<%= funding.text_field :name, placeholder: "Name", class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= funding.label :date, "Investment date" %><br>
 									<%= funding.date_select :date, order:  [:day, :month, :year]  %>
-								</p>
-								<p>
-									$<%= funding.number_field :amount, placeholder: 1000 %>
-								</p>
+								</div>
+								<div class="form-group">
+									<%= funding.label :amount, "Amount invested" %><br>
+										<div class="input-group">
+											<div class="input-group-addon">$</div>
+										<%= funding.number_field :amount, class: "form-control", placeholder: "190000"  %>
+											</div>
+										</div>
+								<hr>
+							</div></div>
 							<% end %>
-							<%= f.link_to_add :fundings, class: "" do %> + Add funding<% end %>
+							
+							<%= f.link_to_add :fundings, class: "btn btn-default" do %> + Add funding<% end %>
+							<br><br>
+							
               <h4>Key People</h4>
-              <div class="row">
 								<%= f.fields_for :people do |person| %>
-									<div class="col-xs-12">
-										<%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
-                      <p><%= person.label :name %> <%= person.text_field :name, placeholder: "Name" %> &nbsp;<%= person.label :role %> <%= person.text_field :role, placeholder: "Role at #{@newsroom.company_name}" %></p>
-											<p><%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %></p>
-                  <hr></div>
+									<div class="row">
+									<div class="col-xs-12 col-sm-6">
+										<%= f.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
+                      <%= person.label :name, "First and last name" %><br>
+											<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
+											
+											<%= person.label :role, "Position at #{@newsroom.company_name}" %><br>
+											<%= person.text_field :role, class: "form-control", placeholder: "Role at #{@newsroom.company_name}" %><br>
+											<%= person.label :presentation, "Briefly introduce the person's skills and personality" %>
+											<%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %>
+                  <hr></div></div>
 								<% end %>
-								<%= f.link_to_add :people, class: "" do %> + Add team member<% end %>
-              </div> <!-- / .row -->
+								<%= f.link_to_add :people, class: "btn btn-default" do %> + Add team member<% end %>
           </div> <!-- / .col-md-8 -->
       </div> <!-- /.row -->
   </div> <!-- / .container -->
@@ -223,4 +238,14 @@
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 
+<% if @owner %>
+
+	<div class="text-center">
+		<%= f.submit "Save changes!!!!!!", class: "btn btn-success btn-lg", role: "button" %>
+	</div>
+	<br><br>
+	
+<% end %>
+
 <% end %><% end %>
+

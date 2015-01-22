@@ -88,7 +88,9 @@
 							<% end %><% end %><% end %>
               
           </div> <!-- / .row -->
-					<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
+					<% unless @press_releases.blank? %>
+						<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
+					<% end %>
       </div> <!-- / .col-md-8 -->
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
@@ -98,7 +100,8 @@
   <div class="container">
       <div class="row">
           <div class="col-md-8 col-md-offset-2">
-              <p><strong><span class="dropcap"><%= @newsroom.q_what_you_do[0] %></span><%= simple_format(@newsroom.q_what_you_do[1..-1]) %></strong>
+						<h3>What does <%= @newsroom.company_name %> do?</h3>
+              <p><strong><%= @newsroom.q_what_you_do %></strong>
 								
 									<%= @newsroom.q_how_you_achieve %>
 								
@@ -135,6 +138,9 @@
       <div class="col-md-8 col-md-offset-2">
           <div class="row">
               <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
+							<% if @newsroom.uploads.blank? && @newsroom.links.blank? %>
+								<h4 class="text-muted"><%= @newsroom.company_name %> has no videos and images yet.</h4>
+							<% else %>
 							<% @newsroom.press_releases.each do |press_release| %>
 							<% press_release.links.each do |link| %>
 							<% unless link.link.nil? %>
@@ -192,7 +198,7 @@
                   </div>
               </div> <!-- / .col-sm-4 -->
 							<% end %>
-							<% end %><% end %>
+							<% end %><% end %><% end %>
           </div> <!-- / .row -->
       </div> <!-- / .col-md-8 -->
   </div> <!-- / .container -->

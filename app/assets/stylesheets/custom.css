@@ -36,8 +36,7 @@ main {
   border: none; }
 
 .thumbImg {
-  border-radius: 4px 4px 0 0;
-  min-height: 100px; }
+  border-radius: 4px 4px 0 0; }
 
 .thumbnail a {
   color: inherit;

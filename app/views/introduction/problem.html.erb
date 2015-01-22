@@ -9,7 +9,7 @@
            <div class="col-sm-6 col-sm-offset-3 hubertBasic">
                <div class="panel panel-body">
 								 <h6 class="text-muted">Step 9 of 11</h6>
-	                        <h4>What problem does <%= @newsroom.company_name %> solve?</h4>
+	                        <h4>What problem does <strong><%= @newsroom.company_name %></strong> solve?</h4>
 	                      <%= f.text_area :problem_solved, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 								<h5>
                      <span class="text-primary"><strong>Example: </strong></span>

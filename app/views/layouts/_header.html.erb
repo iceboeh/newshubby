@@ -107,7 +107,13 @@
 								<% end %>
 								
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_newsroom.company_name %>&nbsp;<span class="caret text-muted"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+											<% if current_newsroom.company_name.blank? %>
+												<%= current_newsroom.email %>
+											<% else %>
+												<%= current_newsroom.company_name %>
+											<% end %>
+											&nbsp;<span class="caret text-muted"></span></a>
                     <ul class="dropdown-menu">
                         <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
                         <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
