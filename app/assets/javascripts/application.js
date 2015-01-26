@@ -11,11 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require best_in_place
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require bootstrap-sprockets
 //= require jquery_nested_form
 //= require jquery-ui
 //= require jquery.turbolinks
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
+//= require masonry/modernizr-transitions
 //= require autocomplete-rails
 //= require turbolinks
 //= require_tree .

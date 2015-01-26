@@ -98,10 +98,14 @@ gem 'aws-sdk'
 gem 'google-analytics-rails'
 
 # Remote form, file upload
-#gem 'remotipart', '~> 1.2'
+gem 'remotipart', '~> 1.2'
 
 # In-place editing
-#gem 'best_in_place', '~> 3.0.1'
+gem 'best_in_place', '~> 3.0.1'
+
+# Masonry (for stacking boxes)
+
+gem 'masonry-rails'
 
 # Want to be able to deploy easily to EC2
 # http://www.lauradhamilton.com/how-to-deploy-to-amazon-ec2-with-capistrano

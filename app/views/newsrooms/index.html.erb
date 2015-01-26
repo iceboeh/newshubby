@@ -19,14 +19,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text-center">Press Releases simplified</h2>
+                <h2 class="text-center">How does it work?</h2>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="thumbnail">
 													<%= image_tag "icons/creation.svg", alt: "creation" %>
                             <div class="caption">
-                                <h3 class="text-center">Creation</h3>
+                                <h3 class="text-center">1. Creation</h3>
                                 <p class="text-center">Create your press release <em>within 20 minutes</em>! Our user friendly templates walk you through the process.</p>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="thumbnail">
                             <%= image_tag "icons/hosting.svg", alt: "hosting" %>
                             <div class="caption">
-                                <h3 class="text-center">Hosting</h3>
+                                <h3 class="text-center">2. Hosting</h3>
                                 <p class="text-center">NewsHubby automatically collects all of your press material into your own <em>public newsroom.</em></p>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="thumbnail">
 													<%= image_tag "icons/distribution.svg", alt: "distribution" %>
                             <div class="caption">
-                                <h3 class="text-center">Distribution</h3>
+                                <h3 class="text-center">3. Distribution</h3>
                                 <p class="text-center">Choose the option of releasing your press release via NewsHubby's <em>global distribution network</em>.</p>
                             </div>
                         </div>
@@ -55,34 +55,7 @@
     </div> <!-- /.container -->
 </div> <!-- /.indexSplash -->
 
-<div class="container">
-    <h2 class="text-center">Latest Press Releases</h2>
-		
-		<% @press_releases[0..3].each do |press_release| %>
-    <div class="col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
-                <div class="thumbLogoBkg">
-                    <span class="helper"></span><%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbLogo", alt: "" %>
-                </div>
-							<% unless press_release.uploads.first.nil? %>									
-                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-            <% end %><% end %>
-            <div class="caption">
-                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
-                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
-                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
-            </div> <!-- / .caption -->
-            
-            <div class="clearfix"></div>
-        </div> <!-- / .thumbnail -->
-    </div> <!-- / .col-sm-6 -->
-		<% end %>
-		
-		<div class="col-xs-12 text-center">
-			<%= link_to "More Press Releases", pressreleases_path, class: "btn btn-default", role: "button" %><br><br>
-		</div>
-</div> <!-- / .container -->
+<!-- Latest Press Releases Partial Goes Here -->
 
 <script>
 

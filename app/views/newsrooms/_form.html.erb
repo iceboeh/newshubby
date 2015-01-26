@@ -169,74 +169,7 @@
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 <% end %>
-
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.links.each do |link| %>
-							<% unless link.link.nil? %>
-              
-							<% if link.link.include? "youtube.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-              <% if link.link.include? "youtu.be" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-              <% if link.link.include? "vimeo.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							
-							<% end %><% end %><% end %>
-							
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.uploads.each do |upload| %>
-							<% unless upload.file.blank? %>
-              <div class="col-sm-4">
-                  <div class="thumbnail">
-											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
-                      <div class="caption">
-                          <p><small><%= upload.caption %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
-							<% end %>
-							<% end %><% end %>
-          </div> <!-- / .row -->
-      </div> <!-- / .col-md-8 -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
+<br><br>
 
 <% if @owner %>
 
@@ -248,4 +181,3 @@
 <% end %>
 
 <% end %><% end %>
-

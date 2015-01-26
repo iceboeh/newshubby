@@ -2,6 +2,20 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+jQuery ->
+  $('.best_in_place').best_in_place()
+  
+$ ->
+	  $container = $("#masonry-container")
+	  $container.imagesLoaded ->
+	    $container.masonry
+		    itemSelector: ".brick"
+		    gutterWidth: 10
+		    isAnimated: not Modernizr.csstransitions
+		    isFitWidth: true
+		  return
+		
+
 $(document).on 'click', 'form .remove_fields', (event) ->
   $(this).prev('input[type=hidden]').val('1')
   $(this).closest('fieldset').hide()
@@ -12,3 +26,4 @@ $(document).on 'click', 'form .add_fields', (event) ->
   regexp = new RegExp($(this).data('id'), 'g')
   $(this).before($(this).data('fields').replace(regexp, time))
   event.preventDefault()
+	

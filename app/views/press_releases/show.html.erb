@@ -1,10 +1,12 @@
 <% if @owner %>
-<% if @press_release.exclusive? %>
-	<div class="alert alert-danger noticeFade">
+<% unless @press_release.exclusive? %>
+
 		<strong>Your press release is not yet public.<br>
 			Use this link to share the press release and keep its exclusivity.</strong><br>
 	<%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %>
-	</div>
+<br><br><br>
+<%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Exclusive", "Public"] %>
+
 <% end %>
 	<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
 <% end %>

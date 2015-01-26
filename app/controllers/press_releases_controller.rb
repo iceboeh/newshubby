@@ -149,7 +149,7 @@ class PressReleasesController < ApplicationController
         end
         
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }
-        format.json { render :update }
+        format.json { respond_with_bip(@press_release) }
         format.js { render "press_releases/update", notice: "Saved!" }
       else
         format.html { render :edit }

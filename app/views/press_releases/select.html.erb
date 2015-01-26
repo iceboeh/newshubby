@@ -1,19 +1,28 @@
+<style>
+
+	.brick { width: 230px;
+		float: left;
+	 }
+	
+	#masonry-container {
+	  margin: 0px auto;
+	}
+</style>
+
 <% title "Select Press Release Type" %>
 
-<div class="container-fluid">
-
-<div class="row">
-	<div class="container aboutNH text-center omnes">
-		<h3>Select press release type</h3></div>
-	</div>
-	<br>
+<div class="shortPage">
 
 <% if @newsroom == current_newsroom %>
 
+<div class="container">
+
+<div id="masonry-container" class="masonry-centered">
+
+
 <% PressreleaseType.all.each do |pressrelease_type| %>
 
-<div class="col-sm-3 text-center">
-	<div class="panel">
+	<div class="brick panel text-center">
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
 			<p><%= pressrelease_type.description %></p>
@@ -32,13 +41,14 @@
 			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success omnes center-block" %>
 		</div>
 	</div>
-</div>
+
+
 <% end %>
 <% end %>
 
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Product Launch</h4>
 			<p>For when your company is launching a new product.</p>
@@ -47,10 +57,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Team change</h4>
 			<p>For when your team is increasing.</p>
@@ -59,10 +68,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>User Metrics</h4>
 			<p>For when you have successful user metrics.</p>
@@ -71,10 +79,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Financial Metrics</h4>
 			<p>For when you have successful financial metrics.</p>
@@ -83,10 +90,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>New market</h4>
 			<p>For when your company is entering new markets.</p>
@@ -95,11 +101,10 @@
 						
 		</div>
 	</div>
-</div>
 
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>New location</h4>
 			<p>For when opening up your business in a new location.</p>
@@ -108,10 +113,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Pivot</h4>
 			<p>For when doing a pivot that changes your roadmap.</p>
@@ -120,10 +124,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Funding</h4>
 			<p>For when your company gets funded.</p>
@@ -132,10 +135,9 @@
 						
 		</div>
 	</div>
-</div>
 
-<div class="col-sm-3 text-center text-muted">
-	<div class="panel">
+
+	<div class="brick panel">
 		<div class="panel-body">
 			<h4>Partnerships</h4>
 			<p>For when your company is partnering up with others.</p>
@@ -144,8 +146,9 @@
 						
 		</div>
 	</div>
+
+</div> <!-- Masonry -->
+
+
 </div>
-
-
-
 </div>

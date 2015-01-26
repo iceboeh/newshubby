@@ -19,7 +19,7 @@
               </div> <!-- / .overlay-message -->
 					
 						<div id="q-container">
-							<%= nested_form_for([@newsroom, @press_release], remote: true) do |f| %>
+							<%= nested_form_for([@newsroom, @press_release], html: { multipart: true }, remote: true) do |f| %>
 							
 		          <div class="text-center" id="nav-container">
 								

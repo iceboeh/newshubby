@@ -13,17 +13,15 @@ class IntroductionController < ApplicationController
       @basic_step = true
     when :logo
       @finish_button = true
-      
     end
     
     render_wizard
-    
   end
 
 
   def finish_wizard_path
     newsroom_path(@newsroom)
-  end  
+  end
   
   def update
     @newsroom = current_newsroom
@@ -36,6 +34,7 @@ class IntroductionController < ApplicationController
     unless @newsroom.fundings.exists?
       @newsroom.fundings.create
     end
+    
     
     # Skip submit if no logo uploaded    
     #unless @logostep && params[:logo].present? == false
