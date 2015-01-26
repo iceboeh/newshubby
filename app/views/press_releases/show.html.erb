@@ -1,14 +1,28 @@
-<% if @owner %>
-<% unless @press_release.exclusive? %>
-
-		<strong>Your press release is not yet public.<br>
-			Use this link to share the press release and keep its exclusivity.</strong><br>
-	<%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %>
 <br><br><br>
-<%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Exclusive", "Public"] %>
 
-<% end %>
-	<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn round", style: "position: fixed; bottom: 15px; right: 15px; z-index: 10000", role: "button" %>
+<% if @owner %>
+
+<div class="container-fluid pr-container">
+	<div class="row">
+	    <div class="col-xs-12">
+				<div class="row text-center">
+						<strong>Your press release is not yet public.<br>
+							Use this link to share the press release and keep its exclusivity.</strong><br>
+					<div class="well"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
+					
+				</div>
+	        <h4 class="pull-left">
+						<%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make Exclusive", "Make Public"], class: "btn btn-primary" %>
+					</h4>
+					
+	        <h4 class="pull-right">
+						<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn", role: "button" %>
+					</h4>
+	    </div> <!-- / .col-xs-12 -->
+	</div> <!-- / .row01 -->
+		
+</div>
+
 <% end %>
 
 <div class="container-fluid pr-container">
