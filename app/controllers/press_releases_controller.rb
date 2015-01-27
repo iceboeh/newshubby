@@ -50,10 +50,10 @@ class PressReleasesController < ApplicationController
     @newsroom = current_newsroom
     @press_release = @newsroom.press_releases.new(pressrelease_type_id: params[:pressrelease_type_id])
     
-    if @newsroom.subscription.nil?
-      flash[:notice] = "You can't create a press release without a subscription!"
-      redirect_to plans_path
-    else
+    #if @newsroom.subscription.nil?
+    #  flash[:notice] = "You can't create a press release without a subscription!"
+    #  redirect_to plans_path
+    #else
       unless @newsroom.company_name.blank?
         @press_release.links.build
         @press_release.uploads.build
@@ -67,7 +67,7 @@ class PressReleasesController < ApplicationController
         @press_release.save
         redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release)
       end
-    end
+      #end
   end
 
   # GET /press_releases/1/edit

@@ -11,7 +11,6 @@ $ ->
 	    $container.masonry
 		    itemSelector: ".brick"
 		    gutterWidth: 16
-		    isAnimated: not Modernizr.csstransitions
 		    isFitWidth: true
 		  return
 		
