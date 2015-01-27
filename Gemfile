@@ -107,6 +107,8 @@ gem 'best_in_place', '~> 3.0.1'
 
 gem 'masonry-rails'
 
+gem 'pdfkit'
+
 # Want to be able to deploy easily to EC2
 # http://www.lauradhamilton.com/how-to-deploy-to-amazon-ec2-with-capistrano
 # http://elango-softwarestudio.blogspot.se/2013/11/deploy-rails-application-from-github-to.html

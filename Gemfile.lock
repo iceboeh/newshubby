@@ -120,6 +120,7 @@ GEM
       mime-types
     paymill (0.5.1)
       json
+    pdfkit (0.6.2)
     possessive (1.0.1)
     rack (1.5.2)
     rack-test (0.6.2)
@@ -216,6 +217,7 @@ DEPENDENCIES
   nested_form
   paperclip (~> 4.1)
   paymill
+  pdfkit
   possessive
   rails
   rails4-autocomplete
