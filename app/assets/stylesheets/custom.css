@@ -322,7 +322,7 @@ textarea {
   color: #666; }
 
 .floatingBkg {
-  background: url(../media/bkg/penandpaper.png) no-repeat center center;
+  background: url(../media/img/penandpaper.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -926,7 +926,7 @@ background-color: rgba(255,255,255,.2);
   -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 66px;
+  margin-top: 5px;
   margin-bottom: 66px; }
 
 #preview-area .pr-container {
@@ -945,7 +945,8 @@ background-color: rgba(255,255,255,.2);
   color: #fff; }
 
 .prCompanyLogo {
-  max-width: 75%; }
+  max-width: 75%;
+  margin: 10px; }
 
 .feature-img-area {
   max-width: 306px;
@@ -954,6 +955,25 @@ background-color: rgba(255,255,255,.2);
   background-color: #fff;
   border: 3px solid #fff;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); }
+
+.prStateContainer {
+  background: rgba(0, 0, 0, 0.5);
+  padding-top: 66px; }
+
+.prWrapper {
+  width: 798px;
+  margin: 0 auto; }
+
+.prSendToPress {
+  height: 240px; }
+
+.prOptions {
+  width: 798px;
+  margin: 0 auto;
+  margin-top: 16px; }
+  .prOptions a {
+    color: inherit;
+    font-weight: 600; }
 
 .feature-img {
   max-width: 300px;

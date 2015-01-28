@@ -37,8 +37,7 @@ module N2
     #config.assets.precompile += %w( .svg .eot .woff .ttf ) 
     
     # PDFKit
-    config.middleware.use PDFKit::Middleware
-    
+    config.middleware.use PDFKit::Middleware, :print_media_type => true
     
   end
 end

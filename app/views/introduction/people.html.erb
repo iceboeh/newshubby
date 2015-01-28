@@ -19,7 +19,7 @@
 														</div>
 														<div class="form-group">
 															<%= person.label :founder, "Is this person a founder?" %><br>
-															<label class="radio-inline"><%= person.radio_button :founder, checked: true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, checked: false %> No</label>
+															<label class="radio-inline"><%= person.radio_button :founder, true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, false %> No</label>
 														</div>
 														<div class="form-group">
 															<%= person.label :role, "Position at #{@newsroom.company_name}" %>

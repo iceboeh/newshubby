@@ -107,6 +107,8 @@ gem 'best_in_place', '~> 3.0.1'
 
 gem 'masonry-rails'
 
+gem 'wkhtmltopdf-binary'
+
 gem 'pdfkit'
 
 # Want to be able to deploy easily to EC2

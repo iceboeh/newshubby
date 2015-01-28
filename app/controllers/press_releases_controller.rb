@@ -25,6 +25,12 @@ class PressReleasesController < ApplicationController
   # GET /press_releases/1
   # GET /press_releases/1.json
   def show
+    
+    if @blocked
+      flash[:notice] = "No such press release!"
+      redirect_to :root
+    end
+    
     # Control ownership
     if @press_release.newsroom == current_newsroom
       @owner = true
@@ -179,7 +185,7 @@ class PressReleasesController < ApplicationController
       @press_release = @newsroom.press_releases.friendly.find(params[:id])
       
       # Block exclusive press releases for everyone but owner and hex
-      if @press_release.exclusive? || @press_release.hex == params[:hex] || @press_release.exclusive? && current_newsroom == @press_release.newsroom
+      if @press_release.exclusive? && @press_release.hex != params[:hex] && current_newsroom != @press_release.newsroom
         @blocked = true
       end
     end

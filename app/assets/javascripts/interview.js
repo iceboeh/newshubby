@@ -110,12 +110,13 @@ $(document).ready(function() {
             }
         });
 
-        $('.panel').keydown(function(e) {
+        /*$('.panel').keydown(function(e) {
             if (e.keyCode == 13){
                 e.preventDefault();
                 $("#next").click();
             } //enter
         });
+				*/
     };
 
     var handleHints = function() {

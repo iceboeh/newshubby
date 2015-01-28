@@ -3,7 +3,7 @@
         <h4 class="pull-left">Press Release</h4>
         <h4 class="pull-right">
 					<% unless @press_release.embargo.nil? %>
-					<%= @press_release.embargo.strftime("%B %d, %Y") %>
+						Embargo Date: <%= @press_release.embargo.strftime("%B %d, %Y") %>
 					<% end %>
 				</h4>
     </div> <!-- / .col-xs-12 -->

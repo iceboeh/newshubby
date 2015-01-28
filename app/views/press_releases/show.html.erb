@@ -1,27 +1,40 @@
-<br><br><br>
+<% unless @owner %><br><br><br><% end %>
 
 <% if @owner %>
 
-<div class="container-fluid pr-container">
-	<div class="row">
-	    <div class="col-xs-12">
-				<div class="row text-center">
-						<strong>Your press release is not yet public.<br>
-							Use this link to share the press release and keep its exclusivity.</strong><br>
-					<div class="well"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
-					
-				</div>
-	        <h4 class="pull-left">
-						<%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make Exclusive", "Make Public"], class: "btn btn-primary" %>
-					</h4>
-					
-	        <h4 class="pull-right">
-						<%= link_to "Edit Press Release", edit_newsroom_press_release_path(@newsroom, @press_release), class: "btn pinkBtn", role: "button" %>
-					</h4>
-	    </div> <!-- / .col-xs-12 -->
-	</div> <!-- / .row01 -->
-		
+<div class="container-fluid prStateContainer">
+    <div class="prWrapper">
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="panel text-center">
+                    <div class="panel-body">
+                        <h4>This press release is currently <strong>publicly visible</strong></h4>
+                        <p>Use the link below to share it</p>
+                        <div class="well"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
+                        <p>or click the button to hide it from the public</p>
+                            <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make Exclusive", "Make Public"], class: "btn btn-info" %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="panel text-center prSendToPress">
+                    <div class="panel-body">
+                       <div class="centerContainer">
+												 <div class="centerContent">
+												<h4>Let Newshubby distribute this Press Release</h4><br>
+													<%= link_to "Send to Press", "#", class: "btn btn-primary btn-lg" %>
+											 	</div>
+										 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="prOptions clearfix">
+    <%= link_to edit_newsroom_press_release_path(@newsroom, @press_release), class: "pull-left" do %><i class="fa fa-edit fa-lg"></i>&nbsp;Edit Press Release<% end %>
+		<%= link_to newsroom_press_release_path(@newsroom, @press_release), format: :pdf, class: "pull-right" do %><i class="fa fa-file-pdf-o fa-lg"></i>&nbsp;Download PDF<% end %>
+</div>			
 
 <% end %>
 

@@ -1,4 +1,55 @@
-<%= render 'press_releases/layouts/static_top' %>
+<div class="row prTop">
+    <div class="col-xs-12">
+        <h4 class="pull-left">Press Release</h4>
+        <h4 class="pull-right">
+					<% unless @press_release.embargo.nil? %>
+					<%= @press_release.embargo.strftime("%B %d, %Y") %>
+					<% end %>
+				</h4>
+    </div> <!-- / .col-xs-12 -->
+</div> <!-- / .row01 -->
+<div class="row pr-heading">
+    <div class="col-xs-5 col-xs-offset-1">
+        <h3><%= @newsroom.company_name %></h3>
+        <ul class="fa-ul">
+            <li><i class="fa-li fa fa-calendar" title="Founded"></i>founded in <%= @newsroom.founded.strftime("%B, %Y") %></li>
+            <li><i class="fa-li fa fa-map-marker fa-lg" title="Location"></i><%= link_to @newsroom.location, "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" %></li>
+						
+            <li><i class="fa-li fa fa-home fa-lg" title="Website"></i><%= link_to @newsroom.website, @newsroom.website %></li>
+            <li><i class="fa-li fa fa-envelope" title="Email"></i><%= mail_to @newsroom.press_email, @newsroom.press_email %></li>
+						
+            <li><i class="fa-li fa fa-twitter fa-lg" title="Twitter"></i><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></li>
+            <li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
+        </ul>
+    </div> <!-- / .col-xs-5 col-xs-offset-1 -->
+    <div class="col-xs-5">
+        <div class="centerContainer">
+            <div class="centerContent">
+                <%= image_tag @newsroom.logo.url(:large), class: "img-responsive prCompanyLogo" %>
+            </div> <!-- / .centerContent -->
+        </div> <!-- / .centerContainer -->
+    </div> <!-- / .col-xs-5 -->
+</div> <!-- / .row .pr-heading -->
+<div class="row">
+                <div class="col-xs-10 col-xs-offset-1">
+                    <h1><%= @press_release.title %></h1><br>
+										<div class="feature-img-area">
+											<% unless @press_release.uploads.first.nil? %>
+	                    <% if @press_release.uploads.first.file.blank? %>
+											<%= image_tag "images/feature_img.png", class: "center-block feature-img", alt: "" %>
+											<% else %>
+                        <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), "#" %>
+											<% end %><% end %>
+                        <div class="feature-img-caption">
+                            <p><small>
+															<% if @press_release.uploads.first.file.blank? %>
+															This text will be replaced by your image caption
+															<% else %>
+															<%= @press_release.uploads.first.caption %>
+															<% end %>
+														</small></p>
+                        </div> <!-- /.feature-img-caption -->
+                    </div> <!-- / .feature-img-area -->
 
                         <p>
                             <span id="pr-answer-04">
@@ -7,4 +58,104 @@
 														</span>
                         </p>
 
-<%= render 'press_releases/layouts/static_bottom' %>
+										<hr>
+										<% if @newsroom.fundings.count > 0 %>
+                    <h4>Funding</h4>
+                    <ul>
+											<% @newsroom.fundings.each do |funding| %>
+											<% unless funding.name.blank? %>
+                        <li><strong><%= funding.date %>: </strong><%= number_to_currency(funding.amount, precision: 0, locale: :en) %><br><%= funding.name %></li>
+											<% end %>
+											<% end %>
+                    </ul>	
+										<% end %>	
+										<hr>
+										<% if @newsroom.people.count > 0 %>
+                    <h4>Key People</h4>
+                    <div class="row">
+											<% @newsroom.people.each do |person| %>
+                        <% unless person.name.blank? %>
+												<div class="col-xs-6">
+                            <p><strong><%= person.name %></strong>&nbsp;<%= (person.role) %><br><small><%= person.presentation %></small></p>
+                        </div>
+												<% end %>
+											<% end %>
+                    </div> <!-- / .row -->
+										<% end %>
+										<hr>
+                    <h4>Links</h4>
+                    <ul>
+											<% @press_release.links.each do |link| %>
+											<% unless link.link.nil? %>
+											<% if link.link.include? "youtube.com" %>
+											<% elsif link.link.include? "youtu.be" %>
+											<% elsif link.link.include? "vimeo.com"%>
+											<% else %>
+												
+												<% if link.link.start_with?("http://") %>
+                        <li><%= link_to link.caption, link.link %></li>
+												<% else %>
+												<li><%= link_to link.caption, "http://"+link.link %></li>
+												<% end %>
+												
+											<% end %>
+											<% end %>
+											<% end %>
+                    </ul><br>
+                    <div class="row">
+											<% @press_release.uploads.all[1..-1].each do |upload| %>
+											<% unless upload.file.blank? %>
+                        <div class="col-xs-4">
+													<%= link_to upload.file.url, class: "thumbnail" do %>
+                                <%= image_tag upload.file.url(:medium), alt: "" %>
+                                <p><small><%= upload.caption %></small></p>
+                           <% end %>
+                        </div>
+											<% end %>
+											<% end %>
+											
+											
+											<% @press_release.links.each do |link| %>
+											<% unless link.link.nil? %>
+											<% if link.link.include? "youtube.com" %>
+                        <div class="col-xs-4">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p><small><%= link.caption %></small></p>
+                        </div>
+											<% end %>
+											
+											<% if link.link.include? "youtu.be" %>
+                        <div class="col-xs-4">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p><small><%= link.caption %></small></p>
+                        </div>
+											<% end %>
+											
+											<% if link.link.include? "vimeo.com" %>
+                        <div class="col-xs-4">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                            <p><small><%= link.caption %></small></p>
+                        </div>
+											<% end %>
+											<% end %>
+											<% end %>
+                    </div>
+										<hr>
+                </div> <!-- / .col-xs-10 col-xs-offset-1 -->
+            </div> <!-- / .row -->
+
+<div class="row">
+    <div class="col-xs-12">
+				<%= link_to root_path, target: "_blank", class: "pr-generated" do %>
+					<p class="text-center">PRESS RELEASE GENERATED WITH</p>
+					<%= image_tag "newshubby_logotype.svg", class: "center-block", alt: "Link to www.newshubby.com", width: "200" %>
+				<% end %>
+        <br>
+    </div> <!-- / .col-xs-12 -->
+</div> <!-- / .row -->

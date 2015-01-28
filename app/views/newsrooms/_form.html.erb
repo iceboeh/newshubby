@@ -18,7 +18,10 @@
 						<% if @owner && @newsroom.press_releases.blank? %>
 	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
 						<% end %>
-							<h3 class="text-muted nrHeading"><i class="fa fa-home"></i>&nbsp;Newsroom</h3><hr>
+							<%= link_to @newsroom do %>
+							<h3 class="text-muted nrHeading"><i class="fa fa-home"></i>&nbsp;Newsroom</h3>
+							<% end %>
+							<hr>
 	        </div>
 	    </div>
       <div class="row">
@@ -159,6 +162,10 @@
 											
 											<%= person.label :role, "Position at #{@newsroom.company_name}" %><br>
 											<%= person.text_field :role, class: "form-control", placeholder: "Role at #{@newsroom.company_name}" %><br>
+											<div class="form-group">
+												<%= person.label :founder, "Is this person a founder?" %><br>
+												<label class="radio-inline"><%= person.radio_button :founder, true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, false %> No</label>
+											</div>
 											<%= person.label :presentation, "Briefly introduce the person's skills and personality" %>
 											<%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %>
                   <hr></div></div>
