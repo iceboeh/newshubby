@@ -11,6 +11,7 @@
 		                        
 		                        <h4>Upload logotype</h4>
 													<%= f.file_field :logo %>
+													<%= f.hidden_field :company_name, value: @newsroom.company_name %>
 
 		            </div> <!-- / .col-xs-12 -->
 		        </div> <!-- / .row -->

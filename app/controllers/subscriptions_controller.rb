@@ -2,8 +2,7 @@ class SubscriptionsController < ApplicationController
   before_filter :authenticate_newsroom!
 
   def new
-    plan = Plan.find(params[:plan_id])
-    @subscription = plan.subscriptions.build
+    @subscription = current_newsroom.build_subscription
   end
 
   def create

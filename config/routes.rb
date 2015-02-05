@@ -14,8 +14,6 @@ Rails.application.routes.draw do
     get :premium, on: :collection
   end
 
-  resources :subscriptions
-
   resources :introduction
   
   resources :contacts
@@ -26,6 +24,7 @@ Rails.application.routes.draw do
     #resources :company_launches, :path => 'pressreleases'
     resources :people
     resources :fundings, :path => 'funding'
+    resources :subscriptions
   end
 
   root "newsrooms#index"

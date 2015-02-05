@@ -26,15 +26,15 @@ class PlansController < ApplicationController
   def free
     @newsroom = current_newsroom
     
-    Subscription.create(plan_id: 1, newsroom_id: @newsroom.id, email: @newsroom.email, end: Time.now+2.years)
+    @newsroom.build_subscription(plan_id: 1, email: @newsroom.email, end: Time.now+2.years)
     redirect_to select_path, notice: 'Thanks for chosing our free account'
   end
   
   def premium
     @newsroom = current_newsroom
     
-    @newsroom.subscription.create(plan_id: 1, email: @newsroom.email, end: Time.now+1.year)
-    redirect_to @newsroom, notice: 'Thanks for chosing our premium account'
+    @newsroom.build_subscription(plan_id: 2, email: @newsroom.email, end: Time.now+1.year)
+    redirect_to select_path, notice: 'Thanks for chosing our premium account'
   end
     
   def plan_params

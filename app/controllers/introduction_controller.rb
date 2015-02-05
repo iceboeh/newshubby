@@ -11,7 +11,7 @@ class IntroductionController < ApplicationController
     
     when :basic
       @basic_step = true
-    when :logo
+    when :logo      
       @finish_button = true
     end
     
