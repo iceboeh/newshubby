@@ -103,13 +103,14 @@
           <div class="col-md-8 col-md-offset-2">
               <p>
 								<strong>
+									<%= f.label :q_what_you_do, "What does #{@newsoom.company_name} do?" %><br>
 									<%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?", class: "form-control" %>
 								</strong><br>
-								
+									<%= f.label :q_how_you_achieve, "How exactly does #{@newsoom.company_name} achieve that?" %><br>
 									<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?", class: "form-control" %><br>
-								
+									<%= f.label :q_clients, "How would you describe #{@newsoom.company_name.possessive} clients?" %><br>
 									<%= f.text_area :q_clients, placeholder: "Describe your typical clients", class: "form-control" %><br>
-								
+									<%= f.label :differentiation, "How does #{@newsoom.company_name} differ from its competitors?" %><br>
 									<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?", class: "form-control" %><br>
 							</p>
               <h4>Problem Solved</h4>
