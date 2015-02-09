@@ -55,7 +55,6 @@
       <div class="col-md-8 col-md-offset-2">
           <div class="row">
               <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
-							<% unless @newsroom.subscription.blank? %>
 							<% unless @newsroom.press_releases.nil? %>
 							<% @newsroom.press_releases[0..2].each do |press_release| %>
               <div class="col-sm-4">
@@ -88,7 +87,7 @@
                       <div class="clearfix"></div>
                   </div> <!-- / .thumbnail -->
               </div> <!-- / .col-sm-6 -->
-							<% end %><% end %><% end %>
+							<% end %><% end %>
               
           </div> <!-- / .row -->
 					<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
@@ -103,14 +102,14 @@
           <div class="col-md-8 col-md-offset-2">
               <p>
 								<strong>
-									<%= f.label :q_what_you_do, "What does #{@newsoom.company_name} do?" %><br>
+									<%= f.label :q_what_you_do, "What does #{@newsroom.company_name} do?" %><br>
 									<%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?", class: "form-control" %>
 								</strong><br>
-									<%= f.label :q_how_you_achieve, "How exactly does #{@newsoom.company_name} achieve that?" %><br>
+									<%= f.label :q_how_you_achieve, "How exactly does #{@newsroom.company_name} achieve that?" %><br>
 									<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?", class: "form-control" %><br>
-									<%= f.label :q_clients, "How would you describe #{@newsoom.company_name.possessive} clients?" %><br>
+									<%= f.label :q_clients, "How would you describe #{@newsroom.company_name.possessive} clients?" %><br>
 									<%= f.text_area :q_clients, placeholder: "Describe your typical clients", class: "form-control" %><br>
-									<%= f.label :differentiation, "How does #{@newsoom.company_name} differ from its competitors?" %><br>
+									<%= f.label :differentiation, "How does #{@newsroom.company_name} differ from its competitors?" %><br>
 									<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?", class: "form-control" %><br>
 							</p>
               <h4>Problem Solved</h4>
@@ -120,6 +119,10 @@
               <h4>Business Model</h4>
               <p>
 								<%= f.text_area :business_model, rows: 3, placeholder: "Business Model", class: "form-control" %>
+							</p>
+              <h4>Competitors</h4>
+              <p>
+								<%= f.text_area :competitors, rows: 3, placeholder: "Competitors", class: "form-control" %>
 							</p>
               <h4>Funding</h4>
 							<%= f.fields_for :fundings do |funding| %>

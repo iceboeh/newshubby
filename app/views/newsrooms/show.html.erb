@@ -4,8 +4,10 @@
   <div class="container">
 			<div class="row">
 	        <div class="col-md-8 col-md-offset-2">
-						<% if @owner && @newsroom.press_releases.blank? %>
+						<% if @owner && @newsroom.press_releases.blank? && @introduction_failed == false %>
 	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
+						<% elsif @owner && @newsroom.press_releases.blank? && @introduction_failed == true %>
+							<div class="alert alert-info text-center" role="alert"><strong>Hold your horses!</strong> You need to finish your <%= link_to "company introduction", introduction_index_path %>. first.</div>
 						<% end %>
 							<h3 class="text-muted nrHeading pull-left"><i class="fa fa-home"></i>&nbsp;Newsroom</h3>
 							
@@ -67,10 +69,22 @@
 								<h4 class="text-muted"><%= @newsroom.company_name %> has no press releases yet.</h4>
 							<% end %>
 							
-							<% unless @newsroom.subscription.blank? %>
 							<% unless @press_releases.nil? %>
-							<% @press_releases[0..2].each do |press_release| %>
+							<% @press_releases.each do |press_release| %>
               <div class="col-sm-4">
+								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
+									<span class="glyphicon glyphicon-remove pull-right">
+								<% end %>
+
+								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit"  do %>
+									<span class="glyphicon glyphicon-pencil pull-right">
+								<% end %>
+												
+								<% if press_release.exclusive? %>
+								<%= link_to "#", title: "Exclusive: Yes" do %>
+									<span class="glyphicon glyphicon-lock pull-right">
+								<% end %>
+								<% end %>
                   <div class="thumbnail">
                       <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
 												<% unless press_release.uploads.first.file.blank? %>
@@ -85,7 +99,7 @@
                       <div class="clearfix"></div>
                   </div> <!-- / .thumbnail -->
               </div> <!-- / .col-sm-6 -->
-							<% end %><% end %><% end %>
+							<% end %><% end %>
               
           </div> <!-- / .row -->
 					<% unless @press_releases.blank? %>
@@ -113,6 +127,8 @@
               <p><%= simple_format(@newsroom.problem_solved) %></p>
               <h4>Business Model</h4>
               <p><%= simple_format(@newsroom.business_model) %></p>
+              <h4>Competitors</h4>
+              <p><%= simple_format(@newsroom.competitors) %></p>
               <h4>Funding</h4>
 							<% @newsroom.fundings.each do |funding| %>
               <p><%= funding.investment_type %>: <%= funding.name %><br>

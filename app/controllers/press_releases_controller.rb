@@ -2,6 +2,7 @@ class PressReleasesController < ApplicationController
   before_action :set_press_release, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
+
   # GET /press_releases
   # GET /press_releases.json
   def index
@@ -44,12 +45,14 @@ class PressReleasesController < ApplicationController
     @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     @press_release = @newsroom.press_releases.last
     
-    if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+    if @introduction_failed == true
       flash[:notice] = "Finish the introductory questions first, please!"
       redirect_to introduction_index_path
     end
     
   end
+
 
   # GET /press_releases/new
   def new    
@@ -86,10 +89,10 @@ class PressReleasesController < ApplicationController
       @nr_questions = true
     end
     
-    if @newsroom.subscription.nil?
-      flash[:notice] = "You can't create a press release without a subscription!"
-      redirect_to plans_path
-    end
+    #if @newsroom.subscription.nil?
+    #  flash[:notice] = "You can't create a press release without a subscription!"
+    #  redirect_to plans_path
+    #end
     
     # Control ownership
     if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
@@ -175,7 +178,7 @@ class PressReleasesController < ApplicationController
   end
   
   def distribution
-    @press_release.update(:business_model => "DISTRIBUTION KÖPT!!!!!")
+    
   end
 
   private

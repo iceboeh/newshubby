@@ -53,6 +53,8 @@ class NewsroomsController < ApplicationController
       @owner = false
     end
     
+    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+    
     # Payment code check
     #@code = @newsroom.code
     #@code_match = Code.find_by_code(@code)
@@ -70,7 +72,7 @@ class NewsroomsController < ApplicationController
 
     # Show exclusive press releases only to owner
     if @owner == true
-      @press_releases = @newsroom.press_releases.order("created_at DESC").paginate(:page => params[:page], :per_page => 4)
+      @press_releases = @newsroom.press_releases.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
     else
       @press_releases = @newsroom.press_releases.where(exclusive: false).order("created_at DESC")
     end
@@ -190,7 +192,7 @@ class NewsroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsroom_params
-      params.require(:newsroom).permit(:company_name, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
+      params.require(:newsroom).permit(:company_name, :differentiation, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
   end
 
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/pressreleasetype' => 'company_launches#type'
   get '/select' => 'press_releases#select'
   get '/pressreleases' => 'newsrooms#allpressreleases'
+  get '/distribution' => 'press_releases#distribution'
   
   resources :plans do
     get :free, on: :collection
