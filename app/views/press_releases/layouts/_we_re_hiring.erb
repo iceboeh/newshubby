@@ -1,0 +1,35 @@
+<%= render 'press_releases/layouts/static_top' %>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:position] %> to join its team.
+														</span>
+                        </p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															The company seeks a candidate that will work with the following things: <%= @press_release.specifics[:tasks] %>
+														</span>
+                        </p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															And has the following qualities: <%= @press_release.specifics[:qualities] %>
+														</span>
+                        </p>
+												
+												<p>
+													<% unless @press_release.specifics[:reason].blank? %>
+													- <%= (auto_link(@press_release.specifics[:reason].chomp(".")+",", :target => '_blank')) %>
+													<% end %>
+													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %><% end %>
+												</p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @newsroom.company_name %> wants the new person to start on <%= @press_release.specifics["final_date(2i)"] %>
+														</span>
+                        </p>
+												
+
+<%= render 'press_releases/layouts/static_bottom' %>

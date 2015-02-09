@@ -1,0 +1,29 @@
+<%= render 'press_releases/layouts/static_top' %>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:who] %>
+														</span>
+                        </p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															The official date of the partnership is <%= @press_release.specifics["official_date(1i)"] %>
+														</span>
+                        </p>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:offer] %>
+														</span>
+                        </p>
+												
+												<p>
+													<% unless @press_release.specifics[:quote].blank? %>
+													- <%= (auto_link(@press_release.specifics[:quote].chomp(".")+",", :target => '_blank')) %>
+													<% end %>
+													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %><% end %>
+												</p>
+												
+
+<%= render 'press_releases/layouts/static_bottom' %>
