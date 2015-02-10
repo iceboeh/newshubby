@@ -51,8 +51,8 @@ Rails.application.configure do
     enable_starttls_auto: true,
     #user_name: Rails.application.secrets.gmail_user_name,
     #password: Rails.application.secrets.gmail_password
-    user_name: "hello@newshubby.com",
-    password: "yJAnSjDOJBG4YSub9LUhDQ"
+    user_name: ENV['EMAIL_USER_NAME'],
+    password: ENV['EMAIL_PASSWORD']
   }
   
   
