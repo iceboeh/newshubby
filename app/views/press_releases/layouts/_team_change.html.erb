@@ -2,22 +2,16 @@
 
 <%= render 'press_releases/fields/handle_date' %>
 
-												
                         <p>
                             <span>
-															<%= @press_release.specifics[:who] %>
+															<%= @newsroom.company_name %> <% unless @newsroom.people.where(founder: true).blank? %>which is founded by 
+															<%= @newsroom.people.where(founder: true).map(&:name).to_sentence %><% unless @newsroom.founded.blank? %> in <%= @newsroom.founded.strftime("%B, %Y") %><% end %> is increasing the team with <%= @press_release.specifics[:how_many] %> people.
 														</span>
                         </p>
 												
                         <p>
                             <span>
-															The official date of the partnership is <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
-														</span>
-                        </p>
-												
-                        <p>
-                            <span>
-															<%= @press_release.specifics[:offer] %>
+															<%= @press_release.specifics[:work_with] %>
 														</span>
                         </p>
 												
@@ -27,6 +21,16 @@
 													<% end %>
 													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %><% end %>
 												</p>
+												
+												<% unless @date.blank? %>
+                        <p>
+                            <span>
+															The new employees join <%= @newsroom.company_name %> on <%= @date.strftime("%B %d, %Y") %>
+														</span>
+                        </p>
+												<% end %>
+												
+                        <% end %>
 												
 
 <%= render 'press_releases/layouts/static_bottom' %>

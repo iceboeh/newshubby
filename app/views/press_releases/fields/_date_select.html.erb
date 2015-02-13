@@ -1,3 +1,5 @@
+<%= render 'press_releases/fields/handle_date' %>
+
 <% if @nr_questions %>
 <div class="question" id="q<%= index+11 %>">
 <% else %>
@@ -12,7 +14,11 @@
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
 											<%= press_release.label field.name %><br />
-											<%= press_release.date_select field.name, selected: Date.today %>
+											<% if @date.blank? %>
+											<%= press_release.date_select field.name %>
+											<% else %>
+											<%= press_release.date_select field.name, selected: @date %>
+											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">
                         <div class="pull-left" id="textareaFeedback"></div>

@@ -1,9 +1,17 @@
 <%= render 'press_releases/layouts/static_top' %>
 
-                        <p>
-                            <span id="pr-answer-04">
-															<%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %>
-														</span>
-                        </p>
+<%= render 'press_releases/fields/handle_date' %>
+
+  <p>
+      <span>
+				<%= @newsroom.company_name %> is launching a new feature "<%= @press_release.specifics[:feature_name] %>" on <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
+			</span>
+  </p>
+
+  <p>
+      <span>
+				<%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %>
+			</span>
+  </p>
 
 <%= render 'press_releases/layouts/static_bottom' %>

@@ -27,6 +27,12 @@ class PressReleasesController < ApplicationController
   # GET /press_releases/1.json
   def show
     
+    # Handle date in press releases
+    unless @press_release.specifics["date(1i)"].blank?
+      raw_date = @press_release.specifics["date(1i)"]+@press_release.specifics["date(2i)"]+@press_release.specifics["date(3i)"]
+      @date = Date.parse(raw_date)
+    end
+        
     if @blocked
       flash[:notice] = "No such press release!"
       redirect_to :root
@@ -78,6 +84,7 @@ class PressReleasesController < ApplicationController
       end
       #end
   end
+  
 
   # GET /press_releases/1/edit
   def edit
@@ -129,7 +136,7 @@ class PressReleasesController < ApplicationController
         format.js { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release) }
       else
         format.html { render :new }
-        format.json { render json: @press_release.errors, status: :unprocessable_entity }
+        format.json { render json: @press_release.errors, status: :unprocessable_entitity }
       end
     end
   end
@@ -152,6 +159,12 @@ class PressReleasesController < ApplicationController
     
     respond_to do |format|
       if @press_release.update(press_release_params)
+      
+      # TRY TO SAVE DATES MORE HANDSOMELY
+      #  if params[:specifics["launch_date(1i)"]]
+      #    params[:specifics["launch_date(1i)"]] = params[:specifics["launch_date(1i)"]]+params[:specifics["launch_date(1i)"]]+params[:specifics["launch_date(1i)"]]
+      #  end
+        
         # Remove duplicates
         @press_release.links.select(:caption,:link).group(:caption,:link).having("count(*) > 1").each do |x|
           @press_release.links.where(caption: x.caption, link: x.link).destroy_all
@@ -178,6 +191,7 @@ class PressReleasesController < ApplicationController
   end
   
   def distribution
+    ContactMailer.distribution_mail(@newsroom.email, @press_release).deliver
     
   end
 

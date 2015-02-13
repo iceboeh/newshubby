@@ -1,4 +1,7 @@
 <%= render 'press_releases/layouts/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+
 												
                         <p>
                             <span id="pr-answer-04">
@@ -8,7 +11,7 @@
 												
                         <p>
                             <span id="pr-answer-04">
-															<%= @press_release.specifics[:new_market] %> on <%= @press_release.specifics[:launch_date] %>
+															<%= @press_release.specifics[:new_market] %><% unless @date.blank? %> on <%= @date.strftime("%B %d, %Y") %><% end %>
 														</span>
                         </p>
 												

@@ -1,14 +1,22 @@
 <%= render 'press_releases/layouts/static_top' %>
 
+<%= render 'press_releases/fields/handle_date' %>
+
                         <p>
-                            <span id="pr-answer-04">
-															<%= @newsroom.company_name %> wins <%= @press_release.specifics[:award_name] %>
+                            <span>
+															<h3><%= @newsroom.company_name %> wins <%= @press_release.specifics[:award_name] %><h3>
 														</span>
                         </p>
 												
                         <p>
-                            <span id="pr-answer-04">
-															On <%= @press_release.specifics[:award_date] %> <%= @newsroom.company_name %> won the category <%= @press_release.specifics[:award_category] %> in <%= @press_release.specifics[:award_name] %>. <%= @press_release.specifics[:about_award] %>. <%= @press_release.specifics[:ceremony_location] %>
+                            <span>
+															On <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %> <%= @newsroom.company_name %> won the category <%= @press_release.specifics[:award_category] %> in <%= @press_release.specifics[:award_name] %>.
+														</span>
+                        </p>
+												
+                        <p>
+                            <span>
+															"<%= @press_release.specifics[:award_motivation] %>"
 														</span>
                         </p>
 												
@@ -20,23 +28,38 @@
 												</p>
 												
                         <p>
-                            <span id="pr-answer-04">
-															<%= @press_release.specifics[:award_motivation] %>
+                            <span>
+															<%= @press_release.specifics[:about_award] %>
 														</span>
                         </p>
 												
+                        <p>
+                            <span>
+															<%= @press_release.specifics[:ceremony_location] %>
+														</span>
+                        </p>
+												
+												
 												<p>
 													<% unless @press_release.specifics[:about_award].blank? %>
-													- <%= (auto_link(@press_release.specifics[:about_award].chomp(".")+",", :target => '_blank')) %>
+													- <%= (auto_link(@press_release.specifics[:award_achieved].chomp(".")+",", :target => '_blank')) %>
 													<% end %>
 													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %><% end %>
 												</p>
 												
                         <p>
-                            <span id="pr-answer-04">
+                            <span>
+															<%= @press_release.specifics[:next_step] %>
+														</span>
+                        </p>
+												
+											<% unless @press_release.specifics[:prize_money].blank? %>
+                        <p>
+                            <span>
 															<%= @press_release.specifics[:prize_money] %>
 														</span>
                         </p>
+											<% end %>
 												
 
 <%= render 'press_releases/layouts/static_bottom' %>

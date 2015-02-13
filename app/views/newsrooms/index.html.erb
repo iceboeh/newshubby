@@ -57,6 +57,37 @@
 
 <!-- Latest Press Releases Partial Goes Here -->
 
+<div class="container">
+    <h2 class="text-center">Latest Press Releases</h2>
+		
+		<% @press_releases[0..3].each do |press_release| %>
+    <div class="col-sm-6 col-md-3">
+        <div class="thumbnail">
+            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+                <div class="thumbLogoBkg">
+                    <span class="helper"></span><%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbLogo", alt: "" %>
+                </div>
+							<% unless press_release.uploads.first.nil? %>									
+                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
+            <% end %><% end %>
+            <div class="caption">
+                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
+                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
+                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
+            </div> <!-- / .caption -->
+            
+            <div class="clearfix"></div>
+        </div> <!-- / .thumbnail -->
+    </div> <!-- / .col-sm-6 -->
+		<% end %>
+		
+		<div class="col-sm-8 col-md-2 col-md-offset-5">
+			<%= link_to "More Press Releases", pressreleases_path, class: "btn btn-default center-block", role: "button" %><br>
+		</div>
+</div> <!-- / .container -->
+
+
+
 <script>
 
 $(document).ready(function () {
