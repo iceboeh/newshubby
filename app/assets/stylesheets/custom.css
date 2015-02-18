@@ -322,7 +322,7 @@ textarea {
   color: #666; }
 
 .floatingBkg {
-  background: url(../media/img/penandpaper.png) no-repeat center center;
+  background: url(../media/bkg/penandpaper.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
