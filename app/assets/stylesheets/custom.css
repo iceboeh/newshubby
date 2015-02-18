@@ -53,7 +53,8 @@ main {
   height: 50px;
   background-color: #fff;
   text-align: center;
-  border-radius: 0px 4px 0 4px; }
+  border-radius: 0px 4px 0 4px;
+  box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.2); }
 
 .thumbLogo {
   max-width: 50px;
@@ -321,8 +322,16 @@ textarea {
 .saveStatus {
   color: #666; }
 
+.caption h4 {
+  display: inline-block; }
+
+.pressTypeImg {
+  height: 2em;
+  width: auto;
+  display: inline-block; }
+
 .floatingBkg {
-  background: url(../media/bkg/penandpaper.png) no-repeat center center;
+  background: url(../media/img/penandpaper.png) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -591,6 +600,19 @@ indexSplash .thumbnail .caption h3 {
 
 .nrFiles .thumbnail {
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1); }
+
+.nrThumbMenu {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  border-radius: 0 3px 0 3px;
+  right: 15px; }
+  .nrThumbMenu:hover {
+    background-color: rgba(255, 255, 255, 0.9); }
+  .nrThumbMenu i.fa-edit:hover {
+    color: black; }
+  .nrThumbMenu .fa-times:hover {
+    color: #bf0000; }
 
 @media (min-width: 992px) {
   .nrHeader .col-md-4 {

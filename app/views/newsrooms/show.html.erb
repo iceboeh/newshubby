@@ -72,19 +72,20 @@
 							<% unless @press_releases.nil? %>
 							<% @press_releases.each do |press_release| %>
               <div class="col-sm-4">
+								
+								<div class="nrThumbMenu">
 								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
-									<span class="glyphicon glyphicon-remove pull-right">
+								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
 								<% end %>
-
-								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit"  do %>
-									<span class="glyphicon glyphicon-pencil pull-right">
+								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
+								<i class="fa fa-edit fa-lg pull-right" title="Edit this press release"></i>
 								<% end %>
-												
 								<% if press_release.exclusive? %>
 								<%= link_to "#", title: "Exclusive: Yes" do %>
-									<span class="glyphicon glyphicon-lock pull-right">
-								<% end %>
-								<% end %>
+								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
+								<% end %><% end %>
+								</div>
+								
                   <div class="thumbnail">
                       <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
 												<% unless press_release.uploads.first.file.blank? %>
