@@ -12,10 +12,11 @@
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-											<% if field.name.blank? %>
-								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill} " %>
+											<% field_name = field.name.to_sym %>
+											<% if @press_release.specifics[field_name].blank? %>
+								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill}" %>
 											<% else %>
-								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill}" %>
+								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">

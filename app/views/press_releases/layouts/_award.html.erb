@@ -36,10 +36,15 @@
 												
 												
 												<p>
-													<% unless @press_release.specifics[:about_award].blank? %>
+													<% unless @press_release.specifics[:award_achieved].blank? %>
 													- <%= (auto_link(@press_release.specifics[:award_achieved].chomp(".")+",", :target => '_blank')) %>
 													<% end %>
-													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %><% end %>
+													 says 
+													<% unless @newsroom.people.where(founder: true).blank? %>
+														<%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %>
+													<% else %>
+														<%= @newsroom.people.first.name %> at <%= @newsroom.company_name %>
+													<% end %>
 												</p>
 												
                         <p>
