@@ -1,0 +1,11 @@
+<hr>
+<% if @newsroom.fundings.count > 0 %>
+<h4>Funding</h4>
+<ul>
+	<% @newsroom.fundings.each do |funding| %>
+	<% unless funding.name.blank? %>
+    <li><strong><%= funding.date %>: </strong><%= number_to_currency(funding.amount, precision: 0, locale: :en) %><br><%= funding.name %></li>
+	<% end %>
+	<% end %>
+</ul>	
+<% end %>	

@@ -1,4 +1,6 @@
-<%= render 'press_releases/layouts/static_top' %>
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/partials/quick_pitch' %>
 
 <%= render 'press_releases/fields/handle_date' %>
 
@@ -8,10 +10,16 @@
 			</span>
   </p>
 
-  <p>
-      <span>
-				<%= simple_format(auto_link(@press_release.specifics[:quote], :target => '_blank')) %>
-			</span>
-  </p>
+<%= render 'press_releases/fields/quote' %>
 
-<%= render 'press_releases/layouts/static_bottom' %>
+<%= render 'press_releases/partials/clients' %>
+
+<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/problem_business_competitors' %>
+
+<%= render 'press_releases/partials/funding' %>
+
+<%= render 'press_releases/partials/key_people' %>
+
+<%= render 'press_releases/partials/static_bottom' %>

@@ -34,7 +34,7 @@ class NewsroomsController < ApplicationController
       #end
       @press_releases = PressRelease.where(exclusive: false).search(params[:search])
     else 
-      @press_releases = PressRelease.all.where(exclusive: false).order("created_at DESC")
+      @press_releases = PressRelease.includes(:uploads).all.where(exclusive: true).where.not(uploads: { file_file_name: nil }).where.not(title: nil)
     end
     
   end

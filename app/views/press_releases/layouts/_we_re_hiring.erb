@@ -1,4 +1,4 @@
-<%= render 'press_releases/layouts/static_top' %>
+<%= render 'press_releases/partials/static_top' %>
 
 <%= render 'press_releases/fields/handle_date' %>
 
@@ -33,6 +33,7 @@
 															<%= @newsroom.company_name %> wants the new person to start on <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
 														</span>
                         </p>
-												
+										
+<%= render 'press_releases/partials/quick_pitch' %>
 
-<%= render 'press_releases/layouts/static_bottom' %>
+<%= render 'press_releases/partials/static_bottom' %>

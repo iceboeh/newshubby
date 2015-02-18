@@ -15,7 +15,7 @@
 											<% if field.name.blank? %>
 								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill} " %>
 											<% else %>
-								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;"%>
+								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill}" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
                     <div class="panel-footer clearfix">

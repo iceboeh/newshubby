@@ -26,12 +26,6 @@ class PressReleasesController < ApplicationController
   # GET /press_releases/1
   # GET /press_releases/1.json
   def show
-    
-    # Handle date in press releases
-    unless @press_release.specifics["date(1i)"].blank?
-      raw_date = @press_release.specifics["date(1i)"]+@press_release.specifics["date(2i)"]+@press_release.specifics["date(3i)"]
-      @date = Date.parse(raw_date)
-    end
         
     if @blocked
       flash[:notice] = "No such press release!"

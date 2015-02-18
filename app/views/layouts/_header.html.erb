@@ -82,7 +82,7 @@
             
 						<%= form_tag newsrooms_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
                 <div class="input-group" id="navSearch">
-										<%= autocomplete_field_tag :search, params[:search], autocomplete_press_release_title_newsrooms_path, class: "form-control", placeholder: "Search", id: "srch-term", type: "text" %>
+										<%= autocomplete_field_tag :search, params[:search], autocomplete_press_release_title_newsrooms_path, class: "form-control", placeholder: "Search Press Releases", id: "srch-term", type: "text" %>
                     <div class="input-group-btn">
 											<%= button_tag "Search", :name => nil, class: "btn btn-default noShadow", id: "searchBtn", type: "submit" do %><span class="text-primary"><i class="fa fa-search"></i></span><% end %>
                     </div>

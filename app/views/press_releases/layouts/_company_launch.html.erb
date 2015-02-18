@@ -1,14 +1,19 @@
-<%= render 'press_releases/layouts/static_top' %>
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/partials/quick_pitch' %>
 
 <%= render 'press_releases/fields/handle_date' %>
 
-                        <p>
-                            <span id="pr-answer-04">
-															<% unless @press_release.specifics[:quote].blank? %>
-															- <%= (auto_link(@press_release.specifics[:quote].chomp(".")+",", :target => '_blank')) %>
-															<% end %>
-															<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %>.<% end %>
-														</span>
-                        </p>
+<%= render 'press_releases/fields/quote' %>
 
-<%= render 'press_releases/layouts/static_bottom' %>
+<%= render 'press_releases/partials/clients' %>
+
+<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/problem_business_competitors' %>
+
+<%= render 'press_releases/partials/funding' %>
+
+<%= render 'press_releases/partials/key_people' %>
+
+<%= render 'press_releases/partials/static_bottom' %>
