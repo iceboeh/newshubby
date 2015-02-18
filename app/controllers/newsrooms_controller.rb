@@ -19,7 +19,8 @@ class NewsroomsController < ApplicationController
   end
   
   def allpressreleases
-    @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 8)
+  
   end
 
   # GET /newsrooms
