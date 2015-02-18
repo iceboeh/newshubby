@@ -12706,7 +12706,7 @@ textarea {
 
 /* line 325, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .floatingBkg {
-  background: url(../media/img/penandpaper.png) no-repeat center center;
+  background: url(../media/bkg/penandpaper.png) no-repeat center center;
   background-size: cover;
   position: absolute;
   width: 380px;
