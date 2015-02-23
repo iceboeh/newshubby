@@ -132,8 +132,9 @@
               <p><%= simple_format(@newsroom.competitors) %></p>
               <h4>Funding</h4>
 							<% @newsroom.fundings.each do |funding| %>
-              <p><%= funding.investment_type %>: <%= funding.name %><br>
-							<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><% else %>
+              <% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><p><%= funding.investment_type %><br>
+							<% else %>
+							<p><%= funding.investment_type %>: <%= funding.name %><br>
 							<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %><% unless funding.amount.blank? %> | $<%= funding.amount %><% end %><% end %></p>
 							<% end %>
               <h4>Key People</h4>

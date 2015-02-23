@@ -1,7 +1,19 @@
+<style>
+
+	.brick { width: 230px;
+		float: left;
+	 }
+	
+	#masonry-container {
+	  margin: 0px auto;
+	}
+</style>
+<div class="shortPage">
 <div class="container">
-    <h2 class="text-center">Latest Press Releases</h2>  
+    <h2 class="text-center">Latest Press Releases</h2>
+		<div id="masonry-container">
 		<% @press_releases.each do |press_release| %>
-    <div class="col-sm-6 col-md-3">
+    <div class="brick col-sm-6 col-md-3">
         <div class="thumbnail">
             <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
                 <div class="thumbLogoBkg">
@@ -20,7 +32,8 @@
         </div> <!-- / .thumbnail -->
     </div> <!-- / .col-sm-6 -->
 		<% end %>
-		
+	</div>
 </div> <!-- / .container -->
 
 <div class="text-center"><%= will_paginate @press_releases %></div>
+</div>

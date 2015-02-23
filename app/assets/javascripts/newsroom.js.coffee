@@ -29,3 +29,12 @@ subscription =
     else
       $('#subscription_paymill_card_token').val(result.token)
       $('#new_subscription')[0].submit()
+			
+	$ ->
+		  $container = $("#masonry-container")
+		  $container.imagesLoaded ->
+		    $container.masonry
+			    itemSelector: ".brick"
+			    gutterWidth: 16
+			    isFitWidth: true
+			  return

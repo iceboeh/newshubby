@@ -3,7 +3,7 @@
 	<% people = @newsroom.people.where(founder: true) %>
 
 	<%= people.collect { |p| p.name }.to_sentence %>
-	on <%= @newsroom.founded.strftime("%B, %Y") %>
+	in <%= @newsroom.founded.strftime("%B, %Y") %>
 	
 	
 	<% if @newsroom.fundings.count == 1 %>

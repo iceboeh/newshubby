@@ -56,33 +56,6 @@
 									<%= render 'press_releases/fields/newsroom', f: f %>												
 								<% end %>
 									
-								
-								<% unless @press_release.hex.nil? %>
-								    <div class="container-fluid hidden">
-								        <div class="row">
-								            <div class="col-xs-12">
-															<div class="panel panel-default">
-															    <div class="panel-heading">
-															        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-															        <p class="panel-title text-left">Exclusivity</p>
-															    </div> <!-- / .panel-heading -->
-															    <div class="panel-body">
-							        
-																		  <strong>Your press release is not yet public. Use this link to share the press release and keep its exclusivity.</strong><br>
-																			<%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %><br><br>
-																			<p>
-																			<%= f.label :exclusive, "Change Press Release Exclusivity" %><br>
-																			Exclusive <%= f.radio_button :exclusive, false, :checked => true %>
-																			Public <%= f.radio_button :exclusive, false, :checked => false %>
-																			</p>
-															    </div><!--/ .panel-footer -->
-															</div> <!-- / .panel -->
-																	
-								            </div> <!-- / .col-xs-12 -->
-								        </div> <!-- / .row -->
-								    </div> <!-- / .container-fluid -->
-								<% end %>
-
 								<%= f.hidden_field :pressrelease_type_id %>
 								
 								<% if @nr_questions %>
