@@ -5,7 +5,7 @@
 												
                         <p>
                             <span>
-															<%= @press_release.specifics[:position] %> to join its team.
+															<%= @press_release.specifics[:position].chomp(".") unless @press_release.specifics[:position].blank? %> to join its team.
 														</span>
                         </p>
 												
@@ -25,7 +25,12 @@
 													<% unless @press_release.specifics[:reason].blank? %>
 													- <%= (auto_link(@press_release.specifics[:reason].chomp(".")+",", :target => '_blank')) %>
 													<% end %>
-													<% unless @newsroom.people.where(founder: true).blank? %> says <%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %><% end %>
+													 says 
+													<% unless @newsroom.people.where(founder: true).blank? %>
+														<%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %>
+													<% else %>
+														<%= @newsroom.people.first.name %> at <%= @newsroom.company_name %>
+													<% end %>
 												</p>
 												
                         <p>

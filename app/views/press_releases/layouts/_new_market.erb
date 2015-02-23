@@ -10,7 +10,7 @@
 												
                         <p>
                             <span id="pr-answer-04">
-															<%= @press_release.specifics[:new_market] %><% unless @date.blank? %> on <%= @date.strftime("%B %d, %Y") %><% end %>
+															<%= @press_release.specifics[:new_market].chomp(".") unless @press_release.specifics[:new_market].blank? %><% unless @date.blank? %> on <%= @date.strftime("%B %d, %Y") %><% end %>
 														</span>
                         </p>
 												

@@ -78,7 +78,7 @@ $(document).ready(function() {
         $('#next').click(function(){ // NEXT-button when clicked
             if ( i < qCount ){ // if i is less than the number of questions...
                 i ++; // add 1 to our global counter
-                //console.log(i); // print out the global counter value in console (sanity check)
+                console.log(i); // print out the global counter value in console (sanity check)
                 $('[id^=q].question').not('#q' + i).hide(); // hide all #q that don't have the current global counter value
                 //console.log('hiding'); // sanity check
                 $('#q' + i).show(); // display the #q plus global counter value (e.g. #q2)
@@ -110,13 +110,13 @@ $(document).ready(function() {
             }
         });
 
-        /*$('.panel').keydown(function(e) {
+        $('.panel input').keydown(function(e) {
             if (e.keyCode == 13){
                 e.preventDefault();
-                $("#next").click();
+               // $("#next").click();
             } //enter
         });
-				*/
+				
     };
 
     var handleHints = function() {

@@ -14,7 +14,7 @@
                     <div class="panel-body">
 											<% field_name = field.name.to_sym %>
 											<% if @press_release.specifics[field_name].blank? %>
-								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}")}" %>
+								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}")}" %>
 											<% else %>
 								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>

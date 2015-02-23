@@ -1,22 +1,20 @@
 <%= render 'press_releases/partials/static_top' %>
 
 <%= render 'press_releases/fields/handle_date' %>
-
+												
                         <p>
                             <span>
-															<h3><%= @newsroom.company_name %> wins <%= @press_release.specifics[:award_name] %></h3>
+															<% if @press_release.specifics[:award_category].blank? %>
+															On <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %> <%= @newsroom.company_name %> won <%= @press_release.specifics[:award_name] %>.
+															<% else %>
+															On <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %> <%= @newsroom.company_name %> won <%= @press_release.specifics[:award_name] %>, category <%= @press_release.specifics[:award_category] %>.
+															<% end %>
 														</span>
                         </p>
 												
                         <p>
                             <span>
-															On <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %> <%= @newsroom.company_name %> won the category <%= @press_release.specifics[:award_category] %> in <%= @press_release.specifics[:award_name] %>.
-														</span>
-                        </p>
-												
-                        <p>
-                            <span>
-															"<%= @press_release.specifics[:award_motivation] %>"
+															<%= @press_release.specifics[:award_motivation] %>
 														</span>
                         </p>
 												
@@ -33,7 +31,6 @@
 															<%= @press_release.specifics[:ceremony_location] %>
 														</span>
                         </p>
-												
 												
 												<p>
 													<% unless @press_release.specifics[:award_achieved].blank? %>
