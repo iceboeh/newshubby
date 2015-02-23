@@ -11,13 +11,7 @@
 												
                         <p>
                             <span>
-															The company seeks a candidate that will work with the following things: <%= @press_release.specifics[:tasks] %>
-														</span>
-                        </p>
-												
-                        <p>
-                            <span>
-															And has the following qualities: <%= @press_release.specifics[:qualities] %>
+															The company seeks a candidate that will work with the following things: <%= @press_release.specifics[:tasks].chomp(".") unless @press_release.specifics[:tasks].blank? %> and has the following qualities: <%= @press_release.specifics[:qualities] %>
 														</span>
                         </p>
 												
