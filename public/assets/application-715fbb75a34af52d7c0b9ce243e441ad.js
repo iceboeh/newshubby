@@ -33074,6 +33074,18 @@ $(document).ready(function() {
     }
   };
 
+  $(function() {
+    var $container;
+    $container = $("#masonry-container");
+    $container.imagesLoaded(function() {
+      return $container.masonry({
+        itemSelector: ".brick",
+        gutterWidth: 16,
+        isFitWidth: true
+      });
+    });
+  });
+
 }).call(this);
 (function() {
   jQuery(function() {
