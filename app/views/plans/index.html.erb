@@ -1,45 +1,36 @@
 <% title "NewsHubby | Pricing" %>
 
 <div class="shortPage">
-            <div class="container">
-                <div class="ppContainer">
-                    <table>
-                        <tr>
-                            <th></th>
-                            <th id="freemium">Basic</th>
-                            <th id="premium">Premium<br><small>Monthly Subscription<br>Cancel Any Time</small></th>
-                        </tr>
-                        <tr>
-                            <td>Press Release Creation Tool</td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-												
-                        <tr>
-                            <td>All Press Release Types</td>
-                            <td><i class="fa fa-times fa-lg"></i></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-												
-                        <tr>
-                            <td>Hosting</td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-                        <tr>
-                            <td>Distribution</td>
-                            <td>$700 per press release</td>
-                            <td><i class="fa fa-check fa-lg"></i></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><%= link_to "Free", { controller: :plans, action: :free }, { class: "btn btn-default", id: "freeBtn" } %></td>
-                            <td><%= link_to "$140 / month", { controller: :plans, action: :premium }, { class: "btn btn-success" } %></td>
-                        </tr>
-                    </table>
-                </div>
-<br><br>
-
-</div>
-<div class="push"></div>
+           <div class="container">
+               <div class="row">
+                   <h3 class="text-center">Pricing options</h3>
+                   <div class="col-sm-6">
+                       <div class="panel">
+                           <div class="panel-body">
+                               <h4>Monthly subcription</h4>
+                               <p>$140 per month (6-month commitment)<br><br>
+                                   <strong>What you get</strong>
+                               <ul>
+                                   <li>Access to <em>all</em> press release templates</li>
+                                   <li>Distribute any number of press releases</li>
+                               </ul></p>
+                       </div> <!-- / .panel-body-->
+                   </div> <!-- / .panel -->
+               </div> <!-- / .col-sm-6 -->
+               <div class="col-sm-6">
+                   <div class="panel">
+                       <div class="panel-body">
+                           <h4>Pay as you go</h4>
+                           <p>$700 per distributed press release<br><br>
+                               <strong>What you get</strong>
+                           <ul>
+                               <li>Access to <em>all</em> press release templates</li>
+                           </ul></p>
+                   </div> <!-- / .panel-body-->
+               </div> <!-- / .panel -->
+           </div> <!-- / .col-sm-6 -->
+       </div> <!-- / .row -->
+       </div> <!-- / .container -->
+   <div class="push"></div>
+   </div>
 </div>
