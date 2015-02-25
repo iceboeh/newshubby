@@ -9,7 +9,10 @@ html, body {
 
 body {
   background: url(../media/bkg/grain2.png);
-  background-color: #e3e3e3; }
+  background-color: #e3e3e3;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
 
 .nhBkg {
   background: url(../media/bkg/freedom01.jpg) no-repeat center center;
@@ -79,15 +82,6 @@ main {
 
 .scrollDown i:hover {
   color: white; }
-
-.modal-dialog {
-  position: absolute;
-  min-width: 350px;
-  left: 50%;
-  margin-left: -175px;
-  min-height: 500px;
-  top: 50%;
-  margin-top: -250px; }
 
 .helper {
   display: inline-block;
@@ -456,15 +450,15 @@ textarea {
 
 .indexSplash {
   background-color: #fff;
-  padding: 6em 0 6em 0; }
+  padding: 3em 0 3em 0; }
 
 .indexSplash .thumbnail {
   border: none; }
 
-.indexSplash .thumbnail img {
-  max-width: 100px;
-  max-height: 100px; }
-
+/* .indexSplash .thumbnail img {
+    max-width: 280px;
+    max-height: 280px;
+} */
 indexSplash .thumbnail .caption h3 {
   margin-top: 0;
   padding-top: 0; }

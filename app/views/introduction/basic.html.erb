@@ -1,3 +1,34 @@
+<% if @newsroom.company_name.blank? %>
+
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#selectModal').modal('show');
+    });
+</script>
+
+<div class="modal fade" id="selectModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+      <div class="modal-content">
+          <div class="modal-body">
+						
+ 					 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 					 	<br>
+  						 <p class="modal-title" id="signUpModal"><strong>Welcome!</strong><br>
+  						  In a few minutes you'll be creating your first press release. We begin with a few questions that will be re-used in most of your press releases.
+  						 </p>						 
+							 <br>
+              <%= image_tag "select_modal.png", class: "img-responsive" %>
+	 						<br>
+							<p class="text-center">
+	 					 <%= link_to "Got it!", "#", class: "btn btn-primary", data: { dismiss: "modal" } %>
+	 						</p>
+          </div> <!-- / .modal-body -->
+      </div> <!-- / .modal-content -->
+  </div> <!-- / .modal-dialog -->
+</div> <!-- / .modal -->
+
+<% end %>
+
 <div class="shortPage">
 	
 	<div class="floatingBkg" id="penAndPaper"></div>
@@ -13,8 +44,9 @@
                         <h4>Hello</h4>
                     </div>
                     <div class="panel-body">
-                        <div class="well well-sm">
+                       <!-- <div class="well well-sm">
                         <p><strong>Before you create your first press release, we need some basic company information for your Public Newsroom.</strong> Later, this infomation will be used in the press releases you create. You can always edit your basic company information whenever you want later on through your Newsroom.</p></div>
+											-->
                         <h6 class="text-muted">Step 1 of 11</h6>
                         <h3>Please introduce your company:</h3><br>
 												<%= f.text_field :company_name, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "Company Name" %> was founded in <%= f.date_select :founded, order: [:month, :year], start_year: Date.today.year - 100, end_year: Date.today.year + 1 %> and their main location is in <%= f.text_field :location, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "City, Country" %>. You can find them at <%= f.text_field :website, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "http://www.example.com/" %> and on Twitter <%= f.text_field :twitter, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "@CompanyName *" %>. The press can contact them at <%= f.text_field :press_email, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "example@example.com" %> or by phone on <%= f.text_field :press_phone, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "+1 555 312 110 021" %>

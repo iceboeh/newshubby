@@ -19,33 +19,34 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text-center">How does it work?</h2>
+                <h2 class="text-center"><strong>NewsHubby is a press release creation & distribution service</strong></h2>
+								<h4 class="text-center text-muted">Here's how it works</h4>
                 <br>
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="thumbnail">
-													<%= image_tag "icons/creation.svg", alt: "creation" %>
+													<%= image_tag "icons/creation.png", alt: "Create press releases with NewsHubby" %>
                             <div class="caption">
-                                <h3 class="text-center">1. Creation</h3>
-                                <p class="text-center">Create your press release <em>within 20 minutes</em>! Our user friendly templates walk you through the process.</p>
+                                <h3 class="text-center">Choose a press release</h3>
+                                <p class="text-center">Create your own press release <strong>within 20 minutes</strong> with our do-it-yourself tool. There are creation guides for different types of press releases that will walk you through the whole process.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="thumbnail">
-                            <%= image_tag "icons/hosting.svg", alt: "hosting" %>
+                            <%= image_tag "icons/distribution.png", alt: "Distribute your press releases through NewsHubby" %>
                             <div class="caption">
-                                <h3 class="text-center">2. Hosting</h3>
-                                <p class="text-center">NewsHubby automatically collects all of your press material into your own <em>public newsroom.</em></p>
+                                <h3 class="text-center">Distribute your press release</h3>
+                                <p class="text-center">Let NewsHubby release your press release to relevant media via NewsHubby's global <strong>distribution network</strong>.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="thumbnail">
-													<%= image_tag "icons/distribution.svg", alt: "distribution" %>
+													<%= image_tag "icons/newsroom.png", alt: "The NewsHubby newsrooms" %>
                             <div class="caption">
-                                <h3 class="text-center">3. Distribution</h3>
-                                <p class="text-center">Choose the option of releasing your press release via NewsHubby's <em>global distribution network</em>.</p>
+                               <h3 class="text-center">Newsroom</h3>
+                               <p class="text-center">Your press releases and related videos, images and links will all be gathered in your public newsroom - your company's online press page.</p>
                             </div>
                         </div>
                     </div>
@@ -53,6 +54,7 @@
             </div> <!-- / .col-lg-7 -->
         </div> <!-- .row -->
     </div> <!-- /.container -->
+		<p class="text-center"><%= link_to "Create a Press Release now", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %></p>
 </div> <!-- /.indexSplash -->
 
 <!-- Latest Press Releases Partial Goes Here -->
