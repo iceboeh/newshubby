@@ -83,6 +83,16 @@ main {
 .scrollDown i:hover {
   color: white; }
 
+/* .modal-dialog {
+    position: absolute;
+    min-width: 350px;
+    left: 50%;
+    margin-left: -175px;
+    min-height: 500px;
+    top: 50%;
+    margin-top: -250px;
+    transform: translate(-50%, -50%); // Yep!
+} */
 .helper {
   display: inline-block;
   height: 100%;
@@ -607,6 +617,8 @@ indexSplash .thumbnail .caption h3 {
     color: black; }
   .nrThumbMenu .fa-times:hover {
     color: #bf0000; }
+  .nrThumbMenu a {
+    color: #333; }
 
 @media (min-width: 992px) {
   .nrHeader .col-md-4 {
