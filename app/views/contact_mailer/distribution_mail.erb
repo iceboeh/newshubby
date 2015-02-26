@@ -1,6 +1,3 @@
-Name: <%= @contact.name %>
- 
-Email: <%= @contact.email %>
+Email: <%= @press_release.newsroom.email %>
 
-Message
-<%= @contact.message %>
+PressRelease: <%= newsroom_press_release_url(@press_release.newsroom, @press_release) %>

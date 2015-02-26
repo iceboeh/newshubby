@@ -7,9 +7,10 @@ class ContactMailer < ActionMailer::Base
   end
 
 
-  def distribution_mail(newsroom)
-    @newsroom = newsroom
-    mail(to: "robert@newshubby.com", reply_to: @newsroom.email, subject: "NewsHubby: Send to Press")
+  def distribution_mail(press_release)
+    @press_release = press_release
+    #@newsroom = @press_release.newsroom
+    mail(from: @press_release.newsroom.email, to: "alexandra@newshubby.com", subject: "Distribution: #{@press_release.title}")
   end
   
 end

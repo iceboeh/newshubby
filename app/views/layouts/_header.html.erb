@@ -47,7 +47,7 @@
                 <%= form_for(:newsroom, :url => session_path(:newsroom)) do |f| %>
                     <div class="form-group">
                         <label for="inputEmail2">Email address</label>
-                        <%= f.text_field :email, class: "form-control", id: "exampleInputEmail1", type: "email", placeholder: "Enter email" %>
+                        <%= f.text_field :email, class: "form-control", id: "exampleInputEmail1", type: "email", placeholder: "Enter email", value: "" %>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3">Password</label>
