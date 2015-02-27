@@ -72,7 +72,7 @@
 							<% unless @press_releases.nil? %>
 							<% @press_releases.each do |press_release| %>
               <div class="col-sm-4">
-								
+								<% if @owner %>
 								<div class="nrThumbMenu">
 								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
 								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
@@ -83,7 +83,9 @@
 								<% if press_release.exclusive? %>
 								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
 								<% end %>
+								
 								</div>
+								<% end %>
 								
                   <div class="thumbnail">
                       <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>

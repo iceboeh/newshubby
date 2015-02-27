@@ -32827,18 +32827,19 @@ Copyright (c) 2012-2013 Sasha Koss & Rico Sta. Cruz
 
 }).call(this);
 $(document).ready(function() {
-   window.setTimeout("fadeMyDiv();", 5000); //call fade in 3 seconds
+	
+	$('.alert').click(function(){
+		$('.alert').hide();
+	});
+	
+   //window.setTimeout("fadeMyDiv();", 10000); //call fade in 10 seconds
  }
 )
 
-function fadeMyDiv() {
+/*function fadeMyDiv() {
    $(".noticeFade").fadeOut('2000');
 }
-;
-$('#indexTab a').click(function (e) {
-	e.preventDefault()
-	$(this).tab('show')
-})
+*/
 ;
 /*jslint browser: true*/
 /*global $, jQuery, alert*/

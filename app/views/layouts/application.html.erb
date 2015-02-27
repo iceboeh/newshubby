@@ -37,19 +37,19 @@
 
 <% if flash[:alert] %>
 	<div class="alert alert-danger noticeFade">
-		<%= flash[:alert] %>
+		<i class="fa fa-times closeAlert"></i><%= flash[:alert] %>
 	</div>
 <% end %>
 
 <% if flash[:error] %>
 	<div class="alert alert-danger noticeFade">
-		<%= flash[:error] %>
+		<i class="fa fa-times closeAlert"></i><%= flash[:error] %>
 	</div>
 <% end %>
 
 <% if flash[:notice] %>
 	<div class="alert alert-success noticeFade">
-		<%= flash[:notice] %>
+		<i class="fa fa-times closeAlert"></i><%= flash[:notice] %>
 	</div>
 <% end %>
 

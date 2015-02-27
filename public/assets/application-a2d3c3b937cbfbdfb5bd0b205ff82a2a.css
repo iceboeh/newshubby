@@ -12647,79 +12647,100 @@ textarea {
   text-align: center;
   position: fixed;
   left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  /* Yep! */
+  bottom: 20px;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   width: 48%;
-  color: #fff !important;
+  /*color: #fff !important;
   background-color: rgba(0, 0, 0, 0.4);
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  border: none;
+  border: none; */
 }
 
-/* line 300, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 299, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+.closeAlert {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+}
+
+/* line 305, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+.closeAlert:hover {
+  color: red;
+}
+
+/* line 309, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+.alert:hover > .closeAlert {
+  color: red;
+}
+
+/* line 313, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+.alert:hover {
+  cursor: pointer;
+}
+
+/* line 317, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .alert a {
   color: inherit;
 }
 
-/* line 303, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 320, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nhPink {
   color: #fd4f57;
 }
 
-/* line 306, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 323, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pinkBtn {
   background-color: #fd4f57;
   color: #fff !important;
 }
 
-/* line 310, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 327, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pinkBtn:hover, .pinkBtn:focus {
   background-color: #9b9b9b;
   color: #fff !important;
 }
 
-/* line 314, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 331, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #freeBtn {
   background-color: #e6e6e6 !important;
 }
 
-/* line 317, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 334, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #freeBtn:hover {
   background-color: #bab7b7 !important;
 }
 
-/* line 320, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 337, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #freeBtn:focus {
   background-color: #bab7b7 !important;
 }
 
-/* line 323, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 340, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .fa-spin {
   -webkit-animation: fa-spin .61804697157s infinite linear !important;
   animation: fa-spin .61804697157s infinite linear !important;
 }
 
-/* line 327, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 344, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .saveStatus {
   color: #666;
 }
 
-/* line 330, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 347, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .caption h4 {
   display: inline-block;
 }
 
-/* line 333, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 350, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pressTypeImg {
   height: 2em;
   width: auto;
   display: inline-block;
 }
 
-/* line 338, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 355, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .floatingBkg {
   background: url(../media/img/penandpaper.png) no-repeat center center;
   background-size: cover;
@@ -12731,67 +12752,67 @@ textarea {
 }
 
 @media (min-width: 768px) {
-  /* line 351, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 368, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   .shortPage {
     padding-top: 95px;
     padding-bottom: 95px;
   }
 }
 /* Navigation */
-/* line 355, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 372, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .navbar {
   border: 0;
 }
 
-/* line 358, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 375, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .navbar-btn {
   padding: 0 !important;
 }
 
-/* line 361, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 378, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .dropdown li a:hover i {
   color: #fc1d27;
 }
 
-/* line 364, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 381, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .navbar-brand {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-/* line 368, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 385, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .navbar-brand img {
   height: 40px;
   vertical-align: middle;
   display: inline-block;
 }
 
-/* line 373, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 390, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   border-color: white;
 }
 
-/* line 376, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 393, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nav-tabs {
   border: none;
 }
 
-/* line 379, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 396, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .navbar .form-control {
   border: none;
 }
 
-/* line 382, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 399, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .transparentNavbar {
   background-color: #f8f8f8;
 }
 
-/* line 385, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 402, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #searchBtn {
   border: 1px solid white !important;
 }
 
-/* line 388, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 405, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #searchBtn:hover {
   border: 1px solid #e6e6e6 !important;
 }
@@ -12805,7 +12826,7 @@ textarea {
     vertical-align: middle;
 } */
 @media (min-width: 768px) {
-  /* line 400, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 417, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   .transparentNavbar {
     background-color: rgba(248, 248, 248, 0);
   }
@@ -12815,7 +12836,7 @@ textarea {
         padding-bottom: 10px;
 } */
 }
-/* line 407, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 424, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer {
   /*position:absolute;
   bottom: 0; */
@@ -12826,29 +12847,29 @@ textarea {
   background-color: #414141;
 }
 
-/* line 416, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 433, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .push {
   height: 4em;
 }
 
-/* line 419, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 436, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer a {
   color: #797979;
   /* text-shadow: 1px 1px 3px rgba(0,0,0,0.9); */
 }
 
-/* line 423, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 440, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer a:hover {
   color: #fff;
   text-decoration: none;
 }
 
-/* line 427, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 444, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer ul {
   list-style-type: none;
 }
 
-/* line 430, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 447, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .footer ul li {
   display: inline;
   margin-left: 15px;
@@ -12856,14 +12877,14 @@ textarea {
 }
 
 /* Index */
-/* line 436, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 453, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexBkg {
   height: 100%;
   background: url(../media/bkg/freedom01.jpg) no-repeat center center;
   background-size: cover;
 }
 
-/* line 444, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 461, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #diyLogo {
   position: absolute;
   right: 16px;
@@ -12872,7 +12893,7 @@ textarea {
   height: auto;
 }
 
-/* line 451, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 468, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexText {
   width: 100%;
   padding: 0 20px;
@@ -12887,13 +12908,13 @@ textarea {
   font-size: 1.5em;
 }
 
-/* line 462, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 479, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .indexSplash {
   background-color: #fff;
   padding: 3em 0 3em 0;
 }
 
-/* line 466, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 483, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .indexSplash .thumbnail {
   border: none;
 }
@@ -12902,84 +12923,84 @@ textarea {
     max-width: 280px;
     max-height: 280px;
 } */
-/* line 473, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 490, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 indexSplash .thumbnail .caption h3 {
   margin-top: 0;
   padding-top: 0;
 }
 
-/* line 477, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 494, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexText h1 {
   font-size: 2em;
   font-weight: 300;
 }
 
-/* line 481, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 498, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexBody h2, #indexBody h3 {
   text-shadow: 1px 1px 0.01em rgba(255, 255, 255, 0.9);
 }
 
-/* line 484, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 501, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexBody h1 {
   color: #fff;
   text-shadow: 1px 1px 0.01em rgba(0, 0, 0, 0.9);
 }
 
-/* line 488, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 505, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexSearch {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
-/* line 491, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 508, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexSearch input, #indexSearch button {
   border: 0 !important;
   outline: 0px !important;
   -webkit-appearance: none;
 }
 
-/* line 496, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 513, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #indexSearch .btn-default {
   color: #699bc5;
 }
 
-/* line 499, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 516, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .logon-tabs .panel {
   border-radius: 0 4px 4px 4px;
 }
 
-/* line 502, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 519, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .logon-tabs .nav-tabs a {
   background-color: #eee;
   border-color: #eee;
   color: inherit;
 }
 
-/* line 507, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 524, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .logon-tabs .nav-tabs a:hover {
   border-color: #eee;
 }
 
-/* line 510, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 527, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .media-object {
   max-width: 100px;
   max-height: 100px;
   vertical-align: middle;
 }
 
-/* line 515, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 532, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .indexLogon .btn-primary {
   background-color: #fd4f57;
   color: #fff;
 }
 
-/* line 520, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 537, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .indexLogon .btn-primary:hover,
 .indexLogon .btn-primary:focus {
   background-color: #9b9b9b;
   color: #fff;
 }
 
-/* line 524, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 541, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .indexChevronDown {
   position: absolute;
   left: 50%;
@@ -12995,13 +13016,13 @@ indexSplash .thumbnail .caption h3 {
 }
 
 @media (min-width: 768px) {
-  /* line 536, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 553, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   #indexText {
     top: 50%;
   }
 }
 /* Medium devices (tablets, 992px and up) */
-/* line 539, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 556, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrRow {
   padding: 1em 0 1em 0;
 }
@@ -13012,7 +13033,7 @@ indexSplash .thumbnail .caption h3 {
 .nrRow h4, {
 	text-shadow: 1px 1px 0.01em rgba(255, 255, 255, 0.9);
 }*/
-/* line 548, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 565, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrHeader {
   margin-top: 50px;
   background-color: #fff;
@@ -13020,12 +13041,12 @@ indexSplash .thumbnail .caption h3 {
   padding-bottom: 32px;
 }
 
-/* line 554, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 571, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrHeader .col-md-4 {
   text-align: center;
 }
 
-/* line 557, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 574, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrReleases .nrRelease span {
   float: right;
   top: 15px;
@@ -13033,77 +13054,77 @@ indexSplash .thumbnail .caption h3 {
   margin-left: 10px;
 }
 
-/* line 563, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 580, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrReleases .panel-default {
   background-color: white;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* line 567, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 584, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrReleases .panel-default:hover {
   background-color: #fd4f57;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.5);
   color: #fff;
 }
 
-/* line 572, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 589, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrReleases .panel-default h4 {
   padding-top: 10px;
   padding-bottom: 10px;
   text-shadow: none !important;
 }
 
-/* line 577, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 594, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrReleases .nrRelease a {
   text-decoration: none;
   color: inherit;
 }
 
-/* line 581, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 598, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrWhiteBkg {
   background-color: #fff;
 }
 
-/* line 584, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 601, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrSolution p {
   text-align: left;
 }
 
-/* line 587, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 604, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrModel {
   background-color: white;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* line 591, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 608, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrFunding {
   background-color: white;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* line 595, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 612, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrHeading {
   margin: 0;
 }
 
-/* line 598, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 615, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrTextWrapper {
   margin: 0 auto;
   max-width: 600px;
 }
 
-/* line 602, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 619, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrPeople .panel {
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
   background-color: white;
 }
 
-/* line 606, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 623, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrFiles .thumbnail {
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* line 609, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 626, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrThumbMenu {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.3);
@@ -13112,33 +13133,33 @@ indexSplash .thumbnail .caption h3 {
   right: 15px;
 }
 
-/* line 615, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 632, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrThumbMenu:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* line 617, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 634, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrThumbMenu i.fa-edit:hover {
   color: black;
 }
 
-/* line 619, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 636, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrThumbMenu .fa-times:hover {
   color: #bf0000;
 }
 
-/* line 621, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 638, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .nrThumbMenu a {
   color: #333;
 }
 
 @media (min-width: 992px) {
-  /* line 625, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 642, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   .nrHeader .col-md-4 {
     text-align: left;
   }
 }
-/* line 627, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 644, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .flexBox {
   display: -webkit-box;
   display: -webkit-flex;
@@ -13153,7 +13174,7 @@ indexSplash .thumbnail .caption h3 {
   margin-top: -56px;
 }
 
-/* line 633, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 650, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #presto-content {
   display: -webkit-box;
   display: -webkit-flex;
@@ -13168,7 +13189,7 @@ indexSplash .thumbnail .caption h3 {
   background-color: #fff;
 }
 
-/* line 640, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 657, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav {
   position: fixed;
   left: 0px;
@@ -13177,20 +13198,20 @@ indexSplash .thumbnail .caption h3 {
   overflow: hidden;
 }
 
-/* line 647, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 664, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav ul {
   padding-left: 12px;
   padding-top: 12px;
 }
 
-/* line 651, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 668, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav li {
   list-style-type: none;
   font-size: 1.1em;
   padding: 0;
 }
 
-/* line 656, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 673, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNavBtn {
   background-color: #334b60;
   color: #334b60;
@@ -13204,19 +13225,19 @@ indexSplash .thumbnail .caption h3 {
   font-size: .9em;
 }
 
-/* line 668, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 685, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNavBtn:hover {
   border: 1px solid #334b60;
   color: #334b60;
   background-color: #fff;
 }
 
-/* line 673, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 690, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav > div:last-child {
   background-color: red;
 }
 
-/* line 676, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 693, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav .space {
   border-radius: 0;
   margin-left: .52em;
@@ -13226,29 +13247,29 @@ indexSplash .thumbnail .caption h3 {
   background-color: #334b60;
 }
 
-/* line 684, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 701, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoNav li .active {
   border: 1px solid #334b60;
   color: #334b60;
   background-color: #fff;
 }
 
-/* line 689, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 706, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoSkipBtn {
   background-color: transparent;
 }
 
-/* line 692, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 709, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoSkipBtn:hover {
   color: #699bc5;
 }
 
-/* line 695, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 712, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prestoSkipBtn:focus {
   color: #fff;
 }
 
-/* line 698, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 715, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #q-container {
   overflow-x: hidden;
   position: absolute;
@@ -13258,7 +13279,7 @@ indexSplash .thumbnail .caption h3 {
   bottom: 0;
 }
 
-/* line 706, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 723, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #nav-container {
   position: fixed;
   width: 450px;
@@ -13272,7 +13293,7 @@ indexSplash .thumbnail .caption h3 {
   vertical-align: middle;
 }
 
-/* line 718, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 735, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #bottom-container {
   position: fixed;
   width: 450px;
@@ -13285,7 +13306,7 @@ indexSplash .thumbnail .caption h3 {
   vertical-align: middle;
 }
 
-/* line 729, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 746, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .question {
   height: 100%;
   display: none;
@@ -13294,71 +13315,71 @@ indexSplash .thumbnail .caption h3 {
 /* .question:nth-child(even) {
 background-color: rgba(255,255,255,.2);
 } */
-/* line 736, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 753, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .question .panel, .question .panel-heading, .question .panel-footer {
   background-color: #f8f8f8 !important;
 }
 
-/* line 739, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 756, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .question .panel-heading {
   color: #333 !important;
 }
 
-/* line 742, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 759, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .question {
   padding-top: 16px;
 }
 
-/* line 745, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 762, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .fa-close {
   color: #a5a5a5;
 }
 
-/* line 748, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 765, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .fa-close:hover {
   color: #000;
 }
 
-/* line 751, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 768, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .panel-heading {
   font-weight: 600;
 }
 
-/* line 754, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 771, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #sidebar-area {
   width: 100%;
   background-color: #44647f;
 }
 
-/* line 758, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 775, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #sidebar-area p a:focus {
   color: #fff;
 }
 
-/* line 761, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 778, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .add-new {
   color: #fff;
   font-weight: 600;
 }
 
-/* line 765, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 782, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .question-title {
   color: #fff;
 }
 
-/* line 768, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 785, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .add-new:hover {
   color: #fff;
   text-decoration: underline;
 }
 
-/* line 772, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 789, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #preview-area {
   display: none;
   overflow-x: hidden;
 }
 
-/* line 776, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 793, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .preview-bar {
   position: absolute;
   bottom: 50px;
@@ -13370,48 +13391,48 @@ background-color: rgba(255,255,255,.2);
   color: #000;
 }
 
-/* line 786, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 803, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .preview-bar p {
   display: inline;
 }
 
-/* line 789, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 806, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #preview-area:hover #preview {
   opacity: 1;
 }
 
-/* line 792, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 809, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .hints {
   cursor: pointer;
 }
 
-/* line 795, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 812, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .fixed-textarea {
   resize: none;
 }
 
-/* line 798, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 815, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .centerContainer {
   display: table;
   width: 100%;
   height: 200px;
 }
 
-/* line 803, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 820, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .centerContent {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
 }
 
-/* line 808, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 825, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .centerContent img {
   max-height: 200px;
   display: inline-block;
   text-align: center;
 }
 
-/* line 813, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 830, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .overlay {
   position: fixed;
   top: 0;
@@ -13424,7 +13445,7 @@ background-color: rgba(255,255,255,.2);
   display: none;
 }
 
-/* line 824, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 841, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .overlay-message {
   position: fixed;
   margin-left: 250px;
@@ -13439,12 +13460,12 @@ background-color: rgba(255,255,255,.2);
   display: none;
 }
 
-/* line 835, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 852, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #distribute {
   display: none;
 }
 
-/* line 838, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 855, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .saveStatus {
   text-align: center;
   color: #fff;
@@ -13452,24 +13473,24 @@ background-color: rgba(255,255,255,.2);
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
-/* line 843, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 860, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .saveStatus .panel {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 846, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 863, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #prestoFinish {
   margin-right: .5em;
 }
 
-/* line 849, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 866, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #preview {
   display: none;
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-  /* line 854, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 871, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   .center {
     position: absolute;
     left: 50%;
@@ -13482,7 +13503,7 @@ background-color: rgba(255,255,255,.2);
     height: 59%;
   }
 
-  /* line 863, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 880, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   #preview-area {
     display: block;
     position: absolute;
@@ -13495,7 +13516,7 @@ background-color: rgba(255,255,255,.2);
     overflow: scroll;
   }
 
-  /* line 874, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 891, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   #sidebar-area {
     padding-top: 16px;
     position: absolute;
@@ -13504,7 +13525,7 @@ background-color: rgba(255,255,255,.2);
     width: 450px;
   }
 
-  /* line 881, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+  /* line 898, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
   #preview {
     display: block;
     position: fixed;
@@ -13522,28 +13543,28 @@ background-color: rgba(255,255,255,.2);
     z-index: 1100;
   }
 }
-/* line 896, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 913, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer table, .ppContainer th, .ppContainer td {
   border: none;
 }
 
-/* line 898, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 915, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer th, .ppContainer td {
   padding: 1em;
 }
 
-/* line 900, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 917, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer th {
   text-align: center;
   font-size: 1.5em;
 }
 
-/* line 903, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 920, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* line 905, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 922, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer table {
   border-collapse: collapse;
   background-color: #fff;
@@ -13552,12 +13573,12 @@ background-color: rgba(255,255,255,.2);
   border-radius: 10px;
 }
 
-/* line 911, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 928, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .ppContainer i {
   color: #5cb85c;
 }
 
-/* line 914, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 931, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #premium {
   background-color: #5cb85c;
   color: #fff;
@@ -13572,46 +13593,46 @@ background-color: rgba(255,255,255,.2);
 		background-size: cover;
 	}
 } */
-/* line 927, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 944, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #aboutBody {
   margin-top: 100px;
 }
 
-/* line 930, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 947, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .aboutTeam p {
   font-size: 14px;
 }
 
-/* line 933, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 950, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .aboutNH h1, .aboutNH h2, .aboutNH h3 {
   text-shadow: 1px 1px 0.01em rgba(255, 255, 255, 0.9);
 }
 
-/* line 936, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 953, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .aboutSocialIcon {
   width: 18px;
   height: 18px;
   margin-bottom: 5px;
 }
 
-/* line 941, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 958, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .fullRow {
   background-color: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   padding: 3em 0 3em 0;
 }
 
-/* line 946, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 963, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .aboutRowMargin {
   padding: 3em 0 3em 0;
 }
 
-/* line 949, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 966, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .aboutTeam a {
   color: inherit;
 }
 
-/* line 952, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 969, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pr-container {
   background-color: #fbfbfb;
   width: 798px;
@@ -13620,36 +13641,36 @@ background-color: rgba(255,255,255,.2);
   margin-bottom: 66px;
 }
 
-/* line 961, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 978, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #preview-area .pr-container {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* line 965, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 982, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pr-container a {
   color: #699bc5;
 }
 
-/* line 968, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 985, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pr-heading {
   background-color: #fff;
   border-bottom: 2px solid #eee;
 }
 
-/* line 972, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 989, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prTop {
   background-color: #626262;
   color: #fff;
 }
 
-/* line 976, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 993, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prCompanyLogo {
   max-width: 75%;
   margin: 10px;
 }
 
-/* line 980, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 997, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .feature-img-area {
   max-width: 306px;
   float: right;
@@ -13659,60 +13680,60 @@ background-color: rgba(255,255,255,.2);
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
-/* line 988, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1005, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prStateContainer {
   background: rgba(0, 0, 0, 0.5);
   padding-top: 66px;
 }
 
-/* line 992, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1009, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prWrapper {
   width: 798px;
   margin: 0 auto;
 }
 
-/* line 996, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1013, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prSendToPress {
   height: 240px;
 }
 
-/* line 999, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1016, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prOptions {
   width: 798px;
   margin: 0 auto;
   margin-top: 16px;
 }
 
-/* line 1003, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1020, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .prOptions a {
   color: inherit;
   font-weight: 600;
 }
 
-/* line 1007, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1024, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .feature-img {
   max-width: 300px;
   max-height: 300px;
 }
 
-/* line 1011, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1028, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 #pr-answer-01 {
   font-weight: 400;
 }
 
-/* line 1014, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1031, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pr-generated, .pr-generated p {
   color: #555;
   text-decoration: none;
 }
 
-/* line 1018, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1035, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pr-generated:hover, .pr-generated p:hover {
   color: inherit;
   text-decoration: none;
 }
 
-/* line 1022, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
+/* line 1039, /Users/knutsson/Desktop/NewsHubby/n2/app/assets/stylesheets/custom.css */
 .pwBody {
   margin-top: 100px;
 }

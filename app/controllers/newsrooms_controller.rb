@@ -72,10 +72,10 @@ class NewsroomsController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if @owner == true
+    if @owner
       @press_releases = @newsroom.press_releases.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
     else
-      @press_releases = @newsroom.press_releases.where(exclusive: false).order("created_at DESC")
+      @press_releases = @newsroom.press_releases.where(exclusive: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
     end
     
   end

@@ -78,7 +78,8 @@
 							<%= image_tag "newshubby_logotype_square.svg", id: "navLogoSquare", class: "visible-xs img-responsive", alt: "NewsHubby logotype" %>				
 						<% end %>
         </div> <!-- / .navbar-header -->
-        <div class="collapse navbar-collapse">
+        
+				<div class="collapse navbar-collapse">
             
 						<%= form_tag newsrooms_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
                 <div class="input-group" id="navSearch">
@@ -123,17 +124,28 @@
                         <li><%= link_to destroy_newsroom_session_path, method: :delete do %><span class="text-primary"><i class="fa fa-sign-out fa-fw"></i></span>&nbsp;Log out<% end %></li>
                     </ul>
                 </li>
+								<% end %>
             </ul>
-            <ul class="nav navbar-nav navbar-right visible-xs">
-                <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-plus fa-fw"></i></span>&nbsp;<strong>New Press Release</strong><% end %></li>
-                <li><a href="#"><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;</a></li>
-                <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
+           
+						
+						
+						<ul class="nav navbar-nav navbar-right visible-xs">
+							<% if current_newsroom.nil? %>
+							
+							<li><%= link_to "#", class: "navbar-btn text-center", data: { toggle: "modal", target: "#signUp" } do %><%= button_tag class: "btn btn-primary" do %>Sign up<% end %><% end %></li>
+							<li><%= link_to "Login", "#", class: "text-center", data: { toggle: "modal", target: "#login" } %></li>
+							
+							<% else %>
+							
+                <li><%= link_to select_path do %><span class="text-primary"><i class="fa fa-plus fa-fw"></i></span>&nbsp;<strong>New Press Release</strong><% end %></li>
+                <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
+                <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
  								<!--
 								<li><a href="#"><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings</a></li>
 								-->
-                <li><%= link_to destroy_newsroom_session_path, method: :delete do %><a href="#"><span class="text-primary"><i class="fa fa-sign-out fa-fw"></i></span>&nbsp;Log out<% end %></li>
+                <li><%= link_to destroy_newsroom_session_path, method: :delete do %><span class="text-primary"><i class="fa fa-sign-out fa-fw"></i></span>&nbsp;Log out<% end %></li>
+							<% end %>
             </ul>
-						<% end %>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
