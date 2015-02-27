@@ -5,7 +5,8 @@
                         <p>
                             <span>
 															<%= @newsroom.company_name %> <% unless @newsroom.people.where(founder: true).blank? %>which is founded by 
-															<%= @newsroom.people.where(founder: true).map(&:name).to_sentence %><% unless @newsroom.founded.blank? %> in <%= @newsroom.founded.strftime("%B, %Y") %><% end %> is increasing the team with <%= @press_release.specifics[:how_many] %> people.
+															<%= @newsroom.people.where(founder: true).map(&:name).to_sentence %><% unless @newsroom.founded.blank? %> in <%= @newsroom.founded.strftime("%B, %Y") %><% end %><% end %> is increasing the team with 
+															<% unless @press_release.specifics[:how_many].blank? %><% if @press_release.specifics[:how_many].to_i == 1 %><%= @press_release.specifics[:how_many].to_i.humanize %> person<% else %><%= @press_release.specifics[:how_many].to_i.humanize %> people<% end %>.<% end %>
 														</span>
                         </p>
 												
@@ -26,7 +27,5 @@
 														</span>
                         </p>
 												<% end %>
-												
-                        <% end %>
 												
 <%= render 'press_releases/partials/static_bottom' %>

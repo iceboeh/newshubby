@@ -1,7 +1,5 @@
 <%= render 'press_releases/partials/static_top' %>
 
-<%= render 'press_releases/partials/quick_pitch' %>
-
 <%= render 'press_releases/fields/handle_date' %>
 
   <p>
@@ -12,14 +10,20 @@
 
 <%= render 'press_releases/fields/quote' %>
 
-<%= render 'press_releases/partials/clients' %>
+<%= render 'press_releases/partials/quick_pitch' %>
 
-<%= render 'press_releases/partials/founded_funding' %>
+<p>
+	<span>
+<%= @press_release.specifics[:typical_customers] %>
+	</span>
+</p>
 
-<%= render 'press_releases/partials/problem_business_competitors' %>
-
-<%= render 'press_releases/partials/funding' %>
-
-<%= render 'press_releases/partials/key_people' %>
+<% unless @press_release.specifics[:price_range].blank? %>
+<p>
+	<span>
+		The price will be <%= @press_release.specifics[:price_range] %>
+	</span>
+</p>
+<% end %>
 
 <%= render 'press_releases/partials/static_bottom' %>

@@ -50,7 +50,7 @@
 														</span>
                         </p>
 												
-											<% unless @press_release.specifics[:prize_money].blank? %>
+											<% unless @press_release.specifics[:prize_money] == "They received an award of " || @press_release.specifics[:prize_money].blank? %>
                         <p>
                             <span>
 															<%= @press_release.specifics[:prize_money] %>

@@ -19,6 +19,22 @@
 
 </head>
 
+<% if @nhBkg == true %>
+<body class="nhBkg">
+<% elsif @nrBody == true %>
+<body class="nrBody">
+<% elsif @plans_body == true %>
+<body id="ppBody">
+<% elsif @pr_body == true %>
+<body id="prBody">
+<% elsif @about_body == true %>
+<body id="aboutBody">
+<% elsif @index_body == true %>
+<body id="indexBody">
+<% else %>
+<body>
+<% end %>
+
 <% if flash[:alert] %>
 	<div class="alert alert-danger noticeFade">
 		<%= flash[:alert] %>
@@ -35,22 +51,6 @@
 	<div class="alert alert-success noticeFade">
 		<%= flash[:notice] %>
 	</div>
-<% end %>
-
-<% if @nhBkg == true %>
-<body class="nhBkg">
-<% elsif @nrBody == true %>
-<body class="nrBody">
-<% elsif @plans_body == true %>
-<body id="ppBody">
-<% elsif @pr_body == true %>
-<body id="prBody">
-<% elsif @about_body == true %>
-<body id="aboutBody">
-<% elsif @index_body == true %>
-<body id="indexBody">
-<% else %>
-<body>
 <% end %>
 
 <%= render 'layouts/header' unless @disable_header == true %>
