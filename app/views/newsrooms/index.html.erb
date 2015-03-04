@@ -76,11 +76,7 @@
             <% end %><% end %>
             <div class="caption">
                 <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
-<<<<<<< HEAD
-                <time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) %></small></time>
-=======
-                <br><time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
->>>>>>> master
+                <br><time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) %></small></time>
                 <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
             </div> <!-- / .caption -->
             
