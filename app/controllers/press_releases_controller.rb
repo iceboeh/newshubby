@@ -17,9 +17,9 @@ class PressReleasesController < ApplicationController
 
     # Show exclusive press releases only to owner
     if @owner == true
-      @press_releases = @newsroom.press_releases.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+      @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
     else
-      @press_releases = @newsroom.press_releases.all.where(exclusive: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+      @press_releases = @newsroom.press_releases.all.where(exclusive: false).where('embargo <= ?', Date.today).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     end
   end
 

@@ -2,7 +2,7 @@
                     <h4>Links</h4>
                     <ul>
 											<% @press_release.links.each do |link| %>
-											<% unless link.link.nil? %>
+											<% unless link.link.blank? %>
 											<% if link.link.include? "youtube.com" %>
 											<% elsif link.link.include? "youtu.be" %>
 											<% elsif link.link.include? "vimeo.com"%>
@@ -58,9 +58,7 @@
                             </div>
                             <p><small><%= link.caption %></small></p>
                         </div>
-											<% end %>
-											<% end %>
-											<% end %>
+											<% end %><% end %><% end %>
                     </div>
 										<hr>
                 </div> <!-- / .col-xs-10 col-xs-offset-1 -->

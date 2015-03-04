@@ -9,7 +9,7 @@ class Newsroom < ActiveRecord::Base
 
 
   def self.search(query)
-    where("company_name LIKE ?", "%#{query}%") 
+    where("company_name LIKE ?", "%#{query}%")
   end
 
 #  searchable do

@@ -35,7 +35,7 @@ class NewsroomsController < ApplicationController
       #end
       @press_releases = PressRelease.where(exclusive: false).search(params[:search])
     else 
-      @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil)
+      @press_releases = PressRelease.includes(:uploads).all.order("press_releases.embargo DESC").where(exclusive: false).where("embargo <= ?", Date.today).where.not(uploads: { file_file_name: nil }).where.not(title: nil)
     end
     
   end
@@ -73,9 +73,9 @@ class NewsroomsController < ApplicationController
 
     # Show exclusive press releases only to owner
     if @owner
-      @press_releases = @newsroom.press_releases.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+      @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
     else
-      @press_releases = @newsroom.press_releases.where(exclusive: false).order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
+      @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
     end
     
   end
