@@ -178,7 +178,7 @@ class PressReleasesController < ApplicationController
   def destroy
     @press_release.destroy
     respond_to do |format|
-      format.html { redirect_to edit_newsroom_path(current_newsroom), notice: 'Press release was successfully destroyed.' }
+      format.html { redirect_to newsroom_path(current_newsroom), notice: 'Press release was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

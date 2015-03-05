@@ -1,4 +1,6 @@
 class PressreleaseTypesController < ApplicationController
+  http_basic_authenticate_with name: ENV['HTACCESS_NAME'], password: ENV['HTACCESS_PASSWORD'] if Rails.env.production?
+
   before_action :set_pressrelease_type, only: [:show, :edit, :update, :destroy]
 
   # GET /pressrelease_types

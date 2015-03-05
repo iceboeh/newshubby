@@ -1,0 +1,6 @@
+$('#pressreleases').append('<%= j render(@press_releases) %>').masonry();
+<% if @press_releases.next_page %>
+	$('.pagination').replaceWith('<%= j will_paginate(@press_releases) %>');
+<% else %>
+	$('.pagination').remove();
+<% end %>

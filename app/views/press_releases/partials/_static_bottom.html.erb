@@ -9,9 +9,9 @@
 											<% else %>
 												
 												<% if link.link.start_with?("http://") %>
-                        <li><%= link_to link.caption, link.link %></li>
+                        <li><%= link_to link.caption, link.link, target: "_blank" %></li>
 												<% else %>
-												<li><%= link_to link.caption, "http://"+link.link %></li>
+												<li><%= link_to link.caption, "http://"+link.link, target: "_blank" %></li>
 												<% end %>
 												
 											<% end %>

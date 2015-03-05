@@ -28,24 +28,24 @@
               <h3><%= @newsroom.company_name %></h3>
               <p>founded in <% unless @newsroom.founded.blank? %><%= @newsroom.founded.strftime("%B, %Y") %><% end %></p>
               <div>
+                  <% unless @newsroom.location.blank? %>
+									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
+									<% end %>
 									<% unless @newsroom.website.blank? %>
 									<% if @newsroom.website.start_with?("http://") %>
-                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), @newsroom.website %></p>
+                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), @newsroom.website, target: "_blank" %></p>
 									<% else %>
 									<p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), "http://"+@newsroom.website %></p>
 									<% end %>
 									<% end %>
-									<% unless @newsroom.twitter.blank? %>
-                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
-									<% end %>
 									<% unless @newsroom.press_email.blank? %>
                   <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
 									<% end %>
+									<% unless @newsroom.twitter.blank? %>
+                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
+									<% end %>
 									<% unless @newsroom.press_phone.blank? %>
                   <p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
-									<% end %>
-                  <% unless @newsroom.location.blank? %>
-									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
 									<% end %>
               </div>
           </div> <!-- / .col-md-4 -->
@@ -95,11 +95,7 @@
                       <% end %>
                       <div class="caption">
                           <h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-<<<<<<< HEAD
-                          <time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) %> ago</small></time>
-=======
-                          <br><time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.updated_at) %> ago</small></time>
->>>>>>> master
+                          <br><time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) %> ago</small></time>
                       </div> <!-- / .caption -->
 
                       <div class="clearfix"></div>
@@ -146,7 +142,7 @@
               <div class="row">
 								<% @newsroom.people.each do |person| %>
                   <div class="col-xs-6">
-                      <p><strong><%= person.name %></strong>&nbsp;(<%= person.role %>)<br><small><%= person.presentation %></small></p>
+                      <p><strong><%= person.name %></strong>&nbsp;<%= "("+person.role+")" unless person.role.blank? %><br><small><%= person.presentation %></small></p>
                   </div>
 								<% end %>
               </div> <!-- / .row -->

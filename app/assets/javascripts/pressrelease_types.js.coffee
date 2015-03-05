@@ -4,16 +4,6 @@
 
 jQuery ->
   $('.best_in_place').best_in_place()
-  
-$ ->
-	  $container = $("#masonry-container")
-	  $container.imagesLoaded ->
-	    $container.masonry
-		    itemSelector: ".brick"
-		    gutterWidth: 16
-		    isFitWidth: true
-		  return
-		
 
 $(document).on 'click', 'form .remove_fields', (event) ->
   $(this).prev('input[type=hidden]').val('1')

@@ -20,6 +20,8 @@
 //= require jquery.turbolinks
 //= require masonry/jquery.masonry
 //= require masonry/jquery.imagesloaded.min
+//= require masonry/jquery.infinitescroll.min
+//= require masonry/modernizr-transitions
 //= require autocomplete-rails
 //= require turbolinks
 //= require_tree .
