@@ -289,29 +289,21 @@ textarea {
   left: 50%;
   bottom: 20px;
   transform: translateX(-50%);
-  width: 48%;
-  /*color: #fff !important;
-  background-color: rgba(0, 0, 0, 0.4);
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-  border: none; */}
+  /* Yep! */
+  width: 48%; }
 
 .closeAlert {
-	position: absolute;
-	top: 7px;
-	right: 7px;
-}
-
-.closeAlert:hover {
-	color: red;
-}
+  position: absolute;
+  top: 7px;
+  right: 7px; }
+  .closeAlert:hover {
+    color: red; }
 
 .alert:hover > .closeAlert {
-	color: red;
-}
+  color: red; }
 
 .alert:hover {
-	cursor: pointer;
-}
+  cursor: pointer; }
 
 .alert a {
   color: inherit; }
@@ -711,6 +703,13 @@ indexSplash .thumbnail .caption h3 {
 .prestoSkipBtn:focus {
   color: #fff; }
 
+#prestoType {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  width: 100%;
+  z-index: -50; }
+
 #q-container {
   overflow-x: hidden;
   position: absolute;
@@ -857,7 +856,7 @@ background-color: rgba(255,255,255,.2);
   width: 200px;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.8); }
   .saveStatus .panel {
-    background-color: rgba(0, 0, 0, 0.3); }
+    background-color: rgba(51, 75, 96, 0.8); }
 
 #prestoFinish {
   margin-right: .5em; }

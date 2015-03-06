@@ -31,8 +31,8 @@
 									Finish
 								<% end %>
 								
-								<span class="text-center"><strong><%= @press_release.pressrelease_type.name %></strong></span>
-								
+								<div id="prestoType" class="text-center"><h4><%= @press_release.pressrelease_type.name %></h4></div>
+																
 								<%= button_tag class: "btn prestoSkipBtn pull-right", id: "next" do %>
 									Next&nbsp;<i class="fa fa-arrow-right"></i>
 								<% end %>
