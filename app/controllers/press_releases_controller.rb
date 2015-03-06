@@ -187,6 +187,7 @@ class PressReleasesController < ApplicationController
     @press_release = PressRelease.friendly.find(params[:id])
     @newsroom = @press_release.newsroom
     ContactMailer.distribution_mail(@press_release).deliver
+    ContactMailer.distribution_client_confirmation(@press_release).deliver
     redirect_to @newsroom, notice: "We love that you want us to distribute your press release. We'll get back to you within 24 hours with details about how we'll do this"
   end
 

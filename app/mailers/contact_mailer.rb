@@ -13,4 +13,10 @@ class ContactMailer < ActionMailer::Base
     mail(from: @press_release.newsroom.email, to: "alexandra@newshubby.com", subject: "Distribution: #{@press_release.title}")
   end
   
+  def distribution_client_confirmation(press_release)
+    @press_release = press_release
+    #@newsroom = @press_release.newsroom
+    mail(from: "hello@newshubby.com", to: @press_release.newsroom.email, subject: "NewsHubby Press release distribution service")
+  end
+  
 end

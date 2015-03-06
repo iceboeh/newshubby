@@ -1,3 +1,16 @@
+<style>
+
+	.brick { 
+		float: left;
+		margin: 0px 0px 0px 0px;
+	 }
+	
+	#masonry-container {
+	  margin: 10px auto;
+	}
+	
+</style>
+
 <% title "Newsroom: #{@newsroom.company_name}" %>
 
 <div class="nrHeader">
@@ -160,12 +173,13 @@
 							<% if @newsroom.uploads.blank? && @newsroom.links.blank? %>
 								<h4 class="text-muted"><%= @newsroom.company_name %> has no videos and images yet.</h4>
 							<% else %>
+							<div id="masonry-container">
 							<% @newsroom.press_releases.each do |press_release| %>
 							<% press_release.links.each do |link| %>
 							<% unless link.link.nil? %>
               
 							<% if link.link.include? "youtube.com" %>
-							<div class="col-sm-4">
+							<div class="col-sm-4 brick">
                   <div class="thumbnail">
                       <div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
@@ -178,7 +192,7 @@
 							<% end %>
 							
               <% if link.link.include? "youtu.be" %>
-							<div class="col-sm-4">
+							<div class="col-sm-4 brick">
                   <div class="thumbnail">
                       <div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
@@ -191,7 +205,7 @@
 							<% end %>
 							
               <% if link.link.include? "vimeo.com" %>
-							<div class="col-sm-4">
+							<div class="col-sm-4 brick">
                   <div class="thumbnail">
                       <div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -208,7 +222,7 @@
 							<% @newsroom.press_releases.each do |press_release| %>
 							<% press_release.uploads.each do |upload| %>
 							<% unless upload.file.blank? %>
-              <div class="col-sm-4">
+              <div class="col-sm-4 brick">
                   <div class="thumbnail">
 											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
                       <div class="caption">
@@ -218,6 +232,7 @@
               </div> <!-- / .col-sm-4 -->
 							<% end %>
 							<% end %><% end %><% end %>
+						</div>
           </div> <!-- / .row -->
       </div> <!-- / .col-md-8 -->
   </div> <!-- / .container -->
