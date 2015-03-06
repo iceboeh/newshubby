@@ -1,0 +1,14 @@
+<div class="shortPage">
+<div class="container">
+    <h2 class="text-center">Newsrooms</h2>
+		<h5 class="text-center">Total # of Newsrooms: <%= @newsroom_count %></h5>
+		<% @newsrooms.each do |newsroom| %>
+    <p>
+       <%= link_to @newsroom, newsroom.company_name %>, <%= newsroom.email %>, <%= newsroom.created_at.strftime("%B %d, %Y | %H:%M") %> 
+    </p> <!-- / .col-sm-6 -->
+		<% end %>
+</div> <!-- / .container -->
+
+<div class="text-center"><%= will_paginate @newsrooms %></div>
+</div>
+</div>
