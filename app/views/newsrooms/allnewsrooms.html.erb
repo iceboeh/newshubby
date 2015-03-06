@@ -4,7 +4,7 @@
 		<h5 class="text-center">Total # of Newsrooms: <%= @newsroom_count %></h5>
 		<% @newsrooms.each do |newsroom| %>
     <p>
-       <%= link_to @newsroom, newsroom.company_name %>, <%= newsroom.email %>, <%= newsroom.created_at.strftime("%B %d, %Y | %H:%M") %> 
+       <%= link_to newsroom, newsroom.company_name unless newsroom.company_name.blank? %>, <%= newsroom.created_at.strftime("%B %d, %Y | %H:%M") %> 
     </p> <!-- / .col-sm-6 -->
 		<% end %>
 </div> <!-- / .container -->
