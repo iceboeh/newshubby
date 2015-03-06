@@ -55,7 +55,7 @@
                   <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
 									<% end %>
 									<% unless @newsroom.twitter.blank? %>
-                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></p>
+                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/'), target: "_blank" %></p>
 									<% end %>
 									<% unless @newsroom.press_phone.blank? %>
                   <p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
