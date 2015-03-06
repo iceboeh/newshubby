@@ -101,9 +101,11 @@
 								<% end %>
 								
                   <div class="thumbnail">
-                      <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
+											<%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
 												<% unless press_release.uploads.first.file.blank? %>
 												<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
+												<% else %>
+												<%= image_tag "images/feature_img.png", class: "thumbImg", alt: "" %>
 											<% end %>
                       <% end %>
                       <div class="caption">

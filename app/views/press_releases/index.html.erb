@@ -44,7 +44,7 @@
 									<% unless press_release.uploads.first.nil? %>
 									<% if press_release.uploads.first.file.blank? %>
 									<!-- FIXA BROKEN LINK-BILD! -->
-										<%= image_tag "#", class: "thumbImg", alt: "" %>
+										<%= image_tag "images/feature_img.png", class: "thumbImg", alt: "" %>
 									<% else %>
 	                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
 	            <% end %><% end %><% end %>
