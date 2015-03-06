@@ -66,7 +66,12 @@
             </div> <!-- / .col-lg-7 -->
         </div> <!-- .row -->
     </div> <!-- /.container -->
-		<p class="text-center"><%= link_to "Create a Press Release now", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %></p>
+		<p class="text-center"><% if current_newsroom.nil? %>
+			<%= link_to "Create a Press Release now", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+			<% else %>
+			<%= link_to "Create a Press Release now", select_path, class: "btn btn-primary btn-lg" %>
+			<% end %>
+		</p>
 </div> <!-- /.indexSplash -->
 
 <!-- Latest Press Releases Partial Goes Here -->
