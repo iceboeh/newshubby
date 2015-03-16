@@ -1,6 +1,8 @@
 class NewsroomsController < ApplicationController
   before_action :set_newsroom, only: [:show, :edit, :update, :destroy]
+  #before_action :set_pressrelease_type, only: [:show, :edit, :update, :destroy]
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :authenticate, only: [:allnewsrooms]
   
   autocomplete :press_release, :title
 
@@ -9,9 +11,17 @@ class NewsroomsController < ApplicationController
       u.permit(:password, :password_confirmation, :current_password, :term_agreement) 
     }
   end
+
+  def authenticate
+    if Rails.env.production?
+      authenticate_or_request_with_http_basic('Administration') do |username, password|
+        username == ENV['HTACCESS_NAME'] && password == ENV['HTACCESS_PASSWORD']
+      end
+    end
+  end
   
   def mailchimp
-    @list_id = ENV["MAILCHIMP_LIST_ID"]
+    @list_id = "314f06442d" #ENV["MAILCHIMP_LIST_ID"]
     gb = Gibbon::API.new
 
     gb.lists.subscribe({
