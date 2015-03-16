@@ -83,7 +83,7 @@ gem 'geocoder'
 # Payment
 gem 'stripe'
 
-#gem 'paymill'
+gem 'paymill'
 
 # Forms that "add many"
 gem 'nested_form'

@@ -11,7 +11,7 @@ class NewsroomsController < ApplicationController
   end
   
   def mailchimp
-    @list_id = "314f06442d" #ENV["MAILCHIMP_LIST_ID"]
+    @list_id = ENV["MAILCHIMP_LIST_ID"]
     gb = Gibbon::API.new
 
     gb.lists.subscribe({
