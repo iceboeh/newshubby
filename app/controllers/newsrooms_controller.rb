@@ -10,6 +10,21 @@ class NewsroomsController < ApplicationController
     }
   end
   
+  def mailchimp
+    @list_id = "314f06442d" #ENV["MAILCHIMP_LIST_ID"]
+    gb = Gibbon::API.new
+
+    gb.lists.subscribe({
+      :id => @list_id,
+      :email => {:email => params[:email][:address]},
+      :double_optin => false
+    })
+        
+    flash[:notice] = "Thanks for subscribing!"
+    redirect_to root_path
+    
+  end
+  
   def terms_of_service
     
   end
@@ -183,7 +198,7 @@ class NewsroomsController < ApplicationController
     @newsroom = current_newsroom
     @newsroom.destroy
     respond_to do |format|
-      format.html { redirect_to newsrooms_url, notice: 'Newsroom was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Newsroom was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -26,7 +26,12 @@ class PressReleasesController < ApplicationController
   # GET /press_releases/1
   # GET /press_releases/1.json
   def show
-        
+    
+    # When we change Title for a Press Release, we must be redirected correctly
+    if request.path != newsroom_press_release_path(@newsroom, @press_release)
+      redirect_to [@newsroom, @press_release], status: :moved_permanently
+    end
+    
     if @blocked
       flash[:notice] = "No such press release!"
       redirect_to :root
@@ -178,7 +183,7 @@ class PressReleasesController < ApplicationController
   def destroy
     @press_release.destroy
     respond_to do |format|
-      format.html { redirect_to newsroom_path(current_newsroom), notice: 'Press release was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Press release was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

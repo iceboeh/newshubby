@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/select' => 'press_releases#select'
   get '/pressreleases' => 'newsrooms#allpressreleases'
   get '/distribution' => 'press_releases#distribution'
-  get '/newsrooms' => 'newsrooms#allnewsrooms'
+  get '/newest-newsrooms' => 'newsrooms#allnewsrooms'
+  post 'newsrooms/subscribe' => 'newsrooms#mailchimp'
   
   resources :plans do
     get :free, on: :collection

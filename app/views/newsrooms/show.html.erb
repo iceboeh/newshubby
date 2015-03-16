@@ -110,7 +110,7 @@
                       <% end %>
                       <div class="caption">
                           <h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-                          <br><time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) %> ago</small></time>
+                          <br><time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) unless press_release.embargo.blank? %> ago</small></time>
                       </div> <!-- / .caption -->
 
                       <div class="clearfix"></div>

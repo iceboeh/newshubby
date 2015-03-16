@@ -74,11 +74,16 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-turbolinks'
 
+# MailChimp
+gem 'gibbon'
+
 # Geocoding
 gem 'geocoder'
 
 # Payment
-gem 'paymill'
+gem 'stripe'
+
+#gem 'paymill'
 
 # Forms that "add many"
 gem 'nested_form'
@@ -105,15 +110,13 @@ gem 'remotipart', '~> 1.2'
 # In-place editing
 gem 'best_in_place', '~> 3.0.1'
 
-# Masonry (for stacking boxes)
-
+# Masonry (for stacking div boxes)
 gem 'masonry-rails'
 
+# PDF Generation
 gem 'wkhtmltopdf-binary'
 
 gem 'pdfkit'
-
-gem 'stripe'
 
 gem 'humanize'
 
