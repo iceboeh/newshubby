@@ -33042,59 +33042,53 @@ $(document).ready(function() {
     };
 });
 (function() {
-  var subscription;
-
   jQuery(function() {
-    return subscription.setupForm();
+    return $(function() {
+      var $container;
+      $container = $("#masonry-container");
+      $container.imagesLoaded(function() {
+        return $container.masonry({
+          itemSelector: ".brick",
+          gutterWidth: 0,
+          isFitWidth: true
+        });
+      });
+      ({
+        isAnimated: !Modernizr.csstransitions
+      });
+    });
   });
 
-  subscription = {
-    setupForm: function() {
-      return $('#new_subscription').submit(function() {
-        $('input[type=submit]').attr('disabled', true);
-        if ($('#card_number').length) {
-          subscription.processCard();
-          return false;
-        } else {
-          return true;
-        }
-      });
-    },
-    processCard: function() {
-      var card;
-      card = {
-        number: $('#card_number').val(),
-        cvc: $('#card_code').val(),
-        exp_month: $('#card_month').val(),
+
+  /*	
+    subscription.setupForm()
+  
+  subscription =
+    setupForm: ->
+      $('#new_subscription').submit ->
+        $('input[type=submit]').attr('disabled', true)
+        if $('#card_number').length
+          subscription.processCard()
+          false
+        else
+          true
+    
+    processCard: ->
+      card =
+        number: $('#card_number').val()
+        cvc: $('#card_code').val()
+        exp_month: $('#card_month').val()
         exp_year: $('#card_year').val()
-      };
-      return paymill.createToken(card, subscription.handlePaymillResponse);
-    },
-    handlePaymillResponse: function(error, result) {
-      if (error) {
-        $('#paymill_error').text(error.apierror);
-        return $('input[type=submit]').attr('disabled', false);
-      } else {
-        $('#subscription_paymill_card_token').val(result.token);
-        return $('#new_subscription')[0].submit();
-      }
-    }
-  };
-
-  $(function() {
-    var $container;
-    $container = $("#masonry-container");
-    $container.imagesLoaded(function() {
-      return $container.masonry({
-        itemSelector: ".brick",
-        gutterWidth: 0,
-        isFitWidth: true
-      });
-    });
-    ({
-      isAnimated: !Modernizr.csstransitions
-    });
-  });
+      paymill.createToken(card, subscription.handlePaymillResponse)
+    
+    handlePaymillResponse: (error, result) ->
+      if error
+        $('#paymill_error').text(error.apierror)
+        $('input[type=submit]').attr('disabled', false)
+      else
+        $('#subscription_paymill_card_token').val(result.token)
+        $('#new_subscription')[0].submit()
+   */
 
 }).call(this);
 (function() {
