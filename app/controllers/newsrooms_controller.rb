@@ -143,7 +143,7 @@ class NewsroomsController < ApplicationController
   # POST /newsrooms.json
   def create
     @newsroom = Newsroom.new(newsroom_params)
-    
+
     respond_to do |format|
       if @newsroom.save.valid?
         format.html { redirect_to @newsroom, notice: 'Newsroom was successfully created.' }

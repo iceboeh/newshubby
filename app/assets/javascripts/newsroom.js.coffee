@@ -2,7 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-	
+	$ ->
+		  $container = $("#masonry-container")
+		  $container.imagesLoaded ->
+		    $container.masonry
+			    itemSelector: ".brick"
+			    gutterWidth: 0
+			    isFitWidth: true
+					isAnimated: !Modernizr.csstransitions
+			  return
+				
+###	
   subscription.setupForm()
 
 subscription =
@@ -30,16 +40,7 @@ subscription =
     else
       $('#subscription_paymill_card_token').val(result.token)
       $('#new_subscription')[0].submit()
-	
-	$ ->
-		  $container = $("#masonry-container")
-		  $container.imagesLoaded ->
-		    $container.masonry
-			    itemSelector: ".brick"
-			    gutterWidth: 0
-			    isFitWidth: true
-					isAnimated: !Modernizr.csstransitions
-			  return
+###	
 	
 			
 	#$ ->
