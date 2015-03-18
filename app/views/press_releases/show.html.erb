@@ -40,7 +40,7 @@
 <div class="prOptions clearfix">
 <% if @owner %>
     <%= link_to edit_newsroom_press_release_path(@newsroom, @press_release), class: "pull-left" do %><i class="fa fa-edit fa-lg"></i>&nbsp;Edit Press Release<% end %>
-		<!-- <%= link_to newsroom_press_release_path(@newsroom, @press_release)+".pdf", format: :pdf, class: "pull-right" do %><i class="fa fa-file-pdf-o fa-lg"></i>&nbsp;Download PDF<% end %>-->
+<%= link_to newsroom_press_release_path(@newsroom, @press_release)+".pdf", format: :pdf, class: "pull-right" do %><i class="fa fa-file-pdf-o fa-lg"></i>&nbsp;Download PDF<% end %>
 <% else %>
 	<%= link_to newsroom_path(@newsroom), class: "pull-left" do %><i class="fa fa-home fa-lg"></i>&nbsp;Go to <%= @newsroom.company_name.possessive %> newsroom<% end %>
 <% end %>

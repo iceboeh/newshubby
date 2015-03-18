@@ -544,8 +544,9 @@ indexSplash .thumbnail .caption h3 {
 
 .newsletterSignup {
   position: absolute;
-  right: 16px;
-  bottom: 26px; }
+  text-align: center;
+  bottom: 76px;
+  width: 100%; }
 
 .ghostPanel {
   background-color: transparent;
@@ -566,19 +567,25 @@ indexSplash .thumbnail .caption h3 {
     color: white; }
   .ghostPanel :-ms-input-placeholder {
     color: white; }
-  .ghostPanel button {
+  .ghostPanel .btn-ghost {
     background-color: transparent !important;
     border: 2px solid white !important;
     color: white; }
-    .ghostPanel button:hover {
+    .ghostPanel .btn-ghost:hover {
       background-color: #fd4f57 !important;
       border: 2px solid white !important; }
-    .ghostPanel button:focus {
+    .ghostPanel .btn-ghost:focus {
       border: 2px solid white !important; }
 
 @media (min-width: 768px) {
   #indexText {
-    top: 50%; } }
+    top: 50%; }
+
+  .newsletterSignup {
+    width: 350px;
+    text-align: right;
+    right: 16px;
+    bottom: 26px; } }
 /* Medium devices (tablets, 992px and up) */
 .nrRow {
   padding: 1em 0 1em 0; }

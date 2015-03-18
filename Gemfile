@@ -57,6 +57,7 @@ gem 'wicked'
 # Login & Signup
 gem 'devise'
 
+# File uploads
 gem "paperclip", "~> 4.1"
 
 # Autocomplete search

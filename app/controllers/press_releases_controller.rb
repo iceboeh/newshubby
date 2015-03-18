@@ -69,7 +69,6 @@ class PressReleasesController < ApplicationController
     #  redirect_to plans_path
     #else
       unless @newsroom.company_name.blank?
-        @press_release.links.build
         @press_release.uploads.build
         @press_release.hex = SecureRandom.urlsafe_base64(6)
         if @press_release.newsroom.people.last.nil?

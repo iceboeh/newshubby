@@ -11,12 +11,15 @@ Bundler.require(*Rails.groups)
 
 module N2
   class Application < Rails::Application
-    
+        
     #ActiveAdmin fix
     config.override_gem_home = false
     
     # Deflater for speed!
-    config.middleware.use Rack::Deflater
+    #config.middleware.use Rack::Deflater
+    
+    # PDFKit
+    config.middleware.use PDFKit::Middleware, print_media_type: true
     
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -35,9 +38,6 @@ module N2
 
     # Precompile additional assets
     #config.assets.precompile += %w( .svg .eot .woff .ttf ) 
-    
-    # PDFKit
-    config.middleware.use PDFKit::Middleware, :print_media_type => true
     
   end
 end

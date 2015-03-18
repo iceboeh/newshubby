@@ -19,18 +19,18 @@
 
 <div id="indexBkg">
 	
-<div class="col-sm-4 newsletterSignup">
+<div class="newsletterSignup">
     <div class="panel ghostPanel">
         <div class="panel-heading">
-            <h4 class="text-right">Subscribe to NewsHubby's newsletter</h4>
+            <h4>Subscribe to NewsHubby's newsletter</h4>
         </div>
         <div class="panel-body">
-<%= form_tag('/newsrooms/subscribe', method: "post", id: "subscribe", class: "form-inline pull-right") do -%>
+<%= form_tag('/newsrooms/subscribe', method: "post", id: "subscribe") do -%>
             <div class="form-group">
-   <%= email_field(:email, :address, { id: "newsletterEmail", placeholder: "Email", class: "form-control", required: true }) %>
+   <%= email_field(:email, :address, { id: "newsletterEmail", placeholder: "Email", class: "form-control center-block", required: true }) %>
 	 </div>
 	 
-   <%= submit_tag("Sign me up!", class: "btn btn-info") %>
+   <%= submit_tag("Subscribe", class: "btn btn-ghost") %>
                 
 <% end %>
         </div>

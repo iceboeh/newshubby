@@ -1,4 +1,5 @@
 										<hr>
+										<% unless @press_release.links.blank? %>
                     <h4>Links</h4>
                     <ul>
 											<% @press_release.links.each do |link| %>
@@ -63,6 +64,7 @@
 										<hr>
                 </div> <!-- / .col-xs-10 col-xs-offset-1 -->
             </div> <!-- / .row -->
+						<% end %>
 
 <div class="row">
     <div class="col-xs-12">
