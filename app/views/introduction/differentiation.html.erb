@@ -34,3 +34,11 @@
 
 </div>
 
+<script>
+	mixpanel.track("Intro: Differentiation");
+	mixpanel.identify("<%= current_newsroom.email unless current_newsroom.blank? %>");
+	mixpanel.people.set({
+	   	"$email": "<%= current_newsroom.email unless current_newsroom.blank? %>",
+			"$name": "<%= current_newsroom.company_name unless current_newsroom.blank? %>"
+	});
+</script>

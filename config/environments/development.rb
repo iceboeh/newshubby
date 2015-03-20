@@ -54,8 +54,7 @@ Rails.application.configure do
     user_name: ENV['EMAIL_USER_NAME'],
     password: ENV['EMAIL_PASSWORD']
   }
-  
-  
+    
   # Amazon Web Services. Bucket for Paperclip Uploads
 =begin  
   config.paperclip_defaults = {

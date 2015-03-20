@@ -54,7 +54,7 @@ class NewsroomsController < ApplicationController
 
   # GET /newsrooms
   # GET /newsrooms.json
-  def index
+  def index    
     @transparentnavbar = true
     @index_body = true
     

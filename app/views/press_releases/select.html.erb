@@ -118,3 +118,12 @@
 
 </div>
 </div>
+
+<script>
+	mixpanel.track("Select Press Release");
+	mixpanel.identify("#{current_newsroom.email unless current_newsroom.blank?}");
+	mixpanel.people.set({
+	   	"$email": "#{currsent_newsroom.email unless current_newsroom.blank?}",
+			"$name": " #{current_newsroom.email unless current_newsroom.blank?} "
+	});
+</script>

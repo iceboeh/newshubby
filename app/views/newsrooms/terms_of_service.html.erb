@@ -8,3 +8,12 @@
 		<p class="text-center">hello@newshubby.com</p>
 	</div>
 </div>
+
+<script>
+	mixpanel.track("Terms of Service");
+	mixpanel.identify("#{current_newsroom.email unless current_newsroom.blank?}");
+	mixpanel.people.set({
+	   	"$email": "#{currsent_newsroom.email unless current_newsroom.blank?}",
+			"$name": " #{current_newsroom.email unless current_newsroom.blank?} "
+	});
+</script>

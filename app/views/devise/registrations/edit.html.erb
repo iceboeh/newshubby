@@ -6,7 +6,11 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email, autofocus: true %></div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+  <% if devise_mapping.	mixpanel.identify("<%= current_newsroom.email unless current_newsroom.blank? %>");
+	mixpanel.people.set({
+	   	"$email": "<%= current_newsroom.email unless current_newsroom.blank? %>",
+			"$name": "<%= current_newsroom.company_name unless current_newsroom.blank? %>"
+	});? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
