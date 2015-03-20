@@ -99,11 +99,7 @@ Devise.setup do |config|
   # Setup a pepper to generate the encrypted password.
   # config.pepper = 'f8d3b0339895152c40d13175f5c275ead2e3386261f02cf799addef54a48e61f881e64da8d31b341b2d5f022263777721cf5fd3de827a61849ba8f3eb4d8b1ca'
 
-  # ==> Configuration for :	mixpanel.identify("<%= current_newsroom.email unless current_newsroom.blank? %>");
-	mixpanel.people.set({
-	   	"$email": "<%= current_newsroom.email unless current_newsroom.blank? %>",
-			"$name": "<%= current_newsroom.company_name unless current_newsroom.blank? %>"
-	});
+  # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
   # confirming their account. For instance, if set to 2.days, the user will be
   # able to access the website for two days without confirming their account,
@@ -123,11 +119,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.re	mixpanel.identify("<%= current_newsroom.email unless current_newsroom.blank? %>");
-	mixpanel.people.set({
-	   	"$email": "<%= current_newsroom.email unless current_newsroom.blank? %>",
-			"$name": "<%= current_newsroom.company_name unless current_newsroom.blank? %>"
-	}); = true
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [ :email ]

@@ -54,6 +54,9 @@ Rails.application.configure do
     user_name: ENV['EMAIL_USER_NAME'],
     password: ENV['EMAIL_PASSWORD']
   }
+  
+  # MixPanel Middleware
+  config.middleware.use "Mixpanel::Middleware", ENV['MIXPANEL_API_TOKEN']#, options
     
   # Amazon Web Services. Bucket for Paperclip Uploads
 =begin  
