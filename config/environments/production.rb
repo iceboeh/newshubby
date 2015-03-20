@@ -121,7 +121,7 @@ GA.tracker = "UA-52876952-1"
 
 
 # Mixpanel
-config.middleware.use "Mixpanel::Middleware", ENV['MIXPANEL_API_TOKEN']#, options
+config.middleware.use "Mixpanel::Middleware", "#{ENV['MIXPANEL_API_TOKEN']}"#, options
 
   
 end
