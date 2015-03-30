@@ -177,7 +177,7 @@
 							<% else %>
 							<% @newsroom.press_releases.each do |press_release| %>
 							<% press_release.links.each do |link| %>
-							<% unless link.link.nil? %>
+							<% unless link.link.nil? || link.press_release.embargo >= Date.today && link.press_release.exclusive || false %>
               
 							<% if link.link.include? "youtube.com" %>
 							<div class="col-sm-4">
@@ -222,7 +222,7 @@
 							
 							<% @newsroom.press_releases.each do |press_release| %>
 							<% press_release.uploads.each do |upload| %>
-							<% unless upload.file.blank? %>
+							<% unless upload.file.blank? || upload.press_release.embargo >= Date.today || upload.press_release.exclusive? %>
               <div class="col-sm-4">
                   <div class="thumbnail">
 											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>

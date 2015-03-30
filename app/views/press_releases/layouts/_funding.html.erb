@@ -1,32 +1,35 @@
 <%= render 'press_releases/partials/static_top' %>
 
-<%= render 'press_releases/partials/quick_pitch' %>
-
 <%= render 'press_releases/fields/handle_date' %>
 										
                         <p>
                             <span id="pr-answer-04">
-															<%= @press_release.specifics[:which_markets] %>
+															<%= @newsroom.company_name %> raises <%= @press_release.specifics[:sum_raised].to_i.humanize + " USD" unless @press_release.specifics[:sum_raised].blank? %> from <%= @press_release.specifics[:investor_names] %>
 														</span>
                         </p>
 												
                         <p>
                             <span id="pr-answer-04">
-															<% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
+															<%= @press_release.specifics[:money_do] %>
+														</span>
+                        </p>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+                        <p>
+                            <span id="pr-answer-04">
+															<%= @press_release.specifics[:since_launch] %>
 														</span>
                         </p>
 												
 <%= render 'press_releases/fields/quote' %>
-												
-
-<%= render 'press_releases/partials/clients' %>
-
-<%= render 'press_releases/partials/founded_funding' %>
-
-<%= render 'press_releases/partials/problem_business_competitors' %>
+		
+												<p>
+												    <span id="pr-answer-04">
+															<%= @press_release.specifics[:about_investors] %>
+														</span>
+												</p>										
 
 <%= render 'press_releases/partials/funding' %>
-
-<%= render 'press_releases/partials/key_people' %>
 
 <%= render 'press_releases/partials/static_bottom' %>

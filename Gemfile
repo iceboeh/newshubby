@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'http://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails'
@@ -90,6 +91,8 @@ gem 'stripe'
 gem 'nested_form'
 
 gem 'rails_autolink'
+
+gem 'rails-assets-RRSSB'
 
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 

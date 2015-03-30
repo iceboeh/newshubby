@@ -3,13 +3,18 @@ class NewsroomsController < ApplicationController
   #before_action :set_pressrelease_type, only: [:show, :edit, :update, :destroy]
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :authenticate, only: [:allnewsrooms]
+  before_filter :allow_iframe_requests
   
   autocomplete :press_release, :title
 
-  def configure_permitted_parameters
+  def configure_permitted_parameters  
     devise_parameter_sanitizer.for(:newsroom_update) { |u| 
       u.permit(:password, :password_confirmation, :current_password, :term_agreement) 
     }
+  end
+
+  def allow_iframe_requests
+    response.headers.delete('X-Frame-Options')
   end
 
   def authenticate
@@ -138,6 +143,10 @@ class NewsroomsController < ApplicationController
     flash[:notice] = "Not yours to edit!"
     redirect_to :root
   end
+  
+  def account_settings
+    @newsroom = Newsroom.friendly.find(current_newsroom)
+  end
 
   # POST /newsrooms
   # POST /newsrooms.json
@@ -173,11 +182,11 @@ class NewsroomsController < ApplicationController
       end
       
       # Correct website URL
-      
-      unless params[:newsroom][:website].start_with?("http://")
-        params[:newsroom][:website] = "http://"+params[:newsroom][:website]
+      unless params[:newsroom][:website].blank?
+        unless params[:newsroom][:website].start_with?("http://")
+          params[:newsroom][:website] = "http://"+params[:newsroom][:website]
+        end
       end
-      
 
       
      # unless @newsroom.code.blank? && @newsroom.update(newsroom_params)
@@ -222,7 +231,7 @@ class NewsroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsroom_params
-      params.require(:newsroom).permit(:company_name, :differentiation, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
+      params.require(:newsroom).permit(:company_name, :differentiation, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, :password, :password_confirmation, :current_password, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
   end
 
 end

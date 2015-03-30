@@ -57,7 +57,8 @@
 
 <%= yield %>
 
+<% unless @disable_footer == true %>
 <%= render 'layouts/footer' %>
-
+<% end %>
 </body>
 </html>

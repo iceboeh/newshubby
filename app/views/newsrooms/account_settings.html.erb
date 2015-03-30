@@ -1,0 +1,33 @@
+<% title "Newsroom: #{@newsroom.company_name}" %>
+
+<% if current_newsroom != nil && current_newsroom == @newsroom %>
+
+<%= nested_form_for(@newsroom) do |f| %>
+  <% if @newsroom.errors.any? %>
+      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
+      <ul>
+      <% @newsroom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  <% end %>
+
+<div>
+	<br><br>	<br><br>	<br><br>	<br><br>	<br><br>
+	
+	<p>Email: <%= f.text_field :email %></p>
+	
+	<p>Password: <%= f.text_field :password %></p>
+	<p>Password Confirmation: <%= f.text_field :password_confirmation %></p>
+	
+</div>
+
+<div class="text-center">
+	<%= f.submit "Update password", class: "btn btn-success btn-lg", role: "button" %>
+</div>
+<br><br>
+	
+<div>
+	<%= link_to "Delete Account", newsroom_path(current_newsroom), method: :delete, data: { confirm: "Are you sure that you want to permanently delete your NewsHubby account? This action cannot be reverted and all your information will be lost forever." } %>
+</div>
+	
+<% end %><% end %>

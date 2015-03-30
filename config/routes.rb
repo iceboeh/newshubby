@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :people
     resources :fundings, :path => 'funding'
     resources :subscriptions
+    get 'account_settings' => 'newsrooms#account_settings'
   end
 
   root "newsrooms#index"
