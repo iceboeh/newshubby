@@ -14,5 +14,14 @@ $(document).on 'click', 'form .add_fields', (event) ->
   time = new Date().getTime()
   regexp = new RegExp($(this).data('id'), 'g')
   $(this).before($(this).data('fields').replace(regexp, time))
-  event.preventDefault()
-	
+  event.preventDefault()	
+    
+$(document).ready ->
+  $('#prStateBtn').click ->
+    $('.prState').toggleClass 'text-info text-primary'
+    $('#prStateBtn').toggleClass 'btn-info btn-primary'
+    $('.prLink').toggleClass 'hidden'
+    $('.prStateText').text (i, v) ->
+      if v == 'unlisted' then 'public' else 'unlisted'
+    return
+  return

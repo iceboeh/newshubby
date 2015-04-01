@@ -1,3 +1,4 @@
+<% unless @newsroom.people.count < 1 %>
 <hr>
 <% if @newsroom.people.count > 0 %>
 <h4>Key People</h4>
@@ -10,4 +11,5 @@
 		<% end %>
 	<% end %>
 </div> <!-- / .row -->
+<% end %>
 <% end %>

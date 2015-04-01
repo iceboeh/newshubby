@@ -85,7 +85,7 @@ class PressReleasesController < ApplicationController
 
   # GET /press_releases/1/edit
   def edit
-    @diable_footer = true
+    @disable_footer = true
     @reg_body = true
     @newsroom = @press_release.newsroom
     @press_release = @newsroom.press_releases.friendly.find(params[:id])

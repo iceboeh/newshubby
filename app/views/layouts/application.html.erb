@@ -4,9 +4,13 @@
 	<%= favicon_link_tag 'images/favicon.ico' %>
 	
   <title><% if @title.blank? %>NewsHubby<% else %><%= @title %><% end %></title>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-
-<%= javascript_include_tag "https://js.stripe.com/v2/", 'application', 'data-turbolinks-track' => true %>
+	
+	<style type="text/css">
+	<%= Rails.application.assets.find_asset('application.css').to_s.html_safe %>
+	</style>
+	
+ 	<%= stylesheet_link_tag 'application', :media => 'screen', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag "https://js.stripe.com/v2/", 'application', 'data-turbolinks-track' => true %>
 
 	<%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
 

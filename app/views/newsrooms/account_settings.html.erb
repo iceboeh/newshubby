@@ -1,5 +1,4 @@
 <% title "Newsroom: #{@newsroom.company_name}" %>
-
 <% if current_newsroom != nil && current_newsroom == @newsroom %>
 
 <%= nested_form_for(@newsroom) do |f| %>
@@ -11,23 +10,40 @@
       <% end %>
   <% end %>
 
-<div>
-	<br><br>	<br><br>	<br><br>	<br><br>	<br><br>
-	
-	<p>Email: <%= f.text_field :email %></p>
-	
-	<p>Password: <%= f.text_field :password %></p>
-	<p>Password Confirmation: <%= f.text_field :password_confirmation %></p>
-	
+<div class="shortPage">
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Account Settings
+			</div>
+			<div class="panel-body">
+				<h4>Change password</h4>
+				<div class="row">
+					<div class="col-sm-5">
+						<div class="form-group">
+							<%= f.label :password, "New Password" %> <%= f.password_field :password, class: "form-control" %>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="form-group">
+							<%= f.label :password_confirmation, "New Password Confirmation" %> <%= f.password_field :password_confirmation, class: "form-control" %>
+						</div>
+					</div>
+				</div>
+		<div>
+			<%= f.submit "Save Changes", class: "btn btn-success", role: "button" %>
+		</div>
+		<hr>
+		<div>
+			<h4>Delete NewsHubby Account</h4>
+			<p>
+				Deleting the account will permanently and irrevocably delete your NewsHubby account and all press releases related to it.
+			</p>
+			<%= link_to "Delete Account", newsroom_path(current_newsroom), class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure that you want to permanently delete your NewsHubby account? This action cannot be reverted and all your information will be lost forever." } %>
+		</div>
+		</div>
+		</div>
+		</div>
+	<div class="push"></div>
 </div>
-
-<div class="text-center">
-	<%= f.submit "Update password", class: "btn btn-success btn-lg", role: "button" %>
-</div>
-<br><br>
-	
-<div>
-	<%= link_to "Delete Account", newsroom_path(current_newsroom), method: :delete, data: { confirm: "Are you sure that you want to permanently delete your NewsHubby account? This action cannot be reverted and all your information will be lost forever." } %>
-</div>
-	
 <% end %><% end %>

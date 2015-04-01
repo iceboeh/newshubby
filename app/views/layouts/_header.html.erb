@@ -119,7 +119,7 @@
                         <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
                         <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
 												<li class="divider"></li>
-												<li><%= link_to newsroom_account_settings_path(current_newsroom) do %><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings<% end %></li>
+												<li><%= link_to newsroom_account_settings_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings<% end %></li>
                         <li class="divider"></li>
                         <li><%= link_to destroy_newsroom_session_path, method: :delete do %><span class="text-primary"><i class="fa fa-sign-out fa-fw"></i></span>&nbsp;Log out<% end %></li>
                     </ul>
@@ -140,6 +140,8 @@
                 <li><%= link_to select_path do %><span class="text-primary"><i class="fa fa-plus fa-fw"></i></span>&nbsp;<strong>New Press Release</strong><% end %></li>
                 <li><%= link_to current_newsroom do %><span class="text-primary"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
                 <li><%= link_to newsroom_press_releases_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-file-text-o fa-fw"></i></span>&nbsp;Press Releases<% end %></li>
+								<li><%= link_to newsroom_account_settings_path(current_newsroom) do %><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings<% end %></li>
+                <li class="divider"></li>
  								<!--
 								<li><a href="#"><span class="text-primary"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings</a></li>
 								-->
