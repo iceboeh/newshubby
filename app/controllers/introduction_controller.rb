@@ -1,7 +1,7 @@
 class IntroductionController < ApplicationController
   include Wicked::Wizard
     
-  steps :basic, :people, :what, :how, :clients, :businessmodel, :differentiation, :competitors, :problem, :funding, :logo
+  steps :basic, :people, :what, :how
   
 
   def show

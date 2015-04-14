@@ -1,17 +1,7 @@
-<style>
-
-	.brick { width: 230px;
-		float: left;
-	 }
-	
-	#masonry-container {
-	  margin: 0px auto;
-	}
-</style>
 <div class="shortPage">
 <div class="container">
     <h2 class="text-center">Latest Press Releases</h2>
-		<div id="masonry-container">
+		<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
 		<% @press_releases.each do |press_release| %>
     <div class="brick col-sm-6 col-md-3">
         <div class="thumbnail">

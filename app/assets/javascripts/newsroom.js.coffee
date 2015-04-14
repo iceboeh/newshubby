@@ -2,6 +2,38 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
+	#$ ->
+	#	$(window).scroll ->
+	#		url = $('.pagination .next_page').attr('href')
+	#		if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+	#			$('.pagination').text('Fetching more press releases...')
+	#			$.getScript(url)
+	$ ->
+	  $container = $('#masonry-container')
+	  $container.imagesLoaded ->
+	    $container.masonry
+	      itemSelector: '.brick'
+	      #columnWidth: 100
+	    return
+	  $container.infinitescroll {
+	    navSelector: '.pagination'
+	    nextSelector: '.pagination .next_page'
+	    itemSelector: '.brick'
+	    loading:
+	      finishedMsg: 'No more press releases to load.'
+	      img: '/assets/masonry/loader.gif'
+	  }, (newElements) ->
+	    # hide new items while they are loading
+	    $newElems = $(newElements).css(opacity: 0)
+	    # ensure that images load before adding to masonry layout
+	    $newElems.imagesLoaded ->
+	      # show elems now they're ready
+	      $newElems.animate opacity: 1
+	      $container.masonry 'appended', $newElems, true
+	      return
+	    return
+	  return
+					
 	$ ->
 		  $container = $("#masonry-container")
 		  $container.imagesLoaded ->
@@ -43,9 +75,3 @@ subscription =
 ###	
 	
 			
-	#$ ->
-	#	$(window).scroll ->
-	#		url = $('.pagination .next_page').attr('href')
-	#		if url && $(window).scrollTop() > $(document).height() - $(window).height() - 0
-	#			$('.pagination').text('Fetching more press releases...')
-	#			$.getScript(url)

@@ -4,7 +4,7 @@
 
 <% if @owner %>
 
-<div class="container-fluid prStateContainer">
+<div class="container-fluid prStateContainer hidden-print">
     <div class="prWrapper">
         <div class="row">
             <div class="col-xs-8">
@@ -48,7 +48,7 @@
 </div>
 <% end %>
 
-<div class="prOptions clearfix">
+<div class="prOptions clearfix hidden-print">
 <% if @owner %>
     <%= link_to edit_newsroom_press_release_path(@newsroom, @press_release), class: "pull-left" do %><i class="fa fa-edit fa-lg"></i>&nbsp;Edit Press Release<% end %>
 <!-- <%= link_to newsroom_press_release_path(@newsroom, @press_release)+".pdf", format: :pdf, class: "pull-right" do %><i class="fa fa-file-pdf-o fa-lg"></i>&nbsp;Download PDF<% end %> -->
@@ -62,5 +62,5 @@
 </div>
 </div>
 </div>
-w
+
 <br>

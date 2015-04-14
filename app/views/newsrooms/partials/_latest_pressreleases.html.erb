@@ -2,7 +2,6 @@
 
 <div class="container">
 			<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix has-gutters">
-				<div id="pressreleases">
 					
 					<% @press_releases.each do |press_release| %>
 						<div class="col-sm-6 col-md-3 brick">
@@ -23,11 +22,13 @@
 						        <div class="clearfix"></div>
 						    </div> <!-- / .thumbnail -->
 						</div> <!-- / .col-sm-6 -->
-					<% end %>
+					<% end %>					
 					
-				</div>
 			</div>
-		<div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
-			<%= link_to "More Press Releases", pressreleases_path, class: "btn btn-default center-block", role: "button" %><br>
+		
+		<div class="text-center"><%= will_paginate @press_releases %></div>
+			
+		<!--<div class="col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
+			<%= link_to "More Press Releases", pressreleases_path, class: "btn btn-default center-block", role: "button" %><br>-->
 		</div>
 </div> <!-- / .container -->

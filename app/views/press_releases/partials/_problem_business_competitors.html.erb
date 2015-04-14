@@ -1,15 +1,15 @@
 <% unless @newsroom.problem_solved.blank? %>
-<hr>
+<hr class="hidden-print">
 <h4>Problem Solved</h4>
 <p><%= simple_format(@newsroom.problem_solved) %></p>
 <% end %>
 <% unless @newsroom.business_model.blank? %>
-<hr>
+<hr class="hidden-print">
 <h4>Business Model</h4>
 <p><%= simple_format(@newsroom.business_model) %></p>
 <% end %>
 <% unless @newsroom.competitors.blank? %>
-<hr>
+<hr class="hidden-print">
 <h4>Competitors</h4>
 <p><%= simple_format(@newsroom.competitors) %></p>
 <% end %>

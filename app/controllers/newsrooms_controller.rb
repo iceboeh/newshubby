@@ -49,7 +49,7 @@ class NewsroomsController < ApplicationController
   end
   
   def allpressreleases
-    @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 38)
+    @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 4)
   end
 
   def allnewsrooms
@@ -88,7 +88,7 @@ class NewsroomsController < ApplicationController
       @owner = false
     end
     
-    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank?
     
     # Payment code check
     #@code = @newsroom.code

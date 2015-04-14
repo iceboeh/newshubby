@@ -51,11 +51,13 @@
 	</div>
 <% end %>
 
+<!--
 <% if flash[:notice] %>
-	<div class="alert alert-success noticeFade">
+	<div class="alert alert-success noticeFade hidden">
 		<i class="fa fa-times closeAlert"></i><%= flash[:notice] %>
 	</div>
 <% end %>
+-->
 
 <%= render 'layouts/header' unless @disable_header == true %>
 

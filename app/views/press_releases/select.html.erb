@@ -1,14 +1,4 @@
-<style>
 
-	.brick { width: 230px;
-		float: left;
-		margin: 10px;
-	 }
-	
-	#masonry-container {
-	  margin: 0px auto;
-	}
-</style>
 
 <% title "Select Press Release Type" %>
 
@@ -18,12 +8,10 @@
 
 <div class="container">
 
-<div id="masonry-container" class="masonry-centered">
-
-
 <% PressreleaseType.all.each do |pressrelease_type| %>
 
-	<div class="brick panel text-center">
+	<div class="col-sm-3">
+	<div class="panel text-center">
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
 			<p><%= pressrelease_type.description %></p>
@@ -39,69 +27,71 @@
 			Parternerships: For when your company is partnering up with others
 			-->
 
-			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success omnes center-block" %>
+			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success center-block" %>
+		</div>
 		</div>
 	</div>
 
 <% end %>
 <% end %>
 
-
-
-	<div class="brick panel">
+<div class="col-sm-3">
+	<div class="panel">
 		<div class="panel-body">
 			<h4>Product Launch</h4>
 			<p>For when your company is launching a new product.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
-						
+			</div>		
 		</div>
 	</div>
 
-	<div class="brick panel">
+<div class="col-sm-3">
+	<div class="panel">
 		<div class="panel-body">
 			<h4>User Metrics</h4>
 			<p>For when you have successful user metrics.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
-						
+			</div>		
 		</div>
 	</div>
 
-
-	<div class="brick panel">
+<div class="col-sm-3">
+	<div class="panel">
 		<div class="panel-body">
 			<h4>Financial Metrics</h4>
 			<p>For when you have successful financial metrics.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
-						
+			</div>			
 		</div>
 	</div>
 
-
-	<div class="brick panel">
+<div class="col-sm-3">
+	<div class="panel">
 		<div class="panel-body">
 			<h4>New location</h4>
 			<p>For when opening up your business in a new location.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
-						
+			</div>			
 		</div>
 	</div>
 
 
-	<div class="brick panel">
+<div class="col-sm-3">
+	<div class="panel">
 		<div class="panel-body">
 			<h4>Pivot</h4>
 			<p>For when doing a pivot that changes your roadmap.</p>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
-						
+			</div>			
 		</div>
 	</div>
 
-</div> <!-- Masonry -->
+</div>
 
 
 </div>

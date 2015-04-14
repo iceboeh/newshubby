@@ -9,7 +9,7 @@
        <div class="row">
            <div class="col-sm-6 col-sm-offset-3 hubertBasic">
                <div class="panel panel-body">
-								 <h6 class="text-muted">Step 3 of 11</h6>
+								 <h6 class="text-muted pull-right">Step 3 of 4</h6>
 	                        <h4>What does <strong><%= @newsroom.company_name %></strong> do?</h4>
 												<% if @newsroom.q_what_you_do.blank? %>
 													<%= f.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} " %>
@@ -24,6 +24,7 @@
 	        </div> <!-- / .row -->
 	    </div> <!-- / .container-fluid -->
 	</div> <!-- / .question -->
+
 		
 		<%= render "submit", f: f %>
 
