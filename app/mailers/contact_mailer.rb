@@ -19,4 +19,11 @@ class ContactMailer < ActionMailer::Base
     mail(from: "hello@newshubby.com", to: @press_release.newsroom.email, subject: "NewsHubby Press release distribution service")
   end
   
+  
+  def welcome_mail(newsroom)
+    @newsroom = newsroom
+    #@newsroom = @press_release.newsroom
+    mail(from: "hello@newshubby.com", to: @newsroom.email, subject: "Welcome to NewsHubby")
+  end
+  
 end

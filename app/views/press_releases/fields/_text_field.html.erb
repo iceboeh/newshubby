@@ -1,8 +1,4 @@
-<% if @nr_questions %>
-<div class="question" id="q<%= index+11 %>">
-<% else %>
 <div class="question" id="q<%= index+2 %>">
-<% end %>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -15,6 +11,8 @@
 											<% field_name = field.name.to_sym %>
 											<% if @press_release.specifics[field_name].blank? %>
 								        <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{field.prefill.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}")}" %>
+											<% elsif field_name == :text_manual %>
+								      	<%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "14", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% else %>
 								      <%= press_release.text_area field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>

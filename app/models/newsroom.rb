@@ -54,11 +54,10 @@ class Newsroom < ActiveRecord::Base
   validates :term_agreement, acceptance: { accept: true }
   
   #validates_presence_of :logo, if: :on_logo_step?
-  
-  
+    
   has_attached_file :logo, :styles => { :large => "800x800>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/,
-  :less_than => 2.megabytes
+  :less_than => 5.megabytes
 
   
   # Include default devise modules. Others available are:

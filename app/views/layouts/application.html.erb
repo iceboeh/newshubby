@@ -3,7 +3,7 @@
 <head>
 	<%= favicon_link_tag 'images/favicon.ico' %>
 	
-  <title><% if @title.blank? %>NewsHubby<% else %><%= @title %><% end %></title>
+  <title><%= content_for?(:title) ? content_for(:title) : "NewsHubby – Do-it-yourself Press Releases" %></title>
 	
 	<style type="text/css">
 	<%= Rails.application.assets.find_asset('application.css').to_s.html_safe %>

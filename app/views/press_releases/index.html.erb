@@ -1,6 +1,8 @@
+<% title "#{@newsroom.company_name.possessive} Press Releases" %>
+
 <div class="shortPage">
 	<div class="container">
-	    <h2 class="text-center">Latest Press Releases</h2>  
+	    <h2 class="text-center"><%= @newsroom.company_name.possessive %> Press Releases</h2>  
 
 			<% if @press_releases.blank? %>
 				<h3 class="text-center text-muted"><%= @newsroom.company_name %> has no press releases yet.</h3>

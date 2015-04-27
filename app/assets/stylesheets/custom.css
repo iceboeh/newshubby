@@ -266,13 +266,9 @@ ul {
   outline: 0px !important;
   -webkit-appearance: none !important; }
 
-/* line 287, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
-.panel-heading {
-  background-color: #fd4f57 !important;
-  color: white !important; }
-  /* line 291, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
-  .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6 {
-    margin: 0; }
+/* line 291, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+.panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6 {
+  margin: 0; }
 
 /* line 296, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .well {
@@ -362,10 +358,6 @@ textarea {
 .alert:hover > .closeAlert {
   color: red; }
 
-/* line 375, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
-.alert:hover {
-  cursor: pointer; }
-
 /* line 384, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .alert a {
   color: inherit; }
@@ -428,8 +420,70 @@ textarea {
   top: 100px;
   right: 20px; }
 
+/* line 437, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+#infscr-loading {
+  text-align: center;
+  z-index: 100;
+  position: fixed;
+  left: 50%;
+  bottom: 60px;
+  width: 300px;
+  padding: 10px;
+  background: #000;
+  opacity: 0.8;
+  color: #FFF;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  transition: none; }
+
+/* line 455, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+.btn-ghost {
+  background-color: transparent !important;
+  border: 2px solid white !important;
+  color: white; }
+  /* line 460, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  .btn-ghost:hover {
+    background-color: #fd4f57 !important;
+    border: 2px solid white !important;
+    color: white; }
+  /* line 466, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  .btn-ghost:focus {
+    border: 2px solid white !important;
+    color: white; }
+
+/* line 472, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+.payplan-option {
+  background-color: #E3E3E3;
+  padding: 20px; }
+
+/* line 477, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+.img-muted {
+  filter: gray;
+  /* IE6-9 */
+  filter: grayscale(1);
+  /* Firefox 35+ */
+  -webkit-filter: grayscale(1);
+  /* Google Chrome, Safari 6+ & Opera 15+ */ }
+
+/* line 484, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+.template-type {
+  color: #333; }
+  /* line 487, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  .template-type:hover {
+    text-decoration: none; }
+  /* line 491, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  .template-type:hover > .panel .panel-body {
+    background-color: #77C094;
+    text-decoration: none; }
+  /* line 496, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  .template-type:hover > .panel .panel-body h4 {
+    color: white;
+    text-decoration: none; }
+
 @media (min-width: 768px) {
-  /* line 439, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 505, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .shortPage {
     padding-top: 95px;
     padding-bottom: 95px; }
@@ -695,25 +749,13 @@ indexSplash .thumbnail .caption h3 {
   /* line 163, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
   .ghostPanel :-ms-input-placeholder {
     color: white; }
-  /* line 167, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
-  .ghostPanel .btn-ghost {
-    background-color: transparent !important;
-    border: 2px solid white !important;
-    color: white; }
-    /* line 172, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
-    .ghostPanel .btn-ghost:hover {
-      background-color: #fd4f57 !important;
-      border: 2px solid white !important; }
-    /* line 177, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
-    .ghostPanel .btn-ghost:focus {
-      border: 2px solid white !important; }
 
 @media (min-width: 768px) {
-  /* line 184, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
+  /* line 170, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
   #indexText {
     top: 50%; }
 
-  /* line 188, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
+  /* line 174, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/index */
   .newsletterSignup {
     width: 350px;
     text-align: right;
@@ -1337,45 +1379,28 @@ background-color: rgba(255,255,255,.2);
   a[href]:after {
     content: none; }
 
-  /* line 101, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
-  .prTop {
-    background-color: #626262 !important; }
-
-  /* line 105, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
+  /* .prTop {
+        background-color: #626262 !important;
+        h4 {
+            color: #fff !important;
+        }
+    } */
+  /* line 108, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
   .pr-heading {
     border-bottom: none; }
 
-  /* line 109, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
-  .feature-img-area {
-    border: 3px solid #eee; }
-
-  /* line 113, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
-  .feature-img-caption {
-    background-color: #eee !important; }
-		
-	.pr-generated {
-		page-break-inside: avoid;
-	}
+  /*.feature-img-area {
+       border: 3px solid #eee;
+    }
+    
+    .feature-img-caption {
+        background-color: #eee !important;
+    } */
+  /* line 120, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/pressreleases */
+  .pr-generated {
+    page-break-inside: avoid; }
  }
 
 /* line 1, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/paywall */
 .pwBody {
   margin-top: 100px; }
-
-#infscr-loading {
-  text-align: center;
-  z-index: 100;
-  position: fixed;
-  left: 50%;
-  bottom: 60px;
-  width: 300px;
-  padding: 10px;
-	transform: translateX(-50%);
-	transition: none;
-  background: #000;
-  opacity: 0.8;
-  color: #FFF;
-  -webkit-border-radius: 10px;
-     -moz-border-radius: 10px;
-          border-radius: 10px;
-}

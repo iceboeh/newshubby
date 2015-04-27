@@ -1,5 +1,3 @@
-
-
 <% title "Select Press Release Type" %>
 
 <div class="shortPage">
@@ -8,13 +6,26 @@
 
 <div class="container">
 
-<% PressreleaseType.all.each do |pressrelease_type| %>
+<div class="row">
+
+<div class="col-sm-12">
+			<%= link_to "Write a press release from scratch", "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{@manual.id}", class: "btn btn-default center-block pull-right" %>
+	</div>
+</div>
+<br>
+
+<div class="row">
+	
+	<h2 class="text-center">What are you announcing?</h2>
+	
+<% @press_release_types.each do |pressrelease_type| %>
 
 	<div class="col-sm-3">
+		<%= link_to "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "template-type" do %>
+
 	<div class="panel text-center">
 		<div class="panel-body">
 			<h4><%= pressrelease_type.name %></h4>
-			<p><%= pressrelease_type.description %></p>
 			<%= image_tag "press_release_types/#{pressrelease_type.name.parameterize("_")}.png", class: "img-responsive" %>
 			<!--
 			Company launch: <p>For when you are launching a company</p>
@@ -26,31 +37,29 @@
 			Funding: For when your company gets funded
 			Parternerships: For when your company is partnering up with others
 			-->
-
-			<%= link_to pressrelease_type.name, "#{request.protocol}#{request.host_with_port}/#{current_newsroom.slug}/pressreleases/new?pressrelease_type_id=#{pressrelease_type.id}", class: "btn btn-success center-block" %>
 		</div>
 		</div>
+		<% end %>
 	</div>
 
 <% end %>
 <% end %>
 
 <div class="col-sm-3">
-	<div class="panel">
+	<div class="panel text-center">
 		<div class="panel-body">
 			<h4>Product Launch</h4>
-			<p>For when your company is launching a new product.</p>
-				
+			<%= image_tag "press_release_types/product_launch.png", class: "img-responsive img-muted" %>
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 			</div>		
 		</div>
 	</div>
 
 <div class="col-sm-3">
-	<div class="panel">
+	<div class="panel text-center">
 		<div class="panel-body">
 			<h4>User Metrics</h4>
-			<p>For when you have successful user metrics.</p>
+			<%= image_tag "press_release_types/user_metrics.png", class: "img-responsive img-muted" %>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 			</div>		
@@ -59,9 +68,9 @@
 
 <div class="col-sm-3">
 	<div class="panel">
-		<div class="panel-body">
+		<div class="panel-body text-center">
 			<h4>Financial Metrics</h4>
-			<p>For when you have successful financial metrics.</p>
+			<%= image_tag "press_release_types/financial_metrics.png", class: "img-responsive img-muted" %>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 			</div>			
@@ -69,10 +78,10 @@
 	</div>
 
 <div class="col-sm-3">
-	<div class="panel">
+	<div class="panel text-center">
 		<div class="panel-body">
 			<h4>New location</h4>
-			<p>For when opening up your business in a new location.</p>
+			<%= image_tag "press_release_types/new_location.png", class: "img-responsive img-muted" %>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 			</div>			
@@ -81,10 +90,10 @@
 
 
 <div class="col-sm-3">
-	<div class="panel">
+	<div class="panel text-center">
 		<div class="panel-body">
 			<h4>Pivot</h4>
-			<p>For when doing a pivot that changes your roadmap.</p>
+			<%= image_tag "press_release_types/pivot.png", class: "img-responsive img-muted" %>
 				
 			<%= link_to "Coming soon", "#", class: "btn btn-default omnes center-block", disabled: "disabled" %>	
 			</div>			
@@ -92,9 +101,9 @@
 	</div>
 
 </div>
-
-
 </div>
+</div>
+<div class="push"></div>
 </div>
 
 <script>
