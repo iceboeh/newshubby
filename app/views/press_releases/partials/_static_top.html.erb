@@ -23,7 +23,7 @@
 						<% unless @newsroom.twitter.blank? %>
             <li><i class="fa-li fa fa-twitter fa-lg" title="Twitter"></i><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></li>
 						<% end %>
-            <% unless @newsroom.press_phone.blank? >
+            <% unless @newsroom.press_phone.blank? %>
 						<li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
 						<% end %>
         </ul>
