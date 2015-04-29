@@ -5,18 +5,20 @@
 	
   <title><%= content_for?(:title) ? content_for(:title) : "NewsHubby – Do-it-yourself Press Releases" %></title>
 	
+  <%= csrf_meta_tags %>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
 	<style type="text/css">
 	<%= Rails.application.assets.find_asset('application.css').to_s.html_safe %>
 	</style>
 	
  	<%= stylesheet_link_tag 'application', :media => 'screen', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag "https://js.stripe.com/v2/", 'application', 'data-turbolinks-track' => true %>
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	<%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
-
-  <%= csrf_meta_tags %>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<%= analytics_init if Rails.env.production? %>
 
