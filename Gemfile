@@ -94,6 +94,10 @@ gem 'rails_autolink'
 
 gem 'rails-assets-RRSSB'
 
+# Paperclip memory
+
+gem 'posix-spawn'
+
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 # Possessive pronoun to words "NewsHubby's"

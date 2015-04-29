@@ -132,6 +132,7 @@ GEM
       cocaine (~> 0.5.3)
       mime-types
     pdfkit (0.6.2)
+    posix-spawn (0.3.11)
     possessive (1.0.1)
     rack (1.5.2)
     rack-test (0.6.3)
@@ -239,6 +240,7 @@ DEPENDENCIES
   nested_form
   paperclip (~> 4.1)
   pdfkit
+  posix-spawn
   possessive
   rails
   rails-assets-RRSSB

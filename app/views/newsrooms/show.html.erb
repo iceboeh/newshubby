@@ -127,12 +127,19 @@
 								
 									<%= @newsroom.differentiation %>
 							</p>
+							<% unless @newsroom.problem_solved.blank? %>
               <h4>Problem Solved</h4>
               <p><%= simple_format(@newsroom.problem_solved) %></p>
+							<% end %>
+							<% unless @newsroom.business_model.blank? %>
               <h4>Business Model</h4>
               <p><%= simple_format(@newsroom.business_model) %></p>
+							<% end %>
+							<% unless @newsroom.competitors.blank? %>
               <h4>Competitors</h4>
               <p><%= simple_format(@newsroom.competitors) %></p>
+							<% end %>
+							<% unless @newsroom.fundings.blank? %>
               <h4>Funding</h4>
 							<% @newsroom.fundings.each do |funding| %>
               <% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><p><%= funding.investment_type %><br>
@@ -140,6 +147,8 @@
 							<p><%= funding.investment_type %>: <%= funding.name %><br>
 							<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %><% unless funding.amount.blank? %> | $<%= funding.amount %><% end %><% end %></p>
 							<% end %>
+							<% end %>
+							<% unless @newsroom.people.blank? %>
               <h4>Key People</h4>
               <div class="row">
 								<% @newsroom.people.each do |person| %>
@@ -147,12 +156,14 @@
                       <p><strong><%= person.name %></strong>&nbsp;<%= "("+person.role+")" unless person.role.blank? %><br><small><%= person.presentation %></small></p>
                   </div>
 								<% end %>
+								<% end %>
               </div> <!-- / .row -->
           </div> <!-- / .col-md-8 -->
       </div> <!-- /.row -->
   </div> <!-- / .container -->
 </div> <!-- / .nrRow -->
 <% end %>
+
 
 <% unless @newsroom.uploads.blank? && @newsroom.links.blank? %>
 <div class="nrRow">
