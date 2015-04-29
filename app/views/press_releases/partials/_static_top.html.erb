@@ -20,9 +20,12 @@
 						
             <li><i class="fa-li fa fa-home fa-lg" title="Website"></i><%= link_to @newsroom.website, @newsroom.website, target: "_blank" %></li>
             <li><i class="fa-li fa fa-envelope" title="Email"></i><%= mail_to @newsroom.press_email, @newsroom.press_email %></li>
-						
+						<% unless @newsroom.twitter.blank? %>
             <li><i class="fa-li fa fa-twitter fa-lg" title="Twitter"></i><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></li>
-            <li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
+						<% end %>
+            <% unless @newsroom.press_phone.blank? %>
+						<li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
+						<% end %>
         </ul>
     </div> <!-- / .col-xs-5 col-xs-offset-1 -->
     <div class="col-xs-5">
