@@ -33313,6 +33313,35 @@ $(document).ready(function() {
 });
 (function() {
   jQuery(function() {
+    $(function() {
+      var $container;
+      $container = $('#masonry-container');
+      $container.imagesLoaded(function() {
+        $container.masonry({
+          itemSelector: '.brick'
+        });
+      });
+      $container.infinitescroll({
+        navSelector: '.pagination',
+        nextSelector: '.pagination .next_page',
+        itemSelector: '.brick',
+        loading: {
+          finishedMsg: 'No more press releases to load.',
+          img: '/assets/masonry/loader.gif'
+        }
+      }, function(newElements) {
+        var $newElems;
+        $newElems = $(newElements).css({
+          opacity: 0
+        });
+        $newElems.imagesLoaded(function() {
+          $newElems.animate({
+            opacity: 1
+          });
+          $container.masonry('appended', $newElems, true);
+        });
+      });
+    });
     return $(function() {
       var $container;
       $container = $("#masonry-container");
