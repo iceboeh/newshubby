@@ -21,6 +21,11 @@
     <%= f.text_field :description %>
   </div>
 	
+  <div class="field">
+    <%= f.label :required_fields %><br>
+    <%= f.text_field :required_fields %>
+  </div>
+	
 	<div>
 	<%= f.fields_for :fields do |builder| %>
 		<%= render 'field_fields', f: builder %>

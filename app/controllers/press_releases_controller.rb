@@ -94,9 +94,9 @@ class PressReleasesController < ApplicationController
     @press_release = @newsroom.press_releases.friendly.find(params[:id])
     
     # Check required fields and make array
-    @required_fields = @press_release.pressrelease_type.description.split(",")
+    @required_fields = @press_release.pressrelease_type.required_fields.split(",") unless @press_release.pressrelease_type.required_fields.nil?
     # Sätt inte count här, utan på opopulerade fält
-    @required_fields_count = @required_fields.count
+    @required_fields_count = @required_fields.count unless @required_fields.nil?
     
     # Check which fields are populated/unpopulated
     @newsroom_fields = ["q_who_are_you", "q_what_you_do", "q_how_you_achieve", "q_clients", "business_model", "competitors", "differentiation", "problem_solved", "people", "fundings"] # These are all the Newsroom qustions
@@ -107,10 +107,12 @@ class PressReleasesController < ApplicationController
     @blank_fields = Array.new
     
     # Check which fields are populated/unpopulated
-    @required_fields.each do |field|
-      if @newsroom_fields.include? field
-        command = "@newsroom." + field.to_s
-        @blank_fields << field.to_s if eval(command).blank?
+    unless @required_fields.nil?
+      @required_fields.each do |field|
+        if @newsroom_fields.include? field
+          command = "@newsroom." + field.to_s
+          @blank_fields << field.to_s if eval(command).blank?
+        end
       end
     end
     
