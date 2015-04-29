@@ -19,7 +19,7 @@
               </div> <!-- / .overlay-message -->
 					
 						<div id="q-container">
-														
+																					
 							<%= nested_form_for([@newsroom, @press_release], html: { multipart: true }, remote: true) do |f| %>
 							
 		          <div class="text-center" id="nav-container">
@@ -129,7 +129,7 @@
 
 										<% end %>
 
-										<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
 										<div class="container-fluid">
 										    <div class="row">
 										        <div class="col-xs-12">
@@ -145,7 +145,7 @@
 										</div> <!-- / .container-fluid -->
 										</div> <!-- / .question -->
 										
-										<div class="overlay-message" id="modal<%= 2 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
 												<div class="panel panel-default">
 										        <div class="panel-body">
 										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -167,7 +167,7 @@
 										</div> <!-- / .overlay-message -->
 										
 
-										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
 										
 										<div class="container-fluid">
 										    <div class="row">
@@ -185,7 +185,7 @@
 										</div> <!-- / .question -->
 										
 
-										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+										<div class="overlay-message" id="modal<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
 												<div class="panel panel-default">
 										        <div class="panel-body">
 										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -201,7 +201,7 @@
 										</div> <!-- / .overlay-message -->
 										
 
-										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+										<div class="question" id="q<%= 5 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
 				                <div class="container-fluid">
 				                    <div class="row">
 				                        <div class="col-xs-12">

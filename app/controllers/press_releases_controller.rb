@@ -99,21 +99,23 @@ class PressReleasesController < ApplicationController
     @required_fields_count = @required_fields.count
     
     # Check which fields are populated/unpopulated
-    @newsroom_fields = ["q_who_are_you", "q_what_you_do", "q_how_you_achieve", "q_clients", "business_model", "competitors", "differentiation", "problem_solved"] # These are all the Newsroom qustions
+    @newsroom_fields = ["q_who_are_you", "q_what_you_do", "q_how_you_achieve", "q_clients", "business_model", "competitors", "differentiation", "problem_solved", "people", "fundings"] # These are all the Newsroom qustions
+    
+    # IF WE NEED TO ADD "people", "funding", etc we have to do a smarter check below. Check @newsroom.fundings and @newsroom.people instead of @newsroom[people] because it's not a field
 
     # Make array for unpopulated fields
-    @blank_fields = []
+    @blank_fields = Array.new
     
     # Check which fields are populated/unpopulated
     @required_fields.each do |field|
       if @newsroom_fields.include? field
-        @blank_fields << field.to_s if @newsroom[field].blank?
-        puts @blank_fields
+        command = "@newsroom." + field.to_s
+        @blank_fields << field.to_s if eval(command).blank?
       end
     end
     
     # Count unpopulated fields (array.count)
-    @blank_fields_count = @blank_fields.count + 1
+    @blank_fields_count = @blank_fields.count
 
     
     # Each unpopulated field should get a NUMBER so we know which one it is. 

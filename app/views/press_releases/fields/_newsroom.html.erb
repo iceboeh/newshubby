@@ -16,8 +16,8 @@
 	Count to set div numbers with doing a .count on array
 
 -->
-<% if @newsroom.people.blank? %>
-<div class="question" id="q<%= @blank_fields.index("people")+ @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.people.blank? && @blank_fields.index("people") != nil %>
+<div class="question" id="q<%= @blank_fields.index("people") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -47,7 +47,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("people") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("people") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -69,8 +69,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.q_what_you_do.blank? %>
-<div class="question" id="q<%= @blank_fields.index("what") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.q_what_you_do.blank? && @blank_fields.index("q_what_you_do") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_what_you_do") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -96,7 +96,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("what") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_what_you_do") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -118,8 +118,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.q_how_you_achieve.blank? %>
-<div class="question" id="q<%= @blank_fields.index("how") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.q_how_you_achieve.blank? && @blank_fields.index("q_how_you_achieve") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_how_you_achieve") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -145,7 +145,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("how") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_how_you_achieve") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -160,8 +160,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.q_clients.blank? %>
-<div class="question" id="q<%= @blank_fields.index("clients") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.q_clients.blank? && @blank_fields.index("q_clients") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_clients") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -187,7 +187,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("clients") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_clients") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -203,8 +203,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.q_what_you_do.blank? %>
-<div class="question" id="q<%= @blank_fields.index("what") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.business_model.blank? && @blank_fields.index("business_model") != nil %>
+<div class="question" id="q<%= @blank_fields.index("business_model") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -226,7 +226,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("what") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("business_model") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -241,8 +241,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.differentiation.blank? %>
-<div class="question" id="q<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.differentiation.blank? && @blank_fields.index("differentiation") != nil %>
+<div class="question" id="q<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -268,7 +268,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -283,7 +283,7 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.competitors.blank? %>
+<% if @newsroom.competitors.blank? && @blank_fields.index("competitors") != nil %>
 <div class="question" id="q<%= @blank_fields.index("competitors") +	 @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
@@ -306,7 +306,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("competitors") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("competitors") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -321,8 +321,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.problem_solved.blank? %>
-<div class="question" id="q<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.problem_solved.blank? && @blank_fields.index("problem_solved") != nil %>
+<div class="question" id="q<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -344,7 +344,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 1 %>">
+<div class="overlay-message" id="modal<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -359,8 +359,8 @@
 </div> <!-- / .overlay-message -->
 <% end %>
 
-<% if @newsroom.fundings.blank? %>
-<div class="question" id="q<%= @blank_fields.index("funding") + @press_release.pressrelease_type.fields.count + 1 %>">
+<% if @newsroom.fundings.blank? && @blank_fields.index("fundings") != nil %>
+<div class="question" id="q<%= @blank_fields.index("fundings") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
