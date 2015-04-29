@@ -66,7 +66,7 @@ gem 'rails4-autocomplete'
 
 gem 'jquery-ui-rails'
 
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'font-awesome-sass'#, '~> 4.3.0'
 
 #gem 'font-awesome-rails'
 
