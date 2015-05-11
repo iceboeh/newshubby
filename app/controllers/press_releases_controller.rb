@@ -73,6 +73,7 @@ class PressReleasesController < ApplicationController
     #else
       unless @newsroom.company_name.blank?
         @press_release.uploads.build
+        @press_release.links.build
         @press_release.hex = SecureRandom.urlsafe_base64(6)
         if @press_release.newsroom.people.last.nil?
           @press_release.newsroom.people.build

@@ -35,14 +35,14 @@
                     <h1><%= @press_release.title %></h1><br>
 										<div class="feature-img-area">
 											<% unless @press_release.uploads.first.nil? %>
-	                    <% if @press_release.uploads.first.file.blank? %>
+	                    <% if @press_release.uploads.first.blank? %>
 											<%= image_tag "images/feature_img.png", class: "center-block feature-img", alt: "" %>
 											<% else %>
                         <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), @press_release.uploads.first.file.url(:original) %>
 											<% end %><% end %>
                         <div class="feature-img-caption">
                             <p><small>
-															<% if @press_release.uploads.first.file.blank? %>
+															<% if @press_release.uploads.first.blank? %>
 															This text will be replaced by your image caption
 															<% else %>
 															<%= @press_release.uploads.first.caption %>
@@ -78,7 +78,8 @@
 											<% end %>
 											<% end %>
                     </ul><br>
-                    <div id="masonry-container" class="row infinite-scroll clearfix has-gutters">
+                    <div class="row infinite-scroll clearfix has-gutters">
+											<% unless @press_release.uploads.blank? %>
 											<% @press_release.uploads.all[1..-1].each do |upload| %>
 											<% unless upload.file.blank? %>
                         <div class="col-xs-4 brick">
@@ -87,6 +88,7 @@
                                 <p><small><%= upload.caption %></small></p>
                            <% end %>
                         </div>
+											<% end %>
 											<% end %>
 											<% end %>
 											

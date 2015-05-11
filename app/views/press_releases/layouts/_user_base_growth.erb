@@ -1,0 +1,50 @@
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+												
+                        <p>
+                            <span>
+
+															<% users_change = @press_release.specifics[:users].to_i - @press_release.specifics[:compare_users].to_i unless @press_release.specifics[:users].blank? || @press_release.specifics[:compare_users].blank? %>
+															
+															<% percent_change = (@press_release.specifics[:users].to_i / @press_release.specifics[:compare_users].to_i) * 100 unless @press_release.specifics[:users].blank? || @press_release.specifics[:compare_users].blank? %>
+															
+															<%= @newsroom.company_name.possessive + " user base has increased with" %> <%= users_change.to_s %> - <%= "which means an increase of " + percent_change.to_s + "% " + "since" unless percent_change.blank? %> <%= @date.strftime("%B %d, %Y") unless @date.blank? %>. <%= "Today " + @newsroom.company_name + " has" %> <%= @press_release.specifics[:users] + " users." unless @press_release.specifics[:users].blank? %>
+															
+														</span>
+                        </p>
+												
+												<%= render 'press_releases/fields/quote' %>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+												<p>
+													<% unless @press_release.specifics[:next_step].blank? %>
+													- <%= (auto_link(@press_release.specifics[:next_step].chomp(".")+",", :target => '_blank')) %>
+													<% end %>
+													 says 
+													<% unless @newsroom.people.where(founder: true).blank? %>
+														<%= @newsroom.people.where(founder: true).first.name %>, founder of <%= @newsroom.company_name %>
+													<% else %>
+														<%= @newsroom.people.first.name %> at <%= @newsroom.company_name %>
+													<% end %>
+												</p>
+
+                        <p>
+                            <span>
+															<%= @press_release.specifics[:next_step] %>
+														</span>
+                        </p>
+												
+											<% unless @press_release.specifics[:prize_money] == "They received an award of " || @press_release.specifics[:prize_money].blank? %>
+                        <p>
+                            <span>
+															<%= @press_release.specifics[:prize_money] %>
+														</span>
+                        </p>
+											<% end %>
+
+
+<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/static_bottom' %>

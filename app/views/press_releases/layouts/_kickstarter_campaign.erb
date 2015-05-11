@@ -1,0 +1,24 @@
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+												
+                        <p>
+                            <span>
+															<%= @newsroom.company_name + " is launching a Kickstarter campaign" %> <%= @press_release.specifics[:purpose] unless @press_release.specifics[:purpose].blank? %>
+														</span>
+                        </p>
+
+												<%= render 'press_releases/fields/quote' %>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+												<p>
+                            <span>
+															<em>About Kickstarter by Kickstarter:</em><br>
+															Kickstarter is the world's largest funding platform for creative projects. A home for film, music, art, theater, games, comics, design, photography, and more. Together, creators and backers make projects happen. Project creators set a funding goal and deadline. If people like a project, they can pledge money to make it happen. Funding on Kickstarter is all-or-nothing — projects must reach their funding goals to receive any money.
+														</span>
+                        </p>
+																								
+												<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/static_bottom' %>
