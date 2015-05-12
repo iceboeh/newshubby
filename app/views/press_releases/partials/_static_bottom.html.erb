@@ -9,7 +9,7 @@
 											<% elsif link.link.include? "vimeo.com"%>
 											<% else %>
 												
-												<% if link.link.start_with?("http://") %>
+												<% if link.link.start_with?("http://") || link.link.start_with?("https://") %>
                         <li><%= link_to link.caption, link.link, target: "_blank" %></li>
 												<% else %>
 												<li><%= link_to link.caption, "http://"+link.link, target: "_blank" %></li>

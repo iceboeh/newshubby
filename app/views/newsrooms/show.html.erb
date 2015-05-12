@@ -175,7 +175,7 @@
 								<h4 class="text-muted"><%= @newsroom.company_name %> has no videos and images yet.</h4>
 							<% else %>
 							<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
-							<% @newsroom.press_releases.each do |press_release| %>
+							<% @press_releases.each do |press_release| %>
 							<% press_release.links.each do |link| %>
 							<% unless link.link.nil? || link.press_release.embargo >= Date.today && link.press_release.exclusive || false %>
 							<% if link.link.include? "youtube.com" %>
