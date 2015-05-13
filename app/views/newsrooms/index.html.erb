@@ -30,7 +30,7 @@
         <h1 class="text-center">Do-it-yourself Press Releases</h1>
         <br>
         <a href="#video"><button class="btn btn-default btn-lg">Learn more</button></a>&nbsp;
-				<%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+				<%= link_to "Sign Up", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
     </div>
     <div class="scrollDown"><a href="#video"><i class="fa fa-chevron-down fa-2x"></i></a></div>
 </div> <!-- / #indexBkg -->
@@ -77,9 +77,9 @@
         </div> <!-- .row -->
     </div> <!-- /.container -->
 		<p class="text-center"><% if current_newsroom.nil? %>
-			<%= link_to "Create a Press Release now", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+			<%= link_to "Create a Press Release now", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
 			<% else %>
-			<%= link_to "Create a Press Release now", select_path, class: "btn btn-primary btn-lg" %>
+			<%= link_to "Create a Press Release now", select_path, class: "btn btn-action btn-lg" %>
 			<% end %>
 		</p>
 </div> <!-- /.indexSplash -->
@@ -139,10 +139,5 @@ $(document).ready(function () {
     }
 
 });
-
-/* $('#indexTab a').click(function (e) {
-	e.preventDefault()
-	$(this).tab('show')
-}) */
 	
 </script>

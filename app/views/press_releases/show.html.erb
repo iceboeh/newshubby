@@ -3,49 +3,50 @@
 <% unless @owner %><br><br><br><% end %>
 
 <% if @owner %>
+    <div class="prStateContainer container-fluid hidden-print">
+        <div class="prWrapper">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="panel text-center">
+                        <div class="panel-body">
+                            <% if @press_release.exclusive? %>
+                                <h4 class="prState text-primary">This press release is <strong class="prStateText"><i class="fa fa-eye-slash"></i> unlisted</strong></h4>
+                            <% else %>
+                                <h4 class="prState text-primary">This press release is <strong class="prStateText">public</strong></h4>
+                            <% end %>
+                            
+    						<% if @press_release.exclusive? %>
+    							<p class="prLink">Use the link below to share your press release while it's unlisted:</p>
+                                <div class="well prLink"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
+    						<% else %>
+    						  <p class="hidden prLink">Use the link below to share your press release while it's unlisted:</p>
+                                <div class="well hidden prLink"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
+    						<% end %>
 
-<div class="container-fluid prStateContainer hidden-print">
-    <div class="prWrapper">
-        <div class="row">
-            <div class="col-xs-8">
-                <div class="panel text-center">
-                    <div class="panel-body">
-                       <!-- <h4>This press release is currently <strong>publicly visible</strong></h4>
-                        <p>Use the link below to share it</p>-->
-                        <% if @press_release.exclusive? %><h4 class="prState text-info">This press release is <strong class="prStateText">unlisted</strong></h4><% else %><h4 class="prState text-primary">This press release is <strong class="prStateText">public</strong></h4><% end %>
-                        
-												<% if @press_release.exclusive? %>
-												<p class="prLink">Use the link below to share your press release while it's unlisted:</p>
-                        <div class="well prLink"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
-												<% else %>
-												<p class="hidden prLink">Use the link below to share your press release while it's unlisted:</p>
-                        <div class="well hidden prLink"><%= newsroom_press_release_url(@press_release.newsroom, @press_release) + "/?&hex=#{@press_release.hex}" %></div>
-												<% end %>
-                        <!-- <p>or click the button to hide it from the public</p>-->
-                         <% if @press_release.exclusive? %>
-												 <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-info", id: "prStateBtn" %>
-												 <% else %>
-												 <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-primary", id: "prStateBtn" %>
-												 <% end %>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4">
-                <div class="panel text-center prSendToPress">
-                    <div class="panel-body">
-                       <div class="centerContainer">
-												 <div class="centerContent">
-												<h4>Let Newshubby distribute this Press Release</h4><br>
-													<%= link_to "Send to Press", distribution_path(id: @press_release.id), class: "btn btn-primary btn-lg" %>
-												<br><br><p><small>* No commitment. We'll contact you with a distribution plan and price.</small></p>
-											 	</div>
-										 </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                            <% if @press_release.exclusive? %>
+    				            <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-primary", id: "prStateBtn" %>
+    						<% else %>
+    					       <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-primary", id: "prStateBtn" %>
+    						<% end %>
+                        </div> <!-- / .panel-body -->
+                    </div> <!-- / .panel -->
+                </div> <!-- / .col -->
+                <div class="col-sm-4">
+                    <div class="panel text-center prSendToPress">
+                        <div class="panel-body">
+                           <div class="centerContainer">
+    					        <div class="centerContent">
+    								<h4>Let Newshubby distribute this Press Release</h4><br>
+    									<%= link_to "Send to Press", distribution_path(id: @press_release.id), class: "btn btn-action btn-lg" %>
+    								<!-- <br><br><p><small>* No commitment by clicking. We'll contact you with a distribution plan and price.</small></p> -->
+    						 	</div> <!-- / .centerContent -->
+    						</div> <!-- / .centerContainer -->
+                        </div> <!-- / .panel-body -->
+                    </div> <!-- / .panel -->
+                </div> <!-- / .col -->
+            </div> <!-- / .row-->
+        </div> <!-- / .prWrapper-->
+    </div> <!-- prStateContainer -->
 <% end %>
 
 <div class="prOptions clearfix hidden-print">

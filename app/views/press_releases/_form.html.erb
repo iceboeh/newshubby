@@ -1,250 +1,255 @@
 <div class="flexBox">
-    <div id="presto-content">
-        <div id="sidebar-area">
-          
-					<div class="overlay-message saveStatus saving">
-                  <div class="panel panel-default">
-                      <div class="panel-body">
-                        <i class="fa fa-refresh fa-spin"></i>&nbsp;Saving...
-                      </div> <!-- / .panel-body -->
-                  </div> <!-- / .panel -->
-              </div> <!-- / .overlay-message -->
-							
-					<div class="overlay-message saveStatus saved">
-                  <div class="panel panel-default">
-                      <div class="panel-body">
-                        <i class="fa fa-check text-success"></i>&nbsp;Saved
-                      </div> <!-- / .panel-body -->
-                  </div> <!-- / .panel -->
-              </div> <!-- / .overlay-message -->
-					
-						<div id="q-container">
-																					
-							<%= nested_form_for([@newsroom, @press_release], html: { multipart: true }, remote: true) do |f| %>
-							
-		          <div class="text-center" id="nav-container">
-								
-								<%= button_tag class: "btn prestoSkipBtn pull-left", id: "prev" do %>
-									<i class="fa fa-arrow-left"></i>&nbsp;Previous
-								<% end %>
-								
-								<%= link_to [@newsroom, @press_release], class: "pull-right btn btn-info", id: "distribute" do %>
-									Finish
-								<% end %>
-								
-								<div id="prestoType" class="text-center"><h4><%= @press_release.pressrelease_type.name %></h4></div>
-																
-								<%= button_tag class: "btn prestoSkipBtn pull-right", id: "next" do %>
-									Next&nbsp;<i class="fa fa-arrow-right"></i>
-								<% end %>
-		          </div> <!-- / #next-container -->
-              <div class="prestoNav">
-                  <ul id="prestoNavUL">
-                      
-                  </ul>
-              </div>
-							  <% if @press_release.errors.any? %>
-							    <div id="error_explanation">
-							      <h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this press_release from being saved:</h2>
+	<div id="presto-content">
+		<div id="sidebar-area">
 
-							      <ul>
-							      <% @press_release.errors.full_messages.each do |message| %>
-							        <li><%= message %></li>
-							      <% end %>
-							      </ul>
-							    </div>
-							  <% end %>
+			<div class="overlay-message saveStatus saving">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<i class="fa fa-refresh fa-spin"></i>&nbsp;Saving...
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
+			</div> <!-- / .overlay-message -->
 
-								<%= f.hidden_field :pressrelease_type_id %>
-								
-								<%= render 'press_releases/fields/newsroom', f: f %>
-								
-								<div class="question" id="q1">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                                        <p class="panel-title text-left">From what date do you allow journalists to publish information from this press release?</p>
-                                    </div> <!-- / .panel-heading -->
-                                    <div class="panel-body">
-                                      <%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-                                    </div> <!-- / .panel-body -->
-                                    <div class="panel-footer clearfix">
-                                        <div class="pull-left" id="textareaFeedback"></div>
-                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                                    </div><!--/ .panel-footer -->
-                                </div> <!-- / .panel -->
-                            </div> <!-- / .col-xs-12 -->
-                        </div> <!-- / .row -->
-                    </div> <!-- / .container-fluid -->
-                </div> <!-- / .question -->
-								
-								
-								<div class="overlay-message" id="modal1">
-										<div class="panel panel-default">
-								        <div class="panel-body">
-								            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-								            <h5>
-								                <span class="text-primary"><strong>Remember: </strong></span>
-								            </h5>
-								            <p>
-								             	Set a date for when it's okay for journalists to spread the information from this press release.
-								            </p>
-								        </div> <!-- / .panel-body -->
-								    </div> <!-- / .panel -->
-								</div> <!-- / .overlay-message -->
-								
-								
-								<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count %>">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-                                        <p class="panel-title text-left">Press Release Title</p>
-                                    </div> <!-- / .panel-heading -->
-                                    <div class="panel-body">
-                                      <%= f.text_field :title, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-                                    </div> <!-- / .panel-body -->
-                                    <div class="panel-footer clearfix">
-                                        <div class="pull-left" id="textareaFeedback"></div>
-                                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                                    </div><!--/ .panel-footer -->
-                                </div> <!-- / .panel -->
-                            </div> <!-- / .col-xs-12 -->
-                        </div> <!-- / .row -->
-                    </div> <!-- / .container-fluid -->
-                </div> <!-- / .question -->
-								
-								
-								
-								
-										<%= f.fields_for :specifics, OpenStruct.new(@press_release.specifics) do |builder| %>
-											<% @press_release.pressrelease_type.fields.each_with_index do |field, index| %>
-											<%= render "press_releases/fields/#{field.field_type}", field: field, index: index, press_release: builder %>
-											<% end %>
+			<div class="overlay-message saveStatus saved">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<i class="fa fa-check text-success"></i>&nbsp;Saved
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
+			</div> <!-- / .overlay-message -->
 
-										<% end %>
+			<div id="q-container">
+				<%= nested_form_for([@newsroom, @press_release], html: { multipart: true }, remote: true) do |f| %>
+				<div class="text-center" id="top-container">
+						<h3 id="presto-type"><%= @press_release.pressrelease_type.name %></h3>
+				</div> <!-- / #top-container -->
 
-										<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
-										<div class="container-fluid">
-										    <div class="row">
-										        <div class="col-xs-12">
-										<h4 class="question-title">External Links & Videos</h4>
-										<%= f.fields_for :links do |link| %>
-										<%= render 'press_releases/fields/links', f: link %>
-										<% end %>
-										
+				<div class="prestoNav">
+					<ul id="prestoNavUL">
 
-		                <p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
-										        </div> <!-- / .col-xs-12 -->
-										    </div> <!-- / .row -->
-										</div> <!-- / .container-fluid -->
-										</div> <!-- / .question -->
-										
-										<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
-												<div class="panel panel-default">
-										        <div class="panel-body">
-										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-										            <h5>
-										                <span class="text-primary"><strong>Example: </strong></span>
-										            </h5>
-										            <p>
-										              Paste your link in the link field and write a succinct description in the caption field.
-										            </p>
-										            <br>
-										            <h5>
-										                <span class="text-primary"><strong>Remember: </strong></span>
-										            </h5>
-										            <p>
-										             	Double check that your links are correct and working. Video links from Youtube and Vimeo will be displayed as embedded videos in your press release.
-										            </p>
-										        </div> <!-- / .panel-body -->
-										    </div> <!-- / .panel -->
-										</div> <!-- / .overlay-message -->
-										
+					</ul>
+				</div>
 
-										<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
-										
-										<div class="container-fluid">
-										    <div class="row">
-										        <div class="col-xs-12">
-										<h4 class="question-title">Images</h4>
-										<%= f.fields_for :uploads do |upload| %>
-											<%= render 'press_releases/fields/uploads', f: upload %>	
-										<% end %>
-										
-										<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
-										
-										        </div> <!-- / .col-xs-12 -->
-										    </div> <!-- / .row -->
-										</div> <!-- / .container-fluid -->
-										</div> <!-- / .question -->
-										
-
-										<div class="overlay-message" id="modal<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
-												<div class="panel panel-default">
-										        <div class="panel-body">
-										            <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-										            
-										            <h5>
-										                <span class="text-primary"><strong>Remember: </strong></span>
-										            </h5>
-										            <p>
-										             	For now, only upload image files.
-										            </p>
-										        </div> <!-- / .panel-body -->
-										    </div> <!-- / .panel -->
-										</div> <!-- / .overlay-message -->
-										
-
-										<div class="question" id="q<%= 5 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
-				                <div class="container-fluid">
-				                    <div class="row">
-				                        <div class="col-xs-12">
-				                            <div class="panel panel-default">
-				                                <div class="panel-heading">
-				                                    <p class="panel-title text-left">Finished!</p>
-				                                </div> <!-- / .panel-heading -->
-				                                <div class="panel-body">
-				                                  <p>
-																					Your press release is now finished. Click "Finish" if you're satisfied, else go back and polish your answers.
-																					<i class="fa fa-arrow-right"></i>
-																					</p>
-				                                </div> <!-- / .panel-body -->
-				                                <div class="panel-footer clearfix">
-				                                    <div class="pull-left" id="textareaFeedback"></div>
-				                                    <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-				                                </div><!--/ .panel-footer -->
-				                            </div> <!-- / .panel -->
-				                        </div> <!-- / .col-xs-12 -->
-				                    </div> <!-- / .row -->
-				                </div> <!-- / .container-fluid -->
-				            </div> <!-- / .question -->
-            </div> <!-- / #q-container -->						
+				<div class="text-center" id="bottom-container">
+	                <div class="col-xs-4">
+		                <%= button_tag class: "btn btn-ghost2 prestoSkipBtn pull-left", id: "prev" do %>
+						<i class="fa fa-arrow-left"></i>&nbsp;Previous
 						<% end %>
-						
-						
-						
-						
-						
-						
-        </div> <!-- / #sidebar-area -->
-        <div id="preview-area">
-            
-           	<div class="overlay"></div>
-            <div id="preview"><p>Preview</p></div>
-            
-            <div class="container-fluid pr-container">
-							<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
-						</div> <!-- / .prContainer -->
-        </div> <!-- / #preview-area -->
+	                </div>
+	                <div class="col-xs-4">
+	                    <%= link_to [@newsroom, @press_release], class: "btn btn-success", role: "button" , id: "distribute" do %>
+					Finish
+					<% end %>
+	                </div>
+	                <div class="col-xs-4">
+	                    <%= button_tag class: "btn btn-ghost prestoSkipBtn pull-right", id: "next" do %>
+					Next&nbsp;<i class="fa fa-arrow-right"></i>
+					<% end %>
+	                </div>
+	            </div> <!-- / #bottom-container -->
+
+				<% if @press_release.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@press_release.errors.count, "error") %> prohibited this press_release from being saved:</h2>
+
+					<ul>
+						<% @press_release.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+						<% end %>
+					</ul>
+				</div>
+				<% end %>
+
+				<%= f.hidden_field :pressrelease_type_id %>
+
+				<%= render 'press_releases/fields/newsroom', f: f %>
+
+				<div class="question" id="q1">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+										<p class="panel-title text-left">From what date do you allow journalists to publish information from this press release?</p>
+									</div> <!-- / .panel-heading -->
+									<div class="panel-body">
+										<%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+									</div> <!-- / .panel-body -->
+									<div class="panel-footer clearfix">
+										<div class="pull-left" id="textareaFeedback"></div>
+										<!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+									</div><!--/ .panel-footer -->
+								</div> <!-- / .panel -->
+							</div> <!-- / .col-xs-12 -->
+						</div> <!-- / .row -->
+					</div> <!-- / .container-fluid -->
+				</div> <!-- / .question -->
+
+
+				<div class="overlay-message" id="modal1">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h5>
+								<span class="text-primary"><strong>Remember: </strong></span>
+							</h5>
+							<p>
+								Set a date for when it's okay for journalists to spread the information from this press release.
+							</p>
+						</div> <!-- / .panel-body -->
+					</div> <!-- / .panel -->
+				</div> <!-- / .overlay-message -->
+
+
+				<div class="question" id="q<%= 2 + @press_release.pressrelease_type.fields.count %>">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
+										<p class="panel-title text-left">Press Release Title</p>
+									</div> <!-- / .panel-heading -->
+									<div class="panel-body">
+										<%= f.text_field :title, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+									</div> <!-- / .panel-body -->
+									<div class="panel-footer clearfix">
+										<div class="pull-left" id="textareaFeedback"></div>
+										<!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+									</div><!--/ .panel-footer -->
+								</div> <!-- / .panel -->
+							</div> <!-- / .col-xs-12 -->
+						</div> <!-- / .row -->
+					</div> <!-- / .container-fluid -->
+				</div> <!-- / .question -->
+
+
+
+
+				<%= f.fields_for :specifics, OpenStruct.new(@press_release.specifics) do |builder| %>
+				<% @press_release.pressrelease_type.fields.each_with_index do |field, index| %>
+				<%= render "press_releases/fields/#{field.field_type}", field: field, index: index, press_release: builder %>
+				<% end %>
+
+				<% end %>
+
+				<div class="question" id="q<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 class="question-title">External Links & Videos</h4>
+								<%= f.fields_for :links do |link| %>
+								<%= render 'press_releases/fields/links', f: link %>
+								<% end %>
+
+
+								<p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
+							</div> <!-- / .col-xs-12 -->
+						</div> <!-- / .row -->
+					</div> <!-- / .container-fluid -->
+				</div> <!-- / .question -->
+
+				<div class="overlay-message" id="modal<%= 3 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h5>
+								<span class="text-primary"><strong>Example: </strong></span>
+							</h5>
+							<p>
+								Paste your link in the link field and write a succinct description in the caption field.
+							</p>
+							<br>
+							<h5>
+								<span class="text-primary"><strong>Remember: </strong></span>
+							</h5>
+							<p>
+								Double check that your links are correct and working. Video links from Youtube and Vimeo will be displayed as embedded videos in your press release.
+							</p>
+						</div> <!-- / .panel-body -->
+					</div> <!-- / .panel -->
+				</div> <!-- / .overlay-message -->
+
+
+				<div class="question" id="q<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<h4 class="question-title">Images</h4>
+								<%= f.fields_for :uploads do |upload| %>
+								<%= render 'press_releases/fields/uploads', f: upload %>	
+								<% end %>
+
+								<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
+
+							</div> <!-- / .col-xs-12 -->
+						</div> <!-- / .row -->
+					</div> <!-- / .container-fluid -->
+				</div> <!-- / .question -->
+
+
+				<div class="overlay-message" id="modal<%= 4 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+							<h5>
+								<span class="text-primary"><strong>Remember: </strong></span>
+							</h5>
+							<p>
+								For now, only upload image files.
+							</p>
+						</div> <!-- / .panel-body -->
+					</div> <!-- / .panel -->
+				</div> <!-- / .overlay-message -->
+
+
+				<div class="question" id="q<%= 5 + @press_release.pressrelease_type.fields.count + @blank_fields_count %>">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<p class="panel-title text-left">Finished!</p>
+									</div> <!-- / .panel-heading -->
+									<div class="panel-body">
+										<p>
+											Your press release is now finished. Click "Finish" if you're satisfied, else go back and polish your answers.
+											<i class="fa fa-arrow-right"></i>
+										</p>
+									</div> <!-- / .panel-body -->
+									<div class="panel-footer clearfix">
+										<div class="pull-left" id="textareaFeedback"></div>
+										<!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
+									</div><!--/ .panel-footer -->
+								</div> <!-- / .panel -->
+							</div> <!-- / .col-xs-12 -->
+						</div> <!-- / .row -->
+					</div> <!-- / .container-fluid -->
+				</div> <!-- / .question -->
+			</div> <!-- / #q-container -->						
+			<% end %>
+
+
+
+
+
+
+		</div> <!-- / #sidebar-area -->
+		<div id="preview-area">
+
+			<div class="overlay"></div>
+			<div id="preview"><p>Preview</p></div>
+
+			<div class="container-fluid pr-container">
+				<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
+			</div> <!-- / .prContainer -->
+		</div> <!-- / #preview-area -->
         <!-- <div class="preview-bar">
 <p>Preview Area</p>
 <button class="btn btn-success pull-right">Save as draft</button>
 </div> -->
-    </div> <!-- / #presto-content -->
+</div> <!-- / #presto-content -->
 </div> <!-- / .flexBox -->

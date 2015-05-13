@@ -1,28 +1,40 @@
 <div class="shortPage">
-<div class="container">
-    <h2 class="text-center">Latest Press Releases</h2>
-		<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
-		<% @press_releases.each do |press_release| %>
-    <div class="brick col-sm-6 col-md-3">
-        <div class="thumbnail">
-            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
-                <div class="thumbLogoBkg">
-                    <span class="helper"></span><%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbLogo", alt: "" %>
+    <div class="container">
+        <h2 class="text-center">Latest Press Releases</h2>
+        <div id="masonry-container" class="infinite-scroll clearfix has-gutters">
+          <% @press_releases.each do |press_release| %>
+          <div class="brick col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <div class="thumbnail">
+                <% unless press_release.uploads.first.nil? %>
+                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+                    <%= image_tag press_release.uploads.first.file.url(:medium), class: "img-responsive", alt: "" %><% end %>
+                <% end %>
+
+                <div class="caption">
+                    <time class="pull-right text-muted clearfix" datetime="2014-10-28 20:00">
+                        <small>
+                            <%= time_ago_in_words(press_release.embargo) %>
+                        </small>
+                    </time>
+                    <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+                        <h4>
+                            <%= press_release.title %>
+                        </h4>
+                    <% end %>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet esse, pariatur, quas consequatur nobis cum nulla facilis... <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> Read More <% end %>
+                    </p>
                 </div>
-							<% unless press_release.uploads.first.nil? %>									
-                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-            <% end %><% end %>
-            <div class="caption">
-                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
-                <br><time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.created_at) %></small></time>
-                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
-            </div> <!-- / .caption -->
-            
-            <div class="clearfix"></div>
-        </div> <!-- / .thumbnail -->
-    </div> <!-- / .col-sm-6 -->
-		<% end %>
-	</div>
+                <%= link_to press_release.newsroom do %>
+                    <%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbnail-logotype clearfix" %>
+                <% end %>
+                
+            </div>
+            </div> <!-- / .thumbnail -->
+        </div> <!-- / .col-sm-6 -->
+        <% end %>
+    </div>
 </div> <!-- / .container -->
 
 <div class="text-center"><%= will_paginate @press_releases %></div>

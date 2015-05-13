@@ -4,7 +4,7 @@
 <div class="row">
 	<% @newsroom.people.each do |person| %>
     <% unless person.name.blank? %>
-		<div class="col-xs-6">
+		<div class="col-sm-6">
         <p><strong><%= person.name %></strong>&nbsp;<%= (person.role) %><br><small><%= person.presentation %></small></p>
     </div>
 		<% end %>
