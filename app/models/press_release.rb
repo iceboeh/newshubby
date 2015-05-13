@@ -14,7 +14,7 @@ class PressRelease < ActiveRecord::Base
   accepts_nested_attributes_for :fundings, allow_destroy: true
   
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :history]
     
   validate :validate_specifics
   
