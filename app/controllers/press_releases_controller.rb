@@ -46,6 +46,11 @@ class PressReleasesController < ApplicationController
   end
 
   def select
+    
+    if current_newsroom.nil?
+      redirect_to root_path, notice: 'You need to sign in or sign up to create press releases.'
+    else
+    
     @newsroom = current_newsroom
     @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     @press_release = @newsroom.press_releases.last
@@ -58,6 +63,8 @@ class PressReleasesController < ApplicationController
       flash[:notice] = "Finish the introductory questions first, please!"
       redirect_to introduction_index_path
     end
+    
+  end
     
   end
 
@@ -208,7 +215,7 @@ class PressReleasesController < ApplicationController
         
         # Remove duplicates
         @press_release.links.select(:caption,:link).group(:caption,:link).having("count(*) > 1").each do |x|
-          @press_release.links.where(caption: x.caption, link: x.link).destroy_all
+          @press_release.links.where(caption: x.caption, link: x.link).offset(1).destroy_all
         end
         
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }
