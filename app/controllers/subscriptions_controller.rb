@@ -1,6 +1,9 @@
 class SubscriptionsController < ApplicationController
   before_filter :authenticate_newsroom!
 
+  load_and_authorize_resource :newsroom
+  load_and_authorize_resource :subscription, :through => :newsroom
+
   def new
     @subscription = current_newsroom.build_subscription
   end

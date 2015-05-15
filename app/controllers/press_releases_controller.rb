@@ -2,6 +2,9 @@ class PressReleasesController < ApplicationController
   before_action :set_press_release, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
+  load_and_authorize_resource :newsroom
+  load_and_authorize_resource :press_release, :through => :newsroom
+  
 
   # GET /press_releases
   # GET /press_releases.json

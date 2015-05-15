@@ -1,6 +1,10 @@
 class FundingsController < ApplicationController
   before_action :set_funding, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource :newsroom
+  load_and_authorize_resource :funding, :through => :newsroom
+
+
   # GET /fundings
   # GET /fundings.json
   def index

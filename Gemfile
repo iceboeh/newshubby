@@ -98,6 +98,10 @@ gem 'rails-assets-RRSSB'
 
 gem 'posix-spawn'
 
+# User permissions
+
+gem 'cancancan', '~> 1.10'
+
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 # Possessive pronoun to words "NewsHubby's"

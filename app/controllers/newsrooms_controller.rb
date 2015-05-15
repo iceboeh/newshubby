@@ -4,6 +4,8 @@ class NewsroomsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :authenticate, only: [:allnewsrooms]
   before_filter :allow_iframe_requests
+
+  load_and_authorize_resource :newsroom
   
   autocomplete :press_release, :title
 
