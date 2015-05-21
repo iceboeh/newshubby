@@ -12,16 +12,12 @@
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-											<% if field.name.blank? %>
-								        <%= press_release.number_field field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-											<% else %>
-								      <%= press_release.number_field field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;"%>
-											<% end %>
+    					<% if field.name.blank? %>
+    		        <%= press_release.number_field field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+    					<% else %>
+    		      <%= press_release.number_field field.name, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;"%>
+    					<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->

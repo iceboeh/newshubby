@@ -2,11 +2,11 @@
 
 <%= render 'press_releases/fields/handle_date' %>
 
-  <p>
-      <span>
-				<%= @newsroom.company_name %> is launching a new feature "<%= @press_release.specifics[:feature_name] %>" on <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
-			</span>
-  </p>
+<p>
+	<span>
+		<%= @newsroom.company_name %> is launching a new feature "<%= @press_release.specifics[:feature_name] %>" on <% unless @date.blank? %><%= @date.strftime("%B %d, %Y") %><% end %>
+	</span>
+</p>
 
 <%= render 'press_releases/fields/quote' %>
 
@@ -14,7 +14,7 @@
 
 <p>
 	<span>
-<%= @press_release.specifics[:typical_customers] %>
+		<%= @press_release.specifics[:typical_customers] %>
 	</span>
 </p>
 

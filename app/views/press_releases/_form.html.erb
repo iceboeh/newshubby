@@ -20,16 +20,15 @@
 
 			<div id="q-container">
 				<%= nested_form_for([@newsroom, @press_release], html: { multipart: true }, remote: true) do |f| %>
-				<div class="text-center" id="top-container">
-						<h3 id="presto-type"><%= @press_release.pressrelease_type.name %></h3>
-				</div> <!-- / #top-container -->
 
 				<div class="prestoNav">
 					<ul id="prestoNavUL">
 
 					</ul>
 				</div>
-
+				<div id="top-container" class="text-center">
+					<h3 id="presto-type"><%= @press_release.pressrelease_type.name %></h3>
+				</div>
 				<div class="text-center" id="bottom-container">
 	                <div class="col-xs-4">
 		                <%= button_tag class: "btn btn-ghost2 prestoSkipBtn pull-left", id: "prev" do %>
@@ -37,8 +36,8 @@
 						<% end %>
 	                </div>
 	                <div class="col-xs-4">
-	                    <%= link_to [@newsroom, @press_release], class: "btn btn-success", role: "button" , id: "distribute" do %>
-					Finish
+	                    <%= link_to [@newsroom, @press_release] do %>
+					<button class="btn btn-success" id="distribute" role="button">Finish</button>
 					<% end %>
 	                </div>
 	                <div class="col-xs-4">
@@ -71,15 +70,11 @@
 								<div class="panel panel-default">
 									<div class="panel-heading">
 										<i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
-										<p class="panel-title text-left">From what date do you allow journalists to publish information from this press release?</p>
+										<h3 class="panel-title text-left">From what date do you allow journalists to publish information from this press release?</h3>
 									</div> <!-- / .panel-heading -->
 									<div class="panel-body">
 										<%= f.date_select :embargo, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 									</div> <!-- / .panel-body -->
-									<div class="panel-footer clearfix">
-										<div class="pull-left" id="textareaFeedback"></div>
-										<!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-									</div><!--/ .panel-footer -->
 								</div> <!-- / .panel -->
 							</div> <!-- / .col-xs-12 -->
 						</div> <!-- / .row -->
@@ -143,8 +138,11 @@
 								<%= render 'press_releases/fields/links', f: link %>
 								<% end %>
 
-
-								<p class="text-center"><%= f.link_to_add :links, class: "add-new" do %> + Add new link<% end %></p>
+								<div class="text-center">
+									<%= f.link_to_add :links, class: "add-new" do %>
+                                    	<button class="btn btn-ghost"><i class="fa fa-plus"></i> Add new</button>
+                                    <% end %>
+                                </div>
 							</div> <!-- / .col-xs-12 -->
 						</div> <!-- / .row -->
 					</div> <!-- / .container-fluid -->
@@ -181,9 +179,12 @@
 								<%= f.fields_for :uploads do |upload| %>
 								<%= render 'press_releases/fields/uploads', f: upload %>	
 								<% end %>
-
-								<p class="text-center"><%= f.link_to_add :uploads, class: "add-new" do %><i class="glyphicon glyphicon-plus"></i> Add Upload<% end %></p>
-
+								<div class="text-center">
+									<%= f.link_to_add :uploads, class: "add-new" do %>
+										<button class="btn btn-ghost"><i class="glyphicon glyphicon-plus"></i> Add Upload</button>
+									<% end %>
+								</div>
+								<br>
 							</div> <!-- / .col-xs-12 -->
 						</div> <!-- / .row -->
 					</div> <!-- / .container-fluid -->
@@ -231,12 +232,6 @@
 				</div> <!-- / .question -->
 			</div> <!-- / #q-container -->						
 			<% end %>
-
-
-
-
-
-
 		</div> <!-- / #sidebar-area -->
 		<div id="preview-area">
 

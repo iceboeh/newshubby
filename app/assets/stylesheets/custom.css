@@ -852,20 +852,21 @@ indexSplash .thumbnail .caption h3 {
   left: 0px;
   top: 103px;
   z-index: 1001;
-  overflow: hidden; }
+  overflow: hidden;
+  font-size: 1em !important; }
 
-/* line 23, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 24, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNav ul {
   padding-left: 12px;
   padding-top: 12px; }
 
-/* line 28, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 29, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNav li {
   list-style-type: none;
   font-size: 1.1em;
   padding: 0; }
 
-/* line 34, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 35, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNavBtn {
   background-color: rgba(255, 255, 255, 0.5);
   color: gray;
@@ -875,12 +876,10 @@ indexSplash .thumbnail .caption h3 {
   cursor: pointer;
   text-align: center;
   line-height: 1.3em;
-  font-weight: 600;
-  font-size: 0.9em; }
+  font-weight: 600; }
 
 /* line 47, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNavBtn:hover {
-  border: 1px solid rgba(255, 255, 255, 0.5);
   color: #333;
   background-color: #fff; }
 
@@ -891,7 +890,7 @@ indexSplash .thumbnail .caption h3 {
 /* line 58, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNav .space {
   border-radius: 0;
-  margin-left: 0.52em;
+  margin-left: 0.5em;
   padding: 0;
   height: 10px;
   width: 4px;
@@ -899,15 +898,14 @@ indexSplash .thumbnail .caption h3 {
 
 /* line 67, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .prestoNav li .active {
-  border: 1px solid #fff;
   color: #333;
   background-color: #fff; }
 
-/* line 85, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 84, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #presto-type {
   margin-top: 0.1em; }
 
-/* line 89, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 88, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #q-container {
   overflow-x: hidden;
   position: absolute;
@@ -916,13 +914,13 @@ indexSplash .thumbnail .caption h3 {
   top: 50px;
   bottom: 50px; }
 
-/* line 100, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 99, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #bottom-container {
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.2); }
 
-/* line 107, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 106, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #top-container {
   top: 50px;
   left: 0;
@@ -931,7 +929,7 @@ indexSplash .thumbnail .caption h3 {
   vertical-align: middle;
   background-color: rgba(0, 0, 0, 0.2); }
 
-/* line 117, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 116, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #bottom-container, #top-container {
   position: fixed;
   width: 100%;
@@ -941,7 +939,7 @@ indexSplash .thumbnail .caption h3 {
   padding: 10px;
   vertical-align: middle; }
 
-/* line 128, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 127, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .question {
   height: 100%;
   display: none; }
@@ -949,20 +947,20 @@ indexSplash .thumbnail .caption h3 {
 /* .question:nth-child(even) {
 background-color: rgba(255,255,255,.2);
 } */
-/* line 146, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 145, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .question {
   padding-top: 16px; }
 
-/* line 150, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 149, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .fa-close {
   color: #a5a5a5; }
 
-/* line 154, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 153, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 .fa-close:hover {
   color: #000;
   cursor: pointer; }
 
-/* line 163, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
+/* line 162, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #sidebar-area {
   width: 100%;
   position: absolute;
@@ -973,7 +971,8 @@ background-color: rgba(255,255,255,.2);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
+  background-size: cover;
+  font-size: 1em !important; }
 
 /* line 195, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/presto */
 #preview-area {

@@ -9,17 +9,13 @@
                         <p class="panel-title text-left"><%= field.question.gsub(/CompanyName/, "#{@newsroom.company_name}").gsub(/CompanyName's/, "#{@newsroom.company_name.possessive}") %></p>
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
-											<%= press_release.label field.name %><br />
-											<% if @date.blank? %>
-											<%= press_release.date_select field.name %>
-											<% else %>
-											<%= press_release.date_select field.name, selected: @date %>
-											<% end %>
+						<%= press_release.label field.name %><br />
+						<% if @date.blank? %>
+						<%= press_release.date_select field.name %>
+						<% else %>
+						<%= press_release.date_select field.name, selected: @date %>
+						<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->

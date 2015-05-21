@@ -45,9 +45,11 @@
 					<div class="panel-body">
 						<div class="input-group">
 							<%= f.label :logo, "Company logotype:" %>
+
 							<%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block", style: "max-width: 50%" %>
 							<!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" /> -->
 							<div class="text-center">
+							<input id="uploadFile" placeholder="Choose File" disabled="disabled" />
 								<div class="fileUpload btn btn-primary">
 									<span><i class="fa fa-file-image-o"></i>&nbsp;Choose file</span>
 									<%= f.file_field :logo, id: "uploadBtn", class: "upload" %>
