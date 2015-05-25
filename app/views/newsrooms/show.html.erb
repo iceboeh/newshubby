@@ -4,7 +4,7 @@
   <div class="container">
 			<div class="row">
 	        <div class="col-md-8 col-md-offset-2">
-						<% if can? :manage, Newsroom %>
+						<% if can? :manage, @newsroom %>
 						<% if @newsroom.press_releases.blank? && @introduction_failed == false %>
 	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
 						<% elsif @newsroom.press_releases.blank? && @introduction_failed == true %>
@@ -13,7 +13,7 @@
 						<% end %>
 							<h3 class="text-muted nrHeading pull-left"><i class="fa fa-home"></i>&nbsp;Newsroom</h3>
 							
-							<% if can? :manage, Newsroom %>
+							<% if can? :manage, @newsroom %>
 							<%= link_to edit_newsroom_path(@newsroom), class: "btn btn-primary pull-right", role: "button" do %>
 	
 								<i class="fa fa-edit"></i>&nbsp;Edit newsroom
@@ -74,7 +74,7 @@
 							<% unless @press_releases.nil? %>
 							<% @press_releases.each do |press_release| %>
               <div class="col-sm-4">
-								<% if can? :manage, Newsroom %>
+								<% if can? :manage, @newsroom %>
 								<div class="nrThumbMenu">
 								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
 								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>

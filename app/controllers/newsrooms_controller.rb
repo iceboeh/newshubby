@@ -68,7 +68,7 @@ class NewsroomsController < ApplicationController
     if params[:search]
      # @search = Sunspot.search Newsroom do
       #  fulltext params[:search]
-      #end
+      #ends
       @press_releases = PressRelease.where(exclusive: false).where("embargo <= ?", Date.today).search(params[:search])
     else 
       @press_releases = PressRelease.includes(:uploads).all.order("press_releases.embargo DESC").where(exclusive: false).where("embargo <= ?", Date.today).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 4)
@@ -108,7 +108,7 @@ class NewsroomsController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if can? :manage, Newsroom
+    if can? :manage, @newsroom
       @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
     else
       @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
