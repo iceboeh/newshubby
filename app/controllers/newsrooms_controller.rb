@@ -84,11 +84,11 @@ class NewsroomsController < ApplicationController
     @nrBody = true
 
     # Control ownership
-    if @newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
     
     @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank?
     
@@ -108,7 +108,7 @@ class NewsroomsController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if @owner
+    if can? :manage, Newsroom
       @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
     else
       @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
@@ -128,17 +128,17 @@ class NewsroomsController < ApplicationController
     @nrBody = true
     
     # Control ownership
-    if @newsroom != current_newsroom
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom != current_newsroom
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
     # Handle ownership
-    unless @owner
-      flash[:notice] = "Not your newsroom. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your newsroom. Hands off!"
+    #  redirect_to :root
+    #end
     
     @newsroom = current_newsroom
   rescue ActiveRecord::RecordNotFound

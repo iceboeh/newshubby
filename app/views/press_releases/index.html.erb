@@ -12,7 +12,7 @@
 
 			<% @press_releases.each do |press_release| %>
 	    <div class="col-sm-4 brick">
-					<% if @owner %>
+					<% if can? :manage, PressRelease %>
 					<div class="nrThumbMenu">
 					<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
 					<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>

@@ -12,14 +12,14 @@ class PressReleasesController < ApplicationController
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
     
     # Control ownership
-    if @newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
 
     # Show exclusive press releases only to owner
-    if @owner == true
+    if can? :manage, PressRelease
       @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
     else
       @press_releases = @newsroom.press_releases.all.where(exclusive: false).where('embargo <= ?', Date.today).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
@@ -41,11 +41,11 @@ class PressReleasesController < ApplicationController
     end
     
     # Control ownership
-    if @press_release.newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @press_release.newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
   end
 
   def select
@@ -153,16 +153,16 @@ class PressReleasesController < ApplicationController
     #end
     
     # Control ownership
-    if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
+    # @owner = false
+    #else
+    #  @owner = true
+    #end
     
-    unless @owner
-      flash[:notice] = "Not your press release. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your press release. Hands off!"
+    #  redirect_to :root
+    #end
     
     @newsroom = current_newsroom
     @press_releases = current_newsroom.press_releases.friendly.find(params[:id])    
@@ -197,16 +197,16 @@ class PressReleasesController < ApplicationController
   def update
     
     # Control ownership
-    if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
-    unless @owner
-      flash[:notice] = "Not your press release. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your press release. Hands off!"
+    #  redirect_to :root
+    #end
     
     respond_to do |format|
       if @press_release.update(press_release_params)

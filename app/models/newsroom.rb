@@ -2,7 +2,7 @@ class Newsroom < ActiveRecord::Base
   validates :term_agreement, presence: true
   
   extend FriendlyId
-  friendly_id :company_name, use: :slugged
+  friendly_id :company_name, use: :slugged, use: [:finders]
     
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
