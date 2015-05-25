@@ -12,7 +12,8 @@
                     <div class="panel-body">
                        <!-- <h4>This press release is currently <strong>publicly visible</strong></h4>
                         <p>Use the link below to share it</p>-->
-                        <% if @press_release.exclusive? %><h4 class="prState text-info">This press release is <strong class="prStateText">unlisted</strong></h4><% else %><h4 class="prState text-primary">This press release is <strong class="prStateText">public</strong></h4><% end %>
+                        <% if @press_release.exclusive? %>
+												<h4 class="prState text-info">This press release is <strong class="prStateText">unlisted</strong></h4><% else %><h4 class="prState text-primary">This press release is <strong class="prStateText">public</strong></h4><% end %>
                         
 												<% if @press_release.exclusive? %>
 												<p class="prLink">Use the link below to share your press release while it's unlisted:</p>

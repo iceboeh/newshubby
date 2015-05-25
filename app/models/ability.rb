@@ -10,23 +10,23 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      
+
       can :manage, Newsroom, id: newsroom.id
-    
+
       can :manage, PressRelease, newsroom_id: newsroom.id
-      
+
       can :manage, Funding, newsroom_id: newsroom.id
-      
+
       can :manage, Person, newsroom_id: newsroom.id
-      
+
       can :manage, Subscription, newsroom_id: newsroom.id
-      
+
       can :manage, Link, newsroom_id: newsroom.id
-      
+
       can :manage, Upload, newsroom_id: newsroom.id
 
       can :manage, PressreleaseType, newsroom_id: newsroom.id
-      
+
     end
     
       #can :crud, Subscription do |subscription|

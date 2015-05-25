@@ -3,7 +3,7 @@ class PressReleasesController < ApplicationController
   respond_to :html, :js
 
   load_and_authorize_resource :newsroom
-  load_and_authorize_resource :press_release, :through => :newsroom
+  #load_and_authorize_resource :press_release, :through => :newsroom
   
 
   # GET /press_releases
@@ -19,7 +19,7 @@ class PressReleasesController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if can? :manage, @press_release
+    if can? :manage, PressRelease
       @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
     else
       @press_releases = @newsroom.press_releases.all.where(exclusive: false).where('embargo <= ?', Date.today).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
@@ -49,6 +49,8 @@ class PressReleasesController < ApplicationController
   end
 
   def select
+    
+    authorize! :read, @press_releases
     
     if current_newsroom.nil?
       redirect_to root_path, notice: 'You need to sign in or sign up to create press releases.'
