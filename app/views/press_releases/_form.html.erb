@@ -175,7 +175,7 @@
 								<%= f.fields_for :uploads do |upload| %>
 								<%= render 'press_releases/fields/uploads', f: upload %>	
 								<% end %>
-<<<<<<< HEAD
+
 								<div class="text-center">
 									<%= f.link_to_add :uploads, class: "add-new" do %>
 										<button class="btn btn-ghost"><i class="glyphicon glyphicon-plus"></i> Add Upload</button>
@@ -234,7 +234,7 @@
 				<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
 			</div> <!-- / .prContainer -->
 		</div> <!-- / #preview-area -->
-=======
+
 		          </div> <!-- / #next-container -->
               <div class="prestoNav">
                   <ul id="prestoNavUL">
@@ -447,7 +447,7 @@
 							<%= render "press_releases/layouts/#{@press_release.pressrelease_type.name.parameterize("_")}", locals: { press_release: @press_release } %>
 						</div> <!-- / .prContainer -->
         </div> <!-- / #preview-area -->
->>>>>>> origin/master
+
         <!-- <div class="preview-bar">
 <p>Preview Area</p>
 <button class="btn btn-success pull-right">Save as draft</button>

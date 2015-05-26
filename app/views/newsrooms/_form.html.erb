@@ -4,7 +4,7 @@
 
 <% if current_newsroom != nil && current_newsroom == @newsroom %>
 
-<<<<<<< HEAD
+
 	<%= nested_form_for(@newsroom) do |f| %>
 	<% if @newsroom.errors.any? %>
 		<h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
@@ -30,7 +30,7 @@
 					Edit Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
 					<% if @owner %>
 						<span class="pull-right">
-=======
+
 <%= nested_form_for(@newsroom) do |f| %>
   <% if @newsroom.errors.any? %>
       <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
@@ -49,14 +49,14 @@
 	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
 						<% end %>
 						<% end %>
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
+
+
+
 							<%= link_to @newsroom do %>
 								<small>View Newsroom</small>
 							<% end %>
-<<<<<<< HEAD
+
 						</span>
 					<% end %>
 				</h4>
@@ -78,7 +78,7 @@
 								<div class="fileUpload btn btn-primary">
 									<span><i class="fa fa-file-image-o"></i>&nbsp;Choose file</span>
 									<%= f.file_field :logo, id: "uploadBtn", class: "upload" %>
-=======
+
 							<hr>
 	        </div>
 	    </div>
@@ -128,7 +128,7 @@
 								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
 								<% end %>
 								
->>>>>>> origin/master
+
 								</div>
 							</div>
 						</div>
@@ -358,15 +358,15 @@
 		</div> <!-- / .row -->
 	</div> <!-- / .container -->
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
+
 			
-=======
+
 <% if can? :manage, @newsroom %>
->>>>>>> origin/master
-=======
+
+
 <% if can? :manage, @newsroom %>
->>>>>>> origin/master
+
 
 	
 

@@ -34,8 +34,6 @@ jQuery ->
 	      return
 	    return
 	  return
-<<<<<<< HEAD
-<<<<<<< HEAD
 					
 	$ ->
 		  $container = $(".masonry-container")
@@ -47,12 +45,6 @@ jQuery ->
 					isAnimated: !Modernizr.csstransitions
 			  return
 				
-=======
-		
->>>>>>> origin/master
-=======
-		
->>>>>>> origin/master
 ###	
   subscription.setupForm()
 

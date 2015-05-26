@@ -1,14 +1,13 @@
 <% title "Newsroom: #{@newsroom.company_name}" %>
-<<<<<<< HEAD
 <div class="nav-top-margin"></div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-10">
-			<% if @owner && @newsroom.press_releases.blank? && @introduction_failed == false %>
+			<% if @newsroom.press_releases.blank? && @introduction_failed == false %>
 			<div class="alert alert-info text-center" role="alert">
 				<strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.
 			</div>
-			<% elsif @owner && @newsroom.press_releases.blank? && @introduction_failed == true %>
+			<% elsif @newsroom.press_releases.blank? && @introduction_failed == true %>
 			<div class="alert alert-info text-center" role="alert">
 				<strong>Hold your horses!</strong> You need to finish your <%= link_to "company introduction", introduction_index_path %>. first.
 			</div>
@@ -73,7 +72,7 @@
 										<p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
 										<% end %>
 									</div>
-=======
+
 
 <div class="nrHeader">
   <div class="container">
@@ -161,7 +160,7 @@
 								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
 								<% end %>
 								
->>>>>>> origin/master
+
 								</div>
 								
 <<<<<<< HEAD
@@ -178,7 +177,7 @@
 
 					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
 					
-=======
+
                   <div class="thumbnail">
 											<%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
 												<% unless press_release.uploads.first.blank? %>
@@ -200,7 +199,7 @@
           </div> <!-- / .row -->
 					<% unless @press_releases.blank? %>
 						<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
->>>>>>> origin/master
+
 					<% end %>
 					<% end %>
 				</h5>
@@ -423,7 +422,7 @@
 								<% end %>
 <<<<<<< HEAD
 							</div>
-=======
+
               </div> <!-- / .row -->
           </div> <!-- / .col-md-8 -->
       </div> <!-- /.row -->
@@ -469,7 +468,7 @@
                       </div>
                   </div>
               </div> <!-- / .col-sm-4 -->
->>>>>>> origin/master
+
 							<% end %>
 						</div> <!-- / .caption -->
 						<div class="clearfix"></div>
