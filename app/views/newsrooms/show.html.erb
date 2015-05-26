@@ -296,13 +296,6 @@
 								</small>
 							</time>
 							<h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet esse, pariatur, quas consequatur nobis cum nulla facilis...
-
-								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> 
-								Read More 
-								<% end %>
-							</p>
 							<% if press_release.exclusive? %>
 							<div class="text-center">
 								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>

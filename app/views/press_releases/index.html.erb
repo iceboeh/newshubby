@@ -15,7 +15,7 @@
 				<% @press_releases.each do |press_release| %>
 				<div class="col-sm-6 col-md-4 col-lg-3 brick">
 					<div class="thumbnail"> 
-						<% if can? :manage, PressReleases %>
+						<% if can? :manage, PressRelease %>
 						<div class="pr-thumbnail-options">
 
 							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button><% end %>
@@ -40,13 +40,6 @@
 								</small>
 							</time>
 							<h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet esse, pariatur, quas consequatur nobis cum nulla facilis...
-
-								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> 
-								Read More 
-								<% end %>
-							</p>
 							<% if press_release.exclusive? %>
 							<div class="text-center">
 								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>

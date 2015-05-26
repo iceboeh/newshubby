@@ -22,9 +22,6 @@
                             <%= press_release.title %>
                         </h4>
                     <% end %>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet esse, pariatur, quas consequatur nobis cum nulla facilis... <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> Read More <% end %>
-                    </p>
                 </div>
                 <%= link_to press_release.newsroom do %>
                     <%= image_tag press_release.newsroom.logo.url(:thumb), class: "thumbnail-logotype clearfix" %>
