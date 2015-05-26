@@ -12,13 +12,12 @@ jQuery ->
 	  $container = $('.masonry-container')
 	  $container.imagesLoaded ->
 	    $container.masonry
-	      #columnWidth: '.brick'
 	      itemSelector: '.brick'
+	      #columnWidth: 100
 	    return
 	  $container.infinitescroll {
 	    navSelector: '.pagination'
 	    nextSelector: '.pagination .next_page'
-	    #columnWidth: '.brick'
 	    itemSelector: '.brick'
 	    loading:
 	      finishedMsg: 'No more press releases to load.'
@@ -34,8 +33,6 @@ jQuery ->
 	      return
 	    return
 	  return
-<<<<<<< HEAD
-<<<<<<< HEAD
 					
 	$ ->
 		  $container = $(".masonry-container")
@@ -47,12 +44,6 @@ jQuery ->
 					isAnimated: !Modernizr.csstransitions
 			  return
 				
-=======
-		
->>>>>>> origin/master
-=======
-		
->>>>>>> origin/master
 ###	
   subscription.setupForm()
 
