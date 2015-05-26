@@ -1,7 +1,7 @@
 class IntroductionController < ApplicationController
   include Wicked::Wizard
     
-  steps :basic, :people, :what, :how
+  steps :basic, :people, :what, :how, :logo
   
 
   def show

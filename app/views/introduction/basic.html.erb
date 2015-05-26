@@ -49,7 +49,7 @@
                        <!-- <div class="well well-sm">
                         <p><strong>Before you create your first press release, we need some basic company information for your Public Newsroom.</strong> Later, this infomation will be used in the press releases you create. You can always edit your basic company information whenever you want later on through your Newsroom.</p></div>
 											-->
-                        <h6 class="text-muted pull-right">Step 1 of 4</h6>
+                        <h6 class="text-muted pull-right">Step 1 of 5</h6>
                         <h3>Please introduce your company:</h3><br>
 												<%= f.text_field :company_name, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "Company Name" %> was founded in <%= f.date_select :founded, order: [:month, :year], start_year: Date.today.year - 100, end_year: Date.today.year + 1 %> and their main location is in <%= f.text_field :location, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "City, Country" %>. You can find them at <%= f.text_field :website, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "http://www.example.com/" %>. The press can contact them at <%= f.text_field :press_email, class: "underlineInput", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "example@example.com" %>
 										</div>

@@ -132,7 +132,6 @@ class PressReleasesController < ApplicationController
     # Count unpopulated fields (array.count)
     @blank_fields_count = @blank_fields.count
 
-    
     # Each unpopulated field should get a NUMBER so we know which one it is. 
     # Do this in the view. Set and show correct <div>
     
@@ -142,8 +141,6 @@ class PressReleasesController < ApplicationController
     # Correct for this in the general view too, for each
     
     # Display correct divs, modals, examples, tips, etc for unpopulated fields (and all other fields)
-    
-    
     
     if @newsroom.business_model.blank?
       @nr_questions = true
