@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429075513) do
+ActiveRecord::Schema.define(version: 20150515114348) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20150429075513) do
     t.integer  "subscription_id"
     t.string   "code"
     t.boolean  "term_agreement"
+    t.boolean  "admin"
   end
 
   add_index "newsrooms", ["email"], name: "index_newsrooms_on_email", unique: true

@@ -43,6 +43,7 @@ GEM
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.2.2)
+    cancancan (1.10.1)
     capistrano (3.3.5)
       capistrano-stats (~> 1.1.0)
       i18n
@@ -219,6 +220,7 @@ DEPENDENCIES
   aws-sdk
   best_in_place (~> 3.0.1)
   bootstrap-sass (~> 3.2.0)
+  cancancan (~> 1.10)
   capistrano
   capistrano-bundler
   capistrano-ext

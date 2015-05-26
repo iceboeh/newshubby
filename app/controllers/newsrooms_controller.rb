@@ -4,6 +4,8 @@ class NewsroomsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :authenticate, only: [:allnewsrooms]
   before_filter :allow_iframe_requests
+
+  load_and_authorize_resource :newsroom
   
   autocomplete :press_release, :title
 
@@ -66,7 +68,7 @@ class NewsroomsController < ApplicationController
     if params[:search]
      # @search = Sunspot.search Newsroom do
       #  fulltext params[:search]
-      #end
+      #ends
       @press_releases = PressRelease.where(exclusive: false).where("embargo <= ?", Date.today).search(params[:search])
     else 
       @press_releases = PressRelease.includes(:uploads).all.order("press_releases.embargo DESC").where(exclusive: false).where("embargo <= ?", Date.today).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 4)
@@ -82,11 +84,11 @@ class NewsroomsController < ApplicationController
     @nrBody = true
 
     # Control ownership
-    if @newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
     
     @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank?
     
@@ -106,7 +108,7 @@ class NewsroomsController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if @owner
+    if can? :manage, @newsroom
       @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
     else
       @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
@@ -126,17 +128,17 @@ class NewsroomsController < ApplicationController
     @nrBody = true
     
     # Control ownership
-    if @newsroom != current_newsroom
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom != current_newsroom
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
     # Handle ownership
-    unless @owner
-      flash[:notice] = "Not your newsroom. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your newsroom. Hands off!"
+    #  redirect_to :root
+    #end
     
     @newsroom = current_newsroom
   rescue ActiveRecord::RecordNotFound

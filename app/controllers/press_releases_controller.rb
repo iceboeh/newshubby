@@ -2,6 +2,9 @@ class PressReleasesController < ApplicationController
   before_action :set_press_release, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js
 
+  load_and_authorize_resource :newsroom
+  #load_and_authorize_resource :press_release, :through => :newsroom
+  
 
   # GET /press_releases
   # GET /press_releases.json
@@ -9,14 +12,14 @@ class PressReleasesController < ApplicationController
     @newsroom = Newsroom.friendly.find(params[:newsroom_id])
     
     # Control ownership
-    if @newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
 
     # Show exclusive press releases only to owner
-    if @owner == true
+    if can? :manage, PressRelease
       @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
     else
       @press_releases = @newsroom.press_releases.all.where(exclusive: false).where('embargo <= ?', Date.today).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
@@ -38,14 +41,21 @@ class PressReleasesController < ApplicationController
     end
     
     # Control ownership
-    if @press_release.newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @press_release.newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
   end
 
   def select
+    
+    authorize! :read, @press_releases
+    
+    if current_newsroom.nil?
+      redirect_to root_path, notice: 'You need to sign in or sign up to create press releases.'
+    else
+    
     @newsroom = current_newsroom
     @press_releases = PressRelease.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     @press_release = @newsroom.press_releases.last
@@ -58,6 +68,8 @@ class PressReleasesController < ApplicationController
       flash[:notice] = "Finish the introductory questions first, please!"
       redirect_to introduction_index_path
     end
+    
+  end
     
   end
 
@@ -73,6 +85,7 @@ class PressReleasesController < ApplicationController
     #else
       unless @newsroom.company_name.blank?
         @press_release.uploads.build
+        @press_release.links.build
         @press_release.hex = SecureRandom.urlsafe_base64(6)
         if @press_release.newsroom.people.last.nil?
           @press_release.newsroom.people.build
@@ -142,16 +155,16 @@ class PressReleasesController < ApplicationController
     #end
     
     # Control ownership
-    if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
+    # @owner = false
+    #else
+    #  @owner = true
+    #end
     
-    unless @owner
-      flash[:notice] = "Not your press release. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your press release. Hands off!"
+    #  redirect_to :root
+    #end
     
     @newsroom = current_newsroom
     @press_releases = current_newsroom.press_releases.friendly.find(params[:id])    
@@ -186,16 +199,16 @@ class PressReleasesController < ApplicationController
   def update
     
     # Control ownership
-    if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom.press_releases.friendly.find(params[:id]) != current_newsroom.press_releases.friendly.find(params[:id])
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
-    unless @owner
-      flash[:notice] = "Not your press release. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your press release. Hands off!"
+    #  redirect_to :root
+    #end
     
     respond_to do |format|
       if @press_release.update(press_release_params)
@@ -207,7 +220,7 @@ class PressReleasesController < ApplicationController
         
         # Remove duplicates
         @press_release.links.select(:caption,:link).group(:caption,:link).having("count(*) > 1").each do |x|
-          @press_release.links.where(caption: x.caption, link: x.link).destroy_all
+          @press_release.links.where(caption: x.caption, link: x.link).offset(1).destroy_all
         end
         
         format.html { redirect_to edit_newsroom_press_release_path(@press_release.newsroom, @press_release), notice: 'Press Release was successfully updated.' }

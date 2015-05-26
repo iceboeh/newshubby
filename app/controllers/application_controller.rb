@@ -5,9 +5,15 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  alias_method :current_user, :current_newsroom 
 
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.for(:sign_up) << :term_agreement
-    end
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :term_agreement
+  end
 end

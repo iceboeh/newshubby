@@ -85,7 +85,8 @@ FriendlyId.defaults do |config|
   #     text.to_slug.normalize! :transliterations => [:russian, :latin]
   #   end
   # }
-  
+
+
   module FriendlyId
     module Slugged
       def should_generate_new_friendly_id?
@@ -98,5 +99,6 @@ FriendlyId.defaults do |config|
       end
     end
   end
-  
+
+
 end
