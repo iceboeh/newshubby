@@ -59,52 +59,6 @@
 					</div> <!-- / .thumbnail -->
 				</div> <!-- / .col-sm-6 -->
 				<% end %><% end %>
-
-	    <h2 class="text-center"><%= @newsroom.company_name.possessive %> Press Releases</h2>  
-
-			<% if @press_releases.blank? %>
-				<h3 class="text-center text-muted"><%= @newsroom.company_name %> has no press releases yet.</h3>
-			<% end %>
-			
-			<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
-
-			<% @press_releases.each do |press_release| %>
-	    <div class="col-sm-4 brick">
-					<% if can? :manage, @press_release %>
-					<div class="nrThumbMenu">
-					<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
-					<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
-					<% end %>
-					<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
-					<i class="fa fa-edit fa-lg pull-right" title="Edit this press release"></i>
-					<% end %>
-					<% if press_release.exclusive? %>
-					<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
-					<% end %>
-					
-					</div>
-				<% end %>
-					
-	        <div class="thumbnail">
-	            <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
-									<% unless press_release.uploads.first.nil? %>
-									<% if press_release.uploads.first.file.blank? %>
-									<!-- FIXA BROKEN LINK-BILD! -->
-										<%= image_tag "images/feature_img.png", class: "thumbImg", alt: "" %>
-									<% else %>
-	                	<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-	            <% end %><% end %><% end %>
-	            <div class="caption">
-	                <%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %><h4><%= press_release.title %></h4><% end %>
-	                <br><time class="pull-left" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) unless press_release.embargo.blank? %></small></time>
-	                <%= link_to press_release.newsroom do %><p class="text-muted pull-right"><small><em><i class="fa fa-home fa-fw"></i>&nbsp;Newsroom</em></small></p><% end %>
-	            </div> <!-- / .caption -->
-            
-	            <div class="clearfix"></div>
-	        </div> <!-- / .thumbnail -->
-	    </div> <!-- / .col-sm-6 -->
-			<% end %>
-
 		</div>
 
 

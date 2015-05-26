@@ -4,7 +4,6 @@
 
 <% if current_newsroom != nil && current_newsroom == @newsroom %>
 
-
 	<%= nested_form_for(@newsroom) do |f| %>
 	<% if @newsroom.errors.any? %>
 		<h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
@@ -30,33 +29,9 @@
 					Edit Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
 					<% if @owner %>
 						<span class="pull-right">
-
-<%= nested_form_for(@newsroom) do |f| %>
-  <% if @newsroom.errors.any? %>
-      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
-      <ul>
-      <% @newsroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-  <% end %>
-
-<div class="nrHeader">
-  <div class="container">
-			<div class="row">
-	        <div class="col-md-8 col-md-offset-2">
-						<% if can? :manage, @newsroom %>
-						<% if @newsroom.press_releases.blank? %>
-	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
-						<% end %>
-						<% end %>
-
-
-
-
 							<%= link_to @newsroom do %>
 								<small>View Newsroom</small>
 							<% end %>
-
 						</span>
 					<% end %>
 				</h4>
@@ -78,57 +53,6 @@
 								<div class="fileUpload btn btn-primary">
 									<span><i class="fa fa-file-image-o"></i>&nbsp;Choose file</span>
 									<%= f.file_field :logo, id: "uploadBtn", class: "upload" %>
-
-							<hr>
-	        </div>
-	    </div>
-      <div class="row">
-          <div class="col-md-4 col-md-offset-2">
-              <h3><%= f.text_field :company_name %></h3>
-              <p>founded in <%= f.date_select :founded, order: [:month, :year] %></p>
-              <div>
-                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= f.text_field :website %></p>
-									<p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= f.text_field :twitter %></p>
-                  <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= f.text_field :press_email %></p>
-                  <p><i class="fa fa-phone fa-fw"></i>&nbsp;<%= f.text_field :press_phone %></p>
-									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= f.text_field :location %></p>
-              </div>
-          </div> <!-- / .col-md-4 -->
-          <div class="col-md-4">
-              <div class="centerContainer">
-                  <div class="centerContent">
-                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %>
-											<br>
-											<%= f.label :logo, "Upload new logo" %><br>
-											<%= f.file_field :logo %>
-                  </div>
-              </div>
-          </div> <!-- / .col-md-4 -->
-      </div> <!-- / .row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrHeader -->
-
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
-							<% unless @newsroom.press_releases.nil? %>
-							<% @newsroom.press_releases[0..2].each do |press_release| %>
-              <div class="col-sm-4">
-								<% if can? :manage, @newsroom %>
-								<div class="nrThumbMenu">
-								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
-								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
-								<% end %>
-								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
-								<i class="fa fa-edit fa-lg pull-right" title="Edit this press release"></i>
-								<% end %>
-								<% if press_release.exclusive? %>
-								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
-								<% end %>
-								
-
 								</div>
 							</div>
 						</div>
@@ -358,15 +282,7 @@
 		</div> <!-- / .row -->
 	</div> <!-- / .container -->
 
-
-
 			
-
-<% if can? :manage, @newsroom %>
-
-
-<% if can? :manage, @newsroom %>
-
 
 	
 
