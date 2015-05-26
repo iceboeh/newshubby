@@ -140,7 +140,7 @@ class NewsroomsController < ApplicationController
     #  redirect_to :root
     #end
     
-    @newsroom = current_newsroom
+    #@newsroom = current_newsroom
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Not yours to edit!"
     redirect_to :root

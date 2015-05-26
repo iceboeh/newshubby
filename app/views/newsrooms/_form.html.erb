@@ -2,7 +2,7 @@
 
 <div class="nav-top-margin"></div>
 
-<% if current_newsroom != nil && current_newsroom == @newsroom %>
+<% if can? :manage, @newsroom %>
 
 	<%= nested_form_for(@newsroom) do |f| %>
 	<% if @newsroom.errors.any? %>

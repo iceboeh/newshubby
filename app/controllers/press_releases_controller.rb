@@ -163,8 +163,6 @@ class PressReleasesController < ApplicationController
     #  redirect_to :root
     #end
     
-    @newsroom = current_newsroom
-    @press_releases = current_newsroom.press_releases.friendly.find(params[:id])    
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Not yours to edit. Hands off!"
     redirect_to :root
