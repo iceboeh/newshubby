@@ -1,8 +1,8 @@
 <% title "#{@press_release.title}" %>
 
-<% unless @owner %><br><br><br><% end %>
+<% unless can? :manage, @press_release %><br><br><br><% end %>
 
-<% if @owner %>
+<% if can? :manage, @press_release %>
     <div class="prStateContainer container-fluid hidden-print">
         <div class="prWrapper">
             <div class="row">
@@ -51,7 +51,7 @@
 <% end %>
 
 <div class="prOptions clearfix hidden-print">
-<% if @owner %>
+<% if can? :manage, @press_release %>
     <%= link_to edit_newsroom_press_release_path(@newsroom, @press_release), class: "pull-left" do %><i class="fa fa-edit fa-lg"></i>&nbsp;Edit Press Release<% end %>
 <!-- <%= link_to newsroom_press_release_path(@newsroom, @press_release)+".pdf", format: :pdf, class: "pull-right" do %><i class="fa fa-file-pdf-o fa-lg"></i>&nbsp;Download PDF<% end %> -->
 <% else %>

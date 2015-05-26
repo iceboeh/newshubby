@@ -3,22 +3,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10">
-			<% if @owner && @newsroom.press_releases.blank? && @introduction_failed == false %>
+			<% if can? :manage, Newsroom %>
+			<% if @newsroom.press_releases.blank? && @introduction_failed == false %>
 			<div class="alert alert-info text-center" role="alert">
 				<strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.
 			</div>
-			<% elsif @owner && @newsroom.press_releases.blank? && @introduction_failed == true %>
+			<% elsif @newsroom.press_releases.blank? && @introduction_failed == true %>
 			<div class="alert alert-info text-center" role="alert">
 				<strong>Hold your horses!</strong> You need to finish your <%= link_to "company introduction", introduction_index_path %>. first.
 			</div>
-			<% end %>
+			<% end %><% end %>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-10">
 			<h4>
 				Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
-				<% if @owner %>
+				<% if can? :manage, Newsroom %>
 					<span class="pull-right">
 						<%= link_to edit_newsroom_path(@newsroom) do %>
 							<small><i class="fa fa-pencil"></i>&nbsp;Edit Newsroom</small>
@@ -33,7 +34,7 @@
 		<div class="col-sm-7 col-md-6 editable">
 		<div id="company-basic-info">
 			<h5>Basic Info
-				<% if @owner %>
+				<% if can? :manage, Newsroom %>
 				<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-basic-info-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 				<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
@@ -82,7 +83,7 @@
 			<div id="company-details">
 				<h5>
 					Company Details
-					<% if @owner %>
+					<% if can? :manage, Newsroom %>
 					<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-details-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
@@ -128,7 +129,7 @@
 
 				<h5>
 					Funding
-					<% if @owner %>
+					<% if can? :manage, Newsroom %>
 					<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-funding-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
@@ -154,7 +155,7 @@
 				<div id="company-people">
 					<% unless @newsroom.people.blank? %>
 					<h5>Team
-						<% if @owner %>
+						<% if can? :manage, Newsroom %>
 						<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-people-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 						<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
@@ -270,7 +271,7 @@
 				<% @press_releases.each do |press_release| %>
 				<div class="col-xs-12">
 					<div class="thumbnail"> 
-						<% if @owner %>
+						<% if can? :manage, Newsroom %>
 						<div class="pr-thumbnail-options">
 
 							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button><% end %>

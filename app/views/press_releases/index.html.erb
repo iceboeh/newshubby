@@ -15,7 +15,7 @@
 				<% @press_releases.each do |press_release| %>
 				<div class="col-sm-6 col-md-4 col-lg-3 brick">
 					<div class="thumbnail"> 
-						<% if @owner %>
+						<% if can? :manage, PressReleases %>
 						<div class="pr-thumbnail-options">
 
 							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button><% end %>

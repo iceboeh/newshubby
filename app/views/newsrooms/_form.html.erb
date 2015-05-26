@@ -16,7 +16,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10">
-				<% if @owner && @newsroom.press_releases.blank? %>
+				<% if can? :manage, @newsroom %>
+				<% if @newsroom.press_releases.blank? %>
 				<div class="alert alert-info text-center" role="alert">
 					<strong>Good job!</strong> Now <%= link_to "create your first press release by clicking here", select_path %>.
 				</div>
@@ -27,7 +28,7 @@
 			<div class="col-md-10">
 				<h4>
 					Edit Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
-					<% if @owner %>
+					<% if can? :manage, @newsroom %>
 						<span class="pull-right">
 							<%= link_to @newsroom do %>
 								<small>View Newsroom</small>
@@ -100,7 +101,7 @@
 							<%= f.text_field :location, class: "form-control input-sm", placeholder: "E.g. 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA" %>
 						</div>
 						<br>
-						<% if @owner %>
+						<% if can? :manage, @newsroom %>
 							<div class="text-right">
 								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
 							</div>
@@ -136,7 +137,7 @@
 						<%= f.label :competitors, "Who are #{@newsroom.company_name.possessive} competitors?" %>
 						<%= f.text_area :competitors, rows: 3, placeholder: "Competitors", class: "form-control" %>
 						</p>
-						<% if @owner %>
+						<% if can? :manage, @newsroom %>
 							<div class="text-right">
 								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
 							</div>
@@ -175,7 +176,7 @@
 
 				<%= f.link_to_add :fundings, class: "btn btn-primary center-block" do %> + Add funding<% end %>
 					<br>
-				<% if @owner %>
+				<% if can? :manage, @newsroom %>
 					<div class="text-right">
 						<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
 					</div>
@@ -206,7 +207,7 @@
 						<% end %>
 						<%= f.link_to_add :people, class: "btn btn-primary center-block" do %> + Add person<% end %>
 						<br>
-						<% if @owner %>
+						<% if can? :manage, @newsroom %>
 							<div class="text-right clearfix">
 								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
 							</div>
@@ -225,7 +226,7 @@
 					<% @newsroom.press_releases[0..2].each do |press_release| %>
 					<div class="col-xs-12">
 						<div class="thumbnail">
-						<% if @owner %>
+						<% if can? :manage, @newsroom %>
 						<div class="pr-thumbnail-options">
 
 							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button> <% end %>
