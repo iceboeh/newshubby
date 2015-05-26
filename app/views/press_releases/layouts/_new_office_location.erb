@@ -1,0 +1,17 @@
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+												
+                        <p>
+                            <span>
+															<%= @newsroom.company_name + " has until today had offices in" %> <%= @press_release.specifics[:locations] + " and opens nu även up an office/ offices in" unless @press_release.specifics[:locations].blank? %> <%= @press_release.specifics[:next_locations] + "." unless @press_release.specifics[:next_locations].blank? %> <%= "The new office beräknas öppna " + @date.strftime("%d %B %Y") unless @date.blank? %>
+														</span>
+                        </p>
+
+												<%= render 'press_releases/fields/quote' %>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+												<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/static_bottom' %>

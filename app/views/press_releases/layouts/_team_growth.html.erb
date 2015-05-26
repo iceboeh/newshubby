@@ -21,11 +21,13 @@
 												<%= render 'press_releases/partials/quick_pitch' %>
 												
 												<% unless @date.blank? %>
-                        <p>
+                        
+												<p>
                             <span>
-															The new employees join <%= @newsroom.company_name %> on <%= @date.strftime("%B %d, %Y") %>
+															The new employees <% if @press_release.specifics[:how_many] == 1 %>join<% else %>joins<% end %> <%= @newsroom.company_name %> on <%= @date.strftime("%B %d, %Y") %>
 														</span>
                         </p>
+												
 												<% end %>
 												
 <%= render 'press_releases/partials/static_bottom' %>

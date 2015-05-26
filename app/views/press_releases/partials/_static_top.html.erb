@@ -42,14 +42,14 @@
                     <h1><%= @press_release.title %></h1><br>
 										<div class="feature-img-area">
 											<% unless @press_release.uploads.first.nil? %>
-	                    <% if @press_release.uploads.first.file.blank? %>
+	                    <% if @press_release.uploads.first.blank? %>
 											<%= image_tag "images/feature_img.png", class: "center-block feature-img", alt: "" %>
 											<% else %>
                         <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), @press_release.uploads.first.file.url(:original) %>
 											<% end %><% end %>
                         <div class="feature-img-caption">
                             <p><small>
-															<% if @press_release.uploads.first.file.blank? %>
+															<% if @press_release.uploads.first.blank? %>
 															This text will be replaced by your image caption
 															<% else %>
 															<%= @press_release.uploads.first.caption %>

@@ -9,7 +9,7 @@
 											<% elsif link.link.include? "vimeo.com"%>
 											<% else %>
 												
-												<% if link.link.start_with?("http://") %>
+												<% if link.link.start_with?("http://") || link.link.start_with?("https://") %>
                         <li><%= link_to link.caption, link.link, target: "_blank" %></li>
 												<% else %>
 												<li><%= link_to link.caption, "http://"+link.link, target: "_blank" %></li>
@@ -20,6 +20,7 @@
 											<% end %>
                     </ul><br>
 										<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
+											<% unless @press_release.uploads.blank? %>
 											<% @press_release.uploads.all[1..-1].each do |upload| %>
 											<% unless upload.file.blank? %>
                         <div class="col-xs-4 brick">
@@ -28,6 +29,7 @@
                                 <p><small><%= upload.caption %></small></p>
                            <% end %>
                         </div>
+											<% end %>
 											<% end %>
 											<% end %>
 											
