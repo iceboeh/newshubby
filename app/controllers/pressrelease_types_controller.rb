@@ -2,7 +2,7 @@ class PressreleaseTypesController < ApplicationController
   #http_basic_authenticate_with name: ENV['HTACCESS_NAME'], password: ENV['HTACCESS_PASSWORD'] if Rails.env.production?
 
   load_and_authorize_resource :newsroom
-  load_and_authorize_resource :pressrelease_type
+  #load_and_authorize_resource :pressrelease_type
 
   before_action :set_pressrelease_type, only: [:show, :edit, :update, :destroy]
 

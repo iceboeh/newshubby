@@ -18,6 +18,10 @@
 															Kickstarter is the world's largest funding platform for creative projects. A home for film, music, art, theater, games, comics, design, photography, and more. Together, creators and backers make projects happen. Project creators set a funding goal and deadline. If people like a project, they can pledge money to make it happen. Funding on Kickstarter is all-or-nothing — projects must reach their funding goals to receive any money.
 														</span>
                         </p>
+												
+												<p>
+													<%= link_to "Support #{@newsroom.company_name.possessive} Kickstarter project by clicking here!", @press_release.specifics[:kickstarter_link] unless @press_release.specifics[:kickstarter_link].blank? %>
+												</p>
 																								
 												<%= render 'press_releases/partials/founded_funding' %>
 
