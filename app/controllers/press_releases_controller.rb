@@ -19,7 +19,7 @@ class PressReleasesController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if can? :manage, PressRelease
+    if can? :manage, @press_release
       @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
     else
       @press_releases = @newsroom.press_releases.all.where(exclusive: false).where('embargo <= ?', Date.today).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
