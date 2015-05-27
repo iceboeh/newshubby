@@ -1,10 +1,10 @@
 class PressRelease < ActiveRecord::Base
   belongs_to :pressrelease_type
   belongs_to :newsroom
-  has_many :uploads
-  has_many :links
-  has_many :people, through: :newsroom
-  has_many :fundings, through: :newsroom
+  has_many :uploads, dependent: :destroy
+  has_many :links, dependent: :destroy
+  has_many :people, through: :newsroom, dependent: :destroy
+  has_many :fundings, through: :newsroom, dependent: :destroy
   serialize :specifics, Hash
   
   accepts_nested_attributes_for :newsroom, allow_destroy: true
