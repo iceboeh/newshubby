@@ -10,7 +10,7 @@
                     <div class="panel text-center">
                         <div class="panel-body">
                             <% if @press_release.exclusive? %>
-                                <h4 class="prState text-info">This press release is <strong class="prStateText"><i class="fa fa-eye-slash"></i> unlisted</strong></h4>
+                                <h4 class="prState text-primary">This press release is <strong class="prStateText">unlisted</strong></h4>
                             <% else %>
                                 <h4 class="prState text-primary">This press release is <strong class="prStateText">public</strong></h4>
                             <% end %>
@@ -24,7 +24,7 @@
     						<% end %>
 
                             <% if @press_release.exclusive? %>
-    				            <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-info", id: "prStateBtn" %>
+    				            <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-primary", id: "prStateBtn" %>
     						<% else %>
     					       <%= best_in_place [@newsroom, @press_release], :exclusive, as: :checkbox, collection: ["Make unlisted", "Make public"], class: "btn btn-primary", id: "prStateBtn" %>
     						<% end %>
