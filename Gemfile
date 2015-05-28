@@ -123,7 +123,7 @@ gem 'remotipart', '~> 1.2'
 gem 'best_in_place', '~> 3.0.1'
 
 # Masonry (for stacking div boxes)
-gem 'masonry-rails'
+#gem 'masonry-rails'
 
 # PDF Generation
 gem 'wkhtmltopdf-binary'
