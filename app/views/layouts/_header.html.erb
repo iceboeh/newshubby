@@ -112,6 +112,7 @@
 											&nbsp;<span class="caret text-muted"></span></a>
                     <ul class="dropdown-menu">
                         <li><%= link_to current_newsroom do %><span class="text-action"><i class="fa fa-home fa-fw"></i></span>&nbsp;Newsroom&nbsp;<% end %></li>
+												<li><%= link_to "New Subscription", new_newsroom_subscription_path(current_newsroom) %></li>
 												<li class="divider"></li>
 												<li><%= link_to newsroom_account_settings_path(current_newsroom) do %><span class="text-action"><i class="fa fa-cog fa-fw"></i></span>&nbsp;Account Settings<% end %></li>
                         <li class="divider"></li>

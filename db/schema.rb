@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515114348) do
+ActiveRecord::Schema.define(version: 20150528122903) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -258,6 +258,9 @@ ActiveRecord::Schema.define(version: 20150515114348) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "end"
+    t.string   "stripe_customer_token"
+    t.string   "stripe_subscription_id"
+    t.string   "plan_name"
   end
 
   create_table "uploads", force: true do |t|

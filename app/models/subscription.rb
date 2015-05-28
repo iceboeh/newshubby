@@ -1,7 +1,7 @@
 class Subscription < ActiveRecord::Base
-  belongs_to :plan
+  #belongs_to :plan
   belongs_to :newsroom
-  validates_presence_of :plan_id
+  #validates_presence_of :plan_id
   validates_presence_of :email
   
   attr_accessor :stripe_card_token, :email
@@ -11,16 +11,16 @@ class Subscription < ActiveRecord::Base
   def save_with_payment
   
     unless self.newsroom.nil?
-    stripe_customer = self.newsroom.subscriptions.first.stripe_customer_token
+    stripe_customer = self.newsroom.subscription.first.stripe_customer_token
     end
     
     if valid?
       if stripe_customer.blank?
-        customer = Stripe::Customer.create(card: stripe_card_token, plan: plan_id)
+        customer = Stripe::Customer.create(card: stripe_card_token, plan: plan_name)
         self.stripe_customer_token = customer.id
       else
         customer = Stripe::Customer.retrieve(stripe_customer)
-        subscription = customer.subscriptions.create(plan: plan_id)
+        subscription = customer.subscriptions.create(plan: plan_name)
         self.stripe_subscription_id = subscription.id
         self.stripe_customer_token = customer.id
       end

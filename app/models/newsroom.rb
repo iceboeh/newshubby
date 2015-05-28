@@ -36,7 +36,7 @@ class Newsroom < ActiveRecord::Base
   # Static Newsroom stuff
   has_many :fundings, dependent: :destroy
   has_many :people, dependent: :destroy
-  has_one :subscription, dependent: :destroy
+  has_many :subscription, dependent: :destroy
   
   
   has_many :links, through: :press_releases
