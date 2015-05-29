@@ -16,7 +16,7 @@
         <h3><%= @newsroom.company_name %></h3>
         <ul class="fa-ul">
             <li><i class="fa-li fa fa-calendar" title="Founded"></i>founded in <%= @newsroom.founded.strftime("%B, %Y") %></li>
-            <li><i class="fa-li fa fa-map-marker fa-lg" title="Location"></i><%= mail_to @newsroom.location, "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" %></li>
+            <li><i class="fa-li fa fa-map-marker fa-lg" title="Location"></i><%= link_to @newsroom.location, "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" %></li>
 						
             <li><i class="fa-li fa fa-home fa-lg" title="Website"></i><%= link_to @newsroom.website, @newsroom.website, target: "_blank" %></li>
             <li><i class="fa-li fa fa-envelope" title="Email"></i><%= mail_to @newsroom.press_email, @newsroom.press_email %></li>
