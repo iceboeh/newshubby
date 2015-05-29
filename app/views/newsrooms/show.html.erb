@@ -84,7 +84,7 @@
 				<h5>
 					Company Details
 					<% if can? :manage, Newsroom %>
-					<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-details-btn", class: "edit-pencil pull-right", role: "button" do %>
+					<%= link_to edit_newsroom_path(@newsroom, anchor: "companydetails"), id: "edit-company-details-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
 					
@@ -130,7 +130,7 @@
 				<h5>
 					Funding
 					<% if can? :manage, Newsroom %>
-					<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-funding-btn", class: "edit-pencil pull-right", role: "button" do %>
+					<%= link_to edit_newsroom_path(@newsroom, anchor: "funding"), id: "edit-company-funding-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
 					
@@ -156,7 +156,7 @@
 					<% unless @newsroom.people.blank? %>
 					<h5>Team
 						<% if can? :manage, Newsroom %>
-						<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-people-btn", class: "edit-pencil pull-right", role: "button" do %>
+						<%= link_to edit_newsroom_path(@newsroom, anchor: "keypeople"), id: "edit-company-people-btn", class: "edit-pencil pull-right", role: "button" do %>
 
 						<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
 						
@@ -169,7 +169,6 @@
 							<div class="panel panel-default">
 								<div class="panel-body">
 									<div class="media">
-										<%= image_tag "newshubby_logotype.svg", class: "media-object pull-left", alt: "NewsHubby Logo" %>
 										<div class="media-body">
 											<h4 class="media-heading"><%= person.name %></h4>
 											<p>
