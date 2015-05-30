@@ -107,8 +107,6 @@ GEM
     json (1.8.2)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
-    masonry-rails (0.2.4)
-      railties
     mime-types (2.4.3)
     mini_portile (0.6.1)
     minitest (5.6.1)
@@ -236,7 +234,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-  masonry-rails
   mixpanel
   mysql2
   nested_form

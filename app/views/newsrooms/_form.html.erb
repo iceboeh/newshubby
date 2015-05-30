@@ -109,6 +109,7 @@
 					</div> <!-- / .panel-body -->
 				</div> <!-- / .panel -->
 
+				<a class="anchor" name="companydetails"></a>
 				<h5>Company Details</h5>
 				<div class="panel panel-defaul">
 					<div class="panel-body">
@@ -144,6 +145,7 @@
 						<% end %>
 					</div> <!-- / .panel-body -->
 				</div> <!-- / .panel -->
+					<a class="anchor" name="funding"></a>
 					<h5>Funding</h5>
 					
 					<%= f.fields_for :fundings do |funding| %>
@@ -181,8 +183,8 @@
 						<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
 					</div>
 				<% end %>
-
-					<h5>Key People</h5>
+					<a class="anchor" name="keypeople"></a>
+					<h5>Team</h5>
 						<%= f.fields_for :people do |person| %>
 						<div class="row">
 							<div class="col-xs-12">

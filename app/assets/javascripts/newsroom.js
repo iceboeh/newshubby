@@ -1,9 +1,8 @@
 $(function() {
-
 	var $container = $('.masonry-container');
 	$container.imagesLoaded( function () {
 		$container.masonry({
-			//columnWidth: '.brick',
+			columnWidth: '.brick',
 			itemSelector: '.brick'
 		});   
 	});
@@ -14,7 +13,8 @@ $(function() {
 		itemSelector: '.brick',
 		loading: {
 			finishedMsg: 'No more press releases to load.',
-			img: '/assets/masonry/loader.gif'
+			img: 'data:image/gif;base64,R0lGODlhAQABAHAAACH5BAUAAAAALAAAAAABAAEAAAICRAEAOw==',
+			msgText: '<i class="fa fa-refresh fa-spin fa-2x"></i>'
 		}
 	}, function(newElements) {
 		var $newElems;
@@ -28,19 +28,6 @@ $(function() {
 			$container.masonry('appended', $newElems, true);
 		});
 	});
-
-	// var $container;
-	// $container = $(".masonry-container");
-	// $container.imagesLoaded(function() {
-	// 	return $container.masonry({
-	// 		itemSelector: ".brick",
-	// 		gutterWidth: 0,
-	// 		isFitWidth: true
-	// 	});
-	// });
-	// ({
-	// 	isAnimated: !Modernizr.csstransitions
-	// });
 
 });
 
