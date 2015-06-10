@@ -12,20 +12,19 @@
            <div class="col-sm-6 col-sm-offset-3 hubertBasic">
                <div class="panel panel-body">
 								 <h6 class="text-muted pull-right">Step 3 of 5</h6>
-	                        <h4>What does <strong><%= @newsroom.company_name %></strong> do?</h4>
-												<% if @newsroom.q_what_you_do.blank? %>
-													<%= f.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} " %>
-												<% else %>
-													<%= f.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
-												<% end %>
-												<br>
-				                <p>
-				                 <span class="text-primary"><strong>Example: </strong></span>PinMeTo specializes in keeping online business information up-to-date, and ensuring that the online business information customers find and share is accurate.
-                       </p>
-											 
-				                <p>
-				                 <span class="text-primary"><strong>Tip: </strong></span>Describe your product or service in a clear and simple way. You don’t need to describe (yet) <strong>how</strong> you do it, but only <strong>what</strong> you’re doing. 
-                       </p>
+                    <h4>What does <strong><%= @newsroom.company_name %></strong> do?</h4>
+									<% if @newsroom.q_what_you_do.blank? %>
+										<%= f.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", value: "#{@newsroom.company_name} " %>
+									<% else %>
+										<%= f.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
+									<% end %>
+									<br>
+								<p>
+	                 <span class="text-primary"><strong>Tip: </strong></span>Describe your product or service in a clear and simple way. You don’t need to describe (yet) <strong>how</strong> you do it, but only <strong>what</strong> you’re doing. 
+             		</p>
+                <p>
+	                 <span class="text-primary"><strong>Example: </strong></span>PinMeTo specializes in keeping online business information up-to-date, and ensuring that the online business information customers find and share is accurate.
+               	</p>
 	            </div> <!-- / .col-xs-12 -->
 	        </div> <!-- / .row -->
 	    </div> <!-- / .container-fluid -->
