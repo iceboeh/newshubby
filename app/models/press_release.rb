@@ -18,6 +18,9 @@ class PressRelease < ActiveRecord::Base
     
   validate :validate_specifics
   
+  
+  scope :published, -> { where(exclusive: false) }
+#  scope :published_or_time_passed, -> { published.where('embargo <= ?', Date.today) }
       
   def self.search(query)
     where("title LIKE ?", "%#{query}%")

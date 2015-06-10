@@ -7,7 +7,7 @@ class NewsroomsController < ApplicationController
 
   load_and_authorize_resource :newsroom
   
-  autocomplete :press_release, :title
+  autocomplete :press_release, :title, scopes: [:published]
 
   def configure_permitted_parameters  
     devise_parameter_sanitizer.for(:newsroom_update) { |u| 
