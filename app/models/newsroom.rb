@@ -41,6 +41,7 @@ class Newsroom < ActiveRecord::Base
   
   has_many :links, through: :press_releases
   has_many :uploads, through: :press_releases
+  has_many :distributions, through: :press_releases
   
   accepts_nested_attributes_for :company_launches, allow_destroy: true
   accepts_nested_attributes_for :people, allow_destroy: true

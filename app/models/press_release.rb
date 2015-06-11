@@ -5,6 +5,7 @@ class PressRelease < ActiveRecord::Base
   has_many :links, dependent: :destroy
   has_many :people, through: :newsroom, dependent: :destroy
   has_many :fundings, through: :newsroom, dependent: :destroy
+  has_many :distribution
   serialize :specifics, Hash
   
   accepts_nested_attributes_for :newsroom, allow_destroy: true

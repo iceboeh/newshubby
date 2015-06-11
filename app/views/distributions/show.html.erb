@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Geography:</strong>
+  <%= @distribution.geography %>
+</p>
+
+<p>
+  <strong>Niche:</strong>
+  <%= @distribution.niche %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @distribution.comments %>
+</p>
+
+<%= link_to 'Edit', edit_distribution_path(@distribution) %> |
+<%= link_to 'Back', distributions_path %>

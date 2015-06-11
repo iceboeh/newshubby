@@ -1,6 +1,6 @@
 <div class="shortPage">
 
-<%= form_for([current_newsroom, @subscription]) do |f| %>
+<%= form_for([@newsroom, @subscription]) do |f| %>
   <% if @subscription.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>

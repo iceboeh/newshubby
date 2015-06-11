@@ -3,7 +3,7 @@ class PressReleasesController < ApplicationController
   respond_to :html, :js
 
   load_and_authorize_resource :newsroom
-  #load_and_authorize_resource :press_release, :through => :newsroom
+  load_and_authorize_resource :press_release, :through => :newsroom
   
 
   # GET /press_releases

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
  # ActiveAdmin::Devise.config
   #ActiveAdmin.routes(self)
   resources :pressrelease_types
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
 
   resources :newsrooms, :path => '/' do
     get :autocomplete_press_release_title, :on => :collection
-    resources :press_releases, path: 'pressreleases'
+    resources :press_releases, path: 'pressreleases' do
+      resource :distribution, shallow: true
+    end
     #resources :company_launches, :path => 'pressreleases'
     resources :people
     resources :fundings, :path => 'funding'

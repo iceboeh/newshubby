@@ -26,8 +26,16 @@ class Ability
       can :manage, Upload, newsroom_id: newsroom.id
 
       can :manage, PressreleaseType, newsroom_id: newsroom.id
+      
+      can :manage, Distribution, newsroom_id: newsroom.id
+      
+      #can :read, Distribution do |distribution|
+       # distribution.press_release.newsroom.where("newsroom.id = ?", newsroom.id).any?
+        #end
 
     end
+    
+    
     
       #can :crud, Subscription do |subscription|
        # subscription.try(:user) == user
