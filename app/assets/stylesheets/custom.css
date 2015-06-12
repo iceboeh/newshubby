@@ -1,24 +1,24 @@
 /* NewsHubby Custom Styles*/
 /* Global */
-/* line 6, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 4, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   font-weight: 300; }
 
-/* line 15, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 12, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 body {
   background-color: #e8e8e8; }
 
-/* line 24, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 21, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 a.anchor {
   display: block;
   position: relative;
   top: -70px;
   visibility: hidden; }
 
-/* line 31, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 28, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .nhBkg {
   background: url(../media/bkg/freedom01.jpg) no-repeat center center;
   -webkit-background-size: cover;
@@ -26,33 +26,37 @@ a.anchor {
   -o-background-size: cover;
   background-size: cover; }
 
-/* line 39, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 36, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .shortPage {
   min-height: 100%;
   height: auto !important;
   margin: 0 auto -4em;
   padding-top: 70px; }
 
-/* line 47, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 43, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .push {
   height: 4em; }
 
-/* line 51, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 47, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 main {
   display: flex;
   flex-direction: column;
   min-height: 100%; }
 
-/* line 61, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
-.thumbnail {
+/* line 53, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+#indexBkg .thumbnail {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
 
-/* line 98, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 57, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+#indexBkg .thumbnail {
+  border: none; }
+
+/* line 61, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .panel {
   border-radius: 0;
   border: 0; }
 
-/* line 103, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 66, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .pr-thumbnail-options {
   opacity: 0;
   position: absolute;
@@ -63,26 +67,26 @@ main {
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear; }
 
-/* line 114, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 77, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .thumbnail:hover > .pr-thumbnail-options {
   opacity: 1; }
 
-/* line 118, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 81, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .thumbnail-logotype {
   max-width: 50%;
   max-height: 40px; }
 
-/* line 123, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 86, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .thumbnail-transparent {
   opacity: 0.6; }
 
-/* line 127, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 90, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .fileUpload {
   position: relative;
   overflow: hidden;
   margin: 10px; }
 
-/* line 133, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 96, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .fileUpload input.upload {
   position: absolute;
   top: 0;
@@ -94,11 +98,11 @@ main {
   opacity: 0;
   filter: alpha(opacity=0); }
 
-/* line 145, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 108, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .round {
   border-radius: 20px; }
 
-/* line 149, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 112, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .scrollDown {
   text-align: center;
   position: absolute;
@@ -107,121 +111,111 @@ main {
   margin-left: -50px;
   left: 50%; }
 
-/* line 158, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 121, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .scrollDown i {
   color: rgba(255, 255, 255, 0.8);
   font-size: 3em; }
 
-/* line 162, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 125, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .scrollDown i:hover {
   color: white; }
 
-/* .modal-dialog {
-    position: absolute;
-    min-width: 350px;
-    left: 50%;
-    margin-left: -175px;
-    min-height: 500px;
-    top: 50%;
-    margin-top: -250px;
-    transform: translate(-50%, -50%); // Yep!
-} */
-/* line 177, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 129, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .helper {
   display: inline-block;
   height: 100%;
   vertical-align: middle; }
 
-/* line 183, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 135, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 a {
   font-weight: 400; }
 
-/* line 187, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 139, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 a:focus {
   outline: 0px !important; }
 
-/* line 191, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 143, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 ul {
   margin-bottom: 0; }
 
-/* line 195, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 147, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .form-control, .btn {
   border-color: #ccc; }
 
-/* line 199, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 151, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .form-control {
   border-color: #ccc; }
 
-/* line 203, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 155, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .form-control:focus {
   border-color: #aaa;
   box-shadow: none; }
 
-/* line 211, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 163, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .btn, .btn:focus, .btn:active, .btn:hover {
   border: 0 !important;
   outline: 0px !important;
   -webkit-appearance: none !important; }
 
-/* line 218, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 170, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .btn-nhBlue {
   background-color: #699bc5;
   color: white; }
 
-/* line 223, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 175, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .btn-action {
   background-color: #fd4f57;
   color: white; }
-  /* line 227, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 179, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-action:hover {
     background-color: #fd363f;
     color: white; }
 
-/* line 233, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 185, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .text-action {
   color: #fd4f57; }
 
 /* Vertical Align */
-/* line 254, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 206, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listLink {
   color: inherit;
   font-weight: 300; }
 
-/* line 259, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 211, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listLink:hover {
   color: inherit; }
 
-/* line 263, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 215, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listContainer {
   display: table;
   width: 100%;
   height: 150px;
   padding: 10px; }
 
-/* line 270, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 222, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listContainer h4 {
   color: #699bc5; }
 
-/* line 274, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 226, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listImg {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
   width: 25%; }
 
-/* line 281, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 233, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listContent {
   padding-left: 10px; }
 
-/* line 285, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 237, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #nrCenterBox {
   min-height: 295px; }
 
-/* line 292, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 241, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #listCenterBox {
   min-height: 100px; }
 
-/* line 299, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 246, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #nrCenterBox:before {
   content: '';
   display: inline-block;
@@ -230,7 +224,7 @@ ul {
   margin-right: -0.3em;
   /* Adjusts for spacing */ }
 
-/* line 308, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 255, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #listCenterBox:before {
   content: '';
   display: inline-block;
@@ -239,13 +233,13 @@ ul {
   margin-right: -0.3em;
   /* Adjusts for spacing */ }
 
-/* line 317, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 264, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .listCenterItem {
   display: inline-block;
   vertical-align: middle;
   width: 100%; }
 
-/* line 323, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 270, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .nrCenterItem {
   display: inline-block;
   vertical-align: middle;
@@ -253,7 +247,7 @@ ul {
   max-width: 256px; }
 
 /* END Vertical Align */
-/* line 332, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 279, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .dropcap {
   float: left;
   font-size: 100px;
@@ -265,34 +259,34 @@ ul {
 /* .navMargin {
 	margin-top: 2em;
 } */
-/* line 347, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 294, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .whiteBox {
   background-color: #fff;
   padding: 15px; }
 
-/* line 352, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 299, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .opacityBkg {
   background-color: rgba(255, 255, 255, 0.5); }
 
-/* line 366, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 313, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .panel-heading h1, .panel-heading h2, .panel-heading h3, .panel-heading h4, .panel-heading h5, .panel-heading h6 {
   margin: 0; }
 
-/* line 371, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 318, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .well {
   background-color: #fff !important; }
 
-/* line 375, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 322, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 input {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important; }
 
-/* line 381, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 328, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 textarea {
   resize: none; }
 
-/* line 385, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 332, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .numerals {
   background-color: white;
   border: 1px solid white;
@@ -302,46 +296,46 @@ textarea {
   text-align: center;
   display: inline-block; }
 
-/* line 395, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 342, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .numerals h4 {
   line-height: 2em; }
 
-/* line 399, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 346, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .hubertBasic input {
   border: none;
   border-bottom: 1px solid #afafaf;
   margin-bottom: 10px; }
 
-/* line 405, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 352, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .hubertBasic input:focus {
   outline: 0px !important;
   -webkit-appearance: none !important; }
 
-/* line 410, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 357, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-remove {
   color: #c4c4c4; }
 
-/* line 411, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 358, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-remove:hover {
   color: red; }
 
-/* line 413, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 360, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-pencil {
   color: #c4c4c4; }
 
-/* line 414, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 361, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-pencil:hover {
   color: #63ba2d; }
 
-/* line 416, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 363, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-eye-open {
   color: #c4c4c4; }
 
-/* line 417, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 364, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .glyphicon-eye-open:hover {
   color: #699bc5; }
 
-/* line 419, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 366, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .noticeFade {
   opacity: 0.95;
   z-index: 11000;
@@ -353,65 +347,65 @@ textarea {
   /* Yep! */
   width: 48%; }
 
-/* line 435, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 382, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .closeAlert {
   position: absolute;
   top: 7px;
   right: 7px; }
-  /* line 440, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 387, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .closeAlert:hover {
     color: red; }
 
-/* line 446, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 393, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .alert:hover > .closeAlert {
   color: red; }
 
-/* line 459, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 406, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .alert a {
   color: inherit; }
 
-/* line 463, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 410, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .nhPink {
   color: #fd4f57; }
 
-/* line 467, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 414, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .pinkBtn {
   background-color: #fd4f57;
   color: #fff !important; }
 
-/* line 468, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 415, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .pinkBtn:hover, .pinkBtn:focus {
   background-color: #9b9b9b;
   color: #fff !important; }
 
-/* line 470, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 417, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #freeBtn {
   background-color: #e6e6e6 !important; }
 
-/* line 474, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 421, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #freeBtn:hover {
   background-color: #bab7b7 !important; }
 
-/* line 478, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 425, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #freeBtn:focus {
   background-color: #bab7b7 !important; }
 
-/* line 482, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 429, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .fa-spin {
   -webkit-animation: fa-spin 0.618046972s infinite linear !important;
   animation: fa-spin 0.618046972s infinite linear !important; }
 
-/* line 487, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 434, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .saveStatus {
   color: #666; }
 
-/* line 493, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 440, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .pressTypeImg {
   height: 2em;
   width: auto;
   display: inline-block; }
 
-/* line 499, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 446, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .floatingBkg {
   background: url(../media/img/penandpaper.png) no-repeat center center;
   -webkit-background-size: cover;
@@ -424,7 +418,7 @@ textarea {
   top: 100px;
   right: 20px; }
 
-/* line 512, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 459, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #infscr-loading {
   text-align: center;
   z-index: 100;
@@ -442,41 +436,41 @@ textarea {
   transform: translateX(-50%);
   transition: none; }
 
-/* line 530, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 477, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .btn-ghost {
   background-color: transparent !important;
   border: 2px solid white !important;
   color: white; }
-  /* line 535, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 482, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-ghost:hover {
     background-color: rgba(255, 255, 255, 0.2) !important;
     border: 2px solid white !important;
     color: white; }
-  /* line 541, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 488, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-ghost:focus {
     border: 2px solid white !important;
     color: white; }
 
-/* line 547, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 494, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .btn-ghost2 {
   background-color: transparent !important;
   color: white; }
-  /* line 551, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 498, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-ghost2:hover {
     color: white; }
-  /* line 555, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 502, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-ghost2:focus {
     color: white; }
-  /* line 559, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 506, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .btn-ghost2:active {
     color: #BDBDBD;
     box-shadow: none; }
 
-/* line 565, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 512, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .payplan-option {
   padding: 20px; }
 
-/* line 570, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 517, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .img-muted {
   filter: gray;
   /* IE6-9 */
@@ -485,33 +479,33 @@ textarea {
   -webkit-filter: grayscale(1);
   /* Google Chrome, Safari 6+ & Opera 15+ */ }
 
-/* line 577, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 524, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .template-type {
   color: #333; }
-  /* line 580, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 527, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .template-type:hover {
     text-decoration: none; }
-  /* line 584, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 531, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .template-type:hover > .panel .panel-body {
     background-color: #77C094;
     text-decoration: none; }
-  /* line 589, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 536, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .template-type:hover > .panel .panel-body h4 {
     color: white;
     text-decoration: none; }
 
-/* line 596, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 543, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .panel-group {
   margin-bottom: 0; }
 
-/* line 600, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 547, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 hr.horizontal-divider {
   padding: 0;
   border: none;
   border-top: 1px solid #e5e5e5;
   color: #e5e5e5;
   text-align: center; }
-  /* line 608, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 555, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   hr.horizontal-divider:after {
     content: "OR";
     display: inline-block;
@@ -521,16 +515,16 @@ hr.horizontal-divider {
     padding: 0 0.25em;
     background: white; }
 
-/* line 619, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 566, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .header-hr {
   border-color: #D3D3D3;
   margin-top: 0; }
 
-/* line 624, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 571, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .nav-top-margin {
   height: 70px; }
 
-/* line 628, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 575, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 .edit-pencil {
   opacity: 0.5;
   -webkit-transition: opacity 0.1s linear;
@@ -539,24 +533,24 @@ hr.horizontal-divider {
   -o-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear; }
 
-/* line 641, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 588, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #company-basic-info:hover #edit-company-basic-info-btn {
   opacity: 1; }
 
-/* line 645, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 592, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #company-details:hover #edit-company-details-btn {
   opacity: 1; }
 
-/* line 649, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 596, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #company-people:hover #edit-company-people-btn {
   opacity: 1; }
 
-/* line 653, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+/* line 600, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
 #company-funding:hover #edit-company-funding-btn {
   opacity: 1; }
 
 @media (min-width: 768px) {
-  /* line 659, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
+  /* line 606, /Applications/MAMP/htdocs/assets/stylesheets/newshubby/global */
   .shortPage {
     padding-top: 75px;
     padding-bottom: 75px; }
