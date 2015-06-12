@@ -3,11 +3,11 @@
 	
 	<%= render :layout => "form" do |f| %>
 
-	<div>
+	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3 hubertBasic">
 				<div class="panel panel-body">
-					<h6 class="text-muted">Step 5 of 5</h6>
+					<h6 class="text-muted pull-right">Step 5 of 5</h6>
 
 					<h4>Upload <strong><%= @newsroom.company_name.possessive %></strong> logotype</h4>
 
@@ -17,21 +17,20 @@
 						<%= f.file_field :logo, id: "uploadBtn", class: "upload" %>
 						<%= f.hidden_field :company_name, value: @newsroom.company_name %>
 					</div>
-					
-				</div> <!-- / .col-xs-12 -->
-			</div> <!-- / .row -->
-		</div> <!-- / .container-fluid -->
-	</div> <!-- / .question -->
 
-	<%= render "submit", f: f %>
+				</div> <!-- / .panel -->
+			</div> <!-- / .col -->
+		</div> <!-- / .row -->
+	
 
+		<%= render "submit", f: f %>
+	</div> <!-- / .container -->
 </div> <!-- / .shortPage -->
 
 
 
 <% end %>
 
-</div>
 
 <script>
 	mixpanel.track("Intro: Logo");
