@@ -27,11 +27,15 @@ class Ability
 
       can :manage, PressreleaseType, newsroom_id: newsroom.id
       
-      can :manage, Distribution, newsroom_id: newsroom.id
+      #can :manage, Distribution, press_release: { newsroom_id: newsroom.id }
+      
+      can :read, Distribution do |distribution|
+        distribution.press_release.newsroom.id == newsroom.id
+      end
       
       #can :read, Distribution do |distribution|
-       # distribution.press_release.newsroom.where("newsroom.id = ?", newsroom.id).any?
-        #end
+      #  distribution.press_release.newsroom.where("newsroom.id = ?", newsroom.id)#.any?
+      #end
 
     end
     

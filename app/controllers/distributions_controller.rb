@@ -1,9 +1,8 @@
 class DistributionsController < ApplicationController
-  before_action :set_distribution, only: [:show, :edit, :update, :destroy]
-  before_action :set_press_release#, only: [:show, :edit, :update, :destroy]
+  #before_action :set_distribution, only: [:show, :edit, :update, :destroy]
   
   load_and_authorize_resource :newsroom
-  #load_and_authorize_resource :distribution, :through => :newsroom
+  load_and_authorize_resource :distribution, :through => :newsroom
   
   respond_to :html
 
@@ -13,6 +12,8 @@ class DistributionsController < ApplicationController
   end
 
   def show
+    @press_release = PressRelease.friendly.find(params[:press_release_id])
+    @distribution = @press_release.distribution.last
     respond_with(@distribution)
   end
 
@@ -24,15 +25,18 @@ class DistributionsController < ApplicationController
   end
 
   def edit
+    @press_release = PressRelease.friendly.find(params[:press_release_id])
+    @distribution = @press_release.distribution.last
+    @newsroom = @press_release.newsroom
   end
 
   def create
     @press_release = PressRelease.friendly.find(params[:press_release_id])
     @newsroom = @press_release.newsroom    
     
-    @distribution = @press_release.distribution.new(distribution_params)
+    @distribution = @press_release.build_distribution(distribution_params)
     @distribution.save
-    redirect_to root_path
+    redirect_to @distribution
   end
 
   def update
@@ -48,16 +52,11 @@ class DistributionsController < ApplicationController
   private
     def set_distribution
       @distribution = Distribution.find(params[:id])
-      #@press_release = @distribution.press_release.friendly.find(params[:press_release_id])
-      
-    end
-  
-  
-    def set_press_release
-      #@newsroom = Newsroom.friendly.find(params[:newsroom_id])
+      #@press_release = @distribution.press_release.friendly.find(params[:press_release_id])      
     end
 
+
     def distribution_params
-      params.require(:distribution).permit!#(:geography, :niche, :comments, :press_release_id, :newsroom_id)
+      params.require(:distribution).permit(:geography, :niche, :comments, :press_release_id, :newsroom_id)
     end
 end
