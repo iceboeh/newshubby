@@ -3,9 +3,13 @@ class PressReleasesController < ApplicationController
   respond_to :html, :js
 
   load_and_authorize_resource :newsroom
-  load_and_authorize_resource :press_release, :through => :newsroom
-  
+  load_and_authorize_resource :press_release, :through => :newsroom, only: [:show, :edit, :update, :destroy]
+  #skip_authorize_resource :only => :select
+  #skip_authorize_resource :press_release, :only => :select
 
+  #skip_authorize_resource :only => :select  
+  #skip_authorize_resource :press_release, :only => :select
+  
   # GET /press_releases
   # GET /press_releases.json
   def index
@@ -17,7 +21,7 @@ class PressReleasesController < ApplicationController
     #else
     #  @owner = false
     #end
-
+    
     # Show exclusive press releases only to owner
     if can? :manage, @press_release
       @press_releases = @newsroom.press_releases.all.order("embargo DESC").paginate(:page => params[:page], :per_page => 8)
@@ -50,8 +54,6 @@ class PressReleasesController < ApplicationController
 
   def select
     
-    authorize! :read, @press_releases
-    
     if current_newsroom.nil?
       redirect_to root_path, notice: 'You need to sign in or sign up to create press releases.'
     else
@@ -68,6 +70,7 @@ class PressReleasesController < ApplicationController
       flash[:notice] = "Finish the introductory questions first, please!"
       redirect_to introduction_index_path
     end
+    
     
   end
     
@@ -167,6 +170,7 @@ class PressReleasesController < ApplicationController
     flash[:notice] = "Not yours to edit. Hands off!"
     redirect_to :root
     
+    
   end
 
   # POST /press_releases
@@ -187,6 +191,7 @@ class PressReleasesController < ApplicationController
         format.json { render json: @press_release.errors, status: :unprocessable_entitity }
       end
     end
+    
   end
 
   # PATCH/PUT /press_releases/1
@@ -226,6 +231,7 @@ class PressReleasesController < ApplicationController
         format.json { render json: @press_release.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # DELETE /press_releases/1
@@ -236,6 +242,7 @@ class PressReleasesController < ApplicationController
       format.html { redirect_to :back, notice: 'Press release was successfully destroyed.' }
       format.json { head :no_content }
     end
+    
   end
   
   def distribution
