@@ -225,7 +225,7 @@
 
 				<div class="row">
 					<% unless @newsroom.press_releases.nil? %>
-					<% @newsroom.press_releases[0..2].each do |press_release| %>
+					<% @newsroom.press_releases[0..1].each do |press_release| %>
 					<div class="col-xs-12">
 						<div class="thumbnail">
 						<% if can? :manage, @newsroom %>
