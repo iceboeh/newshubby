@@ -24,7 +24,7 @@ class Ability
       can :manage, Link, newsroom_id: newsroom.id
 
       can :manage, Upload, newsroom_id: newsroom.id
-
+      
       can :manage, PressreleaseType, newsroom_id: newsroom.id
       
       #can :manage, Distribution, press_release: { newsroom_id: newsroom.id }

@@ -26,6 +26,7 @@
  </div>
 
  <!-- <div class="alert alert-danger noticeFade" role="alert">Wrong email or password.</div> -->
+<<<<<<< HEAD
     <div id="indexText" class="text-center">
         <h1 class="text-center">Do-it-yourself Press Releases</h1>
         <br>
@@ -45,26 +46,31 @@
                 <div class="modal-body">
                     <img src="http://localhost:3000/assets/flag_sweden.svg" width="50" alt="" class="pull-right">
             
-            <p><strong class="text-primary">NYHET!</strong> Vi lanserar nu även i Sverige med nya modeller:</p>
-                <ol>
-                    <li>Betala per resultat (Betala bara om ni lyckas nå ut)</li>
-                    <li>Prenumerera på PR-utskick (Kontinuerlig matchmaking med journalister)</li>
-                </ol>
-            <a href="http://signup.newshubby.com/" class="btn btn-primary btn-block">Läs mer och förhandsboka här</a>
+            <p><strong class="text-primary">Hej!</strong><br> Sidan du är inne på nu riktar sig mot internationella våra besökare. Vill du skriva ditt pressmeddelande på svenska? Klicka då här nedan så tar vi dig till vår svenska sida!</p>
+            <a href="http://sverige.newshubby.com/" class="btn btn-primary btn-block">Ta mig till svenska NewsHubby</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div> <!-- / #indexBkg -->
+=======
+ <div id="indexText" class="text-center">
+    <h1 class="text-center">Do-it-yourself Press Releases</h1>
+    <br>
+    <a href="#video"><button class="btn btn-default btn-lg">Learn more</button></a>&nbsp;
+    <%= link_to "Sign Up", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+</div>
+>>>>>>> origin/master
 
+<div class="scrollDown"><a href="#video"><i class="fa fa-chevron-down fa-2x"></i></a></div>
 
+</div> <!-- / #indexBkg -->
 
 <div class="container-fluid indexSplash">
     <div class="container">
         <div class="row">
             <div class="col-lg-12" id="video">
                 <h4 class="text-center"><strong>NewsHubby is a press release creation & distribution service.</strong> <span class="text-muted">Here's how it works:</span></h4>
-
 
                 
                 <div class="row">
@@ -98,6 +104,10 @@
          </div> <!-- -->
      </div> <!-- / .col-lg-7 -->
  </div> <!-- .row -->
+ 
+ <% unless current_newsroom %>
+ 	<%= render 'newsrooms/partials/offer' %>
+ <% end %>
 
  <p class="text-center"><% if current_newsroom.nil? %>
      <%= link_to "Create a Press Release now", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
@@ -123,11 +133,24 @@
 
 <% end %>
 
+
+<script>
+
+<<<<<<< HEAD
+    $(document).ready(function () {
+        $('#swedenModal').modal('show');
+=======
+>>>>>>> origin/master
+
+
+</script>
+
 <script>
 
     $(document).ready(function () {
-        $('#swedenModal').modal('show');
-
+			
+				$('#swedenModal').modal('show');
+			
         /* Scrolla till anchors */
         var $root = $('html, body');
         $('a').click(function () {

@@ -3,8 +3,8 @@ class PressRelease < ActiveRecord::Base
   belongs_to :newsroom
   has_many :uploads, dependent: :destroy
   has_many :links, dependent: :destroy
-  has_many :people, through: :newsroom, dependent: :destroy
-  has_many :fundings, through: :newsroom, dependent: :destroy
+  has_many :people, through: :newsroom
+  has_many :fundings, through: :newsroom
   has_one :distribution
   serialize :specifics, Hash
   

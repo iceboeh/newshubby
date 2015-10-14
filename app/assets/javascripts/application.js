@@ -18,7 +18,6 @@
 //= require jquery_nested_form
 //= require jquery-ui
 //= require jquery.turbolinks
-
 //= require RRSSB
 //= require autocomplete-rails
 //= require turbolinks
