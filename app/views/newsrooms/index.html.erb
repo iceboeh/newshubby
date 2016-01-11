@@ -1,99 +1,119 @@
-<!-- 
-<style>
-
-	.brick { 
-		float: left;
-		margin: 10px 0px 10px 0px;
-	 }
-	
-	#masonry-container {
-	  margin: 10px auto;
-	}
-	
-</style>
--->
- 
 <% if params[:search] %>
-	<%= render 'newsrooms/partials/search' %>
+<div class="shortPage">
+  <%= render 'newsrooms/partials/search' %>
+</div>
+<div class="push"></div>
 <% else %>
 
 <div id="indexBkg">
-	
-<div class="newsletterSignup">
-    <div class="panel ghostPanel">
-        <div class="panel-heading">
-            <h4>Subscribe to NewsHubby's newsletter</h4>
-        </div>
-        <div class="panel-body">
-<%= form_tag('/newsrooms/subscribe', method: "post", id: "subscribe") do -%>
-            <div class="form-group">
-   <%= email_field(:email, :address, { id: "newsletterEmail", placeholder: "Email", class: "form-control center-block", required: true }) %>
-	 </div>
-	 
-   <%= submit_tag("Subscribe", class: "btn btn-ghost") %>
-                
-<% end %>
-        </div>
-    </div>
-</div>
-	
-    <!-- <div class="alert alert-danger noticeFade" role="alert">Wrong email or password.</div> -->
+	<div class="switch-site"><small><a href="http://sverige.newshubby.com/">Go to NewsHubby Sweden</a></small></div>
+    <div class="newsletterSignup hidden-xs">
+        <div class="panel ghostPanel">
+            <div class="panel-heading">
+                <h4>Subscribe to NewsHubby's newsletter</h4>
+            </div>
+            <div class="panel-body">
+                <%= form_tag('/newsrooms/subscribe', method: "post", id: "subscribe") do -%>
+                <div class="form-group">
+                 <%= email_field(:email, :address, { id: "newsletterEmail", placeholder: "Email", class: "form-control center-block", required: true }) %>
+             </div>
+
+             <%= submit_tag("Subscribe", class: "btn btn-ghost") %>
+
+             <% end %>
+         </div>
+     </div>
+ </div>
+
+ <!-- <div class="alert alert-danger noticeFade" role="alert">Wrong email or password.</div> -->
     <div id="indexText" class="text-center">
         <h1 class="text-center">Do-it-yourself Press Releases</h1>
         <br>
         <a href="#video"><button class="btn btn-default btn-lg">Learn more</button></a>&nbsp;
-				<%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+        <%= link_to "Sign Up", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
     </div>
     <div class="scrollDown"><a href="#video"><i class="fa fa-chevron-down fa-2x"></i></a></div>
+
+
+    <div class="modal fade" id="swedenModal" tabindex="-1" role="dialog" aria-labelledby="swedenModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <small class="text-muted">For our Swedish customers:</small>
+      </div>
+                <div class="modal-body">
+                    <%= image_tag "images/flag_sweden.svg", width: "50", alt: "", class: "pull-right" %>
+
+            <p><strong class="text-primary">Hej!</strong><br> Sidan du är inne på nu riktar sig mot våra internationella besökare. Vill du skriva ditt pressmeddelande på svenska? Klicka då här nedan så tar vi dig till vår svenska sida!</p>
+            <a href="http://sverige.newshubby.com/" class="btn btn-primary btn-block">Ta mig till svenska NewsHubby</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </div> <!-- / #indexBkg -->
 
-<a id="video"></a>
+<div class="scrollDown"><a href="#video"><i class="fa fa-chevron-down fa-2x"></i></a></div>
+
+</div> <!-- / #indexBkg -->
 
 <div class="container-fluid indexSplash">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h2 class="text-center"><strong>NewsHubby is a press release creation & distribution service</strong></h2>
-								<h4 class="text-center text-muted">Here's how it works</h4>
-                <br>
+            <div class="col-lg-12" id="video">
+                <h4 class="text-center"><strong>NewsHubby is a press release creation & distribution service.</strong> <span class="text-muted">Here's how it works:</span></h4>
+
+
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="thumbnail">
-													<%= image_tag "icons/creation.png", alt: "Create press releases with NewsHubby" %>
-                            <div class="caption">
-                                <h3 class="text-center">Choose a press release</h3>
-                                <p class="text-center">Create your own press release <strong>within 20 minutes</strong> with our do-it-yourself tool. There are creation guides for different types of press releases that will walk you through the whole process.</p>
-                            </div>
+                           <%= image_tag "icons/creation.png", alt: "Create press releases with NewsHubby" %>
+                           <div class="caption">
+                            <h3 class="text-center">Choose a press release</h3>
+                            <p class="text-center">Create your own press release <strong>within 20 minutes</strong> with our do-it-yourself tool. There are creation guides for different types of press releases that will walk you through the whole process.</p>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-                            <%= image_tag "icons/distribution.png", alt: "Distribute your press releases through NewsHubby" %>
-                            <div class="caption">
-                                <h3 class="text-center">Distribute your press release</h3>
-                                <p class="text-center">Let NewsHubby release your press release to relevant media via NewsHubby's global <strong>distribution network</strong>.</p>
-                            </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <%= image_tag "icons/distribution.png", alt: "Distribute your press releases through NewsHubby" %>
+                        <div class="caption">
+                            <h3 class="text-center">Distribute your press release</h3>
+                            <p class="text-center">Let NewsHubby release your press release to relevant media via NewsHubby's global <strong>distribution network</strong>.</p>
                         </div>
                     </div>
-                    <div class="col-sm-4">
-                        <div class="thumbnail">
-													<%= image_tag "icons/newsroom.png", alt: "The NewsHubby newsrooms" %>
-                            <div class="caption">
-                               <h3 class="text-center">Newsroom</h3>
-                               <p class="text-center">Your press releases and related videos, images and links will all be gathered in your public newsroom - your company's online press page.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- -->
-            </div> <!-- / .col-lg-7 -->
-        </div> <!-- .row -->
-    </div> <!-- /.container -->
-		<p class="text-center"><% if current_newsroom.nil? %>
-			<%= link_to "Create a Press Release now", "#", class: "btn btn-primary btn-lg", data: { toggle: "modal", target: "#signUp" } %>
-			<% else %>
-			<%= link_to "Create a Press Release now", select_path, class: "btn btn-primary btn-lg" %>
-			<% end %>
-		</p>
+                </div>
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                       <%= image_tag "icons/newsroom.png", alt: "The NewsHubby newsrooms" %>
+                       <div class="caption">
+                         <h3 class="text-center">Newsroom</h3>
+                         <p class="text-center">Your press releases and related videos, images and links will all be gathered in your public newsroom - your company's online press page.</p>
+                     </div>
+                 </div>
+             </div>
+         </div> <!-- -->
+     </div> <!-- / .col-lg-7 -->
+ </div> <!-- .row -->
+
+ <% unless current_newsroom %>
+ 	<%= render 'newsrooms/partials/offer' %>
+ <% end %>
+
+ <p class="text-center"><% if current_newsroom.nil? %>
+     <%= link_to "Create a Press Release now", "#", class: "btn btn-action btn-lg", data: { toggle: "modal", target: "#signUp" } %>
+     <% else %>
+     <%= link_to "Create a Press Release now", select_path, class: "btn btn-action btn-lg" %>
+     <% end %>
+ </p>
+ <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="embed-responsive embed-responsive-16by9">
+        <iframe src="https://www.youtube.com/embed/zDfSQxCFntE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen class="embed-responsive-item"></iframe>
+      </div>
+  </div>
+</div>
+</div> <!-- /.container -->
 </div> <!-- /.indexSplash -->
 
 <!-- Latest Press Releases Partial Goes Here -->
@@ -106,19 +126,21 @@
 
 <script>
 
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    /* Scrolla till anchors */
-    var $root = $('html, body');
-    $('a').click(function () {
-        $root.animate({
-            scrollTop: $($.attr(this, 'href')).offset().top - 50
-        }, 500);
-        return false;
-    });
+				$('#swedenModal').modal('show');
 
-    if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        /* Fade in navbar*/
+        /* Scrolla till anchors */
+        var $root = $('html, body');
+        $('a').click(function () {
+            $root.animate({
+                scrollTop: $($.attr(this, 'href')).offset().top - 50
+            }, 500);
+            return false;
+        });
+
+        if(! /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+            /* Fade in navbar*/
         var fadeStart = 100 // 100px scroll or less will equiv to 0 opacity
         ,fadeUntil = 200 // 100px scroll or more will equiv to 1 opacity
         ,fading = $('.transparentNavbar');
@@ -152,9 +174,4 @@ $(document).ready(function () {
 
 });
 
-/* $('#indexTab a').click(function (e) {
-	e.preventDefault()
-	$(this).tab('show')
-}) */
-	
 </script>

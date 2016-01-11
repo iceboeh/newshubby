@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141215141409) do
+ActiveRecord::Schema.define(version: 20150610080743) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 20141215141409) do
     t.datetime "updated_at"
   end
 
+  create_table "distributions", force: true do |t|
+    t.text     "geography"
+    t.text     "niche"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "press_release_id"
+  end
+
   create_table "founders", force: true do |t|
     t.string   "name"
     t.string   "role"
@@ -187,6 +196,7 @@ ActiveRecord::Schema.define(version: 20141215141409) do
     t.integer  "subscription_id"
     t.string   "code"
     t.boolean  "term_agreement"
+    t.boolean  "admin"
   end
 
   add_index "newsrooms", ["email"], name: "index_newsrooms_on_email", unique: true
@@ -237,6 +247,7 @@ ActiveRecord::Schema.define(version: 20141215141409) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pressrelease_type_id"
+    t.text     "tip"
   end
 
   create_table "pressrelease_types", force: true do |t|
@@ -244,6 +255,7 @@ ActiveRecord::Schema.define(version: 20141215141409) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "required_fields"
   end
 
   create_table "subscriptions", force: true do |t|
@@ -255,6 +267,9 @@ ActiveRecord::Schema.define(version: 20141215141409) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "end"
+    t.string   "stripe_customer_token"
+    t.string   "stripe_subscription_id"
+    t.string   "plan_name"
   end
 
   create_table "uploads", force: true do |t|

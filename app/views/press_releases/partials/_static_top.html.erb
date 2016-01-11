@@ -12,7 +12,7 @@
     </div> <!-- / .col-xs-12 -->
 </div> <!-- / .row01 -->
 <div class="row pr-heading">
-    <div class="col-xs-5 col-xs-offset-1">
+    <div class="col-sm-5 col-sm-offset-1">
         <h3><%= @newsroom.company_name %></h3>
         <ul class="fa-ul">
             <li><i class="fa-li fa fa-calendar" title="Founded"></i>founded in <%= @newsroom.founded.strftime("%B, %Y") %></li>
@@ -20,12 +20,15 @@
 						
             <li><i class="fa-li fa fa-home fa-lg" title="Website"></i><%= link_to @newsroom.website, @newsroom.website, target: "_blank" %></li>
             <li><i class="fa-li fa fa-envelope" title="Email"></i><%= mail_to @newsroom.press_email, @newsroom.press_email %></li>
-						
-            <li><i class="fa-li fa fa-twitter fa-lg" title="Twitter"></i><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/') %></li>
-            <li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
+						<% unless @newsroom.twitter.blank? %>
+            <li><i class="fa-li fa fa-twitter fa-lg" title="Twitter"></i><%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/'), target: "_blank" %></li>
+						<% end %>
+            <% unless @newsroom.press_phone.blank? %>
+						<li><i class="fa-li fa fa-phone fa-lg" title="Phone"></i><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %></li>
+						<% end %>
         </ul>
-    </div> <!-- / .col-xs-5 col-xs-offset-1 -->
-    <div class="col-xs-5">
+    </div> <!-- / .col-sm-5 col-sm-offset-1 -->
+    <div class="col-sm-5">
         <div class="centerContainer">
             <div class="centerContent">
                 <%= image_tag @newsroom.logo.url(:large), class: "img-responsive prCompanyLogo" %>
@@ -35,17 +38,18 @@
 </div> <!-- / .row .pr-heading -->
 <div class="row">
                 <div class="col-xs-10 col-xs-offset-1">
+									<hr class="visible-print-block">
                     <h1><%= @press_release.title %></h1><br>
 										<div class="feature-img-area">
 											<% unless @press_release.uploads.first.nil? %>
-	                    <% if @press_release.uploads.first.file.blank? %>
+	                    <% if @press_release.uploads.first.blank? %>
 											<%= image_tag "images/feature_img.png", class: "center-block feature-img", alt: "" %>
 											<% else %>
-                        <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), @press_release.uploads.first.file.url(:original) %>
+                        <%= link_to (image_tag @press_release.uploads.first.file.url(:medium), class: "center-block feature-img", alt: ""), @press_release.uploads.first.file.url(:original) unless @press_release %>
 											<% end %><% end %>
                         <div class="feature-img-caption">
                             <p><small>
-															<% if @press_release.uploads.first.file.blank? %>
+															<% if @press_release.uploads.first.blank? %>
 															This text will be replaced by your image caption
 															<% else %>
 															<%= @press_release.uploads.first.caption %>

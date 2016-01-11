@@ -1,239 +1,318 @@
-<style>
-
-	.brick { 
-		float: left;
-		margin: 0px 0px 0px 0px;
-	 }
-	
-	#masonry-container {
-	  margin: 10px auto;
-	}
-	
-</style>
-
 <% title "Newsroom: #{@newsroom.company_name}" %>
-	
-<div class="nrHeader">
-  <div class="container">
-			<div class="row">
-	        <div class="col-md-8 col-md-offset-2">
-						<% if @owner && @newsroom.press_releases.blank? && @introduction_failed == false %>
-	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
-						<% elsif @owner && @newsroom.press_releases.blank? && @introduction_failed == true %>
-							<div class="alert alert-info text-center" role="alert"><strong>Hold your horses!</strong> You need to finish your <%= link_to "company introduction", introduction_index_path %>. first.</div>
+<div class="nav-top-margin"></div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-10">
+			<% if can? :manage, Newsroom %>
+			<% if @newsroom.press_releases.blank? && @introduction_failed == false %>
+			<div class="alert alert-info text-center" role="alert">
+				<strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.
+			</div>
+			<% elsif @newsroom.press_releases.blank? && @introduction_failed == true %>
+			<div class="alert alert-info text-center" role="alert">
+				<strong>Hold your horses!</strong> You need to finish your <%= link_to "company introduction", introduction_index_path %>. first.
+			</div>
+			<% end %><% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10">
+			<h4>
+				Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
+				<% if can? :manage, Newsroom %>
+					<span class="pull-right">
+						<%= link_to edit_newsroom_path(@newsroom) do %>
+							<small><i class="fa fa-pencil"></i>&nbsp;Edit Newsroom</small>
 						<% end %>
-							<h3 class="text-muted nrHeading pull-left"><i class="fa fa-home"></i>&nbsp;Newsroom</h3>
-							
-							<% if @owner %>
-							<%= link_to edit_newsroom_path(@newsroom), class: "btn btn-primary pull-right", role: "button" do %>
-	
-								<i class="fa fa-edit"></i>&nbsp;Edit newsroom
+					</span>
+				<% end %>
+			</h4>
+			<hr class="header-hr">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-7 col-md-6 editable">
+		<div id="company-basic-info">
+			<h5>Basic Info
+				<% if can? :manage, Newsroom %>
+				<%= link_to edit_newsroom_path(@newsroom), id: "edit-company-basic-info-btn", class: "edit-pencil pull-right", role: "button" do %>
 
-							<% end %>
-							<% end %>
-							
-							<br><hr><br>
-							
-	        </div>
-	    </div>
-      <div class="row">
-          <div class="col-md-4 col-md-offset-2">
-              <h3><%= @newsroom.company_name %></h3>
-              <p>founded in <% unless @newsroom.founded.blank? %><%= @newsroom.founded.strftime("%B, %Y") %><% end %></p>
-              <div>
-                  <% unless @newsroom.location.blank? %>
-									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
-									<% end %>
-									<% unless @newsroom.website.blank? %>
-									<% if @newsroom.website.start_with?("http://") %>
-                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), @newsroom.website, target: "_blank" %></p>
-									<% else %>
-									<p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), "http://"+@newsroom.website %></p>
-									<% end %>
-									<% end %>
-									<% unless @newsroom.press_email.blank? %>
-                  <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
-									<% end %>
-									<% unless @newsroom.twitter.blank? %>
-                  <p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/'), target: "_blank" %></p>
-									<% end %>
-									<% unless @newsroom.press_phone.blank? %>
-                  <p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
-									<% end %>
-              </div>
-          </div> <!-- / .col-md-4 -->
-          <div class="col-md-4">
-              <div class="centerContainer">
-                  <div class="centerContent">
-                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %>
-                  </div>
-              </div>
-          </div> <!-- / .col-md-4 -->
-      </div> <!-- / .row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrHeader -->
-
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
-							<% if @press_releases.blank? %>
-								<h4 class="text-muted"><%= @newsroom.company_name %> has no press releases yet.</h4>
-							<% end %>
-							
-							<% unless @press_releases.nil? %>
-							<% @press_releases.each do |press_release| %>
-              <div class="col-sm-4">
-								<% if @owner %>
-								<div class="nrThumbMenu">
-								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
-								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
-								<% end %>
-								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
-								<i class="fa fa-edit fa-lg pull-right" title="Edit this press release"></i>
-								<% end %>
-								<% if press_release.exclusive? %>
-								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
-								<% end %>
-								
+				<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
+				
+				<% end %>
+				<% end %>
+			</h5>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="media">
+									<div class="pull-left">
+										<%= image_tag @newsroom.logo.url(:large), class: "media-object" %>
+									</div>
+									<div class="media-body">
+										<h3 class="media-heading"><strong><%= @newsroom.company_name %></strong></h3>
+										<p>founded in <% unless @newsroom.founded.blank? %><%= @newsroom.founded.strftime("%B, %Y") %><% end %></p>
+										<% unless @newsroom.location.blank? %>
+										<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= link_to "https://www.google.com/maps/place/#{@newsroom.latitude},#{@newsroom.longitude}", target: "_blank" do %><%= @newsroom.location %><% end %></p>
+										<% end %>
+										<% unless @newsroom.website.blank? %>
+										<% if @newsroom.website.start_with?("http://") %>
+										<p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), @newsroom.website, target: "_blank" %></p>
+										<% else %>
+										<p><i class="fa fa-home fa-fw"></i>&nbsp;<%= link_to @newsroom.website.gsub(/http:\/\//, '').chomp("\/"), "http://"+@newsroom.website %></p>
+										<% end %>
+										<% end %>
+										<% unless @newsroom.press_email.blank? %>
+										<p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= mail_to @newsroom.press_email, @newsroom.press_email%></p>
+										<% end %>
+										<% unless @newsroom.twitter.blank? %>
+										<p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= link_to "#{@newsroom.twitter.gsub(/.*\//, '')}", @newsroom.twitter.gsub(/@/, 'http://twitter.com/'), target: "_blank" %></p>
+										<% end %>
+										<% unless @newsroom.press_phone.blank? %>
+										<p><i class="fa fa-phone fa-fw"></i>&nbsp;<% if @newsroom.press_phone.start_with?('+') %><%= link_to @newsroom.press_phone, "tel:#{@newsroom.press_phone}" %><% else %><%= @newsroom.press_phone %><% end %></p>
+										<% end %>
+									</div>
 								</div>
-								<% end %>
 								
-                  <div class="thumbnail">
-											<%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
-												<% unless press_release.uploads.first.file.blank? %>
-												<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-												<% else %>
-												<%= image_tag "images/feature_img.png", class: "thumbImg", alt: "" %>
-											<% end %>
-                      <% end %>
-                      <div class="caption">
-                          <h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-                          <br><time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.embargo) unless press_release.embargo.blank? %> ago</small></time>
-                      </div> <!-- / .caption -->
+							</div> <!-- /. col-md-12 -->
+						</div> <!-- /. row -->
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
+			</div> <!-- / #company-basic-info -->
+			<div id="company-details">
+				<h5>
+					Company Details
+					<% if can? :manage, Newsroom %>
+					<%= link_to edit_newsroom_path(@newsroom, anchor: "companydetails"), id: "edit-company-details-btn", class: "edit-pencil pull-right", role: "button" do %>
 
-                      <div class="clearfix"></div>
-                  </div> <!-- / .thumbnail -->
-              </div> <!-- / .col-sm-6 -->
-							<% end %><% end %>
-              
-          </div> <!-- / .row -->
-					<% unless @press_releases.blank? %>
-						<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
+					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
+					
 					<% end %>
-      </div> <!-- / .col-md-8 -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
+					<% end %>
+				</h5>
+				<div class="panel panel-default">
+					<div class="panel-body">
 
-<% unless @newsroom.q_what_you_do.nil? %>
-<div class="nrRow nrWhiteBkg">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-						<h3>What does <%= @newsroom.company_name %> do?</h3>
-              <p><strong><%= @newsroom.q_what_you_do %></strong>
-								
-									<%= @newsroom.q_how_you_achieve %>
-								
-									<%= @newsroom.q_clients %>
-								
-									<%= @newsroom.differentiation %>
+						<% unless @newsroom.q_what_you_do.nil? %>
+						<div class="col-xs-12">
+							<!-- <h4>What <%= @newsroom.company_name %> does</h4> -->
+							<p><strong><%= @newsroom.q_what_you_do %></strong>
+
+								<%= @newsroom.q_how_you_achieve %>
+
+								<%= @newsroom.q_clients %>
+
+								<%= @newsroom.differentiation %>
 							</p>
-              <h4>Problem Solved</h4>
-              <p><%= simple_format(@newsroom.problem_solved) %></p>
-              <h4>Business Model</h4>
-              <p><%= simple_format(@newsroom.business_model) %></p>
-              <h4>Competitors</h4>
-              <p><%= simple_format(@newsroom.competitors) %></p>
-              <h4>Funding</h4>
-							<% @newsroom.fundings.each do |funding| %>
-              <% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><p><%= funding.investment_type %><br>
-							<% else %>
-							<p><%= funding.investment_type %>: <%= funding.name %><br>
-							<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %><% unless funding.amount.blank? %> | $<%= funding.amount %><% end %><% end %></p>
-							<% end %>
-              <h4>Key People</h4>
-              <div class="row">
-								<% @newsroom.people.each do |person| %>
-                  <div class="col-xs-6">
-                      <p><strong><%= person.name %></strong>&nbsp;<%= "("+person.role+")" unless person.role.blank? %><br><small><%= person.presentation %></small></p>
-                  </div>
-								<% end %>
-              </div> <!-- / .row -->
-          </div> <!-- / .col-md-8 -->
-      </div> <!-- /.row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
-<% end %>
+						<% end %>
 
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-image"></i>&nbsp;Videos and images</h3>
-							<% if @newsroom.uploads.blank? && @newsroom.links.blank? %>
-								<h4 class="text-muted"><%= @newsroom.company_name %> has no videos and images yet.</h4>
-							<% else %>
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.links.each do |link| %>
-							<% unless link.link.nil? || link.press_release.embargo >= Date.today && link.press_release.exclusive || false %>
-              
-							<% if link.link.include? "youtube.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
+							<% unless @newsroom.problem_solved.blank? %>
+							<h5>Problem Solved</h5>
+							<p><%= simple_format(@newsroom.problem_solved) %></p>
 							<% end %>
-							
-              <% if link.link.include? "youtu.be" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
+
+							<% unless @newsroom.business_model.blank? %>
+							<h5>Business Model</h5>
+							<p><%= simple_format(@newsroom.business_model) %></p>
 							<% end %>
-							
-              <% if link.link.include? "vimeo.com" %>
-							<div class="col-sm-4">
-                  <div class="thumbnail">
-                      <div class="embed-responsive embed-responsive-16by9">
-													<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                      </div>
-                      <div class="caption">
-                          <p><small><%= link_to link.caption, link.link %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
+
+							<% unless @newsroom.competitors.blank? %>
+							<h5>Competitors</h5>
+							<p><%= simple_format(@newsroom.competitors) %></p>
 							<% end %>
-							
-							<% end %><% end %><% end %>
-							
-							<% @newsroom.press_releases.each do |press_release| %>
-							<% press_release.uploads.each do |upload| %>
-							<% unless upload.file.blank? || upload.press_release.embargo >= Date.today || upload.press_release.exclusive? %>
-              <div class="col-sm-4">
-                  <div class="thumbnail">
-											<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
-                      <div class="caption">
-                          <p><small><%= upload.caption %></small></p>
-                      </div>
-                  </div>
-              </div> <!-- / .col-sm-4 -->
+						</div>
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
+			</div><!-- / #company-details -->
+			<div id="company-funding">
+
+				<h5>
+					Funding
+					<% if can? :manage, Newsroom %>
+					<%= link_to edit_newsroom_path(@newsroom, anchor: "funding"), id: "edit-company-funding-btn", class: "edit-pencil pull-right", role: "button" do %>
+
+					<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
+					
+					<% end %>
+					<% end %>
+				</h5>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<% unless @newsroom.fundings.blank? %>
+						<ul>
+						<% @newsroom.fundings.each do |funding| %>
+						<% if funding.investment_type == "Bootstrapped" || funding.investment_type == "No funding" %><li><%= funding.investment_type %></li>
+						<% else %>
+						<li><%= funding.investment_type %>: <%= funding.name %><br>
+						<% unless funding.date.nil? %><%= funding.date.strftime("%B %Y") %><% end %><% unless funding.amount.blank? %> | $<%= funding.amount %><% end %><% end %></li>
+						<% end %>
+						<% end %>
+						</ul>
+					</div>
+				</div>
+			</div> <!-- / #company-funding -->
+				<div id="company-people">
+					<% unless @newsroom.people.blank? %>
+					<h5>Team
+						<% if can? :manage, Newsroom %>
+						<%= link_to edit_newsroom_path(@newsroom, anchor: "keypeople"), id: "edit-company-people-btn", class: "edit-pencil pull-right", role: "button" do %>
+
+						<small><i class="fa fa-pencil">&nbsp;Edit</i></small>
+						
+						<% end %>
+						<% end %>
+					</h5>
+					<div class="row">
+						<% @newsroom.people.each do |person| %>
+						<div class="col-xs-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="media">
+										<div class="media-body">
+											<h4 class="media-heading"><%= person.name %></h4>
+											<p>
+												<%= person.role unless person.role.blank? %><br><small><%= person.presentation %></small>
+											</p>
+										</div> <!-- / .media-body -->
+									</div> <!-- / .media -->
+								</div> <!-- / .panel-body -->
+							</div> <!-- / .panel -->
+						</div> <!-- / .col-sm-6 -->
+						<% end %>
+						<% end %>
+					</div> <!-- / .row -->
+				</div> <!-- / #company-people -->
+				<% unless @newsroom.uploads.blank? && @newsroom.links.blank? %>
+
+				<div class="row">
+					<div class="col-xs-12">
+						<h5>Videos and Press Images</h5>
+					</div>
+					<% if @newsroom.uploads.blank? && @newsroom.links.blank? %>
+					<h4 class="text-muted"><%= @newsroom.company_name %> has no videos and images yet.</h4>
+					<% else %>
+					<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
+						<% @newsroom.press_releases.each do |press_release| %>
+						<% press_release.links.each do |link| %>
+						<% unless link.link.nil? || link.press_release.embargo >= Date.today && link.press_release.exclusive || false %>
+						<% if link.link.include? "youtube.com" %>
+						<div class="col-sm-6 brick">
+							<div class="thumbnail">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" allowfullscreen></iframe>
+								</div>
+								<div class="caption">
+									<p><small><%= link_to link.caption, link.link %></small></p>
+								</div>
+							</div>
+						</div> <!-- / .col-sm-4 -->
+						<% end %>
+
+						<% if link.link.include? "youtu.be" %>
+						<div class="col-sm-6 brick">
+							<div class="thumbnail">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" allowfullscreen></iframe>
+								</div>
+								<div class="caption">
+									<p><small><%= link_to link.caption, link.link %></small></p>
+								</div>
+							</div>
+						</div> <!-- / .col-sm-4 -->
+						<% end %>
+
+						<% if link.link.include? "vimeo.com" %>
+						<div class="col-sm-6 brick">
+							<div class="thumbnail">
+								<div class="embed-responsive embed-responsive-16by9">
+									<iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+								</div>
+								<div class="caption">
+									<p><small><%= link_to link.caption, link.link %></small></p>
+								</div>
+							</div>
+						</div> <!-- / .col-sm-4 -->
+						<% end %>
+
+						<% end %><% end %><% end %>
+
+						<% @newsroom.press_releases.each do |press_release| %>
+						<% press_release.uploads.each do |upload| %>
+						<% unless upload.file.blank? || upload.press_release.embargo >= Date.today || upload.press_release.exclusive? %>
+						<div class="col-sm-6 brick">
+							<div class="thumbnail">
+								<%= link_to image_tag(upload.file.url(:medium), class: "img-responsive"), upload.file.url %>
+								<div class="caption">
+									<p><small><%= upload.caption %></small></p>
+								</div>
+							</div>
+						</div> <!-- / .col-sm-4 -->
+						<% end %>
+						<% end %><% end %><% end %>
+					</div>
+				</div> <!-- / .row -->
+
+				<% end %>
+			</div> <!-- / .col -->
+			<div class="col-sm-5 col-md-4">
+				<div class="row">
+					<div class="col-xs-12">
+						<h5>&nbsp;Latest Press Releases</h5>
+					</div>
+				</div>
+				<div class="row">
+				<% if @press_releases.blank? %>
+				<h5 class="text-muted">&nbsp;<%= @newsroom.company_name %> has no press releases yet.</h5>
+				<% end %>
+
+				<% unless @press_releases.nil? %>
+				<% @press_releases.each do |press_release| %>
+				<div class="col-xs-12">
+					<div class="thumbnail"> 
+						<% if can? :manage, Newsroom %>
+						<div class="pr-thumbnail-options">
+
+							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button><% end %>
+
+							<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %><button class="btn btn-sm btn-default"><i class="fa fa-pencil" title="Edit this press release">&nbsp;Edit</i></button><% end %>
+
+							<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release? This action can not be undone." } do %><button class="btn btn-sm btn-danger"><i class="fa fa-times" title="Permanently delete this press release">&nbsp;Delete</i></button><% end %>
+						</div>
+						<% end %>
+
+						<%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
+						<% unless press_release.uploads.first.file.blank? %>
+						<%= image_tag press_release.uploads.first.file.url(:medium), alt: "" %> <!-- , class: "#{"thumbnail-transparent" if press_release.exclusive?}" -->
+						<% else %>
+						<%= image_tag "images/feature_img.png", alt: "" %> 
+						<% end %>
+						<% end %>
+						<div class="caption">
+							<time class="pull-right text-muted clearfix" datetime="2014-10-28 20:00">
+								<small>
+									<%= time_ago_in_words(press_release.embargo) unless press_release.embargo.blank? %>
+								</small>
+							</time>
+							<h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
+							<% if press_release.exclusive? %>
+							<div class="text-center">
+								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+								<span class="label label-danger"><i class="fa fa-eye-slash" title="This press release is only exclusively visible">&nbsp;Unlisted</i></span>
+								<% end %>
+							</div>
 							<% end %>
-							<% end %><% end %><% end %>
-          </div> <!-- / .row -->
-      </div> <!-- / .col-md-8 -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
+						</div> <!-- / .caption -->
+						<div class="clearfix"></div>
+					</div> <!-- / .thumbnail -->
+				</div> <!-- / .col-sm-6 -->
+				<% end %><% end %>
+				</div> <!-- row -->
+				<div class="text-center">
+					<% unless @press_releases.blank? %> 
+						<%= link_to "View All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default", role: "button" %>
+					<% end %>
+				</div>
+			</div> <!-- / .com-sm-6 -->
+		</div> <!-- / .row -->
+	</div> <!-- / .container -->

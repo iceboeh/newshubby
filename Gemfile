@@ -66,7 +66,7 @@ gem 'rails4-autocomplete'
 
 gem 'jquery-ui-rails'
 
-gem 'font-awesome-sass', '~> 4.3.0'
+#gem 'font-awesome-sass', '~> 4.3.0'
 
 #gem 'font-awesome-rails'
 
@@ -94,6 +94,14 @@ gem 'rails_autolink'
 
 gem 'rails-assets-RRSSB'
 
+# Paperclip memory
+
+gem 'posix-spawn'
+
+# User permissions
+
+gem 'cancancan', '~> 1.10'
+
 #gem 'activeadmin', github: 'activeadmin/activeadmin'
 
 # Possessive pronoun to words "NewsHubby's"
@@ -115,7 +123,7 @@ gem 'remotipart', '~> 1.2'
 gem 'best_in_place', '~> 3.0.1'
 
 # Masonry (for stacking div boxes)
-gem 'masonry-rails'
+#gem 'masonry-rails'
 
 # PDF Generation
 gem 'wkhtmltopdf-binary'

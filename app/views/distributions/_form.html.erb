@@ -1,0 +1,29 @@
+<%= form_for([@newsroom, @press_release, @distribution], url: newsroom_press_release_distribution_path) do |f| %>
+  <% if @distribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@distribution.errors.count, "error") %> prohibited this distribution from being saved:</h2>
+
+      <ul>
+      <% @distribution.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :geography %><br>
+    <%= f.text_area :geography %>
+  </div>
+  <div class="field">
+    <%= f.label :niche %><br>
+    <%= f.text_area :niche %>
+  </div>
+  <div class="field">
+    <%= f.label :comments %><br>
+    <%= f.text_area :comments %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

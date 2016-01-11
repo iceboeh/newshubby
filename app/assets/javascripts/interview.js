@@ -7,7 +7,7 @@ $(document).ready(function() {
     var qCount = $('.question').length; // count the number of .question divs
     //console.log('There are ' + qCount + ' question divs present'); // log number of .question in console. Sanity check.
 
-    var hideModal = function(){
+    var hideModal = function() {
         $('.overlay').hide(); // hide any dimmed modal background
         $('[id^=modal]').hide(); // hide any hint modal
     };
@@ -50,6 +50,16 @@ $(document).ready(function() {
         };
     };
 
+    var animateDown = function(){
+        $('[id^=q]' + ' .row').not('#q' + i).removeClass('animated fadeInDown fadeInUp'); //remove fade and slide effect classes on all but THIS question
+        $('#q' + i + ' .row').addClass('animated fadeInDown'); //add fade and slideDown effect classes on this THIS question
+    };
+
+    var animateUp = function(){
+        $('[id^=q]' + ' .row').not('#q' + i).removeClass('animated fadeInDown fadeInUp'); //remove fade and slide effect classes on all but THIS question
+        $('#q' + i + ' .row').addClass('animated fadeInUp');  //add fade and slideUp effect classes on this THIS question
+    };
+
     var handleBtns = function() {
         if (i == 1) {
             $('#prev').hide();
@@ -64,7 +74,7 @@ $(document).ready(function() {
             $('.edit_press_release').removeAttr('data-remote') // Something to do with rails... Ask back end ppl ;-)
         } else {
             $('#next').show();
-            $('#distribute').hide();
+            // $('#distribute').hide();
         }
     };
 
@@ -78,7 +88,7 @@ $(document).ready(function() {
         $('#next').click(function(){ // NEXT-button when clicked
             if ( i < qCount ){ // if i is less than the number of questions...
                 i ++; // add 1 to our global counter
-                console.log(i); // print out the global counter value in console (sanity check)
+                //console.log(i); // print out the global counter value in console (sanity check)
                 $('[id^=q].question').not('#q' + i).hide(); // hide all #q that don't have the current global counter value
                 //console.log('hiding'); // sanity check
                 $('#q' + i).show(); // display the #q plus global counter value (e.g. #q2)
@@ -87,6 +97,7 @@ $(document).ready(function() {
                 activeBtn();
                 focusPls();
                 handleBtns();
+                //animateUp();
                 saving();
             }
         });
@@ -103,6 +114,7 @@ $(document).ready(function() {
                 activeBtn();
                 focusPls();
                 handleBtns();
+                //animateDown();
                 saving();
             }
             if (i == 1) {
@@ -110,13 +122,12 @@ $(document).ready(function() {
             }
         });
 
-        $('.panel input').keydown(function(e) {
+        /* $('.panel').keydown(function(e) {
             if (e.keyCode == 13){
                 e.preventDefault();
-               // $("#next").click();
+                $("#next").click();
             } //enter
-        });
-				
+        }); */
     };
 
     var handleHints = function() {
@@ -152,6 +163,7 @@ $(document).ready(function() {
 
         $('.prestoNavBtn').click(function(){
             $('[id^=q].question').not('#q' + $(this).data('id')).hide(); // hide all #q that don't have the current global counter value
+            $('[id^=q]' + ' .row').removeClass('animated fadeInDown fadeInUp'); // Remove fade and slide effects on all questions
             hideModal();
             $('#q'+$(this).data('id')).show();
             i = $(this).data('id');
@@ -188,6 +200,6 @@ $(document).ready(function() {
 
         setTimeout(function(){ 
             $('.saving').fadeOut(240);  
-        }, 10000);
+        }, 30000);
     };
 });

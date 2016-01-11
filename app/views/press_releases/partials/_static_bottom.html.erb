@@ -1,4 +1,4 @@
-										<hr>
+										<hr class="hidden-print">
 										<% unless @press_release.links.blank? %>
                     <h4>Links</h4>
                     <ul>
@@ -9,7 +9,7 @@
 											<% elsif link.link.include? "vimeo.com"%>
 											<% else %>
 												
-												<% if link.link.start_with?("http://") %>
+												<% if link.link.start_with?("http://") || link.link.start_with?("https://") %>
                         <li><%= link_to link.caption, link.link, target: "_blank" %></li>
 												<% else %>
 												<li><%= link_to link.caption, "http://"+link.link, target: "_blank" %></li>
@@ -19,10 +19,11 @@
 											<% end %>
 											<% end %>
                     </ul><br>
-                    <div class="row">
+										<div id="masonry-container" class="infinite-scroll clearfix has-gutters">
+											<% unless @press_release.uploads.blank? %>
 											<% @press_release.uploads.all[1..-1].each do |upload| %>
 											<% unless upload.file.blank? %>
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 brick">
 													<%= link_to upload.file.url, class: "thumbnail" do %>
                                 <%= image_tag upload.file.url(:medium), alt: "" %>
                                 <p><small><%= upload.caption %></small></p>
@@ -30,12 +31,13 @@
                         </div>
 											<% end %>
 											<% end %>
+											<% end %>
 											
 											
 											<% @press_release.links.each do |link| %>
 											<% unless link.link.nil? %>
 											<% if link.link.include? "youtube.com" %>
-                        <div class="col-xs-4">
+                        <div class="col-sm-4 brick">
                             <div class="embed-responsive embed-responsive-4by3">
                                 <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*v=/, '') %>" frameborder="0" allowfullscreen></iframe>
                             </div>
@@ -44,7 +46,7 @@
 											<% end %>
 											
 											<% if link.link.include? "youtu.be" %>
-                        <div class="col-xs-4">
+                        <div class="col-sm-4 brick">
                             <div class="embed-responsive embed-responsive-4by3">
                                 <iframe class="embed-responsive-item" src="//www.youtube.com/embed/<%= link.link.gsub(/.*youtu.be\//, '') %>" frameborder="0" allowfullscreen></iframe>
                             </div>
@@ -53,7 +55,7 @@
 											<% end %>
 											
 											<% if link.link.include? "vimeo.com" %>
-                        <div class="col-xs-4">
+                        <div class="col-sm-4 brick">
                             <div class="embed-responsive embed-responsive-4by3">
                                 <iframe class="embed-responsive-item" src="//player.vimeo.com/video/<%= link.link.gsub(/.*com\//, '') %>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                             </div>

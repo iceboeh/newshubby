@@ -1,6 +1,23 @@
 <%= f.fields_for :newsroom, @newsroom do |newsroom| %>
 
-<div class="question" id="q1">
+<!-- 
+	
+	Check which fields aren't filled out.
+	Count them.
+	Use that count to set div no.
+
+	BELOW IS SMARTEST
+	
+	How can display the correct questions for each template?
+
+	Check @press_release.pressrelease_type and make array for each type with required fields.
+	Could use description field for pressrelease_release 
+
+	Count to set div numbers with doing a .count on array
+
+-->
+<% if @newsroom.people.blank? && @blank_fields.index("people") != nil %>
+<div class="question" id="q<%= @blank_fields.index("people") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -18,10 +35,6 @@
 												<%= person.text_area :presentation, class: "form-control", placeholder: "Presentation" %><br>
 												
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
 								<% end  %>
 								<p class="text-center"><%= newsroom.link_to_add :people, class: "add-new" do %> + Add person<% end %></p>
@@ -30,7 +43,7 @@
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal1">
+<div class="overlay-message" id="modal<%= @blank_fields.index("people") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -42,7 +55,7 @@
             </p>
             <br>
             <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
+                <span class="text-primary"><strong>Tip: </strong></span>
             </h5>
             <p>
              	Here goes the tip
@@ -50,8 +63,10 @@
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q2">
+<% if @newsroom.q_what_you_do.blank? && @blank_fields.index("q_what_you_do") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_what_you_do") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -67,17 +82,13 @@
 												<%= newsroom.text_area :q_what_you_do, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal2">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_what_you_do") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -85,20 +96,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-							NewsHubby is offering a DIY press release tool for tech companies that want to reach media worldwide and get the viral spread.
+							PinMeTo specializes in keeping online business information up-to-date, and ensuring that the online business information customers find and share is accurate.
             </p>
             <br>
             <h5>
-                <span class="text-primary"><strong>Remember: </strong></span>
+                <span class="text-primary"><strong>Tip: </strong></span>
             </h5>
             <p>
-             	What does <%= @newsroom.company_name %> do? Always write in third person, please :) For example, use "<%= @newsroom.company_name %>" instead of “we” or “I”.
+             	Describe your product or service in a clear and simple way. You don’t need to describe (yet) <strong>how</strong> you do it, but only <strong>what</strong> you’re doing.
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q3">
+<% if @newsroom.q_how_you_achieve.blank? && @blank_fields.index("q_how_you_achieve") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_how_you_achieve") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -114,17 +127,13 @@
 												<%= newsroom.text_area :q_how_you_achieve, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal3">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_how_you_achieve") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -132,13 +141,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              The company achieves this through automatic online interviews. Once a client has answered a few questions, a press release is generated and is ready to be electronically sent to media outlets worldwide.
+              The company achieves this in two ways: a free tool on their website enables businesses to check how their online business information appears on various online platforms; and an additional paid tool that corrects, and manages a businesses online business information on various online platforms.
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	Now’s the moment to describe <strong>how</strong> you do it. If you have a technical product it’s a good idea to describe the technical facts behind it. If you have another type of product, describe it so your reader understands <strong>how</strong> you solve the problem. 
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q4">
+<% if @newsroom.q_clients.blank? && @blank_fields.index("q_clients") != nil %>
+<div class="question" id="q<%= @blank_fields.index("q_clients") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -154,17 +172,13 @@
 												<%= newsroom.text_area :q_clients, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal4">
+<div class="overlay-message" id="modal<%= @blank_fields.index("q_clients") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -172,14 +186,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              Typically, NewsHubby's clients are tech startups and other, bigger tech companies.
+              Typically, PinMeTo’s clients are chain businesses like hotel chains, restaurant chains, fitness centre chains, supermarket chains, etc.
             </p>
             <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	Describe all of your target customers so that your reader gets a better idea of who you solve the problem for.  
+            </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q5">
+<% if @newsroom.business_model.blank? && @blank_fields.index("business_model") != nil %>
+<div class="question" id="q<%= @blank_fields.index("business_model") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -191,17 +213,13 @@
                     <div class="panel-body">
 											<%= newsroom.text_area :business_model, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal5">
+<div class="overlay-message" id="modal<%= @blank_fields.index("business_model") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -209,13 +227,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              The business model is a yearly or monthly subscription model, from $47 per month.
+              The business model is a combination of a monthly subscription model, as well as an app purchase. The price is determined by how many branches a customer needs help with.
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	Money time! Describe how you plan to make business out of your product. Or let’s be clear: How will you make money?  
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q6">
+<% if @newsroom.differentiation.blank? && @blank_fields.index("differentiation") != nil %>
+<div class="question" id="q<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -231,17 +258,13 @@
 												<%= newsroom.text_area :differentiation, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
 											<% end %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal6">
+<div class="overlay-message" id="modal<%= @blank_fields.index("differentiation") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -249,13 +272,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-							The difference between NewsHubby and its competitors is that competitors primarily focus on distribution or manually writing press releases. NewsHubby has created a tool that actually helps the client to automatically generate a customized press release – a DIY tool for press releases.
+              The difference between PinMeTo and its competitors is that while PinMeTo manages their clients online presence by directly interacting with Google, Foursquare and Facebook, their competitors manage their clients online presence by going through listing companies such as yellow pages. 
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	Don’t undervalue this question! Even if you think that your idea and product are crystal clear to understand, it can still be hard for a journalist who sees it for the first time. By describing how you differ from your competitors you can help the journalist better understand your product. 
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q7">
+<% if @newsroom.competitors.blank? && @blank_fields.index("competitors") != nil %>
+<div class="question" id="q<%= @blank_fields.index("competitors") +	 @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -267,17 +299,13 @@
                     <div class="panel-body">
                       <%= newsroom.text_area :competitors, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal7">
+<div class="overlay-message" id="modal<%= @blank_fields.index("competitors") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -285,13 +313,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-							Pr.co, Pressfriendly
+              Yext, Placable, Moz.
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	“Uhmmm! Why would I want to speak about them?” Trust us! Just like the previous question, don’t undervalue this question! Describing who your competitors are will give journalists a reference point and help them better understand your product. 
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q8">
+<% if @newsroom.problem_solved.blank? && @blank_fields.index("problem_solved") != nil %>
+<div class="question" id="q<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -303,17 +340,13 @@
                     <div class="panel-body">
                       <%= newsroom.text_area :problem_solved, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;" %>
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
 
-<div class="overlay-message" id="modal8">
+<div class="overlay-message" id="modal<%= @blank_fields.index("problem_solved") + @press_release.pressrelease_type.fields.count + 3 %>">
 		<div class="panel panel-default">
         <div class="panel-body">
             <button type="button" class="close closeModal" id="closeIntHints"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -321,13 +354,22 @@
                 <span class="text-primary"><strong>Example: </strong></span>
             </h5>
             <p>
-              Many companies don't have the time, effort and knowledge about how to create a good press release. NewsHubby wants to help them with that and minimize the distance between the startups and the press.
+              PinMeTo helps businesses find out if they have any faulty location data and inconsistent online business information on search engines, maps, and social media platforms. Pinmeto also provides businesses with a tool to correct their location data and business information errors on to the biggest online platforms.
+            </p>
+            <br>
+            <h5>
+                <span class="text-primary"><strong>Tip: </strong></span>
+            </h5>
+            <p>
+             	Describe what problem you solve as clearly as possible. Try to go back to when you got the idea, maybe you stumbled upon the problem yourself and have now solved it. Tell the story. 
             </p>
         </div> <!-- / .panel-body -->
     </div> <!-- / .panel -->
 </div> <!-- / .overlay-message -->
+<% end %>
 
-<div class="question" id="q9">
+<% if @newsroom.fundings.blank? && @blank_fields.index("fundings") != nil %>
+<div class="question" id="q<%= @blank_fields.index("fundings") + @press_release.pressrelease_type.fields.count + 3 %>">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">
@@ -339,21 +381,25 @@
                     </div> <!-- / .panel-heading -->
                     <div class="panel-body">
                         
-												<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %>
-												<%= funding.text_field :name, class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></strong> <%= funding.date_select :date, class: "form-control"  %>
-																																$
-												<%= funding.number_field :amount, class: "form-control", placeholder: "Amount"  %>
+					<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %>
+					<%= funding.text_field :name, class: "form-control", id: "exampleInputEmail1", placeholder: "Name"  %></strong> <%= funding.date_select :date, class: "form-control"  %>
+																									$
+					<%= funding.number_field :amount, class: "form-control", placeholder: "Amount"  %>
 												
                     </div> <!-- / .panel-body -->
-                    <div class="panel-footer clearfix">
-                        <div class="pull-left" id="textareaFeedback"></div>
-                        <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                    </div><!--/ .panel-footer -->
                 </div> <!-- / .panel -->
-								<% end  %>
-								<p class="text-center"><%= newsroom.link_to_add :fundings, class: "add-new" do %> + Add funding<% end %></p>
+				<% end  %>
+				<div class="text-center">
+                    <%= newsroom.link_to_add :fundings, class: "add-new" do %>
+                        <button class="btn btn-ghost">
+                            <i class="fa fa-plus"></i> Add funding
+                        </button>
+                    <% end %>
+                </div>
             </div> <!-- / .col-xs-12 -->
         </div> <!-- / .row -->
     </div> <!-- / .container-fluid -->
 </div> <!-- / .question -->
+<% end %>
+
 <% end %>

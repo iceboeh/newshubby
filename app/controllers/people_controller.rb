@@ -1,6 +1,9 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
+  load_and_authorize_resource :newsroom
+  load_and_authorize_resource :person, :through => :newsroom
+
   # GET /people
   # GET /people.json
   def index

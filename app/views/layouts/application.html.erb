@@ -3,20 +3,22 @@
 <head>
 	<%= favicon_link_tag 'images/favicon.ico' %>
 	
-  <title><% if @title.blank? %>NewsHubby<% else %><%= @title %><% end %></title>
+  <title><%= content_for?(:title) ? content_for(:title) : "NewsHubby – Do-it-yourself Press Releases" %></title>
 	
+  <%= csrf_meta_tags %>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="NewsHubby is a do-it-yourself platform for creation, hosting, and distribution of press releases your press releases. ">
 	<style type="text/css">
 	<%= Rails.application.assets.find_asset('application.css').to_s.html_safe %>
 	</style>
 	
  	<%= stylesheet_link_tag 'application', :media => 'screen', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag "https://js.stripe.com/v2/", 'application', 'data-turbolinks-track' => true %>
+	
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 	<%= tag :meta, name: "stripe-key", content: STRIPE_PUBLIC_KEY %>
-
-  <%= csrf_meta_tags %>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<%= analytics_init if Rails.env.production? %>
 
@@ -51,11 +53,13 @@
 	</div>
 <% end %>
 
+<!--
 <% if flash[:notice] %>
-	<div class="alert alert-success noticeFade">
+	<div class="alert alert-success noticeFade hidden">
 		<i class="fa fa-times closeAlert"></i><%= flash[:notice] %>
 	</div>
 <% end %>
+-->
 
 <%= render 'layouts/header' unless @disable_header == true %>
 

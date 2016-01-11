@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Geography:</strong>
+  <%= @distribution.geography %>
+</p>
+
+<p>
+  <strong>Niche:</strong>
+  <%= @distribution.niche %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @distribution.comments %>
+</p>
+
+<%= link_to 'Edit', edit_newsroom_press_release_distribution_path(@distribution, @press_release) %> |

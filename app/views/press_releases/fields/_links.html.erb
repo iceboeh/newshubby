@@ -1,6 +1,6 @@
 
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading clearfix">
                     <%= f.link_to_remove do %><i class="fa fa-close pull-right"></i><% end %>
                     <i class="fa fa-question-circle fa-lg intHelp pull-right hidden-xs text-primary hints" data-toggle="tooltip" data-placement="left" title="Toggle help"></i>
                 </div> <!-- / .panel-heading -->
@@ -10,8 +10,4 @@
 									<%= f.label :link %><br>
 									<%= f.text_field :link, class: "form-control fixed-textarea", rows: "4", id: "textarea", onfocus: "this.value = this.value;", placeholder: "http://" %>
 								</div> <!-- / .panel-body -->
-                <div class="panel-footer clearfix">
-                    <div class="pull-left" id="textareaFeedback"></div>
-                    <!-- <button type="button" class="btn btn-primary pull-right" id="save">Save <i class="fa fa-arrow-right"></i></button> -->
-                </div><!--/ .panel-footer -->
             </div> <!-- / .panel -->

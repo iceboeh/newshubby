@@ -4,8 +4,10 @@ class NewsroomsController < ApplicationController
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :authenticate, only: [:allnewsrooms]
   before_filter :allow_iframe_requests
+
+  load_and_authorize_resource :newsroom
   
-  autocomplete :press_release, :title
+  autocomplete :press_release, :title, scopes: [:published]
 
   def configure_permitted_parameters  
     devise_parameter_sanitizer.for(:newsroom_update) { |u| 
@@ -49,7 +51,7 @@ class NewsroomsController < ApplicationController
   end
   
   def allpressreleases
-    @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 38)
+    @press_releases = PressRelease.includes(:uploads).all.order("press_releases.created_at DESC").where(exclusive: false).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 4)
   end
 
   def allnewsrooms
@@ -66,7 +68,7 @@ class NewsroomsController < ApplicationController
     if params[:search]
      # @search = Sunspot.search Newsroom do
       #  fulltext params[:search]
-      #end
+      #ends
       @press_releases = PressRelease.where(exclusive: false).where("embargo <= ?", Date.today).search(params[:search])
     else 
       @press_releases = PressRelease.includes(:uploads).all.order("press_releases.embargo DESC").where(exclusive: false).where("embargo <= ?", Date.today).where.not(uploads: { file_file_name: nil }).where.not(title: nil).paginate(:page => params[:page], :per_page => 4)
@@ -82,13 +84,13 @@ class NewsroomsController < ApplicationController
     @nrBody = true
 
     # Control ownership
-    if @newsroom == current_newsroom
-      @owner = true
-    else
-      @owner = false
-    end
+    #if @newsroom == current_newsroom
+    #  @owner = true
+    #else
+    #  @owner = false
+    #end
     
-    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.press_phone.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank? || @newsroom.q_clients.blank? || @newsroom.business_model.blank? || @newsroom.competitors.blank? || @newsroom.differentiation.blank? || @newsroom.problem_solved.blank?
+    @introduction_failed = true if @newsroom.company_name.blank? || @newsroom.website.blank? || @newsroom.founded.blank? || @newsroom.q_what_you_do.blank? || @newsroom.q_how_you_achieve.blank?
     
     # Payment code check
     #@code = @newsroom.code
@@ -106,10 +108,10 @@ class NewsroomsController < ApplicationController
     #end
 
     # Show exclusive press releases only to owner
-    if @owner
-      @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
+    if can? :manage, @newsroom
+      @press_releases = @newsroom.press_releases.order("embargo DESC").paginate(:page => params[:page], :per_page => 2)
     else
-      @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 3)
+      @press_releases = @newsroom.press_releases.where(exclusive: false).where("embargo <= ?", Date.today).order("embargo DESC").paginate(:page => params[:page], :per_page => 2)
     end
     
   end
@@ -126,19 +128,19 @@ class NewsroomsController < ApplicationController
     @nrBody = true
     
     # Control ownership
-    if @newsroom != current_newsroom
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom != current_newsroom
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
     # Handle ownership
-    unless @owner
-      flash[:notice] = "Not your newsroom. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your newsroom. Hands off!"
+    #  redirect_to :root
+    #end
     
-    @newsroom = current_newsroom
+    #@newsroom = current_newsroom
   rescue ActiveRecord::RecordNotFound
     flash[:notice] = "Not yours to edit!"
     redirect_to :root
@@ -231,7 +233,7 @@ class NewsroomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def newsroom_params
-      params.require(:newsroom).permit(:company_name, :differentiation, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, :password, :password_confirmation, :current_password, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy])
+      params.require(:newsroom).permit(:company_name, :differentiation, :website, :press_phone, :term_agreement, :press_email, :founded, :q_who_are_you, :q_what_you_do, :q_how_you_achieve, :q_clients, :logo, :location, :competitors, :latitude, :longitude, :twitter, :problem_solved, :business_model, :password, :password_confirmation, :current_password, people_attributes: [:id, :name, :role, :presentation, :founder, :_destroy], fundings_attributes: [:id, :name, :amount, :investment_type, :date, :_destroy], distributuion_attributes: [:id, :geography, :niche, :comment, :_destroy])
   end
 
 end

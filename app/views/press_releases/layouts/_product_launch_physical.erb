@@ -1,0 +1,24 @@
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+												
+                        <p>
+                            <span>
+															<%= @newsroom.company_name + " is launching" %> <%= @press_release.specifics[:product_name] + " in" unless @press_release.specifics[:product_name].blank? %> <%= @press_release.specifics[:markets] + "." unless @press_release.specifics[:markets].blank? %> <%= "The launching date is set for " + @date.strftime("%B %d, %Y") unless @date.blank? %>
+														</span>
+                        </p>
+												
+												<p>
+                            <span>
+															<%= @press_release.specifics[:product_type] unless @press_release.specifics[:product_type].blank? %> <%= @press_release.specifics[:target_customers] unless @press_release.specifics[:target_customers].blank? %>
+														</span>
+                        </p>
+												
+
+												<%= render 'press_releases/fields/quote' %>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+												<%= render 'press_releases/partials/founded_funding' %>
+
+<%= render 'press_releases/partials/static_bottom' %>

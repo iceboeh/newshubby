@@ -1,15 +1,13 @@
-<% unless @newsroom.people.count < 1 %>
-<hr>
-<% if @newsroom.people.count > 0 %>
+<% unless @newsroom.people.blank? %>
+<hr class="hidden-print">
 <h4>Key People</h4>
 <div class="row">
 	<% @newsroom.people.each do |person| %>
     <% unless person.name.blank? %>
-		<div class="col-xs-6">
+		<div class="col-sm-6">
         <p><strong><%= person.name %></strong>&nbsp;<%= (person.role) %><br><small><%= person.presentation %></small></p>
     </div>
 		<% end %>
 	<% end %>
 </div> <!-- / .row -->
-<% end %>
 <% end %>

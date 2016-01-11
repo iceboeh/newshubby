@@ -1,0 +1,33 @@
+<%= render 'press_releases/partials/static_top' %>
+
+<%= render 'press_releases/fields/handle_date' %>
+
+                        <p>
+                            <span>
+															<%= @newsroom.company_name %> <% unless @newsroom.people.where(founder: true).blank? %>which is founded by 
+															<%= @newsroom.people.where(founder: true).map(&:name).to_sentence %><% unless @newsroom.founded.blank? %> in <%= @newsroom.founded.strftime("%B, %Y") %><% end %><% end %> is increasing the team with 
+															<% unless @press_release.specifics[:how_many].blank? %><% if @press_release.specifics[:how_many].to_i == 1 %><%= @press_release.specifics[:how_many].to_i.humanize %> person<% else %><%= @press_release.specifics[:how_many].to_i.humanize %> people<% end %>.<% end %>
+														</span>
+                        </p>
+												
+                        <p>
+                            <span>
+															<%= @press_release.specifics[:work_with] %>
+														</span>
+                        </p>
+												
+												<%= render 'press_releases/fields/quote' %>
+												
+												<%= render 'press_releases/partials/quick_pitch' %>
+												
+												<% unless @date.blank? %>
+                        
+												<p>
+                            <span>
+															The new employees <% if @press_release.specifics[:how_many] == 1 %>join<% else %>joins<% end %> <%= @newsroom.company_name %> on <%= @date.strftime("%B %d, %Y") %>
+														</span>
+                        </p>
+												
+												<% end %>
+												
+<%= render 'press_releases/partials/static_bottom' %>

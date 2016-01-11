@@ -2,7 +2,7 @@ class Newsroom < ActiveRecord::Base
   validates :term_agreement, presence: true
   
   extend FriendlyId
-  friendly_id :company_name, use: :slugged
+  friendly_id :company_name, use: [:slugged, :finders]
     
   geocoded_by :location
   after_validation :geocode, :if => :location_changed?
@@ -36,11 +36,12 @@ class Newsroom < ActiveRecord::Base
   # Static Newsroom stuff
   has_many :fundings, dependent: :destroy
   has_many :people, dependent: :destroy
-  has_one :subscription, dependent: :destroy
+  has_many :subscription, dependent: :destroy
   
   
   has_many :links, through: :press_releases
   has_many :uploads, through: :press_releases
+  has_many :distributions, through: :press_releases
   
   accepts_nested_attributes_for :company_launches, allow_destroy: true
   accepts_nested_attributes_for :people, allow_destroy: true
@@ -54,11 +55,10 @@ class Newsroom < ActiveRecord::Base
   validates :term_agreement, acceptance: { accept: true }
   
   #validates_presence_of :logo, if: :on_logo_step?
-  
-  
+    
   has_attached_file :logo, :styles => { :large => "800x800>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/,
-  :less_than => 2.megabytes
+  :less_than => 5.megabytes
 
   
   # Include default devise modules. Others available are:

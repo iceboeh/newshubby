@@ -1,136 +1,158 @@
 <% title "Newsroom: #{@newsroom.company_name}" %>
 
-<% if current_newsroom != nil && current_newsroom == @newsroom %>
+<div class="nav-top-margin"></div>
 
-<%= nested_form_for(@newsroom) do |f| %>
-  <% if @newsroom.errors.any? %>
-      <h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
-      <ul>
-      <% @newsroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-  <% end %>
+<% if can? :manage, @newsroom %>
 
-<div class="nrHeader">
-  <div class="container">
-			<div class="row">
-	        <div class="col-md-8 col-md-offset-2">
-						<% if @owner && @newsroom.press_releases.blank? %>
-	            <div class="alert alert-info text-center" role="alert"><strong>Good job!</strong> Now go  <%= link_to "create your first press release", select_path %>.</div>
-						<% end %>
+	<%= nested_form_for(@newsroom) do |f| %>
+	<% if @newsroom.errors.any? %>
+		<h2><%= pluralize(@newsroom.errors.count, "error") %> prohibited this newsroom from being saved:</h2>
+		<ul>
+		<% @newsroom.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	<% end %>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<% if can? :manage, @newsroom %>
+				<% if @newsroom.press_releases.blank? %>
+				<div class="alert alert-info text-center" role="alert">
+					<strong>Good job!</strong> Now <%= link_to "create your first press release by clicking here", select_path %>.
+				</div>
+				<% end %>
+			</div> <!-- col-md-10 -->
+		</div><!-- row -->
+		<div class="row">
+			<div class="col-md-10">
+				<h4>
+					Edit Newsroom: <span class="text-muted"><%= @newsroom.company_name %></span>
+					<% if can? :manage, @newsroom %>
+						<span class="pull-right">
 							<%= link_to @newsroom do %>
-							<h3 class="text-muted nrHeading"><i class="fa fa-home"></i>&nbsp;Newsroom</h3>
+								<small>View Newsroom</small>
 							<% end %>
-							<hr>
-	        </div>
-	    </div>
-      <div class="row">
-          <div class="col-md-4 col-md-offset-2">
-              <h3><%= f.text_field :company_name %></h3>
-              <p>founded in <%= f.date_select :founded, order: [:month, :year] %></p>
-              <div>
-                  <p><i class="fa fa-home fa-fw"></i>&nbsp;<%= f.text_field :website %></p>
-									<p><i class="fa fa-twitter fa-fw"></i>&nbsp;<%= f.text_field :twitter %></p>
-                  <p><i class="fa fa-envelope fa-fw"></i>&nbsp;<%= f.text_field :press_email %></p>
-                  <p><i class="fa fa-phone fa-fw"></i>&nbsp;<%= f.text_field :press_phone %></p>
-									<p><i class="fa fa-map-marker fa-fw"></i>&nbsp;<%= f.text_field :location %></p>
-              </div>
-          </div> <!-- / .col-md-4 -->
-          <div class="col-md-4">
-              <div class="centerContainer">
-                  <div class="centerContent">
-                      <%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block" %>
-											<br>
-											<%= f.label :logo, "Upload new logo" %><br>
-											<%= f.file_field :logo %>
-                  </div>
-              </div>
-          </div> <!-- / .col-md-4 -->
-      </div> <!-- / .row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrHeader -->
+						</span>
+					<% end %>
+				</h4>
+			<hr class="header-hr">
+			</div><!-- col -->
+		</div><!-- row -->
+		<div class="row">
+			<div class="col-sm-7 col-md-6">
+				<h5>Basic Info</h5>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="input-group">
+							<%= f.label :logo, "Company logotype:" %>
 
-<div class="nrRow">
-  <div class="container">
-      <div class="col-md-8 col-md-offset-2">
-          <div class="row">
-              <h3><i class="fa fa-file-text-o"></i>&nbsp;Latest Press Releases</h3>
-							<% unless @newsroom.press_releases.nil? %>
-							<% @newsroom.press_releases[0..2].each do |press_release| %>
-              <div class="col-sm-4">
-								<% if @owner %>
-								<div class="nrThumbMenu">
-								<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release?" } do %>
-								<i class="fa fa-times fa-lg pull-right" title="Permanently delete this press release"></i>
-								<% end %>
-								<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
-								<i class="fa fa-edit fa-lg pull-right" title="Edit this press release"></i>
-								<% end %>
-								<% if press_release.exclusive? %>
-								<i class="fa fa-eye-slash fa-lg pull-right" title="This press release is only exclusively visible"></i>
-								<% end %>
-								
+							<%= image_tag @newsroom.logo.url(:large), class: "img-responsive center-block", style: "max-width: 50%" %>
+							<!-- <input id="uploadFile" placeholder="Choose File" disabled="disabled" /> -->
+							<div class="text-center">
+							<input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+								<div class="fileUpload btn btn-primary">
+									<span><i class="fa fa-file-image-o"></i>&nbsp;Choose file</span>
+									<%= f.file_field :logo, id: "uploadBtn", class: "upload" %>
 								</div>
-								<% end %>
-                  <div class="thumbnail">
-                      <%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
-												<% unless press_release.uploads.first.nil? %>
-												<% unless press_release.uploads.first.file.nil? %>
-												<% end %>
-												<%= image_tag press_release.uploads.first.file.url(:medium), class: "thumbImg", alt: "" %>
-											<% end %>
-                      <% end %>
-                      <div class="caption">
-                          <h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
-                          <time class="pull-right" datetime="2014-10-28 20:00"><small><%= time_ago_in_words(press_release.updated_at) %> ago</small></time>
-                      </div> <!-- / .caption -->
+							</div>
+						</div>
 
-                      <div class="clearfix"></div>
-                  </div> <!-- / .thumbnail -->
-              </div> <!-- / .col-sm-6 -->
-							<% end %><% end %>
-              
-          </div> <!-- / .row -->
-					<%= link_to "All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default pull-right", role: "button" %>
-      </div> <!-- / .col-md-8 -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
+						<%= f.label :company_name, "Company name:" %>
+						<%= f.text_field :company_name, class: "form-control"  %>
+						<br>
+						<div class="input-group">
+							<%= f.label :founded, "founded in:" %>
+							<%= f.date_select :founded, order: [:month, :year], class: "form-control input-sm" %>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-home fa-fw" title="Company website"></i>
+							</div>
+							<%= f.text_field :website, class: "form-control input-sm", placeholder: "E.g. www.example.com" %>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-twitter fa-fw" title="Twitter"></i>
+							</div>
+							<%= f.text_field :twitter, class: "form-control input-sm", placeholder: "E.g. @twitter" %>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-envelope fa-fw" title="Press contact email"></i>
+							</div>
+							<%= f.text_field :press_email, class: "form-control input-sm", placeholder: "E.g. press@example.com" %>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-phone fa-fw" title="Press contact phone number"></i>
+							</div>
+							<%= f.text_field :press_phone, class: "form-control input-sm", placeholder: "E.g. +1 555 555 555" %>
+						</div>
+						<br>
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-map-marker fa-fw" title="Company headquarters location"></i>
+							</div>
+							<%= f.text_field :location, class: "form-control input-sm", placeholder: "E.g. 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA" %>
+						</div>
+						<br>
+						<% if can? :manage, @newsroom %>
+							<div class="text-right">
+								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
+							</div>
+						<% end %>
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
 
-<% unless @newsroom.q_what_you_do.nil? %>
-<div class="nrRow nrWhiteBkg">
-  <div class="container">
-      <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-              <p>
-								<strong>
-									<%= f.label :q_what_you_do, "What does #{@newsroom.company_name} do?" %><br>
-									<%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?", class: "form-control" %>
-								</strong><br>
-									<%= f.label :q_how_you_achieve, "How exactly does #{@newsroom.company_name} achieve that?" %><br>
-									<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?", class: "form-control" %><br>
-									<%= f.label :q_clients, "How would you describe #{@newsroom.company_name.possessive} clients?" %><br>
-									<%= f.text_area :q_clients, placeholder: "Describe your typical clients", class: "form-control" %><br>
-									<%= f.label :differentiation, "How does #{@newsroom.company_name} differ from its competitors?" %><br>
-									<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?", class: "form-control" %><br>
-							</p>
-              <h4>Problem Solved</h4>
-              <p>
-								<%= f.text_area :problem_solved, rows: 3, placeholder: "Problem Solved", class: "form-control" %>
-							</p>
-              <h4>Business Model</h4>
-              <p>
-								<%= f.text_area :business_model, rows: 3, placeholder: "Business Model", class: "form-control" %>
-							</p>
-              <h4>Competitors</h4>
-              <p>
-								<%= f.text_area :competitors, rows: 3, placeholder: "Competitors", class: "form-control" %>
-							</p>
-              <h4>Funding</h4>
-							<%= f.fields_for :fundings do |funding| %>
-							<div class="row">
-								<div class="col-xs-12 col-sm-6">
-							<%= f.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
-							
+				<a class="anchor" name="companydetails"></a>
+				<h5>Company Details</h5>
+				<div class="panel panel-defaul">
+					<div class="panel-body">
+						<strong>
+						<%= f.label :q_what_you_do, "What does #{@newsroom.company_name} do?" %><br>
+						<%= f.text_area :q_what_you_do, rows: 3, placeholder: "What does #{@newsroom.company_name} do?", class: "form-control" %>
+						</strong><br>
+						<%= f.label :q_how_you_achieve, "How exactly does #{@newsroom.company_name} achieve that?" %><br>
+						<%= f.text_area :q_how_you_achieve, rows: 3, placeholder: "How does #{@newsroom.company_name} achieve that?", class: "form-control" %><br>
+						<%= f.label :q_clients, "How would you describe #{@newsroom.company_name.possessive} clients?" %><br>
+						<%= f.text_area :q_clients, rows: 3, placeholder: "Describe your typical clients", class: "form-control" %><br>
+						<%= f.label :differentiation, "How does #{@newsroom.company_name} differ from its competitors?" %><br>
+						<%= f.text_area :differentiation, rows: 3, placeholder: "What makes #{@newsroom.company_name} different from its competitors?", class: "form-control" %><hr>
+						<h4>Problem Solved</h4>
+						<p>
+						<%= f.label :problem_solved, "What problem does RMP solve?" %>
+						<%= f.text_area :problem_solved, rows: 3, placeholder: "Problem Solved", class: "form-control" %>
+						</p>
+						<h4>Business Model</h4>
+						<p>
+						<%= f.label :business_model, "Describe #{@newsroom.company_name.possessive} business model, preferably with prices included" %><br>
+						<%= f.text_area :business_model, rows: 3, placeholder: "Business Model", class: "form-control" %>
+						</p>
+						<h4>Competitors</h4>
+						<p>
+						<%= f.label :competitors, "Who are #{@newsroom.company_name.possessive} competitors?" %>
+						<%= f.text_area :competitors, rows: 3, placeholder: "Competitors", class: "form-control" %>
+						</p>
+						<% if can? :manage, @newsroom %>
+							<div class="text-right">
+								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
+							</div>
+						<% end %>
+					</div> <!-- / .panel-body -->
+				</div> <!-- / .panel -->
+					<a class="anchor" name="funding"></a>
+					<h5>Funding</h5>
+					
+					<%= f.fields_for :fundings do |funding| %>
+						<div class="panel panel-deafault">
+							<div class="panel-body">
+								<%= f.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
+								
 								<div class="form-group">
 									<%= funding.label :investment_type %><br>
 									<%= funding.select :investment_type, ["Private Investor", "Venture Capital", "Bootstrapped", "No funding", "Other"], class: "form-control" %>
@@ -145,51 +167,116 @@
 								</div>
 								<div class="form-group">
 									<%= funding.label :amount, "Amount invested" %><br>
-										<div class="input-group">
-											<div class="input-group-addon">$</div>
+									<div class="input-group">
+										<div class="input-group-addon">$</div>
 										<%= funding.number_field :amount, class: "form-control", placeholder: "190000"  %>
-											</div>
-										</div>
-								<hr>
-							</div></div>
-							<% end %>
-							
-							<%= f.link_to_add :fundings, class: "btn btn-default" do %> + Add funding<% end %>
-							<br><br>
-							
-              <h4>Key People</h4>
-								<%= f.fields_for :people do |person| %>
-									<div class="row">
-									<div class="col-xs-12 col-sm-6">
+									</div>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+				<%= f.link_to_add :fundings, class: "btn btn-primary center-block" do %> + Add funding<% end %>
+					<br>
+				<% if can? :manage, @newsroom %>
+					<div class="text-right">
+						<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
+					</div>
+				<% end %>
+					<a class="anchor" name="keypeople"></a>
+					<h5>Team</h5>
+						<%= f.fields_for :people do |person| %>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="panel panel-default">
+									<div class="panel-body">
 										<%= f.link_to_remove do %><i class="fa fa-close fa-lg pull-right"></i><% end %>
-                      <%= person.label :name, "First and last name" %><br>
-											<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
-											
-											<%= person.label :role, "Position at #{@newsroom.company_name}" %><br>
-											<%= person.text_field :role, class: "form-control", placeholder: "Role at #{@newsroom.company_name}" %><br>
-											<div class="form-group">
-												<%= person.label :founder, "Is this person a founder?" %><br>
-												<label class="radio-inline"><%= person.radio_button :founder, true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, false %> No</label>
-											</div>
-											<%= person.label :presentation, "Briefly introduce the person's skills and personality" %>
-											<%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %>
-                  <hr></div></div>
+										<%= person.label :name, "First and last name" %><br>
+										<%= person.text_field :name, class: "form-control", placeholder: "Name" %><br>
+
+										<%= person.label :role, "Position at #{@newsroom.company_name}" %><br>
+										<%= person.text_field :role, class: "form-control", placeholder: "Role at #{@newsroom.company_name}" %><br>
+										<div class="form-group">
+											<%= person.label :founder, "Is this person a founder?" %><br>
+											<label class="radio-inline"><%= person.radio_button :founder, true %>Yes</label> <label class="radio-inline"><%= person.radio_button :founder, false %> No</label>
+										</div>
+										<%= person.label :presentation, "Briefly introduce the person's skills and personality" %>
+										<%= person.text_area :presentation, placeholder: "Presentation", class: "form-control" %>
+									</div>
+								</div>
+							</div> <!-- / .col -->
+						</div> <!-- / .row -->
+						<% end %>
+						<%= f.link_to_add :people, class: "btn btn-primary center-block" do %> + Add person<% end %>
+						<br>
+						<% if can? :manage, @newsroom %>
+							<div class="text-right clearfix">
+								<%= f.submit "Save changes", class: "btn btn-success", role: "button" %>
+							</div>
+						<% end %>
+						<br>
+			</div> <!-- / .col -->
+			<div class="col-sm-5 col-md-4">
+				<div class="row">
+					<div class="col-xs-12">
+						<h5>&nbsp;Latest Press Releases</h5>
+					</div>
+				</div>
+
+				<div class="row">
+					<% unless @newsroom.press_releases.nil? %>
+					<% @newsroom.press_releases[0..1].each do |press_release| %>
+					<div class="col-xs-12">
+						<div class="thumbnail">
+						<% if can? :manage, @newsroom %>
+						<div class="pr-thumbnail-options">
+
+							<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %> <button class="btn btn-sm btn-primary"><i class="fa fa-eye"></i>&nbsp;View</button> <% end %>
+
+							<%= link_to edit_newsroom_press_release_path(@newsroom, press_release), title: "Edit" do %>
+							<button class="btn btn-sm btn-default"><i class="fa fa-pencil" title="Edit this press release">&nbsp;Edit</i></button>
+							<% end %>
+
+							<%= link_to newsroom_press_release_path(@newsroom, press_release), title: "Delete" , method: :delete, data: { confirm: "Are you sure that you want to permanently delete this press release? This action can not be undone." } do %>
+							<button class="btn btn-sm btn-danger"><i class="fa fa-times" title="Permanently delete this press release">&nbsp;Delete</i></button>
+							<% end %>
+						</div>
+						<% end %>
+
+						<%= link_to newsroom_press_release_path(@newsroom, press_release) do %>
+						<% unless press_release.uploads.first.file.blank? %>
+						<%= image_tag press_release.uploads.first.file.url(:medium), alt: "" %> <!-- , class: "#{"thumbnail-transparent" if press_release.exclusive?}" -->
+						<% else %>
+						<%= image_tag "images/feature_img.png", alt: "" %> 
+						<% end %>
+						<% end %>
+						<div class="caption">
+							<time class="pull-right text-muted clearfix" datetime="2014-10-28 20:00">
+								<small>
+									<%= time_ago_in_words(press_release.embargo) unless press_release.embargo.blank? %>
+								</small>
+							</time>
+							<h4><%= link_to press_release.title, newsroom_press_release_path(@newsroom, press_release) %></h4>
+							<% if press_release.exclusive? %>
+							<div class="text-center">
+								<%= link_to newsroom_press_release_path(press_release.newsroom, press_release) do %>
+								<span class="label label-danger"><i class="fa fa-eye-slash" title="This press release is only exclusively visible">&nbsp;Unlisted</i></span>
 								<% end %>
-								<%= f.link_to_add :people, class: "btn btn-default" do %> + Add team member<% end %>
-          </div> <!-- / .col-md-8 -->
-      </div> <!-- /.row -->
-  </div> <!-- / .container -->
-</div> <!-- / .nrRow -->
+							</div>
+							<% end %>
+						</div> <!-- / .caption -->
+						<div class="clearfix"></div>
+						</div>
+					</div> <!-- / .col-sm-6 -->
+					<% end %><% end %>
+
+				</div> <!-- / .row -->
+				<div class="text-center">
+					<%= link_to "View All Press Releases", newsroom_press_releases_path(@newsroom), class: "btn btn-default", role: "button" %>
+				</div>
+			</div> <!-- / .col-md-8 -->
+		</div> <!-- / .row -->
+	</div> <!-- / .container -->
 <% end %>
-<br><br>
-
-<% if @owner %>
-
-	<div class="text-center">
-		<%= f.submit "Save changes", class: "btn btn-success btn-lg", role: "button" %>
-	</div>
-	<br><br>
-	
 <% end %>
-
-<% end %><% end %>
+<% end %>

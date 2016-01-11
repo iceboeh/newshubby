@@ -40,11 +40,11 @@ class CompanyLaunchesController < ApplicationController
     @disable_header == true
     
     # Control ownership
-    if @newsroom != current_newsroom
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom != current_newsroom
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
   end
   
@@ -74,16 +74,16 @@ class CompanyLaunchesController < ApplicationController
     @newsroom = @company_launch.newsroom
     
     # Control ownership
-    if @newsroom.company_launches.friendly.find(params[:id]) != current_newsroom.company_launches.friendly.find(params[:id])
-      @owner = false
-    else
-      @owner = true
-    end
+    #if @newsroom.company_launches.friendly.find(params[:id]) != current_newsroom.company_launches.friendly.find(params[:id])
+    #  @owner = false
+    #else
+    #  @owner = true
+    #end
     
-    unless @owner
-      flash[:notice] = "Not your press release. Hands off!"
-      redirect_to :root
-    end
+    #unless @owner
+    #  flash[:notice] = "Not your press release. Hands off!"
+    #  redirect_to :root
+    #end
     
     @newsroom = current_newsroom
     @company_launches = current_newsroom.company_launches.friendly.find(params[:id])    
