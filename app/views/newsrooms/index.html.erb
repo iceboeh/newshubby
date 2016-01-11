@@ -43,8 +43,8 @@
         <small class="text-muted">For our Swedish customers:</small>
       </div>
                 <div class="modal-body">
-                    <img src="http://localhost:3000/assets/flag_sweden.svg" width="50" alt="" class="pull-right">
-            
+                    <%= image_tag "images/flag_sweden.svg", width: "50", alt: "", class: "pull-right" %>
+
             <p><strong class="text-primary">Hej!</strong><br> Sidan du är inne på nu riktar sig mot våra internationella besökare. Vill du skriva ditt pressmeddelande på svenska? Klicka då här nedan så tar vi dig till vår svenska sida!</p>
             <a href="http://sverige.newshubby.com/" class="btn btn-primary btn-block">Ta mig till svenska NewsHubby</a>
                 </div>
@@ -63,7 +63,7 @@
             <div class="col-lg-12" id="video">
                 <h4 class="text-center"><strong>NewsHubby is a press release creation & distribution service.</strong> <span class="text-muted">Here's how it works:</span></h4>
 
-                
+
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="thumbnail">
@@ -95,7 +95,7 @@
          </div> <!-- -->
      </div> <!-- / .col-lg-7 -->
  </div> <!-- .row -->
- 
+
  <% unless current_newsroom %>
  	<%= render 'newsrooms/partials/offer' %>
  <% end %>
@@ -111,7 +111,7 @@
         <div class="embed-responsive embed-responsive-16by9">
         <iframe src="https://www.youtube.com/embed/zDfSQxCFntE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen class="embed-responsive-item"></iframe>
       </div>
-  </div> 
+  </div>
 </div>
 </div> <!-- /.container -->
 </div> <!-- /.indexSplash -->
@@ -127,9 +127,9 @@
 <script>
 
     $(document).ready(function () {
-			
+
 				$('#swedenModal').modal('show');
-			
+
         /* Scrolla till anchors */
         var $root = $('html, body');
         $('a').click(function () {
